@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="O9P-Jx-wbg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lotus_pic" translatesAutoresizingMaskIntoConstraints="NO" id="O9P-Jx-wbg">
                                 <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="2g7-VC-GOK"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app_icon" width="612.33331298828125" height="568.66668701171875"/>
+        <image name="lotus_pic" width="389.66665649414062" height="301.66665649414062"/>
     </resources>
 </document>
