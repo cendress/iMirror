@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lotus_pic" translatesAutoresizingMaskIntoConstraints="NO" id="O9P-Jx-wbg">
-                                <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
+                                <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="2g7-VC-GOK"/>
-                                    <constraint firstAttribute="width" constant="300" id="UFk-81-Yyo"/>
+                                    <constraint firstAttribute="height" constant="250" id="2g7-VC-GOK"/>
+                                    <constraint firstAttribute="width" constant="250" id="UFk-81-Yyo"/>
                                 </constraints>
                             </imageView>
                         </subviews>
