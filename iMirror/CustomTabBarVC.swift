@@ -12,8 +12,6 @@ class CustomTabBarVC: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTabs()
-    
-    tabBar.barTintColor = .red
   }
   
   private func setupTabs() {
