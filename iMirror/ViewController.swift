@@ -11,8 +11,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //label2.font = UIFont(name: "Roboto-Regular", size: 40)
-    //view.backgroundColor = .red
+ 
   }
 
 

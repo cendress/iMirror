@@ -20,6 +20,7 @@
 		9DFEE6442B447241001835E1 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6372B447241001835E1 /* Roboto-Bold.ttf */; };
 		9DFEE6452B447241001835E1 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6382B447241001835E1 /* Roboto-Thin.ttf */; };
 		9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6392B447241001835E1 /* Roboto-Black.ttf */; };
+		9DFEE6482B45FCF9001835E1 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9DFEE6372B447241001835E1 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		9DFEE6382B447241001835E1 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		9DFEE6392B447241001835E1 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				9D7C034C2B2267610075E59D /* AppDelegate.swift */,
 				9D7C034E2B2267610075E59D /* SceneDelegate.swift */,
 				9D7C03502B2267610075E59D /* ViewController.swift */,
+				9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */,
 				9D7C03582B2267640075E59D /* Assets.xcassets */,
 				9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */,
 				9D7C035D2B2267640075E59D /* Info.plist */,
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFEE6482B45FCF9001835E1 /* CustomTabBarVC.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,
 				9D7C03512B2267610075E59D /* ViewController.swift in Sources */,
 				9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */,
