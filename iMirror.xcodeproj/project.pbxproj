@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
-		9D7C03512B2267610075E59D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03502B2267610075E59D /* ViewController.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
 		9D7C03592B2267640075E59D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C03582B2267640075E59D /* Assets.xcassets */; };
 		9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */; };
@@ -30,7 +29,6 @@
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9D7C03502B2267610075E59D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9D7C03562B2267610075E59D /* iMirror.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iMirror.xcdatamodel; sourceTree = "<group>"; };
 		9D7C03582B2267640075E59D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7C035B2B2267640075E59D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 			children = (
 				9D7C034C2B2267610075E59D /* AppDelegate.swift */,
 				9D7C034E2B2267610075E59D /* SceneDelegate.swift */,
-				9D7C03502B2267610075E59D /* ViewController.swift */,
 				9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */,
 				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
 				9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */,
@@ -189,7 +186,6 @@
 				9DFEE64C2B4603DC001835E1 /* QuestionPromptsVC.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarVC.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,
-				9D7C03512B2267610075E59D /* ViewController.swift in Sources */,
 				9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */,
 				9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
