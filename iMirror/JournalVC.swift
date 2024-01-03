@@ -12,7 +12,6 @@ class JournalVC: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .systemBrown
   }
   
   // MARK: - Table view data source
