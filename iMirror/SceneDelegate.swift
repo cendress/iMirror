@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     self.window = window
     window.rootViewController = ViewController()
     window.makeKeyAndVisible()
+    
+    window.tintColor = UIColor(named: "AppColor")
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
