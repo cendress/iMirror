@@ -12,6 +12,7 @@ class CustomTabBarVC: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTabs()
+    customizeTabBar()
   }
   
   private func setupTabs() {
@@ -24,6 +25,11 @@ class CustomTabBarVC: UITabBarController {
     let settingsVC = SettingsVC()
     settingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
     
-    viewControllers = [journalVC, questionPromptsVC, settingsVC]
+    tabBarController?.viewControllers = [journalVC, questionPromptsVC, settingsVC]
+  }
+  
+  private func customizeTabBar() {
+    tabBar.barTintColor = UIColor.systemGray
+    tabBar.unselectedItemTintColor = UIColor.white
   }
 }
