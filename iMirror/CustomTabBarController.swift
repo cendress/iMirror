@@ -9,11 +9,27 @@ import UIKit
 
 class CustomTabBarController: UITabBarController {
   
+  //MARK: - init methods
+  
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    // Use CustomTabBar
+    self.setValue(CustomTabBar(), forKey: "tabBar")
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    // Use CustomTabBar
+    self.setValue(CustomTabBar(), forKey: "tabBar")
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupTabs()
     customizeTabBar()
+    setupTabs()
   }
+  
+  //MARK: - Tab bar configuration method
   
   private func setupTabs() {
     let journalVC = JournalVC()
@@ -29,6 +45,9 @@ class CustomTabBarController: UITabBarController {
   }
   
   private func customizeTabBar() {
-    tabBar.barTintColor = UIColor.systemGray
+    // Customize the tab bar using the CustomTabBar's properties
+    if let customTabBar = tabBar as? CustomTabBar {
+      // Further customization if needed
+    }
   }
 }
