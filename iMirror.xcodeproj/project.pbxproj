@@ -19,7 +19,7 @@
 		9DFEE6442B447241001835E1 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6372B447241001835E1 /* Roboto-Bold.ttf */; };
 		9DFEE6452B447241001835E1 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6382B447241001835E1 /* Roboto-Thin.ttf */; };
 		9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE6392B447241001835E1 /* Roboto-Black.ttf */; };
-		9DFEE6482B45FCF9001835E1 /* CustomTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */; };
+		9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */; };
 		9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6492B4603B6001835E1 /* JournalVC.swift */; };
 		9DFEE64C2B4603DC001835E1 /* QuestionPromptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */; };
 		9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */; };
@@ -41,7 +41,7 @@
 		9DFEE6372B447241001835E1 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		9DFEE6382B447241001835E1 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		9DFEE6392B447241001835E1 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
-		9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarVC.swift; sourceTree = "<group>"; };
+		9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		9DFEE6492B4603B6001835E1 /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
 		9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPromptsVC.swift; sourceTree = "<group>"; };
 		9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 			children = (
 				9D7C034C2B2267610075E59D /* AppDelegate.swift */,
 				9D7C034E2B2267610075E59D /* SceneDelegate.swift */,
-				9DFEE6472B45FCF9001835E1 /* CustomTabBarVC.swift */,
+				9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */,
 				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
 				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
 				9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */,
@@ -187,7 +187,7 @@
 			files = (
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* QuestionPromptsVC.swift in Sources */,
-				9DFEE6482B45FCF9001835E1 /* CustomTabBarVC.swift in Sources */,
+				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,
 				9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */,
 				9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */,
