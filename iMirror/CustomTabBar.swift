@@ -9,6 +9,13 @@ import UIKit
 
 class CustomTabBar: UITabBar {
   private var shapeLayer: CAShapeLayer?
+  private let extraHeight: CGFloat = 30.0
+  
+  override func sizeThatFits(_ size: CGSize) -> CGSize {
+    var sizeThatFits = super.sizeThatFits(size)
+    sizeThatFits.height += extraHeight
+    return sizeThatFits
+  }
   
   override func draw(_ rect: CGRect) {
     super.draw(rect)
@@ -35,18 +42,18 @@ class CustomTabBar: UITabBar {
   }
   
   func createPath() -> CGPath {
-    let height: CGFloat = 30.0
+    let curveHeight: CGFloat = 40.0
     let path = UIBezierPath()
     let centerWidth = self.frame.width / 2
     
-    path.move(to: CGPoint(x: 0, y: 0))
+    path.move(to: CGPoint(x: 0, y: extraHeight))
     
-    path.addLine(to: CGPoint(x: centerWidth - 50, y: 0))
+    path.addLine(to: CGPoint(x: centerWidth - 50, y: extraHeight))
     
-    path.addQuadCurve(to: CGPoint(x: centerWidth + 50, y: 0),
-                      controlPoint: CGPoint(x: centerWidth, y: -height))
+    path.addQuadCurve(to: CGPoint(x: centerWidth + 50, y: extraHeight),
+                      controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
     
-    path.addLine(to: CGPoint(x: self.frame.width, y: 0))
+    path.addLine(to: CGPoint(x: self.frame.width, y: extraHeight))
     
     path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.height))
     path.addLine(to: CGPoint(x: 0, y: self.frame.height))
@@ -62,6 +69,3 @@ class CustomTabBar: UITabBar {
     return nil
   }
 }
-
-
-
