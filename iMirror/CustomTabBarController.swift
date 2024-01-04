@@ -9,24 +9,12 @@ import UIKit
 
 class CustomTabBarController: UITabBarController {
   
-  //MARK: - init methods
-  
-  init() {
-    super.init(nibName: nil, bundle: nil)
-    // Use CustomTabBar
-    self.setValue(CustomTabBar(), forKey: "tabBar")
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    // Use CustomTabBar
-    self.setValue(CustomTabBar(), forKey: "tabBar")
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    customizeTabBar()
     setupTabs()
+    customizeTabBar()
+    
+    DispatchQueue.main.async { self.selectedIndex = 0 }
   }
   
   //MARK: - Tab bar configuration method
@@ -45,9 +33,6 @@ class CustomTabBarController: UITabBarController {
   }
   
   private func customizeTabBar() {
-    // Customize the tab bar using the CustomTabBar's properties
-    if let customTabBar = tabBar as? CustomTabBar {
-      // Further customization if needed
-    }
+    self.setValue(CustomTabBar(), forKey: "tabBar")
   }
 }
