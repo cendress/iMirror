@@ -42,19 +42,16 @@ class CustomTabBar: UITabBar {
   }
   
   func createPath() -> CGPath {
-    let curveHeight: CGFloat = 40.0
+    let curveHeight: CGFloat = 60.0
     let path = UIBezierPath()
     let centerWidth = self.frame.width / 2
+    let curveWidth: CGFloat = 70.0  // Moderately wide curve
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
-    
-    path.addLine(to: CGPoint(x: centerWidth - 50, y: extraHeight))
-    
-    path.addQuadCurve(to: CGPoint(x: centerWidth + 50, y: extraHeight),
+    path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))
+    path.addQuadCurve(to: CGPoint(x: centerWidth + curveWidth, y: extraHeight),
                       controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
-    
     path.addLine(to: CGPoint(x: self.frame.width, y: extraHeight))
-    
     path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.height))
     path.addLine(to: CGPoint(x: 0, y: self.frame.height))
     path.close()
