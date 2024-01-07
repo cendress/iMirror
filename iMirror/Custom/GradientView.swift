@@ -20,7 +20,7 @@ class GradientView: UIView {
   
   private func setupGradient() {
     let gradientLayer = CAGradientLayer()
-    gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
+    gradientLayer.colors = [UIColor(named: "AppColor")!, UIColor.black.cgColor]
     //Top left corner
     gradientLayer.startPoint = CGPoint(x: 0, y: 0)
     //Bottom right corner
