@@ -45,7 +45,7 @@ class CustomTabBar: UITabBar {
     let curveHeight: CGFloat = 60.0
     let path = UIBezierPath()
     let centerWidth = self.frame.width / 2
-    let curveWidth: CGFloat = 70.0  // Moderately wide curve
+    let curveWidth: CGFloat = 70.0
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
     path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))

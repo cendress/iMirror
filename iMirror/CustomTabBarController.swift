@@ -12,9 +12,13 @@ class CustomTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTabs()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     customizeTabBar()
     
-    DispatchQueue.main.async { self.selectedIndex = 0 }
+    self.selectedIndex = 0
   }
   
   //MARK: - Tab bar configuration method
