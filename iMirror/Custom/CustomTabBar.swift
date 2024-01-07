@@ -49,8 +49,7 @@ class CustomTabBar: UITabBar {
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
     path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))
-    path.addQuadCurve(to: CGPoint(x: centerWidth + curveWidth, y: extraHeight),
-                      controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
+    path.addQuadCurve(to: CGPoint(x: centerWidth + curveWidth, y: extraHeight), controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
     path.addLine(to: CGPoint(x: self.frame.width, y: extraHeight))
     path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.height))
     path.addLine(to: CGPoint(x: 0, y: self.frame.height))
