@@ -7,12 +7,13 @@
 
 import UIKit
 
-class CustomTabBarController: UITabBarController {
+class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setValue(CustomTabBar(), forKey: "tabBar")
     setupTabs()
+    self.delegate = self
   }
   
   override func viewDidAppear(_ animated: Bool) {
