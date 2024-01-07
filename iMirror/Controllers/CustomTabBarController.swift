@@ -11,12 +11,12 @@ class CustomTabBarController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.setValue(CustomTabBar(), forKey: "tabBar")
     setupTabs()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    customizeTabBar()
     
     self.selectedIndex = 0
   }
@@ -28,15 +28,12 @@ class CustomTabBarController: UITabBarController {
     journalVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "text.book.closed"), tag: 0)
     
     let questionPromptsVC = QuestionPromptsVC()
-    questionPromptsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "plus"), tag: 1)
+    questionPromptsVC.tabBarItem = PlusTabBarItem()
     
     let settingsVC = SettingsVC()
     settingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
     
     viewControllers = [journalVC, questionPromptsVC, settingsVC]
   }
-  
-  private func customizeTabBar() {
-    self.setValue(CustomTabBar(), forKey: "tabBar")
-  }
+
 }
