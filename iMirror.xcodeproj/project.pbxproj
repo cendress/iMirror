@@ -25,6 +25,7 @@
 		9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */; };
 		9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6532B461047001835E1 /* CustomTabBar.swift */; };
 		9DFEE69B2B4B27F8001835E1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE69A2B4B27F8001835E1 /* GradientView.swift */; };
+		9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		9DFEE6532B461047001835E1 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		9DFEE69A2B4B27F8001835E1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusTabBarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
 				9DFEE69A2B4B27F8001835E1 /* GradientView.swift */,
+				9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */,
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* QuestionPromptsVC.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,

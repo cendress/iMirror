@@ -25,8 +25,8 @@ class CustomTabBar: UITabBar {
   private func addShape() {
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = createPath()
-    shapeLayer.strokeColor = UIColor.lightGray.cgColor
-    shapeLayer.fillColor = UIColor.white.cgColor
+    shapeLayer.strokeColor = UIColor.systemBackground.cgColor
+    shapeLayer.fillColor = UIColor.systemBackground.cgColor
     shapeLayer.lineWidth = 1.0
     shapeLayer.shadowOffset = CGSize(width: 0, height: 2)
     shapeLayer.shadowRadius = 10
@@ -44,14 +44,15 @@ class CustomTabBar: UITabBar {
   func createPath() -> CGPath {
     let curveHeight: CGFloat = 60.0
     let path = UIBezierPath()
-    let centerWidth = self.frame.width / 2
+    let screenWidth = UIScreen.main.bounds.width
+    let centerWidth = screenWidth / 2
     let curveWidth: CGFloat = 70.0
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
     path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))
     path.addQuadCurve(to: CGPoint(x: centerWidth + curveWidth, y: extraHeight), controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
-    path.addLine(to: CGPoint(x: self.frame.width, y: extraHeight))
-    path.addLine(to: CGPoint(x: self.frame.width, y: self.frame.height))
+    path.addLine(to: CGPoint(x: screenWidth, y: extraHeight))
+    path.addLine(to: CGPoint(x: screenWidth, y: self.frame.height))
     path.addLine(to: CGPoint(x: 0, y: self.frame.height))
     path.close()
     
