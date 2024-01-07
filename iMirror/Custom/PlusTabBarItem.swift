@@ -30,13 +30,13 @@ class PlusTabBarItem: UITabBarItem {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     
     let context = UIGraphicsGetCurrentContext()!
-    context.setShadow(offset: CGSize(width: 0, height: 2), blur: 4, color: UIColor.black.cgColor)
+    context.setShadow(offset: CGSize(width: 0, height: 3), blur: 6, color: UIColor.black.cgColor)
     
     let circlePath = UIBezierPath(ovalIn: CGRect(x: 5, y: 5, width: size.width - 10, height: size.height - 10))
-    UIColor(named: "AppColor")!.setFill()
+    UIColor.systemBackground.setFill()
     circlePath.fill()
     
-    let plusImage = UIImage(systemName: "plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 20))
+    let plusImage = UIImage(systemName: "plus")?.withTintColor(UIColor(named: "AppColor")!, renderingMode: .alwaysOriginal)
     let plusImageRect = CGRect(x: size.width/2 - 10, y: size.height/2 - 10, width: 20, height: 20)
     plusImage?.draw(in: plusImageRect)
     
@@ -45,4 +45,18 @@ class PlusTabBarItem: UITabBarItem {
     
     return image
   }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    addBounceAnimation()
+  }
+  
+  private func addBounceAnimation() {
+    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+    bounceAnimation.values = [1.0, 1.4, 0.9, 1.2, 1.0]
+    bounceAnimation.duration = 0.6
+    bounceAnimation.calculationMode = .cubic
+    (self.value(forKey: "view") as AnyObject).layer.add(bounceAnimation, forKey: nil)
+  }
 }
+
