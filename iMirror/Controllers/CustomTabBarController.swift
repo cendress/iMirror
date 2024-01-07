@@ -36,5 +36,12 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     viewControllers = [journalVC, questionPromptsVC, settingsVC]
   }
-
+  
+  //MARK: - Tab bar controller delegate method
+  
+  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    if let plusItem = item as? PlusTabBarItem {
+      plusItem.animateOnTap()
+    }
+  }
 }
