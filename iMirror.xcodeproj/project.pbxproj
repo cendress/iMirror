@@ -82,17 +82,11 @@
 			children = (
 				9D7C034C2B2267610075E59D /* AppDelegate.swift */,
 				9D7C034E2B2267610075E59D /* SceneDelegate.swift */,
-				9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */,
-				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
-				9DFEE69A2B4B27F8001835E1 /* GradientView.swift */,
-				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
-				9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */,
-				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
-				9D7C03582B2267640075E59D /* Assets.xcassets */,
-				9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */,
+				9DFEE69E2B4B28A0001835E1 /* Models */,
+				9DFEE69C2B4B285A001835E1 /* Controllers */,
+				9DFEE69D2B4B286A001835E1 /* Custom */,
+				9DFEE69F2B4B2939001835E1 /* Supporting Files */,
 				9D7C035D2B2267640075E59D /* Info.plist */,
-				9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */,
-				9DFEE62C2B447240001835E1 /* Roboto */,
 			);
 			path = iMirror;
 			sourceTree = "<group>";
@@ -109,6 +103,44 @@
 				9DFEE6392B447241001835E1 /* Roboto-Black.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		9DFEE69C2B4B285A001835E1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */,
+				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
+				9DFEE64B2B4603DC001835E1 /* QuestionPromptsVC.swift */,
+				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9DFEE69D2B4B286A001835E1 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
+				9DFEE69A2B4B27F8001835E1 /* GradientView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		9DFEE69E2B4B28A0001835E1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9DFEE69F2B4B2939001835E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D7C03582B2267640075E59D /* Assets.xcassets */,
+				9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */,
+				9DFEE62C2B447240001835E1 /* Roboto */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
