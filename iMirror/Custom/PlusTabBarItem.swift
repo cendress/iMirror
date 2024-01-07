@@ -21,7 +21,7 @@ class PlusTabBarItem: UITabBarItem {
   
   private func setupItem() {
     self.image = createCustomPlusImage().withRenderingMode(.alwaysOriginal)
-    self.selectedImage = createCustomPlusImage().withRenderingMode(.alwaysTemplate)
+    self.selectedImage = createCustomPlusImage().withRenderingMode(.alwaysOriginal)
     self.title = ""
   }
   
@@ -29,14 +29,11 @@ class PlusTabBarItem: UITabBarItem {
     let size = CGSize(width: 75, height: 75)
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     
-    let context = UIGraphicsGetCurrentContext()!
-    context.setShadow(offset: CGSize(width: 0, height: 3), blur: 6, color: UIColor.black.cgColor)
-    
     let circlePath = UIBezierPath(ovalIn: CGRect(x: 5, y: 5, width: size.width - 10, height: size.height - 10))
-    UIColor.systemBackground.setFill()
+    UIColor(named: "AppColor")!.setFill()
     circlePath.fill()
     
-    let plusImage = UIImage(systemName: "plus")?.withTintColor(UIColor(named: "AppColor")!, renderingMode: .alwaysOriginal)
+    let plusImage = UIImage(systemName: "plus")?.withTintColor(UIColor.systemBackground, renderingMode: .alwaysOriginal)
     let plusImageRect = CGRect(x: size.width/2 - 10, y: size.height/2 - 10, width: 20, height: 20)
     plusImage?.draw(in: plusImageRect)
     
@@ -59,4 +56,3 @@ class PlusTabBarItem: UITabBarItem {
     (self.value(forKey: "view") as AnyObject).layer.add(bounceAnimation, forKey: nil)
   }
 }
-
