@@ -36,7 +36,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     let settingsVC = SettingsVC()
     settingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
     
-    viewControllers = [journalVC, questionPromptsVC, settingsVC]
+    viewControllers = [journalNavController, questionPromptsVC, settingsVC]
   }
   
   //MARK: - Tab bar controller delegate method
