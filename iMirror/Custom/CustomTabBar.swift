@@ -9,7 +9,10 @@ import UIKit
 
 class CustomTabBar: UITabBar {
   private var shapeLayer: CAShapeLayer?
+  
   private let extraHeight: CGFloat = 30.0
+  private let curveHeight: CGFloat = 60.0
+  private let curveWidth: CGFloat = 70.0
   
   override func sizeThatFits(_ size: CGSize) -> CGSize {
     var sizeThatFits = super.sizeThatFits(size)
@@ -19,34 +22,39 @@ class CustomTabBar: UITabBar {
   
   override func draw(_ rect: CGRect) {
     super.draw(rect)
-    self.addShape()
+    addShape()
   }
   
   private func addShape() {
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = createPath()
-    shapeLayer.strokeColor = UIColor.systemBackground.cgColor
-    shapeLayer.fillColor = UIColor.systemBackground.cgColor
-    shapeLayer.lineWidth = 1.0
-    shapeLayer.shadowOffset = CGSize(width: 0, height: 2)
-    shapeLayer.shadowRadius = 10
-    shapeLayer.shadowColor = UIColor.black.cgColor
-    shapeLayer.shadowOpacity = 0.5
-    
+    configureShapeLayer(shapeLayer)
+    replaceOldShapeLayer(with: shapeLayer)
+  }
+  
+  private func configureShapeLayer(_ layer: CAShapeLayer) {
+    layer.strokeColor = UIColor.systemBackground.cgColor
+    layer.fillColor = UIColor.systemBackground.cgColor
+    layer.lineWidth = 1.0
+    layer.shadowOffset = CGSize(width: 0, height: 2)
+    layer.shadowRadius = 10
+    layer.shadowColor = UIColor.black.cgColor
+    layer.shadowOpacity = 0.5
+  }
+  
+  private func replaceOldShapeLayer(with newLayer: CAShapeLayer) {
     if let oldShapeLayer = self.shapeLayer {
-      self.layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
+      self.layer.replaceSublayer(oldShapeLayer, with: newLayer)
     } else {
-      self.layer.insertSublayer(shapeLayer, at: 0)
+      self.layer.insertSublayer(newLayer, at: 0)
     }
-    self.shapeLayer = shapeLayer
+    self.shapeLayer = newLayer
   }
   
   func createPath() -> CGPath {
-    let curveHeight: CGFloat = 60.0
     let path = UIBezierPath()
     let screenWidth = UIScreen.main.bounds.width
     let centerWidth = screenWidth / 2
-    let curveWidth: CGFloat = 70.0
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
     path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))
@@ -60,9 +68,9 @@ class CustomTabBar: UITabBar {
   }
   
   override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-    if shapeLayer?.path?.contains(point) == true {
-      return super.hitTest(point, with: event)
+    guard let path = shapeLayer?.path, self.bounds.contains(point) else {
+      return nil
     }
-    return nil
+    return path.contains(point) ? super.hitTest(point, with: event) : nil
   }
 }
