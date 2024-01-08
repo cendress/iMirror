@@ -57,8 +57,15 @@ class CustomTabBar: UITabBar {
     let centerWidth = screenWidth / 2
     
     path.move(to: CGPoint(x: 0, y: extraHeight))
-    path.addLine(to: CGPoint(x: centerWidth - curveWidth, y: extraHeight))
-    path.addQuadCurve(to: CGPoint(x: centerWidth + curveWidth, y: extraHeight), controlPoint: CGPoint(x: centerWidth, y: extraHeight - curveHeight))
+    
+    // Adjusted curve points for a more circular arch
+    let leftCurveStart = CGPoint(x: centerWidth - curveWidth, y: extraHeight)
+    let controlPoint1 = CGPoint(x: centerWidth - curveWidth / 2, y: extraHeight - curveHeight)
+    let controlPoint2 = CGPoint(x: centerWidth + curveWidth / 2, y: extraHeight - curveHeight)
+    let rightCurveEnd = CGPoint(x: centerWidth + curveWidth, y: extraHeight)
+    
+    path.addLine(to: leftCurveStart)
+    path.addCurve(to: rightCurveEnd, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
     path.addLine(to: CGPoint(x: screenWidth, y: extraHeight))
     path.addLine(to: CGPoint(x: screenWidth, y: self.frame.height))
     path.addLine(to: CGPoint(x: 0, y: self.frame.height))
