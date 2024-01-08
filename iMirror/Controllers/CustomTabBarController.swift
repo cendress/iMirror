@@ -46,6 +46,13 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
     if let plusItem = item as? PlusTabBarItem {
       plusItem.animateOnTap()
+      
+      let questionPromptsVC = QuestionPromptsVC()
+      questionPromptsVC.hidesBottomBarWhenPushed = true
+      let navController = UINavigationController(rootViewController: questionPromptsVC)
+      navController.modalPresentationStyle = .fullScreen 
+      self.present(navController, animated: true, completion: nil)
     }
   }
+
 }
