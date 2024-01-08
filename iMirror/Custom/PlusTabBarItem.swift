@@ -26,11 +26,11 @@ class PlusTabBarItem: UITabBarItem {
   }
   
   private func createCustomPlusImage() -> UIImage {
-    let size = CGSize(width: 75, height: 75)
+    let size = CGSize(width: 80, height: 80)
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     
     let context = UIGraphicsGetCurrentContext()!
-    context.setShadow(offset: CGSize(width: 0, height: 6), blur: 10, color: UIColor.black.cgColor)
+    context.setShadow(offset: CGSize(width: 0, height: 5), blur: 8, color: UIColor.black.cgColor)
     
     let circlePath = UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: size.width - 20, height: size.height - 20))
     UIColor(named: "AppColor")!.setFill()
