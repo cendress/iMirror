@@ -54,5 +54,4 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
       self.present(navController, animated: true, completion: nil)
     }
   }
-
 }
