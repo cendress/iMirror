@@ -11,6 +11,8 @@ class JournalVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .systemBackground
+    
     self.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
