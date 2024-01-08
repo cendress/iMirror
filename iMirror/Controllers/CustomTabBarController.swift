@@ -28,6 +28,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     let journalVC = JournalVC()
     journalVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "text.book.closed"), tag: 0)
     
+    let journalNavController = UINavigationController(rootViewController: journalVC)
+    
     let questionPromptsVC = QuestionPromptsVC()
     questionPromptsVC.tabBarItem = PlusTabBarItem()
     
