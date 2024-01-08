@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionPromptsVC: UIViewController {
+class CurrentMoodVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()

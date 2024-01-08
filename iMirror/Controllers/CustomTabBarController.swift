@@ -30,7 +30,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     let journalNavController = UINavigationController(rootViewController: journalVC)
     
-    let questionPromptsVC = QuestionPromptsVC()
+    let questionPromptsVC = CurrentMoodVC()
     questionPromptsVC.tabBarItem = PlusTabBarItem()
     
     let settingsVC = SettingsVC()
@@ -47,7 +47,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     if let plusItem = item as? PlusTabBarItem {
       plusItem.animateOnTap()
       
-      let questionPromptsVC = QuestionPromptsVC()
+      let questionPromptsVC = CurrentMoodVC()
       questionPromptsVC.hidesBottomBarWhenPushed = true
       let navController = UINavigationController(rootViewController: questionPromptsVC)
       navController.modalPresentationStyle = .fullScreen 
