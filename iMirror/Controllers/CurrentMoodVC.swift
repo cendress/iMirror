@@ -67,9 +67,10 @@ class CurrentMoodVC: UIViewController {
     emojiLabel.minimumScaleFactor = 0.5
     
     continueButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
-    continueButton.backgroundColor = .systemBlue
-    continueButton.setTitleColor(.white, for: .normal)
-    continueButton.layer.cornerRadius = 25 // Capsule shape
+    continueButton.backgroundColor = .tintColor
+    continueButton.setTitleColor(.systemBackground, for: .normal)
+    continueButton.layer.cornerRadius = 25
+    continueButton.layer.borderWidth = 4
     continueButton.layer.masksToBounds = true
   }
   
@@ -77,6 +78,7 @@ class CurrentMoodVC: UIViewController {
     let label = UILabel()
     label.text = text
     label.font = UIFont(name: "Roboto-Medium", size: 30)
+    label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }
