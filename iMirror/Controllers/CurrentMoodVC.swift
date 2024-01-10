@@ -9,10 +9,10 @@ import UIKit
 
 class CurrentMoodVC: UIViewController {
   
-  let questionLabel = createLabel(withText: "How are you feeling?")
-  let emojiLabel = createLabel(withText: "🙂")
-  let progressView = createProgressView(withProgress: 0.5)
-  let continueButton = createButton(withTitle: "Continue")
+  let questionLabel = CurrentMoodVC.createLabel(withText: "How are you feeling?")
+  let emojiLabel = CurrentMoodVC.createLabel(withText: "🙂")
+  let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
+  let continueButton = CurrentMoodVC.createButton(withTitle: "Continue")
   
   let verticalPadding: CGFloat = 200
   let smallVerticalPadding: CGFloat = 40
@@ -26,13 +26,12 @@ class CurrentMoodVC: UIViewController {
     
     setupViews()
     setupConstraints()
+    configureUIProperties()
   }
   
   @objc func closeButtonTapped() {
     self.dismiss(animated: true)
   }
-  
-  //MARK: - Constraints and UI component setup
   
   private func setupViews() {
     view.addSubview(questionLabel)
@@ -43,9 +42,9 @@ class CurrentMoodVC: UIViewController {
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: verticalPadding),
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalPadding),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    
+      
       emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: smallVerticalPadding),
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
@@ -55,11 +54,24 @@ class CurrentMoodVC: UIViewController {
       progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
       
       continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: smallVerticalPadding),
-      continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+      continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      continueButton.heightAnchor.constraint(equalToConstant: 50),
+      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding)
     ])
   }
   
-  //MARK: - UI configuration methods
+  private func configureUIProperties() {
+    emojiLabel.font = UIFont(name: "Roboto-Medium", size: 120)
+    emojiLabel.adjustsFontSizeToFitWidth = true
+    emojiLabel.minimumScaleFactor = 0.5
+    
+    continueButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
+    continueButton.backgroundColor = .systemBlue
+    continueButton.setTitleColor(.white, for: .normal)
+    continueButton.layer.cornerRadius = 25 // Capsule shape
+    continueButton.layer.masksToBounds = true
+  }
   
   private static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
@@ -82,6 +94,4 @@ class CurrentMoodVC: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }
-  
 }
-
