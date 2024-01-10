@@ -34,4 +34,11 @@ class CurrentMoodVC: UIViewController {
     return progressView
   }
   
+  private static func createButton(withTitle title: String) -> UIButton {
+    let button = UIButton(type: .system)
+    button.setTitle(title, for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }
+  
 }
