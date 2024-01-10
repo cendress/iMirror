@@ -15,6 +15,7 @@ class CurrentMoodVC: UIViewController {
   let continueButton = createButton(withTitle: "Continue")
   
   let verticalPadding: CGFloat = 60
+  let smallVerticalPadding: CGFloat = 40
   let horizontalPadding: CGFloat = 20
   
   override func viewDidLoad() {
@@ -45,14 +46,14 @@ class CurrentMoodVC: UIViewController {
       questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: verticalPadding),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     
-      emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 40),
+      emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: smallVerticalPadding),
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       progressView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: verticalPadding),
       progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
       progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
       
-      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 40),
+      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: smallVerticalPadding),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
     ])
   }
