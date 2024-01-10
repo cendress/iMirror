@@ -14,7 +14,7 @@ class CurrentMoodVC: UIViewController {
   let progressView = createProgressView(withProgress: 0.5)
   let continueButton = createButton(withTitle: "Continue")
   
-  let verticalPadding: CGFloat = 60
+  let verticalPadding: CGFloat = 200
   let smallVerticalPadding: CGFloat = 40
   let horizontalPadding: CGFloat = 20
   
@@ -50,6 +50,7 @@ class CurrentMoodVC: UIViewController {
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       progressView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: verticalPadding),
+      progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
       progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
       
@@ -63,6 +64,7 @@ class CurrentMoodVC: UIViewController {
   private static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
     label.text = text
+    label.font = UIFont(name: "Roboto-Medium", size: 30)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }
@@ -82,3 +84,4 @@ class CurrentMoodVC: UIViewController {
   }
   
 }
+
