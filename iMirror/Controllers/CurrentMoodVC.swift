@@ -20,4 +20,11 @@ class CurrentMoodVC: UIViewController {
     self.dismiss(animated: true)
   }
   
+  private static func createLabel(withText text: String) -> UILabel {
+    let label = UILabel()
+    label.text = text
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }
+  
 }
