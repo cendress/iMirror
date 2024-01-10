@@ -14,11 +14,17 @@ class CurrentMoodVC: UIViewController {
   let progressView = createProgressView(withProgress: 0.5)
   let continueButton = createButton(withTitle: "Continue")
   
+  let verticalPadding: CGFloat = 60
+  let horizontalPadding: CGFloat = 20
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
+    
+    setupViews()
+    setupConstraints()
   }
   
   @objc func closeButtonTapped() {
@@ -32,6 +38,23 @@ class CurrentMoodVC: UIViewController {
     view.addSubview(emojiLabel)
     view.addSubview(progressView)
     view.addSubview(continueButton)
+  }
+  
+  private func setupConstraints() {
+    NSLayoutConstraint.activate([
+      questionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: verticalPadding),
+      questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+    
+      emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 40),
+      emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      progressView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: verticalPadding),
+      progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
+      progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
+      
+      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 40),
+      continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
   }
   
   //MARK: - UI configuration methods
