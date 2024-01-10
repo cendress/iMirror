@@ -9,6 +9,11 @@ import UIKit
 
 class CurrentMoodVC: UIViewController {
   
+  let questionLabel = createLabel(withText: "How are you feeling?")
+  let emojiLabel = createLabel(withText: "🙂")
+  let progressView = createProgressView(withProgress: 0.5)
+  let continueButton = createButton(withTitle: "Continue")
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -20,14 +25,16 @@ class CurrentMoodVC: UIViewController {
     self.dismiss(animated: true)
   }
   
-  private func createLabel(withText text: String) -> UILabel {
+  //MARK: - UI configuration methods
+  
+  private static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
     label.text = text
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }
   
-  private func createProgressView(withProgress progress: Float) -> CustomProgressView {
+  private static func createProgressView(withProgress progress: Float) -> CustomProgressView {
     let progressView = CustomProgressView()
     progressView.progress = CGFloat(progress)
     progressView.translatesAutoresizingMaskIntoConstraints = false
