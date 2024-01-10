@@ -25,6 +25,15 @@ class CurrentMoodVC: UIViewController {
     self.dismiss(animated: true)
   }
   
+  //MARK: - Constraints and UI component setup
+  
+  private func setupViews() {
+    view.addSubview(questionLabel)
+    view.addSubview(emojiLabel)
+    view.addSubview(progressView)
+    view.addSubview(continueButton)
+  }
+  
   //MARK: - UI configuration methods
   
   private static func createLabel(withText text: String) -> UILabel {
