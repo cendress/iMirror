@@ -9,6 +9,8 @@ import UIKit
 
 class CurrentMoodVC: UIViewController {
   
+  //MARK: - Initial setup
+  
   let questionLabel = CurrentMoodVC.createLabel(withText: "How are you feeling?")
   let emojiLabel = CurrentMoodVC.createLabel(withText: "🙂")
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
@@ -17,6 +19,17 @@ class CurrentMoodVC: UIViewController {
   let verticalPadding: CGFloat = 200
   let smallVerticalPadding: CGFloat = 40
   let horizontalPadding: CGFloat = 20
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    UIView.animate(withDuration: 1.0, delay: 0.5, options: [], animations: {
+      self.questionLabel.alpha = 1
+      self.emojiLabel.alpha = 1
+      self.progressView.alpha = 1
+      self.continueButton.alpha = 1
+    }, completion: nil)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,11 +40,21 @@ class CurrentMoodVC: UIViewController {
     setupViews()
     setupConstraints()
     configureUIProperties()
+    changeTransparency()
   }
   
   @objc func closeButtonTapped() {
     self.dismiss(animated: true)
   }
+  
+  private func changeTransparency() {
+    questionLabel.alpha = 0
+    emojiLabel.alpha = 0
+    progressView.alpha = 0
+    continueButton.alpha = 0
+  }
+  
+  //MARK: - Configuration methods
   
   private func setupViews() {
     view.addSubview(questionLabel)
@@ -73,6 +96,8 @@ class CurrentMoodVC: UIViewController {
     continueButton.layer.borderWidth = 4
     continueButton.layer.masksToBounds = true
   }
+  
+  //MARK: - UI components creation methods
   
   private static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
