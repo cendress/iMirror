@@ -97,7 +97,7 @@ class CurrentMoodVC: UIViewController {
     continueButton.layer.masksToBounds = true
   }
   
-  //MARK: - UI components creation methods
+  //MARK: - UI creation methods
   
   private static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
