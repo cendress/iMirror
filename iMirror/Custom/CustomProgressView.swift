@@ -36,14 +36,14 @@ class CustomProgressView: UIView {
     trackLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     layer.addSublayer(trackLayer)
     
-    progressLayer.colors = [UIColor.systemBlue.cgColor, UIColor.systemTeal.cgColor]
+    progressLayer.colors = [UIColor(named: "AppColor")!]
     progressLayer.startPoint = CGPoint(x: 0, y: 0.5)
     progressLayer.endPoint = CGPoint(x: 1, y: 0.5)
     layer.addSublayer(progressLayer)
   }
   
   private func setupSliderKnob() {
-    sliderKnob.backgroundColor = .white
+    sliderKnob.backgroundColor = UIColor(named: "AppColor")
     sliderKnob.layer.cornerRadius = 10 // Adjust as needed
     sliderKnob.frame = CGRect(x: 0, y: 0, width: 20, height: 20) // Adjust size as needed
     addSubview(sliderKnob)
