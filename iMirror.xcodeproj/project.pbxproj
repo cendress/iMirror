@@ -24,7 +24,6 @@
 		9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE64B2B4603DC001835E1 /* CurrentMoodVC.swift */; };
 		9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */; };
 		9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6532B461047001835E1 /* CustomTabBar.swift */; };
-		9DFEE69B2B4B27F8001835E1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE69A2B4B27F8001835E1 /* GradientView.swift */; };
 		9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */; };
 		9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +48,6 @@
 		9DFEE64B2B4603DC001835E1 /* CurrentMoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMoodVC.swift; sourceTree = "<group>"; };
 		9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		9DFEE6532B461047001835E1 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
-		9DFEE69A2B4B27F8001835E1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusTabBarItem.swift; sourceTree = "<group>"; };
 		9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				9DFCD48E2B51C74700E81B5C /* Tab bar */,
-				9DFEE69A2B4B27F8001835E1 /* GradientView.swift */,
 				9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */,
 			);
 			path = Custom;
@@ -244,7 +241,6 @@
 				9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */,
 				9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
-				9DFEE69B2B4B27F8001835E1 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
