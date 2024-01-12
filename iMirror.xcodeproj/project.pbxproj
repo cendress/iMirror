@@ -95,6 +95,15 @@
 			path = iMirror;
 			sourceTree = "<group>";
 		};
+		9DFCD48E2B51C74700E81B5C /* Tab bar */ = {
+			isa = PBXGroup;
+			children = (
+				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
+				9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */,
+			);
+			path = "Tab bar";
+			sourceTree = "<group>";
+		};
 		9DFEE62C2B447240001835E1 /* Roboto */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,9 +132,8 @@
 		9DFEE69D2B4B286A001835E1 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				9DFEE6532B461047001835E1 /* CustomTabBar.swift */,
+				9DFCD48E2B51C74700E81B5C /* Tab bar */,
 				9DFEE69A2B4B27F8001835E1 /* GradientView.swift */,
-				9DFEE6A22B4B422D001835E1 /* PlusTabBarItem.swift */,
 				9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */,
 			);
 			path = Custom;

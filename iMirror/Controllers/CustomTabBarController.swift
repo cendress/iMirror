@@ -22,7 +22,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.selectedIndex = 0
   }
   
-  //MARK: - Tab bar configuration method
+  // MARK: - Tab bar configuration method
   
   private func setupTabs() {
     let journalVC = JournalVC()
@@ -41,17 +41,21 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     viewControllers = [journalNavController, questionPromptsVC, settingsNavController]
   }
   
-  //MARK: - Tab bar controller delegate method
+  // MARK: - Tab bar controller delegate method
   
-  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-    if let plusItem = item as? PlusTabBarItem {
-      plusItem.animateOnTap()
-      
-      let questionPromptsVC = CurrentMoodVC()
-      questionPromptsVC.hidesBottomBarWhenPushed = true
-      let navController = UINavigationController(rootViewController: questionPromptsVC)
-      navController.modalPresentationStyle = .fullScreen 
-      self.present(navController, animated: true, completion: nil)
+  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    if viewController.tabBarItem is PlusTabBarItem {
+      presentCurrentMoodVC()
+      return false
     }
+    return true
+  }
+  
+  private func presentCurrentMoodVC() {
+    let questionPromptsVC = CurrentMoodVC()
+    questionPromptsVC.hidesBottomBarWhenPushed = true
+    let navController = UINavigationController(rootViewController: questionPromptsVC)
+    navController.modalPresentationStyle = .fullScreen
+    self.present(navController, animated: true, completion: nil)
   }
 }
