@@ -47,21 +47,4 @@ class PlusTabBarItem: UITabBarItem {
     
     return image
   }
-  
-  private func addBounceAnimation() {
-    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-    bounceAnimation.values = [1.0, 1.4, 0.9, 1.2, 1.0]
-    bounceAnimation.duration = 0.6
-    bounceAnimation.calculationMode = .cubic
-    (self.value(forKey: "view") as AnyObject).layer.add(bounceAnimation, forKey: nil)
-  }
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    addBounceAnimation()
-  }
-  
-  func animateOnTap() {
-    addBounceAnimation()
-  }
 }

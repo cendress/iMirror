@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomProgressView: UIView {
-  private var progressLayer = CAGradientLayer()
+  private var progressLayer = CALayer()
   private var trackLayer = CALayer()
   private let sliderKnob = UIView()
   
@@ -36,16 +36,14 @@ class CustomProgressView: UIView {
     trackLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     layer.addSublayer(trackLayer)
     
-    progressLayer.colors = [UIColor(named: "AppColor")!]
-    progressLayer.startPoint = CGPoint(x: 0, y: 0.5)
-    progressLayer.endPoint = CGPoint(x: 1, y: 0.5)
+    progressLayer.backgroundColor = UIColor(named: "AppColor")?.cgColor
     layer.addSublayer(progressLayer)
   }
   
   private func setupSliderKnob() {
     sliderKnob.backgroundColor = UIColor(named: "AppColor")
-    sliderKnob.layer.cornerRadius = 10 // Adjust as needed
-    sliderKnob.frame = CGRect(x: 0, y: 0, width: 20, height: 20) // Adjust size as needed
+    sliderKnob.layer.cornerRadius = 10
+    sliderKnob.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
     addSubview(sliderKnob)
   }
   
@@ -71,5 +69,14 @@ class CustomProgressView: UIView {
     let location = gesture.location(in: self)
     let width = bounds.width
     progress = min(max(0, location.x / width), 1)
+    switch gesture.state {
+    case .began, .changed:
+      sliderKnob.layer.shadowColor = UIColor.gray.cgColor
+      sliderKnob.layer.shadowRadius = 4
+      sliderKnob.layer.shadowOpacity = 0.5
+      sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 0)
+    default:
+      sliderKnob.layer.shadowOpacity = 0
+    }
   }
 }
