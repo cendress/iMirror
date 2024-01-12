@@ -14,11 +14,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.setValue(CustomTabBar(), forKey: "tabBar")
     setupTabs()
     self.delegate = self
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    
     self.selectedIndex = 0
   }
   
