@@ -80,8 +80,7 @@ class CurrentMoodVC: UIViewController {
       continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: smallVerticalPadding),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       continueButton.heightAnchor.constraint(equalToConstant: 50),
-      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
-      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding)
+      continueButton.widthAnchor.constraint(equalToConstant: 200)
     ])
   }
   

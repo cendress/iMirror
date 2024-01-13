@@ -8,6 +8,8 @@
 import UIKit
 
 class CustomProgressView: UIView {
+  var progressDidChange: ((CGFloat) -> Void)?
+  
   private var progressLayer = CALayer()
   private var trackLayer = CALayer()
   private let sliderKnob = UIView()
