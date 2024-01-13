@@ -17,9 +17,8 @@ class CurrentMoodVC: UIViewController {
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   let continueButton = CurrentMoodVC.createButton(withTitle: "Continue".uppercased())
   
-  let verticalPadding: CGFloat = 200
-  let smallVerticalPadding: CGFloat = 40
-  let horizontalPadding: CGFloat = 20
+  let padding: CGFloat = 40
+  let smallPadding: CGFloat = 20
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -82,17 +81,17 @@ class CurrentMoodVC: UIViewController {
       moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 10),
       moodLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
-      progressView.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 40),
+      progressView.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: padding),
       progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-      progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallPadding),
+      progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallPadding),
       progressView.heightAnchor.constraint(equalToConstant: 5),
       
-      continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+      continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      continueButton.heightAnchor.constraint(equalToConstant: 60),
-      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+      continueButton.heightAnchor.constraint(equalToConstant: 50),
+      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
     ])
   }
   
