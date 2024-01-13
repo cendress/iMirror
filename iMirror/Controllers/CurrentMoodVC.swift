@@ -27,6 +27,7 @@ class CurrentMoodVC: UIViewController {
     UIView.animate(withDuration: 1.0, delay: 0.5, options: [], animations: {
       self.questionLabel.alpha = 1
       self.emojiLabel.alpha = 1
+      self.moodLabel.alpha = 1
       self.progressView.alpha = 1
       self.continueButton.alpha = 1
     }, completion: nil)

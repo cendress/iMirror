@@ -76,7 +76,8 @@ class CustomProgressView: UIView {
     let location = gesture.location(in: self)
     let width = bounds.width
     let newProgress = min(max(0, location.x / width), 1)
-    updateSliderPosition()
+    
+    progress = newProgress
     
     switch gesture.state {
     case .began, .changed:
@@ -88,6 +89,7 @@ class CustomProgressView: UIView {
       sliderKnob.layer.shadowOpacity = 0
     }
     
-    progressDidChange?(newProgress)
+    progressDidChange?(progress)
   }
+  
 }
