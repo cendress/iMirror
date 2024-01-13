@@ -22,14 +22,17 @@ class CustomProgressView: UIView {
     super.init(frame: frame)
     setupLayers()
     setupSliderKnob()
-    addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
+
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    sliderKnob.addGestureRecognizer(panGesture)
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     setupLayers()
     setupSliderKnob()
-    addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    sliderKnob.addGestureRecognizer(panGesture)
   }
   
   private func setupLayers() {
@@ -42,26 +45,28 @@ class CustomProgressView: UIView {
   
   private func setupSliderKnob() {
     sliderKnob.backgroundColor = UIColor(named: "AppColor")
-    sliderKnob.layer.cornerRadius = 10
-    sliderKnob.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+    sliderKnob.layer.cornerRadius = 15
+    sliderKnob.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+    sliderKnob.isUserInteractionEnabled = true
     addSubview(sliderKnob)
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    
     let cornerRadius = bounds.size.height / 2
     trackLayer.cornerRadius = cornerRadius
     progressLayer.cornerRadius = cornerRadius
     
     trackLayer.frame = bounds
-    progressLayer.frame = CGRect(x: 0, y: 0, width: bounds.width * progress, height: bounds.height)
-    
     updateSliderPosition()
   }
   
   private func updateSliderPosition() {
-    let sliderPosition = bounds.width * progress - sliderKnob.frame.width / 2
+    let sliderPosition = bounds.width * progress
+    
+    let progressLayerWidth = sliderPosition + sliderKnob.frame.width / 2
+    progressLayer.frame = CGRect(x: 0, y: 0, width: progressLayerWidth, height: bounds.height)
+    
     sliderKnob.center = CGPoint(x: sliderPosition, y: bounds.height / 2)
   }
   
@@ -69,11 +74,13 @@ class CustomProgressView: UIView {
     let location = gesture.location(in: self)
     let width = bounds.width
     progress = min(max(0, location.x / width), 1)
+    updateSliderPosition()
+    
     switch gesture.state {
     case .began, .changed:
       sliderKnob.layer.shadowColor = UIColor.gray.cgColor
-      sliderKnob.layer.shadowRadius = 4
-      sliderKnob.layer.shadowOpacity = 0.5
+      sliderKnob.layer.shadowRadius = 8
+      sliderKnob.layer.shadowOpacity = 3
       sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 0)
     default:
       sliderKnob.layer.shadowOpacity = 0
