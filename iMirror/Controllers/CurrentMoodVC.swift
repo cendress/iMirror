@@ -140,19 +140,24 @@ class CurrentMoodVC: UIViewController {
   //MARK: - Update mood label method
   
   private func updateMoodLabel(for progress: CGFloat) {
+    let mood: (text: String, emoji: String)
+    
     switch progress {
     case 0..<0.2:
-      moodLabel.text = "Awful".uppercased()
+      mood = ("Awful", "😞")
     case 0.2..<0.4:
-      moodLabel.text = "Pretty Bad".uppercased()
+      mood = ("Pretty Bad", "😕")
     case 0.4..<0.6:
-      moodLabel.text = "Just Fine".uppercased()
+      mood = ("Just Fine", "🙂")
     case 0.6..<0.8:
-      moodLabel.text = "Pretty Good".uppercased()
+      mood = ("Pretty Good", "😀")
     case 0.8...1:
-      moodLabel.text = "Really Awesome".uppercased()
+      mood = ("Really Awesome", "🤩")
     default:
-      moodLabel.text = "Just Fine".uppercased()
+      mood = ("Just Fine", "🙂")
     }
+    
+    moodLabel.text = mood.text.uppercased()
+    emojiLabel.text = mood.emoji
   }
 }
