@@ -88,11 +88,11 @@ class CurrentMoodVC: UIViewController {
       progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       progressView.heightAnchor.constraint(equalToConstant: 5),
       
-      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 60),
+      continueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      continueButton.heightAnchor.constraint(equalToConstant: 40),
+      continueButton.heightAnchor.constraint(equalToConstant: 60),
       continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 40)
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
     ])
   }
   
