@@ -73,25 +73,26 @@ class CurrentMoodVC: UIViewController {
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalPadding),
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
-      emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: smallVerticalPadding),
+      emojiLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
-      moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: smallVerticalPadding),
+      moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 10),
       moodLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
-      progressView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: verticalPadding),
+      progressView.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 40),
       progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPadding),
-      progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPadding),
+      progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       progressView.heightAnchor.constraint(equalToConstant: 5),
       
-      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: smallVerticalPadding),
+      continueButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 60),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      continueButton.heightAnchor.constraint(equalToConstant: 50),
-      continueButton.widthAnchor.constraint(equalToConstant: 200)
+      continueButton.heightAnchor.constraint(equalToConstant: 40),
+      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 40)
     ])
   }
   
@@ -100,11 +101,11 @@ class CurrentMoodVC: UIViewController {
     emojiLabel.adjustsFontSizeToFitWidth = true
     emojiLabel.minimumScaleFactor = 0.5
     
-    moodLabel.font = UIFont(name: "Roboto-Light", size: 20)
+    moodLabel.font = UIFont(name: "Roboto-Light", size: 15)
     moodLabel.adjustsFontSizeToFitWidth = true
     moodLabel.minimumScaleFactor = 0.5
     
-    continueButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
+    continueButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
     continueButton.backgroundColor = .tintColor
     continueButton.setTitleColor(.systemBackground, for: .normal)
     continueButton.layer.cornerRadius = 25
