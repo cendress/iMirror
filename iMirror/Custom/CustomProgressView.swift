@@ -24,7 +24,7 @@ class CustomProgressView: UIView {
     super.init(frame: frame)
     setupLayers()
     setupSliderKnob()
-
+    
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
     sliderKnob.addGestureRecognizer(panGesture)
   }
@@ -75,7 +75,7 @@ class CustomProgressView: UIView {
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
     let location = gesture.location(in: self)
     let width = bounds.width
-    progress = min(max(0, location.x / width), 1)
+    let newProgress = min(max(0, location.x / width), 1)
     updateSliderPosition()
     
     switch gesture.state {
@@ -87,5 +87,7 @@ class CustomProgressView: UIView {
     default:
       sliderKnob.layer.shadowOpacity = 0
     }
+    
+    progressDidChange?(newProgress)
   }
 }
