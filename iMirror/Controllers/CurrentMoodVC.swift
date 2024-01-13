@@ -52,6 +52,7 @@ class CurrentMoodVC: UIViewController {
   private func changeTransparency() {
     questionLabel.alpha = 0
     emojiLabel.alpha = 0
+    moodLabel.alpha = 0
     progressView.alpha = 0
     continueButton.alpha = 0
   }
