@@ -13,6 +13,7 @@ class CurrentMoodVC: UIViewController {
   
   let questionLabel = CurrentMoodVC.createLabel(withText: "How are you feeling?")
   let emojiLabel = CurrentMoodVC.createLabel(withText: "🙂")
+  let moodLabel = CurrentMoodVC.createLabel(withText: "Just Fine")
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   let continueButton = CurrentMoodVC.createButton(withTitle: "Continue")
   
@@ -60,7 +61,12 @@ class CurrentMoodVC: UIViewController {
     view.addSubview(questionLabel)
     view.addSubview(emojiLabel)
     view.addSubview(progressView)
+    view.addSubview(moodLabel)
     view.addSubview(continueButton)
+    
+    progressView.progressDidChange = { [weak self] progress in
+      self?.updateMoodLabel(for: progress)
+    }
   }
   
   private func setupConstraints() {
@@ -70,6 +76,9 @@ class CurrentMoodVC: UIViewController {
       
       emojiLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: smallVerticalPadding),
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: smallVerticalPadding),
+      moodLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       progressView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: verticalPadding),
       progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -120,5 +129,24 @@ class CurrentMoodVC: UIViewController {
     button.setTitle(title, for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
+  }
+  
+  //MARK: - Update mood label method
+  
+  private func updateMoodLabel(for progress: CGFloat) {
+    switch progress {
+    case 0..<0.2:
+      moodLabel.text = "Awful"
+    case 0.2..<0.4:
+      moodLabel.text = "Pretty Bad"
+    case 0.4..<0.6:
+      moodLabel.text = "Just Fine"
+    case 0.6..<0.8:
+      moodLabel.text = "Pretty Good"
+    case 0.8...1:
+      moodLabel.text = "Really Awesome"
+    default:
+      moodLabel.text = ""
+    }
   }
 }
