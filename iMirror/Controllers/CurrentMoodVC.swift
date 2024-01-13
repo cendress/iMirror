@@ -13,9 +13,9 @@ class CurrentMoodVC: UIViewController {
   
   let questionLabel = CurrentMoodVC.createLabel(withText: "How are you feeling?")
   let emojiLabel = CurrentMoodVC.createLabel(withText: "🙂")
-  let moodLabel = CurrentMoodVC.createLabel(withText: "Just Fine")
+  let moodLabel = CurrentMoodVC.createLabel(withText: "Just Fine".uppercased())
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
-  let continueButton = CurrentMoodVC.createButton(withTitle: "Continue")
+  let continueButton = CurrentMoodVC.createButton(withTitle: "Continue".uppercased())
   
   let verticalPadding: CGFloat = 200
   let smallVerticalPadding: CGFloat = 40
@@ -100,6 +100,10 @@ class CurrentMoodVC: UIViewController {
     emojiLabel.adjustsFontSizeToFitWidth = true
     emojiLabel.minimumScaleFactor = 0.5
     
+    moodLabel.font = UIFont(name: "Roboto-Light", size: 20)
+    moodLabel.adjustsFontSizeToFitWidth = true
+    moodLabel.minimumScaleFactor = 0.5
+    
     continueButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
     continueButton.backgroundColor = .tintColor
     continueButton.setTitleColor(.systemBackground, for: .normal)
@@ -138,17 +142,17 @@ class CurrentMoodVC: UIViewController {
   private func updateMoodLabel(for progress: CGFloat) {
     switch progress {
     case 0..<0.2:
-      moodLabel.text = "Awful"
+      moodLabel.text = "Awful".uppercased()
     case 0.2..<0.4:
-      moodLabel.text = "Pretty Bad"
+      moodLabel.text = "Pretty Bad".uppercased()
     case 0.4..<0.6:
-      moodLabel.text = "Just Fine"
+      moodLabel.text = "Just Fine".uppercased()
     case 0.6..<0.8:
-      moodLabel.text = "Pretty Good"
+      moodLabel.text = "Pretty Good".uppercased()
     case 0.8...1:
-      moodLabel.text = "Really Awesome"
+      moodLabel.text = "Really Awesome".uppercased()
     default:
-      moodLabel.text = ""
+      moodLabel.text = "Just Fine".uppercased()
     }
   }
 }
