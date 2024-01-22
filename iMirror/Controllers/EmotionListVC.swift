@@ -39,4 +39,11 @@ class EmotionListVC: UIViewController {
     view.addSubview(questionLabel)
   }
   
+  private func setupConstraints() {
+    NSLayoutConstraint.activate([
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+      questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
+  }
+  
 }
