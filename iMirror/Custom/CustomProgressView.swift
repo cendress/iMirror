@@ -83,10 +83,10 @@ class CustomProgressView: UIView {
     
     switch gesture.state {
     case .began, .changed:
-      sliderKnob.layer.shadowColor = UIColor.gray.cgColor
+      sliderKnob.layer.shadowColor = UIColor.black.cgColor
       sliderKnob.layer.shadowRadius = 10
-      sliderKnob.layer.shadowOpacity = 5
-      sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 0)
+      sliderKnob.layer.shadowOpacity = 1
+      sliderKnob.layer.shadowOffset = CGSize(width: 1, height: 1)
     default:
       sliderKnob.layer.shadowOpacity = 0
     }
@@ -96,7 +96,7 @@ class CustomProgressView: UIView {
   
   private func configureShadow(for layer: CALayer) {
       layer.shadowColor = UIColor.black.cgColor
-      layer.shadowOpacity = 0.7
+      layer.shadowOpacity = 0.5
       layer.shadowOffset = CGSize(width: 0, height: 2)
       layer.shadowRadius = 3
   }
