@@ -21,6 +21,7 @@ class EmotionListVC: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
     
     setupViews()
+    setupConstraints()
   }
   
   //MARK: - @objc methods
@@ -45,5 +46,4 @@ class EmotionListVC: UIViewController {
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
     ])
   }
-  
 }
