@@ -103,13 +103,6 @@ class CurrentMoodVC: UIViewController {
     moodLabel.font = UIFont(name: "Roboto-Light", size: 15)
     moodLabel.adjustsFontSizeToFitWidth = true
     moodLabel.minimumScaleFactor = 0.5
-    
-    continueButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
-    continueButton.backgroundColor = .tintColor
-    continueButton.setTitleColor(.systemBackground, for: .normal)
-    continueButton.layer.cornerRadius = 25
-    continueButton.layer.borderWidth = 4
-    continueButton.layer.masksToBounds = true
   }
   
   //MARK: - Progress view creation method
