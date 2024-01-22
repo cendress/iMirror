@@ -17,6 +17,7 @@ class CurrentMoodVC: UIViewController {
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
+  let largePadding: CGFloat = 60
   let padding: CGFloat = 40
   let smallPadding: CGFloat = 20
   
@@ -89,9 +90,9 @@ class CurrentMoodVC: UIViewController {
       
       continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      continueButton.heightAnchor.constraint(equalToConstant: 50),
-      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+      continueButton.heightAnchor.constraint(equalToConstant: 60),
+      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: largePadding),
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -largePadding)
     ])
   }
   

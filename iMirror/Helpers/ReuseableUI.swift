@@ -26,14 +26,14 @@ struct ReuseableUI {
     button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
     button.backgroundColor = .tintColor
     button.setTitleColor(.white, for: .normal)
-    button.layer.cornerRadius = 25
+    button.layer.cornerRadius = 30
     button.layer.borderWidth = 4
     button.layer.masksToBounds = false
     
     button.layer.shadowColor = UIColor.black.cgColor
     button.layer.shadowOffset = CGSize(width: 0, height: 2)
     button.layer.shadowRadius = 4
-    button.layer.shadowOpacity = 0.3
+    button.layer.shadowOpacity = 0.5
     
     return button
   }
