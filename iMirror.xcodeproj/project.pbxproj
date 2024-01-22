@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableUI.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D0197E72B5EF4ED00E6FE30 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9D7C03402B2267610075E59D = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 				9DFEE69E2B4B28A0001835E1 /* Models */,
 				9DFEE69C2B4B285A001835E1 /* Controllers */,
 				9DFEE69D2B4B286A001835E1 /* Custom */,
+				9D0197E72B5EF4ED00E6FE30 /* Helpers */,
 				9DFEE69F2B4B2939001835E1 /* Supporting Files */,
 				9D7C035D2B2267640075E59D /* Info.plist */,
 			);
@@ -234,6 +245,7 @@
 				9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */,
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */,
+				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,

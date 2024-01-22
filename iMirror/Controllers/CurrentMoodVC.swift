@@ -11,11 +11,11 @@ class CurrentMoodVC: UIViewController {
   
   //MARK: - Initial setup
   
-  let questionLabel = CurrentMoodVC.createLabel(withText: "How are you feeling?")
-  let emojiLabel = CurrentMoodVC.createLabel(withText: "🙂")
-  let moodLabel = CurrentMoodVC.createLabel(withText: "Just Fine".uppercased())
+  let questionLabel = ReuseableUI.createLabel(withText: "How are you feeling?")
+  let emojiLabel = ReuseableUI.createLabel(withText: "🙂")
+  let moodLabel = ReuseableUI.createLabel(withText: "Just Fine".uppercased())
   let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
-  let continueButton = CurrentMoodVC.createButton(withTitle: "Continue".uppercased())
+  let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
   let padding: CGFloat = 40
   let smallPadding: CGFloat = 20
@@ -112,29 +112,13 @@ class CurrentMoodVC: UIViewController {
     continueButton.layer.masksToBounds = true
   }
   
-  //MARK: - UI creation methods
-  
-  private static func createLabel(withText text: String) -> UILabel {
-    let label = UILabel()
-    label.text = text
-    label.font = UIFont(name: "Roboto-Medium", size: 30)
-    label.adjustsFontSizeToFitWidth = true
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }
+  //MARK: - Progress view creation method
   
   private static func createProgressView(withProgress progress: Float) -> CustomProgressView {
     let progressView = CustomProgressView()
     progressView.progress = CGFloat(progress)
     progressView.translatesAutoresizingMaskIntoConstraints = false
     return progressView
-  }
-  
-  private static func createButton(withTitle title: String) -> UIButton {
-    let button = UIButton(type: .system)
-    button.setTitle(title, for: .normal)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    return button
   }
   
   //MARK: - Update mood label method
