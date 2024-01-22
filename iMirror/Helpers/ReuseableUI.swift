@@ -25,7 +25,7 @@ struct ReuseableUI {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
     button.backgroundColor = .tintColor
-    button.setTitleColor(.systemBackground, for: .normal)
+    button.setTitleColor(.white, for: .normal)
     button.layer.cornerRadius = 25
     button.layer.borderWidth = 4
     button.layer.masksToBounds = false
