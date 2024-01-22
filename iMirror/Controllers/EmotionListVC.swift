@@ -22,9 +22,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
     
+    setupCollectionView()
     setupViews()
     setupConstraints()
-    setupCollectionView()
   }
   
   //MARK: - @objc methods
@@ -81,11 +81,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
-  }
-  
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 3
+    return 10
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
