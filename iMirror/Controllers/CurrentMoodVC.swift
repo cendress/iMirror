@@ -11,11 +11,11 @@ class CurrentMoodVC: UIViewController {
   
   //MARK: - Initial setup
   
-  let questionLabel = ReuseableUI.createLabel(withText: "How are you feeling?")
-  let emojiLabel = ReuseableUI.createLabel(withText: "🙂")
-  let moodLabel = ReuseableUI.createLabel(withText: "Just Fine".uppercased())
-  let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
-  let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
+  private let questionLabel = ReuseableUI.createLabel(withText: "How are you feeling?")
+  private let emojiLabel = ReuseableUI.createLabel(withText: "🙂")
+  private let moodLabel = ReuseableUI.createLabel(withText: "Just Fine".uppercased())
+  private let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
+  private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)

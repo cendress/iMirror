@@ -7,11 +7,13 @@
 
 import UIKit
 
-class EmotionListVC: UIViewController {
+class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
   //MARK: - Initial setup
   
-  let questionLabel = ReuseableUI.createLabel(withText: "What emotions are you feeling?")
+  private let questionLabel = ReuseableUI.createLabel(withText: "What emotions are you feeling?")
+  private var collectionView: UICollectionView!
+  private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +24,7 @@ class EmotionListVC: UIViewController {
     
     setupViews()
     setupConstraints()
+    setupCollectionView()
   }
   
   //MARK: - @objc methods
@@ -38,14 +41,56 @@ class EmotionListVC: UIViewController {
   
   private func setupViews() {
     view.addSubview(questionLabel)
+    view.addSubview(collectionView)
+    view.addSubview(continueButton)
   }
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.padding),
-      questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.padding)
+      questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
+      questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      
+      collectionView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: ReuseableUI.smallPadding),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      collectionView.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: ReuseableUI.smallPadding),
+      
+      continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.padding),
+      continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      continueButton.heightAnchor.constraint(equalToConstant: 60),
+      continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
+      continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding)
     ])
+  }
+  
+  //MARK: - Collection view methods
+  
+  private func setupCollectionView() {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.itemSize = CGSize(width: 100, height: 100)
+    
+    collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
+    collectionView.backgroundColor = .systemMint
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 3
+  }
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 3
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmotionCell", for: indexPath)
+    cell.backgroundColor = .systemBackground
+    return cell
   }
 }
