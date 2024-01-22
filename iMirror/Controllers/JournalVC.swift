@@ -13,7 +13,7 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     
-    self.title = "Journal"
+    self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
   

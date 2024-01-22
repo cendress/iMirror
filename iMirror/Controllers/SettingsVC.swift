@@ -13,7 +13,7 @@ class SettingsVC: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     
-    self.title = "Settings"
+    self.navigationItem.title = "Settings"
     navigationController?.navigationBar.prefersLargeTitles = true
   }
   
