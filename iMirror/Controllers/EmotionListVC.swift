@@ -12,6 +12,11 @@ class EmotionListVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
+  }
+  
+  @objc private func closeButtonTapped() {
+    self.dismiss(animated: true)
   }
   
 }
