@@ -10,10 +10,17 @@ import UIKit
 
 struct ReuseableUI {
   
+  static let largePadding: CGFloat = 60
+  static let padding: CGFloat = 40
+  static let smallPadding: CGFloat = 20
+  
   static func createLabel(withText text: String) -> UILabel {
     let label = UILabel()
     label.text = text
     label.font = UIFont(name: "Roboto-Medium", size: 30)
+    label.lineBreakMode = .byTruncatingTail
+    label.textAlignment = .center
+    label.numberOfLines = 0
     label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label

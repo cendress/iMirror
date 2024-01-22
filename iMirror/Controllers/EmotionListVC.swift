@@ -11,7 +11,7 @@ class EmotionListVC: UIViewController {
   
   //MARK: - Initial setup
   
-  let questionLabel = ReuseableUI.createLabel(withText: "OK, what emotions are you feeling?")
+  let questionLabel = ReuseableUI.createLabel(withText: "What emotions are you feeling?")
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,7 +43,9 @@ class EmotionListVC: UIViewController {
   private func setupConstraints() {
     NSLayoutConstraint.activate([
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-      questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+      questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.padding),
+      questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.padding)
     ])
   }
 }
