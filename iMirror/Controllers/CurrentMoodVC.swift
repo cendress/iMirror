@@ -69,6 +69,8 @@ class CurrentMoodVC: UIViewController {
     progressView.progressDidChange = { [weak self] progress in
       self?.updateMoodLabel(for: progress)
     }
+    
+    continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
   }
   
   private func setupConstraints() {
@@ -137,5 +139,12 @@ class CurrentMoodVC: UIViewController {
     
     moodLabel.text = mood.text.uppercased()
     emojiLabel.text = mood.emoji
+  }
+  
+  //MARK: - Continue button action method
+  
+  @objc private func continueButtonTapped() {
+    let emotionVC = EmotionListVC()
+    navigationController?.pushViewController(emotionVC, animated: true)
   }
 }
