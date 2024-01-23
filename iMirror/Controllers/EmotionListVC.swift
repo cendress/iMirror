@@ -15,6 +15,35 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private var collectionView: UICollectionView!
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
+  // Emotion array
+  private let emotions = [
+    Emotion(name: "Happiness", symbolName: "smiley"),
+    Emotion(name: "Sadness", symbolName: "face.dashed"),
+    Emotion(name: "Anger", symbolName: "flame.fill"),
+    Emotion(name: "Surprise", symbolName: "exclamationmark.bubble.fill"),
+    Emotion(name: "Fear", symbolName: "bolt.fill"),
+    Emotion(name: "Disgust", symbolName: "trash.fill"),
+    Emotion(name: "Anxiety", symbolName: "ant.circle.fill"),
+    Emotion(name: "Hope", symbolName: "sun.max.fill"),
+    Emotion(name: "Love", symbolName: "heart.fill"),
+    Emotion(name: "Confusion", symbolName: "questionmark.circle.fill"),
+    Emotion(name: "Jealousy", symbolName: "eyes"),
+    Emotion(name: "Pride", symbolName: "crown.fill"),
+    Emotion(name: "Guilt", symbolName: "person.fill.viewfinder"),
+    Emotion(name: "Excitement", symbolName: "sparkles"),
+    Emotion(name: "Loneliness", symbolName: "person.3.sequence.fill"),
+    Emotion(name: "Gratitude", symbolName: "gift.fill"),
+    Emotion(name: "Relaxation", symbolName: "hammock.fill"),
+    Emotion(name: "Depression", symbolName: "cloud.drizzle.fill"),
+    Emotion(name: "Grief", symbolName: "cloud.heavyrain.fill"),
+    Emotion(name: "Boredom", symbolName: "yawn.fill"),
+    Emotion(name: "Curiosity", symbolName: "lightbulb.fill"),
+    Emotion(name: "Resentment", symbolName: "tortoise.fill"),
+    Emotion(name: "Regret", symbolName: "backward.fill"),
+    // Default use case:
+    Emotion(name: "Other", symbolName: "questionmark.circle.fill")
+  ]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
