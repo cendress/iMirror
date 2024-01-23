@@ -22,6 +22,7 @@ struct ReuseableUI {
     label.textAlignment = .center
     label.numberOfLines = 0
     label.adjustsFontSizeToFitWidth = true
+    label.sizeToFit()
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }
