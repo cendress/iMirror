@@ -118,7 +118,10 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
       fatalError("Failed to dequeue collection view cell.")
     }
     
-    
+    let emotion = emotions[indexPath.row]
+    cell.emotionImageView.image = UIImage(systemName: emotion.symbolName)
+    cell.emotionLabel.text = emotion.name
+    cell.backgroundColor = .systemBackground
     return cell
   }
 }

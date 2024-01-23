@@ -9,8 +9,8 @@ import UIKit
 
 class EmotionCollectionViewCell: UICollectionViewCell {
   
-  private let emotionImageView = UIImageView()
-  private let emotionLabel = UILabel()
+  let emotionImageView = UIImageView()
+  let emotionLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
