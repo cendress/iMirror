@@ -14,11 +14,16 @@ class JournalNotesVC: UIViewController {
     view.backgroundColor = .systemBackground
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
   }
   
   //MARK: - @objc methods
   
   @objc private func closeButtonTapped() {
     self.dismiss(animated: true)
+  }
+  
+  @objc private func backButtonTapped() {
+    navigationController?.popViewController(animated: true)
   }
 }
