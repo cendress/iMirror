@@ -11,6 +11,7 @@
 		9D0197EB2B5EFD9700E6FE30 /* EmotionListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */; };
 		9D0197ED2B604FC700E6FE30 /* EmotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */; };
 		9D0197EF2B6054F600E6FE30 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197EE2B6054F600E6FE30 /* Emotion.swift */; };
+		9D0197F12B605BE700E6FE30 /* JournalNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197F02B605BE700E6FE30 /* JournalNotesVC.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -37,6 +38,7 @@
 		9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListVC.swift; sourceTree = "<group>"; };
 		9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D0197EE2B6054F600E6FE30 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
+		9D0197F02B605BE700E6FE30 /* JournalNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalNotesVC.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
 				9DFEE64B2B4603DC001835E1 /* CurrentMoodVC.swift */,
 				9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */,
+				9D0197F02B605BE700E6FE30 /* JournalNotesVC.swift */,
 				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
 			);
 			path = Controllers;
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0197F12B605BE700E6FE30 /* JournalNotesVC.swift in Sources */,
 				9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */,
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */,

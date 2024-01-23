@@ -66,6 +66,11 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     navigationController?.popViewController(animated: true)
   }
   
+  @objc private func continueButtonTapped() {
+    let journalNotesVC = JournalNotesVC()
+    navigationController?.pushViewController(journalNotesVC, animated: true)
+  }
+  
   //MARK: - Configuration methods
   
   private func setupViews() {
