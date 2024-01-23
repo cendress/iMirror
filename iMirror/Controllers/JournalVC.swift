@@ -31,9 +31,27 @@ class JournalVC: UITableViewController {
   
   //MARK: - Other methods
   
-  func updateBackgroundMessage() {
+  private func updateBackgroundMessage() {
     if journalEntries.isEmpty {
-      let messageLabel = ReuseableUI.createLabel(withText: "No entries. Tap the + button to add a new journal entry.")
+      let messageLabel = UILabel()
+      messageLabel.numberOfLines = 0
+      messageLabel.textAlignment = .center
+      
+      let noEntriesText = "No Entries!\n"
+      let actionText = "Tap the plus button to add a journal entry."
+      
+      let noEntriesAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont(name: "Roboto-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
+      ]
+      
+      let actionAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont(name: "Roboto-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+      ]
+      
+      let attributedString = NSMutableAttributedString(string: noEntriesText, attributes: noEntriesAttributes)
+      attributedString.append(NSAttributedString(string: actionText, attributes: actionAttributes))
+      
+      messageLabel.attributedText = attributedString
       
       self.tableView.backgroundView = messageLabel
       self.tableView.separatorStyle = .none
