@@ -75,7 +75,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.delegate = self
     collectionView.dataSource = self
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
+    collectionView.register(EmotionCollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
     collectionView.backgroundColor = .systemMint
     collectionView.translatesAutoresizingMaskIntoConstraints = false
   }
