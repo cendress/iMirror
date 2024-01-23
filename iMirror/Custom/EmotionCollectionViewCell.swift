@@ -9,4 +9,6 @@ import UIKit
 
 class EmotionCollectionViewCell: UICollectionViewCell {
     
+  private let emotionImage = UILabel()
+  private let emotionText = UILabel()
 }
