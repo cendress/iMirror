@@ -23,6 +23,12 @@ class JournalVC: UITableViewController {
     updateBackgroundMessage()
   }
   
+  //MARK: - Table view methods
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return journalEntries.count
+  }
+  
   //MARK: - Other methods
   
   func updateBackgroundMessage() {
