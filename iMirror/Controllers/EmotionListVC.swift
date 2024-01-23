@@ -85,8 +85,11 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmotionCell", for: indexPath)
-    cell.backgroundColor = .systemBackground
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmotionCell", for: indexPath) as? EmotionCollectionViewCell else {
+      fatalError("Failed to dequeue collection view cell.")
+    }
+    
+    
     return cell
   }
 }
