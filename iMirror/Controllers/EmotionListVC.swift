@@ -72,6 +72,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     view.addSubview(questionLabel)
     view.addSubview(collectionView)
     view.addSubview(continueButton)
+    
+    continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
   }
   
   private func setupConstraints() {
