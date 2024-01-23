@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */; };
 		9D0197EB2B5EFD9700E6FE30 /* EmotionListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */; };
+		9D0197ED2B604FC700E6FE30 /* EmotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableUI.swift; sourceTree = "<group>"; };
 		9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionListVC.swift; sourceTree = "<group>"; };
+		9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				9DFCD48E2B51C74700E81B5C /* Tab bar */,
 				9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */,
+				9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */,
 				9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */,
 				9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */,
+				9D0197ED2B604FC700E6FE30 /* EmotionCollectionViewCell.swift in Sources */,
 				9D0197EB2B5EFD9700E6FE30 /* EmotionListVC.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
 			);
