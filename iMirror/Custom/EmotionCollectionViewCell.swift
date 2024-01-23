@@ -15,6 +15,7 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configureCell()
+    setupConstraints()
   }
   
   required init(coder: NSCoder) {
@@ -32,11 +33,13 @@ class EmotionCollectionViewCell: UICollectionViewCell {
     emotionLabel.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(emotionLabel)
     
-    // Set up constraints
+  }
+  
+  private func setupConstraints() {
     NSLayoutConstraint.activate([
       emotionImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       emotionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10),
-      emotionImageView.widthAnchor.constraint(equalToConstant: ReuseableUI.padding), 
+      emotionImageView.widthAnchor.constraint(equalToConstant: ReuseableUI.padding),
       emotionImageView.heightAnchor.constraint(equalToConstant: ReuseableUI.padding),
       
       emotionLabel.topAnchor.constraint(equalTo: emotionImageView.bottomAnchor, constant: 5),

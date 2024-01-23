@@ -105,12 +105,11 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     collectionView.delegate = self
     collectionView.dataSource = self
     collectionView.register(EmotionCollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
-    collectionView.backgroundColor = .systemMint
     collectionView.translatesAutoresizingMaskIntoConstraints = false
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return emotions.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
