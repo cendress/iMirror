@@ -11,30 +11,25 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   
   let emotionImageView = UIImageView()
   let emotionLabel = UILabel()
+  let shadowLayer = CALayer()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configureCell()
     setupConstraints()
+    addShadow()
   }
   
-  required init(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented.")
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
   private func configureCell() {
     contentView.layer.cornerRadius = 15
-    contentView.backgroundColor = .systemBackground
     contentView.layer.borderWidth = 1.0
     contentView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    contentView.clipsToBounds = true
     
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = CGSize(width: 0, height: 4)
-    layer.shadowRadius = 6
-    layer.shadowOpacity = 0.15
-    layer.masksToBounds = false
-    
-    // Configure image view
     emotionImageView.contentMode = .scaleAspectFit
     emotionImageView.layer.cornerRadius = 20
     emotionImageView.clipsToBounds = true
@@ -42,7 +37,6 @@ class EmotionCollectionViewCell: UICollectionViewCell {
     emotionImageView.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(emotionImageView)
     
-    // Configure label
     emotionLabel.textAlignment = .center
     emotionLabel.font = UIFont(name: "Roboto-Regular", size: 14)
     emotionLabel.textColor = UIColor.darkGray
@@ -54,13 +48,28 @@ class EmotionCollectionViewCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       emotionImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       emotionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10),
-      emotionImageView.widthAnchor.constraint(equalToConstant: ReuseableUI.padding),
-      emotionImageView.heightAnchor.constraint(equalToConstant: ReuseableUI.padding),
+      emotionImageView.widthAnchor.constraint(equalToConstant: 50), // Adjust as needed
+      emotionImageView.heightAnchor.constraint(equalToConstant: 50), // Adjust as needed
       
       emotionLabel.topAnchor.constraint(equalTo: emotionImageView.bottomAnchor, constant: 5),
       emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       emotionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
       emotionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
     ])
+  }
+  
+  private func addShadow() {
+    shadowLayer.shadowColor = UIColor.black.cgColor
+    shadowLayer.shadowOffset = CGSize(width: 0, height: 4)
+    shadowLayer.shadowRadius = 6
+    shadowLayer.shadowOpacity = 0.15
+    shadowLayer.backgroundColor = UIColor.clear.cgColor
+    shadowLayer.frame = contentView.frame
+    layer.insertSublayer(shadowLayer, at: 0)
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    shadowLayer.frame = contentView.frame
   }
 }
