@@ -11,23 +11,35 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   
   let emotionImageView = UIImageView()
   let emotionLabel = UILabel()
-  let shadowLayer = CALayer()
+  let shadowView = UIView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    configureShadowView()
     configureCell()
     setupConstraints()
-    addShadow()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func configureShadowView() {
+    shadowView.layer.shadowColor = UIColor.black.cgColor
+    shadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
+    shadowView.layer.shadowRadius = 6
+    shadowView.layer.shadowOpacity = 0.15
+    shadowView.backgroundColor = .clear
+    shadowView.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(shadowView)
+    sendSubviewToBack(shadowView)
+  }
+  
   private func configureCell() {
     contentView.layer.cornerRadius = 15
     contentView.layer.borderWidth = 1.0
     contentView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    contentView.backgroundColor = .systemBackground
     contentView.clipsToBounds = true
     
     emotionImageView.contentMode = .scaleAspectFit
@@ -46,6 +58,11 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
+      shadowView.topAnchor.constraint(equalTo: topAnchor),
+      shadowView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      
       emotionImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       emotionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10),
       emotionImageView.widthAnchor.constraint(equalToConstant: 50),
@@ -58,18 +75,8 @@ class EmotionCollectionViewCell: UICollectionViewCell {
     ])
   }
   
-  private func addShadow() {
-    shadowLayer.shadowColor = UIColor.black.cgColor
-    shadowLayer.shadowOffset = CGSize(width: 0, height: 4)
-    shadowLayer.shadowRadius = 6
-    shadowLayer.shadowOpacity = 0.15
-    shadowLayer.backgroundColor = UIColor.clear.cgColor
-    shadowLayer.frame = contentView.frame
-    layer.insertSublayer(shadowLayer, at: 0)
-  }
-  
   override func layoutSubviews() {
     super.layoutSubviews()
-    shadowLayer.frame = contentView.frame
+    shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
   }
 }
