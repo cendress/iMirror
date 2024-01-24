@@ -88,10 +88,10 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
       questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
       
-      collectionView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: ReuseableUI.smallPadding),
+      collectionView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: ReuseableUI.padding),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
-      collectionView.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: ReuseableUI.smallPadding),
+      collectionView.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -ReuseableUI.padding),
       
       continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.padding),
       continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
