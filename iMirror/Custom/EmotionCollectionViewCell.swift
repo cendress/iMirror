@@ -13,6 +13,12 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   let emotionLabel = UILabel()
   let shadowView = UIView()
   
+  var isToggled = false {
+    didSet {
+      toggleCell()
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     configureShadowView()
@@ -22,6 +28,16 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func toggleCell() {
+    if isToggled {
+      contentView.backgroundColor = .tintColor
+      emotionImageView.tintColor = .systemBackground
+    } else {
+      contentView.backgroundColor = .systemBackground
+      emotionImageView.tintColor = .tintColor
+    }
   }
   
   private func configureShadowView() {
