@@ -83,7 +83,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),

@@ -71,13 +71,13 @@ class CurrentMoodVC: UIViewController {
   
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       emojiLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
       emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
-      moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 10),
+      moodLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 5),
       moodLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       progressView.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: ReuseableUI.padding),
