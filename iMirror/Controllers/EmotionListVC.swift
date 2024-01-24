@@ -18,7 +18,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   // Emotion array
   private let emotions = [
     Emotion(name: "Happiness", symbolName: "smiley"),
-    Emotion(name: "Sadness", symbolName: "face.dashed"),
+    Emotion(name: "Sadness", symbolName: "cloud.rain.fill"),
     Emotion(name: "Anger", symbolName: "flame.fill"),
     Emotion(name: "Surprise", symbolName: "exclamationmark.bubble.fill"),
     Emotion(name: "Fear", symbolName: "bolt.fill"),
@@ -33,10 +33,10 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     Emotion(name: "Excitement", symbolName: "sparkles"),
     Emotion(name: "Loneliness", symbolName: "person.3.sequence.fill"),
     Emotion(name: "Gratitude", symbolName: "gift.fill"),
-    Emotion(name: "Relaxation", symbolName: "hammock.fill"),
+    Emotion(name: "Relaxation", symbolName: "leaf.fill"),
     Emotion(name: "Depression", symbolName: "cloud.drizzle.fill"),
     Emotion(name: "Grief", symbolName: "cloud.heavyrain.fill"),
-    Emotion(name: "Boredom", symbolName: "yawn.fill"),
+    Emotion(name: "Boredom", symbolName: "hourglass"),
     Emotion(name: "Curiosity", symbolName: "lightbulb.fill"),
     Emotion(name: "Resentment", symbolName: "tortoise.fill"),
     Emotion(name: "Regret", symbolName: "backward.fill"),
