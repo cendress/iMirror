@@ -15,6 +15,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private var collectionView: UICollectionView!
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
+  private let topGradientLayer = CAGradientLayer()
+  private let bottomGradientLayer = CAGradientLayer()
+  
   // Emotion array
   private let emotions = [
     Emotion(name: "Happiness", symbolName: "smiley"),
