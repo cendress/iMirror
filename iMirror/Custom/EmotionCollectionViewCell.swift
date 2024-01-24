@@ -48,8 +48,8 @@ class EmotionCollectionViewCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       emotionImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       emotionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10),
-      emotionImageView.widthAnchor.constraint(equalToConstant: 50), // Adjust as needed
-      emotionImageView.heightAnchor.constraint(equalToConstant: 50), // Adjust as needed
+      emotionImageView.widthAnchor.constraint(equalToConstant: 50),
+      emotionImageView.heightAnchor.constraint(equalToConstant: 50),
       
       emotionLabel.topAnchor.constraint(equalTo: emotionImageView.bottomAnchor, constant: 5),
       emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
