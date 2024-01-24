@@ -32,11 +32,14 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   
   private func toggleCell() {
     if isToggled {
-      contentView.backgroundColor = .tintColor
-      emotionImageView.tintColor = .systemBackground
+      contentView.backgroundColor = tintColor
+      emotionImageView.tintColor = .white
+      emotionImageView.backgroundColor = nil
+      emotionLabel.textColor = .white
     } else {
       contentView.backgroundColor = .systemBackground
-      emotionImageView.tintColor = .tintColor
+      emotionImageView.tintColor = tintColor
+      emotionLabel.textColor = UIColor.darkGray
     }
   }
   
