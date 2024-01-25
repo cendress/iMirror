@@ -68,8 +68,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   @objc private func continueButtonTapped() {
-    if collectionView.cell.isToggled == false {
+    if selectedEmotions.isEmpty {
       showAlert()
+      return
     }
     
     let journalNotesVC = JournalNotesVC()
@@ -142,6 +143,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
       selectedEmotions.remove(indexPath.row)
     } else {
       // Item was selected by user
+      selectedEmotions.insert(indexPath.row)
     }
     
     if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
