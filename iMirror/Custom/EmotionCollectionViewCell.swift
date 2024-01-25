@@ -38,6 +38,7 @@ class EmotionCollectionViewCell: UICollectionViewCell {
       emotionLabel.textColor = .white
     } else {
       contentView.backgroundColor = .systemBackground
+      emotionImageView.backgroundColor = UIColor.systemGray6
       emotionImageView.tintColor = tintColor
       emotionLabel.textColor = UIColor.darkGray
     }
