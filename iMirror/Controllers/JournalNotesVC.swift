@@ -42,7 +42,22 @@ class JournalNotesVC: UIViewController {
   
   private func setupTextViews() {
     titleTextView = UITextView()
+    titleTextView.font = UIFont(name: "Roboto-Regular", size: 18)
+    titleTextView.backgroundColor = .white
+    titleTextView.textColor = .black
+    titleTextView.layer.borderColor = UIColor.gray.cgColor
+    titleTextView.layer.borderWidth = 1.0
+    titleTextView.layer.cornerRadius = 5.0
+    titleTextView.isScrollEnabled = false
+    
     notesTextView = UITextView()
+    notesTextView.font = UIFont(name: "Roboto-Regular", size: 16)
+    notesTextView.backgroundColor = .white
+    notesTextView.textColor = .black
+    notesTextView.layer.borderColor = UIColor.lightGray.cgColor
+    notesTextView.layer.borderWidth = 1.0
+    notesTextView.layer.cornerRadius = 5.0
+    notesTextView.isScrollEnabled = true
   }
   
   private func setupViews() {
