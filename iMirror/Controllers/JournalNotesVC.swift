@@ -44,6 +44,20 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     navigationController?.popViewController(animated: true)
   }
   
+  @objc private func keyboardWillShow(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      if view.frame.origin.y == 0 {
+        view.frame.origin.y -= keyboardSize.height / 2
+      }
+    }
+  }
+  
+  @objc private func keyboardWillHide(notification: NSNotification) {
+    if view.frame.origin.y != 0 {
+      view.frame.origin.y = 0
+    }
+  }
+  
   //MARK: - Configuration methods
   
   private func setupTextViews() {
