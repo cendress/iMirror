@@ -14,6 +14,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private let questionLabel = ReuseableUI.createLabel(withText: "What emotions are you feeling?")
   private var collectionView: UICollectionView!
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
+  private var selectedEmotions: Set<Int> = []
   
   // Emotion array
   private let emotions = [
@@ -68,7 +69,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   
   @objc private func continueButtonTapped() {
     if collectionView.cell.isToggled == false {
-      
+      showAlert()
     }
     
     let journalNotesVC = JournalNotesVC()
