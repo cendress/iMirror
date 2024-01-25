@@ -35,9 +35,9 @@ class CurrentMoodVC: UIViewController {
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
     
+    setupLabels()
     setupViews()
     setupConstraints()
-    configureUIProperties()
     changeTransparency()
   }
   
@@ -54,6 +54,16 @@ class CurrentMoodVC: UIViewController {
   }
   
   //MARK: - Configuration methods
+  
+  private func setupLabels() {
+    emojiLabel.font = UIFont(name: "Roboto-Medium", size: 120)
+    emojiLabel.adjustsFontSizeToFitWidth = true
+    emojiLabel.minimumScaleFactor = 0.5
+    
+    moodLabel.font = UIFont(name: "Roboto-Light", size: 15)
+    moodLabel.adjustsFontSizeToFitWidth = true
+    moodLabel.minimumScaleFactor = 0.5
+  }
   
   private func setupViews() {
     view.addSubview(questionLabel)
@@ -92,16 +102,6 @@ class CurrentMoodVC: UIViewController {
       continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
       continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding)
     ])
-  }
-  
-  private func configureUIProperties() {
-    emojiLabel.font = UIFont(name: "Roboto-Medium", size: 120)
-    emojiLabel.adjustsFontSizeToFitWidth = true
-    emojiLabel.minimumScaleFactor = 0.5
-    
-    moodLabel.font = UIFont(name: "Roboto-Light", size: 15)
-    moodLabel.adjustsFontSizeToFitWidth = true
-    moodLabel.minimumScaleFactor = 0.5
   }
   
   //MARK: - Progress view creation method

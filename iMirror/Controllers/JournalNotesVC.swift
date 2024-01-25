@@ -22,6 +22,7 @@ class JournalNotesVC: UIViewController {
     
     setupViews()
     setupConstraints()
+    configureUIProperties()
   }
   
   //MARK: - @objc methods
@@ -45,5 +46,9 @@ class JournalNotesVC: UIViewController {
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     ])
+  }
+  
+  private func configureUIProperties() {
+    
   }
 }
