@@ -19,6 +19,9 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   private let titlePlaceholder = "Enter a title..."
   private let notesPlaceholder = "Write some notes here..."
   
+  private let saveButton = ReuseableUI.createButton(withTitle: "Save & Exit")
+  private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation")
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -44,6 +47,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     navigationController?.popViewController(animated: true)
   }
   
+  //MARK: - Keyboard @objc methods
+  
   @objc private func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       if view.frame.origin.y == 0 {
@@ -59,7 +64,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   @objc private func dismissKeyboard() {
-      view.endEditing(true)
+    view.endEditing(true)
   }
   
   //MARK: - Configuration methods
@@ -140,5 +145,12 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       }
       textView.textColor = UIColor.lightGray
     }
+  }
+  
+  //MARK: - Deinit
+  
+  // Unregister keyboard notifications to avoid memory leaks
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }
