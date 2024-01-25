@@ -137,6 +137,13 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if selectedEmotions.contains(indexPath.row) {
+      // This item was selected but then deselected by the user
+      selectedEmotions.remove(indexPath.row)
+    } else {
+      // Item was selected by user
+    }
+    
     if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
       cell.isToggled.toggle()
     }
