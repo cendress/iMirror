@@ -67,6 +67,10 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   @objc private func continueButtonTapped() {
+    if collectionView.cell.isToggled == false {
+      
+    }
+    
     let journalNotesVC = JournalNotesVC()
     navigationController?.pushViewController(journalNotesVC, animated: true)
   }
@@ -135,5 +139,13 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCollectionViewCell {
       cell.isToggled.toggle()
     }
+  }
+  
+  //MARK: - Alert controller
+  
+  private func showAlert() {
+    let ac = UIAlertController(title: "Select an emotion", message: "You must select an emotion to continue.", preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
   }
 }
