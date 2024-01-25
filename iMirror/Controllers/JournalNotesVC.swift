@@ -16,6 +16,9 @@ class JournalNotesVC: UIViewController {
   private var titleTextView: UITextView!
   private var notesTextView: UITextView!
   
+  private let titlePlaceholder = "Enter a title..."
+  private let notesPlaceholder = "Write some notes here..."
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
