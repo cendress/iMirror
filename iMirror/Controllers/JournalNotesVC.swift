@@ -58,6 +58,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     }
   }
   
+  @objc private func dismissKeyboard() {
+      view.endEditing(true)
+  }
+  
   //MARK: - Configuration methods
   
   private func setupTextViews() {
@@ -94,6 +98,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     view.addSubview(questionLabel)
     view.addSubview(titleTextView)
     view.addSubview(notesTextView)
+    
+    // Tap gesture to dismiss keyboard
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    view.addGestureRecognizer(tapGesture)
   }
   
   private func setupConstraints() {
