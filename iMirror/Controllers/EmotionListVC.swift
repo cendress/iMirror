@@ -15,7 +15,6 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private var collectionView: UICollectionView!
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   private var selectedEmotions: Set<Int> = []
-  private var blurEffectView: UIVisualEffectView?
   
   // Emotion array
   private let emotions = [
@@ -120,13 +119,6 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     collectionView.dataSource = self
     collectionView.register(EmotionCollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
     collectionView.translatesAutoresizingMaskIntoConstraints = false
-    
-    // Initialize and implement blur effect
-    let blurEffect = UIBlurEffect(style: .regular)
-    blurEffectView = UIVisualEffectView(effect: blurEffect)
-    blurEffectView?.frame = collectionView.bounds
-    blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    collectionView.backgroundView = blurEffectView
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
