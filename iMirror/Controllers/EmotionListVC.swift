@@ -15,6 +15,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private var collectionView: UICollectionView!
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   private var selectedEmotions: Set<Int> = []
+  private var blurEffectView: UIVisualEffectView?
   
   // Emotion array
   private let emotions = [
