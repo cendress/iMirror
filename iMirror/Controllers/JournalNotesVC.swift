@@ -140,7 +140,19 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       notesTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       notesTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
       // Change this constraint when you add buttons
-      notesTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.smallPadding)
+      notesTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -ReuseableUI.largePadding),
+      
+      saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      saveButton.heightAnchor.constraint(equalToConstant: 60),
+      saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
+      saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding),
+      saveButton.bottomAnchor.constraint(equalTo: meditationButton.topAnchor, constant: 10),
+      
+      meditationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.padding),
+      meditationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      meditationButton.heightAnchor.constraint(equalToConstant: 60),
+      meditationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
+      meditationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding)
     ])
   }
   
