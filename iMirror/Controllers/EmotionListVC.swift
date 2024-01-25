@@ -120,6 +120,13 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     collectionView.dataSource = self
     collectionView.register(EmotionCollectionViewCell.self, forCellWithReuseIdentifier: "EmotionCell")
     collectionView.translatesAutoresizingMaskIntoConstraints = false
+    
+    // Initialize and implement blur effect
+    let blurEffect = UIBlurEffect(style: .regular)
+    blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView?.frame = collectionView.bounds
+    blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    collectionView.backgroundView = blurEffectView
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
