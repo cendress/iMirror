@@ -83,6 +83,17 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     NSLayoutConstraint.activate([
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      titleTextView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: ReuseableUI.smallPadding),
+      titleTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
+      titleTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      titleTextView.heightAnchor.constraint(equalToConstant: ReuseableUI.padding),
+      
+      notesTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: ReuseableUI.smallPadding),
+      notesTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
+      notesTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      // Change this constraint when you add buttons
+      notesTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.smallPadding)
     ])
   }
   
