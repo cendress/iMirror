@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JournalNotesVC: UIViewController {
+class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   //MARK: - Initial setup
   
@@ -45,22 +45,29 @@ class JournalNotesVC: UIViewController {
   
   private func setupTextViews() {
     titleTextView = UITextView()
+    titleTextView.text = titlePlaceholder
+    titleTextView.textColor = UIColor.lightGray
     titleTextView.font = UIFont(name: "Roboto-Regular", size: 18)
     titleTextView.backgroundColor = .white
-    titleTextView.textColor = .black
+    titleTextView.textColor = .label
     titleTextView.layer.borderColor = UIColor.gray.cgColor
     titleTextView.layer.borderWidth = 1.0
     titleTextView.layer.cornerRadius = 5.0
     titleTextView.isScrollEnabled = false
     
     notesTextView = UITextView()
+    notesTextView.text = notesPlaceholder
+    notesTextView.textColor = UIColor.lightGray
     notesTextView.font = UIFont(name: "Roboto-Regular", size: 16)
     notesTextView.backgroundColor = .white
-    notesTextView.textColor = .black
+    notesTextView.textColor = .label
     notesTextView.layer.borderColor = UIColor.lightGray.cgColor
     notesTextView.layer.borderWidth = 1.0
     notesTextView.layer.cornerRadius = 5.0
     notesTextView.isScrollEnabled = true
+    
+    titleTextView.delegate = self
+    notesTextView.delegate = self
   }
   
   private func setupViews() {
@@ -74,5 +81,25 @@ class JournalNotesVC: UIViewController {
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     ])
+  }
+  
+  // MARK: - UITextViewDelegate methods
+  
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView.text == titlePlaceholder || textView.text == notesPlaceholder {
+      textView.text = ""
+      textView.textColor = UIColor.label
+    }
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text.isEmpty {
+      if textView == titleTextView {
+        textView.text = titlePlaceholder
+      } else if textView == notesTextView {
+        textView.text = notesPlaceholder
+      }
+      textView.textColor = UIColor.lightGray
+    }
   }
 }
