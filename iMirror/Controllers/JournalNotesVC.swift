@@ -30,4 +30,19 @@ class JournalNotesVC: UIViewController {
   @objc private func backButtonTapped() {
     navigationController?.popViewController(animated: true)
   }
+  
+  //MARK: - Configuration methods
+  
+  private func setupViews() {
+    view.addSubview(questionLabel)
+  }
+  
+  private func setupConstraints() {
+    NSLayoutConstraint.activate([
+      questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+      questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
+      questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding)
+    ])
+  }
 }
