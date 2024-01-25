@@ -145,7 +145,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       saveButton.heightAnchor.constraint(equalToConstant: 60),
       saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
       saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding),
-      saveButton.bottomAnchor.constraint(equalTo: meditationButton.topAnchor, constant: 10),
+      saveButton.bottomAnchor.constraint(equalTo: meditationButton.topAnchor, constant: -10),
       
       meditationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.padding),
       meditationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
