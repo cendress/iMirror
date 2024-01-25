@@ -9,6 +9,10 @@ import UIKit
 
 class JournalNotesVC: UIViewController {
   
+  //MARK: - Initial setup
+  
+  private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
