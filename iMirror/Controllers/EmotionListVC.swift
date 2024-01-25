@@ -151,6 +151,16 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
   }
   
+  //MARK: - Blur effect
+  
+  private func setupBlurEffect() {
+    let blurEffect = UIBlurEffect(style: .light)
+    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView.frame = collectionView.bounds
+    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    collectionView.addSubview(blurEffectView)
+  }
+  
   //MARK: - Alert controller
   
   private func showAlert() {
