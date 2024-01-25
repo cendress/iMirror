@@ -23,6 +23,7 @@ class JournalNotesVC: UIViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
     
+    setupTextViews()
     setupViews()
     setupConstraints()
   }
@@ -39,8 +40,15 @@ class JournalNotesVC: UIViewController {
   
   //MARK: - Configuration methods
   
+  private func setupTextViews() {
+    titleTextView = UITextView()
+    notesTextView = UITextView()
+  }
+  
   private func setupViews() {
     view.addSubview(questionLabel)
+    view.addSubview(titleTextView)
+    view.addSubview(notesTextView)
   }
   
   private func setupConstraints() {
