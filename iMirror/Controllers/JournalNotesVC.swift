@@ -19,8 +19,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   private let titlePlaceholder = "Enter a title..."
   private let notesPlaceholder = "Write some notes here..."
   
-  private let saveButton = ReuseableUI.createButton(withTitle: "Save & Exit")
-  private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation")
+  private let saveButton = ReuseableUI.createButton(withTitle: "Save & Exit".uppercased())
+  private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation".uppercased())
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -67,6 +67,18 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     view.endEditing(true)
   }
   
+  //MARK: - Button @objc methods
+  
+  @objc private func saveButtonTapped() {
+    // Add saving logic
+    
+    self.dismiss(animated: true)
+  }
+  
+  @objc private func meditationButtonTapped() {
+    // Navigate to new view controller
+  }
+  
   //MARK: - Configuration methods
   
   private func setupTextViews() {
@@ -103,6 +115,11 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     view.addSubview(questionLabel)
     view.addSubview(titleTextView)
     view.addSubview(notesTextView)
+    view.addSubview(saveButton)
+    view.addSubview(meditationButton)
+    
+    saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    meditationButton.addTarget(self, action: #selector(meditationButtonTapped), for: .touchUpInside)
     
     // Tap gesture to dismiss keyboard
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
