@@ -68,6 +68,9 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     
     titleTextView.delegate = self
     notesTextView.delegate = self
+    
+    titleTextView.translatesAutoresizingMaskIntoConstraints = false
+    notesTextView.translatesAutoresizingMaskIntoConstraints = false
   }
   
   private func setupViews() {
