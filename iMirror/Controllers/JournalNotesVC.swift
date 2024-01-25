@@ -13,6 +13,9 @@ class JournalNotesVC: UIViewController {
   
   private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
   
+  private var titleTextView: UITextView!
+  private var notesTextView: UITextView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -22,7 +25,6 @@ class JournalNotesVC: UIViewController {
     
     setupViews()
     setupConstraints()
-    configureUIProperties()
   }
   
   //MARK: - @objc methods
@@ -46,9 +48,5 @@ class JournalNotesVC: UIViewController {
       questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
       questionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     ])
-  }
-  
-  private func configureUIProperties() {
-    
   }
 }
