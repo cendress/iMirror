@@ -81,8 +81,11 @@ class CustomProgressView: UIView {
     let newProgress = min(max(0, location.x / width), 1)
     
     if abs(progress - newProgress) > 0.01 {
-      progress = newProgress
-      progressDidChange?(progress)
+      DispatchQueue.main.async {
+        self.progress = newProgress
+        self.progressDidChange?(self.progress)
+        self.updateSliderPosition()
+      }
     }
     
     if gesture.state == .began || gesture.state == .ended {
