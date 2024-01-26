@@ -22,6 +22,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   private let saveButton = ReuseableUI.createButton(withTitle: "Save & Exit".uppercased())
   private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation".uppercased())
   
+  private var activeTextView: UITextView?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
