@@ -97,6 +97,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     titleTextView.layer.borderWidth = 1.0
     titleTextView.layer.cornerRadius = 5.0
     titleTextView.isScrollEnabled = false
+    styleTextView(titleTextView)
     
     notesTextView = UITextView()
     notesTextView.text = notesPlaceholder
@@ -108,6 +109,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     notesTextView.layer.borderWidth = 1.0
     notesTextView.layer.cornerRadius = 5.0
     notesTextView.isScrollEnabled = true
+    styleTextView(notesTextView)
     
     titleTextView.delegate = self
     notesTextView.delegate = self
