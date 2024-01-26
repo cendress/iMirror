@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="684-su-FyS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground3" translatesAutoresizingMaskIntoConstraints="NO" id="684-su-FyS">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" red="0.015686275440000001" green="0.015686275440000001" blue="0.019607843829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -45,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gradientBackground" width="430" height="932"/>
-        <image name="lotus_pic" width="389.66665649414062" height="301.66665649414062"/>
+        <image name="gradientBackground3" width="143.33332824707031" height="310.66665649414062"/>
+        <image name="lotus_pic" width="303" height="288.66665649414062"/>
     </resources>
 </document>

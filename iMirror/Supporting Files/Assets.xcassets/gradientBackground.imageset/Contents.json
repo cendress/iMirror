@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "gradient (2).png",
+      "filename" : "gradientBackground.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "gradient (2)@2x.png",
+      "filename" : "gradientBackground@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "gradient (2)@3x.png",
+      "filename" : "gradientBackground@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
