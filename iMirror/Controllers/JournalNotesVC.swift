@@ -53,17 +53,20 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Keyboard @objc methods
   
   @objc private func keyboardWillShow(notification: NSNotification) {
-    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-      if view.frame.origin.y == 0 {
-        view.frame.origin.y -= keyboardSize.height / 2
+    if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+       let activeTextView = activeTextView {
+      
+      let keyboardTop = view.frame.height - keyboardFrame.height
+      let textViewBottom = activeTextView.convert(activeTextView.bounds, to: view).maxY
+      
+      if textViewBottom > keyboardTop {
+        view.frame.origin.y = -(textViewBottom - keyboardTop)
       }
     }
   }
   
   @objc private func keyboardWillHide(notification: NSNotification) {
-    if view.frame.origin.y != 0 {
-      view.frame.origin.y = 0
-    }
+    view.frame.origin.y = 0
   }
   
   @objc private func dismissKeyboard() {
@@ -161,6 +164,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   // MARK: - UITextViewDelegate methods
   
   func textViewDidBeginEditing(_ textView: UITextView) {
+    activeTextView = textView
+    
     if textView.text == titlePlaceholder || textView.text == notesPlaceholder {
       textView.text = ""
       textView.textColor = UIColor.label
@@ -168,6 +173,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   func textViewDidEndEditing(_ textView: UITextView) {
+    activeTextView = nil
+    
     if textView.text.isEmpty {
       if textView == titleTextView {
         textView.text = titlePlaceholder
