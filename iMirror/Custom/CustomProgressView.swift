@@ -16,21 +16,23 @@ class CustomProgressView: UIView {
   
   var progress: CGFloat = 0 {
     didSet {
-      updateSliderPosition()
+      DispatchQueue.main.async {
+        self.updateSliderPosition()
+      }
     }
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setupLayers()
-    setupSliderKnob()
-    
-    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    sliderKnob.addGestureRecognizer(panGesture)
+    commonInit()
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
+    commonInit()
+  }
+  
+  private func commonInit() {
     setupLayers()
     setupSliderKnob()
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
@@ -40,11 +42,9 @@ class CustomProgressView: UIView {
   private func setupLayers() {
     trackLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     layer.addSublayer(trackLayer)
-    configureShadow(for: trackLayer)
     
     progressLayer.backgroundColor = UIColor(named: "AppColor")?.cgColor
     layer.addSublayer(progressLayer)
-    configureShadow(for: progressLayer)
   }
   
   private func setupSliderKnob() {
@@ -67,10 +67,7 @@ class CustomProgressView: UIView {
   
   private func updateSliderPosition() {
     let sliderPosition = bounds.width * progress
-    
-    let progressLayerWidth = sliderPosition + sliderKnob.frame.width / 2
-    progressLayer.frame = CGRect(x: 0, y: 0, width: progressLayerWidth, height: bounds.height)
-    
+    progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: bounds.height)
     sliderKnob.center = CGPoint(x: sliderPosition, y: bounds.height / 2)
   }
   
@@ -79,25 +76,13 @@ class CustomProgressView: UIView {
     let width = bounds.width
     let newProgress = min(max(0, location.x / width), 1)
     
-    progress = newProgress
-    
-    switch gesture.state {
-    case .began, .changed:
-      sliderKnob.layer.shadowColor = UIColor.black.cgColor
-      sliderKnob.layer.shadowRadius = 10
-      sliderKnob.layer.shadowOpacity = 1
-      sliderKnob.layer.shadowOffset = CGSize(width: 1, height: 1)
-    default:
-      sliderKnob.layer.shadowOpacity = 0
+    if abs(progress - newProgress) > 0.01 {
+      progress = newProgress
+      progressDidChange?(progress)
     }
     
-    progressDidChange?(progress)
-  }
-  
-  private func configureShadow(for layer: CALayer) {
-      layer.shadowColor = UIColor.black.cgColor
-      layer.shadowOpacity = 0.5
-      layer.shadowOffset = CGSize(width: 0, height: 2)
-      layer.shadowRadius = 3
+    if gesture.state == .began || gesture.state == .ended {
+      sliderKnob.layer.shadowOpacity = gesture.state == .began ? 1 : 0
+    }
   }
 }
