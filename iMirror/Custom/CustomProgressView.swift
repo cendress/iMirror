@@ -32,6 +32,14 @@ class CustomProgressView: UIView {
     commonInit()
   }
   
+  override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    let knobFrame = sliderKnob.frame.insetBy(dx: -10, dy: -10)
+    if knobFrame.contains(point) {
+      return sliderKnob
+    }
+    return super.hitTest(point, with: event)
+  }
+  
   private func commonInit() {
     setupLayers()
     setupSliderKnob()
