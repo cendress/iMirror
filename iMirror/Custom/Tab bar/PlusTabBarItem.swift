@@ -38,7 +38,7 @@ class PlusTabBarItem: UITabBarItem {
     
     context.setShadow(offset: CGSize.zero, blur: 0, color: nil)
     
-    let plusImage = UIImage(systemName: "plus")?.withTintColor(UIColor.systemBackground, renderingMode: .alwaysOriginal)
+    let plusImage = UIImage(systemName: "plus")?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal)
     let plusImageRect = CGRect(x: size.width/2 - 10, y: size.height/2 - 10, width: 20, height: 20)
     plusImage?.draw(in: plusImageRect)
     
