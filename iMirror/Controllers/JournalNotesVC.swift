@@ -89,25 +89,19 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   private func setupTextViews() {
     titleTextView = UITextView()
     titleTextView.text = titlePlaceholder
-    titleTextView.textColor = UIColor.lightGray
     titleTextView.font = UIFont(name: "Roboto-Regular", size: 18)
-    titleTextView.backgroundColor = .white
+    titleTextView.backgroundColor = UIColor(white: 0.95, alpha: 1)
     titleTextView.textColor = .label
-    titleTextView.layer.borderColor = UIColor.gray.cgColor
-    titleTextView.layer.borderWidth = 1.0
-    titleTextView.layer.cornerRadius = 5.0
+    titleTextView.layer.borderColor = UIColor.lightGray.cgColor
     titleTextView.isScrollEnabled = false
     styleTextView(titleTextView)
     
     notesTextView = UITextView()
     notesTextView.text = notesPlaceholder
-    notesTextView.textColor = UIColor.lightGray
     notesTextView.font = UIFont(name: "Roboto-Regular", size: 16)
-    notesTextView.backgroundColor = .white
+    notesTextView.backgroundColor = UIColor(white: 0.95, alpha: 1)
     notesTextView.textColor = .label
     notesTextView.layer.borderColor = UIColor.lightGray.cgColor
-    notesTextView.layer.borderWidth = 1.0
-    notesTextView.layer.cornerRadius = 5.0
     notesTextView.isScrollEnabled = true
     styleTextView(notesTextView)
     
@@ -116,14 +110,26 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     
     titleTextView.translatesAutoresizingMaskIntoConstraints = false
     notesTextView.translatesAutoresizingMaskIntoConstraints = false
+    
+    updatePlaceholderTextColor(titleTextView, placeholder: titlePlaceholder)
+    updatePlaceholderTextColor(notesTextView, placeholder: notesPlaceholder)
   }
   
   private func styleTextView(_ textView: UITextView) {
-    textView.layer.cornerRadius = 10.0
+    textView.layer.cornerRadius = 8.0
     textView.layer.shadowColor = UIColor.black.cgColor
-    textView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    textView.layer.shadowOffset = CGSize(width: 0, height: 2)
     textView.layer.shadowOpacity = 0.1
-    textView.layer.shadowRadius = 3.0
+    textView.layer.shadowRadius = 4.0
+    textView.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+  }
+  
+  private func updatePlaceholderTextColor(_ textView: UITextView, placeholder: String) {
+    if textView.text == placeholder {
+      textView.textColor = UIColor.lightGray
+    } else {
+      textView.textColor = .label
+    }
   }
   
   private func setupViews() {
@@ -154,7 +160,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       notesTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: ReuseableUI.smallPadding),
       notesTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       notesTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
-      notesTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -ReuseableUI.largePadding),
+      notesTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -ReuseableUI.padding),
       
       saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       saveButton.heightAnchor.constraint(equalToConstant: 60),
