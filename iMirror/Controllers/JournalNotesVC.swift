@@ -12,6 +12,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Initial setup
   
   private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
+  private var activeTextView: UITextView?
   
   private var titleTextView: UITextView!
   private var notesTextView: UITextView!
@@ -21,8 +22,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   private let saveButton = ReuseableUI.createButton(withTitle: "Save & Exit".uppercased())
   private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation".uppercased())
-  
-  private var activeTextView: UITextView?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -115,6 +114,14 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     
     titleTextView.translatesAutoresizingMaskIntoConstraints = false
     notesTextView.translatesAutoresizingMaskIntoConstraints = false
+  }
+  
+  private func styleTextView(_ textView: UITextView) {
+    textView.layer.cornerRadius = 10.0
+    textView.layer.shadowColor = UIColor.black.cgColor
+    textView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    textView.layer.shadowOpacity = 0.1
+    textView.layer.shadowRadius = 3.0
   }
   
   private func setupViews() {
