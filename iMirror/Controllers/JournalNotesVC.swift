@@ -78,11 +78,15 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   @objc private func saveButtonTapped() {
     // Add saving logic
     
+    //function that checks if text views are empty
+    isTextViewEmpty()
+    
     self.dismiss(animated: true)
   }
   
   @objc private func meditationButtonTapped() {
     // Navigate to new view controller
+    isTextViewEmpty()
   }
   
   //MARK: - Configuration methods
@@ -236,6 +240,20 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     
     titleTextView.inputAccessoryView = doneToolbar
     notesTextView.inputAccessoryView = doneToolbar
+  }
+  
+  //MARK: - Other methods
+  
+  private func isTextViewEmpty() {
+    if titleTextView.text.isEmpty && notesTextView.text.isEmpty || titleTextView.text == titlePlaceholder && notesTextView.text == notesPlaceholder {
+      showAlert()
+    }
+  }
+  
+  private func showAlert() {
+    let ac = UIAlertController(title: "Enter text", message: "Please fill out the forms to continue.", preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
   }
   
   //MARK: - Deinit
