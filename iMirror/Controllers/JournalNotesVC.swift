@@ -76,21 +76,19 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Button @objc methods
   
   @objc private func saveButtonTapped() {
-    if titleTextView.text.isEmpty || titleTextView.text == titlePlaceholder || notesTextView.text.isEmpty || notesTextView.text == notesPlaceholder {
-      showAlert()
-    } else {
-      // Add saving logic here if text views are not empty
-      
+    if isValidInput() {
+      // Add saving logic
       self.dismiss(animated: true)
+    } else {
+      showAlert()
     }
   }
   
   @objc private func meditationButtonTapped() {
-    if titleTextView.text.isEmpty || titleTextView.text == titlePlaceholder || notesTextView.text.isEmpty || notesTextView.text == notesPlaceholder {
-      showAlert()
-    } else {
+    if isValidInput() {
       // Navigate to new view controller
-      
+    } else {
+      showAlert()
     }
   }
   
@@ -247,10 +245,15 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     notesTextView.inputAccessoryView = doneToolbar
   }
   
-  //MARK: - Alert
+  //MARK: - Error handling
+  
+  private func isValidInput() -> Bool {
+    return !(titleTextView.text.isEmpty || titleTextView.text == titlePlaceholder ||
+             notesTextView.text.isEmpty || notesTextView.text == notesPlaceholder)
+  }
   
   private func showAlert() {
-    let ac = UIAlertController(title: "Enter text", message: "Please fill out the forms to continue.", preferredStyle: .alert)
+    let ac = UIAlertController(title: "Enter text", message: "Please fill out both forms to continue.", preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default))
     present(ac, animated: true)
   }
