@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EmotionSelectionDelegate: AnyObject {
+  func didSelectEmotions(emotions: [String])
+}
+
 class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
   //MARK: - Initial setup
