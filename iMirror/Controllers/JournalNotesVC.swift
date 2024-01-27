@@ -55,13 +55,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
        let activeTextView = activeTextView {
       
-      if activeTextView == notesTextView {
-        let keyboardHeight = keyboardFrame.height
-        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-        notesTextView.contentInset = contentInsets
-        notesTextView.scrollIndicatorInsets = contentInsets
-      }
-      
       let keyboardTop = view.frame.height - keyboardFrame.height
       let textViewBottom = activeTextView.convert(activeTextView.bounds, to: view).maxY
       
@@ -73,8 +66,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   @objc private func keyboardWillHide(notification: NSNotification) {
     view.frame.origin.y = 0
-    notesTextView.contentInset = .zero
-    notesTextView.scrollIndicatorInsets = .zero
   }
   
   @objc private func dismissKeyboard() {
