@@ -21,6 +21,8 @@ class CurrentMoodVC: UIViewController {
   private let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
+  weak var delegate: CurrentMoodDelegate?
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -143,6 +145,9 @@ class CurrentMoodVC: UIViewController {
   //MARK: - Continue button action method
   
   @objc private func continueButtonTapped() {
+    let selectedEmoji = emojiLabel.text ?? ""
+    delegate?.didSelectMood(emoji: selectedEmoji)
+    
     let emotionVC = EmotionListVC()
     navigationController?.pushViewController(emotionVC, animated: true)
   }
