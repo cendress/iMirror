@@ -87,6 +87,7 @@ class CustomProgressView: UIView {
     }
     
     if gesture.state == .began || gesture.state == .ended {
+      // UIView.animate for a smoother animation
       UIView.animate(withDuration: 0.1) {
         self.sliderKnob.layer.shadowOpacity = gesture.state == .began ? 1 : 0
       }
