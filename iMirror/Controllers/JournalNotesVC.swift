@@ -160,7 +160,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       notesTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: ReuseableUI.smallPadding),
       notesTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
       notesTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
-      notesTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -ReuseableUI.padding),
+      notesTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -ReuseableUI.largePadding),
       
       saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       saveButton.heightAnchor.constraint(equalToConstant: 60),
