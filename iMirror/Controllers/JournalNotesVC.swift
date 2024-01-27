@@ -12,8 +12,9 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Initial setup
   
   private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
-  private var activeTextView: UITextView?
+  private let orLabel = ReuseableUI.createLabel(withText: "Or".uppercased())
   
+  private var activeTextView: UITextView?
   private var titleTextView: UITextView!
   private var notesTextView: UITextView!
   
@@ -109,6 +110,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     notesTextView.isScrollEnabled = true
     styleTextView(notesTextView)
     
+    orLabel.font = UIFont(name: "Roboto-Light", size: 15)
+    orLabel.adjustsFontSizeToFitWidth = true
+    orLabel.minimumScaleFactor = 0.5
+    
     titleTextView.delegate = self
     notesTextView.delegate = self
     
@@ -141,6 +146,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     view.addSubview(titleTextView)
     view.addSubview(notesTextView)
     view.addSubview(saveButton)
+    view.addSubview(orLabel)
     view.addSubview(meditationButton)
     
     saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
@@ -170,7 +176,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       saveButton.heightAnchor.constraint(equalToConstant: 60),
       saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.largePadding),
       saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.largePadding),
-      saveButton.bottomAnchor.constraint(equalTo: meditationButton.topAnchor, constant: -10),
+      saveButton.bottomAnchor.constraint(equalTo: orLabel.topAnchor, constant: -10),
+      
+      orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      orLabel.bottomAnchor.constraint(equalTo: meditationButton.topAnchor, constant: -10),
       
       meditationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.padding),
       meditationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
