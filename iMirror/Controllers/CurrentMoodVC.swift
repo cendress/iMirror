@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CurrentMoodDelegate: AnyObject {
+  func didSelectMood(emoji: String)
+}
+
 class CurrentMoodVC: UIViewController {
   
   //MARK: - Initial setup
