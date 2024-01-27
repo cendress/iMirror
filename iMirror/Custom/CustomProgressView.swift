@@ -16,9 +16,7 @@ class CustomProgressView: UIView {
   
   var progress: CGFloat = 0 {
     didSet {
-      DispatchQueue.main.async {
-        self.updateSliderPosition()
-      }
+      updateSliderPosition()
     }
   }
   
@@ -70,9 +68,11 @@ class CustomProgressView: UIView {
   }
   
   private func updateSliderPosition() {
-    let sliderPosition = bounds.width * progress
-    progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: bounds.height)
-    sliderKnob.center = CGPoint(x: sliderPosition, y: bounds.height / 2)
+    UIView.animate(withDuration: 0.1) {
+      let sliderPosition = self.bounds.width * self.progress
+      self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
+      self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
+    }
   }
   
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -81,15 +81,15 @@ class CustomProgressView: UIView {
     let newProgress = min(max(0, location.x / width), 1)
     
     if abs(progress - newProgress) > 0.01 {
-      DispatchQueue.main.async {
-        self.progress = newProgress
-        self.progressDidChange?(self.progress)
-        self.updateSliderPosition()
-      }
+      progress = newProgress
+      progressDidChange?(progress)
+      updateSliderPosition()
     }
     
     if gesture.state == .began || gesture.state == .ended {
-      sliderKnob.layer.shadowOpacity = gesture.state == .began ? 1 : 0
+      UIView.animate(withDuration: 0.1) {
+        self.sliderKnob.layer.shadowOpacity = gesture.state == .began ? 1 : 0
+      }
     }
   }
   
