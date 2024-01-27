@@ -200,6 +200,15 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     }
   }
   
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if textView == titleTextView && text == "\n" {
+      // Dismiss the keyboard when the return button is pressed on keyboard
+      textView.resignFirstResponder()
+      return false
+    }
+    return true
+  }
+  
   //MARK: - Dismiss keyboard method
   
   private func addDoneButtonOnKeyboard() {
