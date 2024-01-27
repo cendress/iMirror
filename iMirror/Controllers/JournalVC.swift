@@ -12,6 +12,7 @@ class JournalVC: UITableViewController {
   //MARK: - Initial setup
   
   private var journalEntries: [JournalEntry] = []
+  var selectedEmoji: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,6 +28,12 @@ class JournalVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return journalEntries.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath)
+    cell.textLabel?.text = selectedEmoji
+    return cell
   }
   
   //MARK: - Other methods
@@ -64,7 +71,7 @@ class JournalVC: UITableViewController {
 
 extension JournalVC: CurrentMoodDelegate {
   func didSelectMood(emoji: String) {
-    // Handle the selected emoji
-    
+    self.selectedEmoji = emoji
+    tableView.reloadData()
   }
 }
