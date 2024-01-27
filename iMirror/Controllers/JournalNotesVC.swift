@@ -87,20 +87,24 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Configuration methods
   
   private func setupTextViews() {
+    // Configuration for Title Text View
     titleTextView = UITextView()
     titleTextView.text = titlePlaceholder
     titleTextView.font = UIFont(name: "Roboto-Regular", size: 18)
-    titleTextView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    titleTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
     titleTextView.textColor = .label
+    titleTextView.layer.borderWidth = 0.5
     titleTextView.layer.borderColor = UIColor.lightGray.cgColor
     titleTextView.isScrollEnabled = false
     styleTextView(titleTextView)
     
+    // Configuration for Notes Text View
     notesTextView = UITextView()
     notesTextView.text = notesPlaceholder
     notesTextView.font = UIFont(name: "Roboto-Regular", size: 16)
-    notesTextView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    notesTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
     notesTextView.textColor = .label
+    notesTextView.layer.borderWidth = 0.5
     notesTextView.layer.borderColor = UIColor.lightGray.cgColor
     notesTextView.isScrollEnabled = true
     styleTextView(notesTextView)
@@ -116,12 +120,12 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   private func styleTextView(_ textView: UITextView) {
-    textView.layer.cornerRadius = 8.0
+    textView.layer.cornerRadius = 10.0
     textView.layer.shadowColor = UIColor.black.cgColor
-    textView.layer.shadowOffset = CGSize(width: 0, height: 2)
-    textView.layer.shadowOpacity = 0.1
-    textView.layer.shadowRadius = 4.0
-    textView.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+    textView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    textView.layer.shadowOpacity = 0.05
+    textView.layer.shadowRadius = 3.0
+    textView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
   }
   
   private func updatePlaceholderTextColor(_ textView: UITextView, placeholder: String) {
