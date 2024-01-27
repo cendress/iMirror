@@ -47,10 +47,15 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   }
   
   private func presentCurrentMoodVC() {
-    let questionPromptsVC = CurrentMoodVC()
-    questionPromptsVC.hidesBottomBarWhenPushed = true
-    let navController = UINavigationController(rootViewController: questionPromptsVC)
-    navController.modalPresentationStyle = .fullScreen
-    self.present(navController, animated: true, completion: nil)
+    if let journalVC = (viewControllers?.first as? UINavigationController)?.viewControllers.first as? JournalVC {
+      let questionPromptsVC = CurrentMoodVC()
+      questionPromptsVC.delegate = journalVC
+      
+      questionPromptsVC.hidesBottomBarWhenPushed = true
+      let navController = UINavigationController(rootViewController: questionPromptsVC)
+      
+      navController.modalPresentationStyle = .fullScreen
+      self.present(navController, animated: true, completion: nil)
+    }
   }
 }

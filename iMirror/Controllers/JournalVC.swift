@@ -63,7 +63,8 @@ class JournalVC: UITableViewController {
 }
 
 extension JournalVC: CurrentMoodDelegate {
-    func didSelectMood(emoji: String) {
-        // Handle the selected emoji
-    }
+  func didSelectMood(emoji: String) {
+    // Handle the selected emoji
+    
+  }
 }
