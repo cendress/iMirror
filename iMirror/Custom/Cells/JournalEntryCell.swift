@@ -9,15 +9,14 @@ import UIKit
 
 class JournalEntryCell: UITableViewCell {
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
+  // Properties
+  private let moodLabel = UILabel()
+  private let emotionLabel = UILabel()
+  private let titleLabel = UILabel()
+  private let noteLabel = UILabel()
+  private let dateLabel = UILabel()
+  private let timeLabel = UILabel()
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
-  }
+  // Initialization
   
 }
