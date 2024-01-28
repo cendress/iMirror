@@ -101,10 +101,14 @@ class JournalEntryCell: UITableViewCell {
   }
   
   private func formatDate(_ date: Date) -> String {
-    return ""
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMM d"
+    return dateFormatter.string(from: date)
   }
   
   private func formatTime(_ time: Date) -> String {
-    return ""
+    let timeFormatter = DateFormatter()
+    timeFormatter.dateFormat = "h:mm a"
+    return timeFormatter.string(from: time)
   }
 }
