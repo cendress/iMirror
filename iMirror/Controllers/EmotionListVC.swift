@@ -74,6 +74,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     let journalNotesVC = JournalNotesVC()
+    journalNotesVC.selectedEmotions = selectedEmotions.map { emotions[$0].name }
     navigationController?.pushViewController(journalNotesVC, animated: true)
   }
   
