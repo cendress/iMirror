@@ -28,7 +28,7 @@ class JournalVC: UITableViewController {
     
     updateUI()
     // Register cell
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "JournalCell")
+    tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
   }
   
   //MARK: - Table view methods
