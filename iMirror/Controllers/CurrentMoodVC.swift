@@ -24,8 +24,7 @@ class CurrentMoodVC: UIViewController {
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
   weak var delegate: CurrentMoodDelegate?
-  
-  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  var managedObjectContext: NSManagedObjectContext?
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -41,6 +40,10 @@ class CurrentMoodVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+      managedObjectContext = appDelegate.persistentContainer.viewContext
+    }
+    
     view.backgroundColor = .systemBackground
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
@@ -152,6 +155,10 @@ class CurrentMoodVC: UIViewController {
     let selectedEmoji = emojiLabel.text ?? ""
     
     let newEntry = JournalEntry(context: context)
+    newEntry.mood = selectedEmoji
+    newEntry.emotion = ""
+    
+    
     delegate?.didSelectMood(emoji: selectedEmoji)
     
     let emotionVC = EmotionListVC()
