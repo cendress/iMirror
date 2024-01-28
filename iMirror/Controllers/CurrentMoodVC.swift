@@ -5,7 +5,6 @@
 //  Created by Christopher Endress on 1/3/24.
 //
 
-import CoreData
 import UIKit
 
 // Subclass of AnyObject to inform swift that the protocol must only be used in classes (reference types)
@@ -24,7 +23,6 @@ class CurrentMoodVC: UIViewController {
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
   weak var delegate: CurrentMoodDelegate?
-  var managedObjectContext: NSManagedObjectContext?
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -40,10 +38,6 @@ class CurrentMoodVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-      managedObjectContext = appDelegate.persistentContainer.viewContext
-    }
-    
     view.backgroundColor = .systemBackground
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
@@ -153,10 +147,6 @@ class CurrentMoodVC: UIViewController {
   
   @objc private func continueButtonTapped() {
     let selectedEmoji = emojiLabel.text ?? ""
-    
-    let newEntry = JournalEntry(context: managedObjectContext!)
-    newEntry.mood = selectedEmoji
-    
     
     delegate?.didSelectMood(emoji: selectedEmoji)
     

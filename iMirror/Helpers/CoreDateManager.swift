@@ -18,7 +18,7 @@ class CoreDataManager {
     persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
   }
   
-  // Update this when saving more objects
+  // Update this when saving more properties
   func saveJournalEntry(mood: String, emotions: [String]) {
     let context = persistentContainer.viewContext
     let journalEntry = JournalEntry(context: context)
