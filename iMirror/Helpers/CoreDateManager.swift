@@ -5,42 +5,39 @@
 //  Created by Christopher Endress on 1/28/24.
 //
 
-import UIKit
+import Foundation
 import CoreData
 
 class CoreDataManager {
-  
   static let shared = CoreDataManager()
   
-  private let persistentContainer: NSPersistentContainer
+  private init() {}
   
-  private init() {
-    persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+  lazy var persistentContainer: NSPersistentContainer = {
+    let container = NSPersistentContainer(name: "iMirror")
+    container.loadPersistentStores(completionHandler: { storeDescription, error in
+      if let error = error as NSError? {
+        fatalError("Unresolved error \(error), \(error.userInfo)")
+      }
+    })
+    return container
+  }()
+  
+  var viewContext: NSManagedObjectContext {
+    return persistentContainer.viewContext
   }
   
-  // Update this when saving more properties
-  func saveJournalEntry(mood: String, emotions: [String]) {
-    let context = persistentContainer.viewContext
-    let journalEntry = JournalEntry(context: context)
-    journalEntry.mood = mood
-    journalEntry.emotion = emotions as NSObject
-    
-    do {
-      try context.save()
-    } catch {
-      print("Failed to save journal entry: \(error)")
+  func saveContext () {
+    let context = viewContext
+    if context.hasChanges {
+      do {
+        try context.save()
+      } catch {
+        let nserror = error as NSError
+        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+      }
     }
   }
   
-  func fetchJournalEntries() -> [JournalEntry] {
-    let context = persistentContainer.viewContext
-    let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
-    
-    do {
-      return try context.fetch(fetchRequest)
-    } catch {
-      print("Failed to fetch journal entries: \(error)")
-      return []
-    }
-  }
+  // Additional methods for CRUD operations will be added here
 }
