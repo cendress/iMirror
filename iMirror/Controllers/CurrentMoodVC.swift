@@ -7,11 +7,6 @@
 
 import UIKit
 
-// Subclass of AnyObject to inform swift that the protocol must only be used in classes (reference types)
-protocol CurrentMoodDelegate: AnyObject {
-  func didSelectMood(emoji: String)
-}
-
 class CurrentMoodVC: UIViewController {
   
   //MARK: - Initial setup
@@ -21,8 +16,6 @@ class CurrentMoodVC: UIViewController {
   private let moodLabel = ReuseableUI.createLabel(withText: "Just Fine".uppercased())
   private let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
-  
-  weak var delegate: CurrentMoodDelegate?
   
   var selectedMood: String?
   
@@ -149,10 +142,6 @@ class CurrentMoodVC: UIViewController {
   
   @objc private func continueButtonTapped() {
     selectedMood = emojiLabel.text ?? "🙂"
-    
-//    let selectedEmoji = emojiLabel.text ?? "🙂"
-//    delegate?.didSelectMood(emoji: selectedEmoji)
-    
     let emotionVC = EmotionListVC()
     emotionVC.mood = selectedMood
     navigationController?.pushViewController(emotionVC, animated: true)

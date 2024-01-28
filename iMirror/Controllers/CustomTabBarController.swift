@@ -47,9 +47,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   }
   
   private func presentCurrentMoodVC() {
-    if let journalVC = (viewControllers?.first as? UINavigationController)?.viewControllers.first as? JournalVC {
+    if (viewControllers?.first as? UINavigationController)?.viewControllers.first is JournalVC {
       let questionPromptsVC = CurrentMoodVC()
-      questionPromptsVC.delegate = journalVC
       
       questionPromptsVC.hidesBottomBarWhenPushed = true
       let navController = UINavigationController(rootViewController: questionPromptsVC)

@@ -12,7 +12,6 @@ class JournalVC: UITableViewController {
   //MARK: - Initial setup
   
   private var journalEntries: [JournalEntry] = []
-  var selectedEmoji: String?
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -80,12 +79,5 @@ class JournalVC: UITableViewController {
       self.tableView.backgroundView = nil
       self.tableView.separatorStyle = .singleLine
     }
-  }
-}
-
-extension JournalVC: CurrentMoodDelegate {
-  func didSelectMood(emoji: String) {
-    self.selectedEmoji = emoji
-    tableView.reloadData()
   }
 }
