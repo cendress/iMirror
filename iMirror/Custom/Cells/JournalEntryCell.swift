@@ -31,4 +31,36 @@ class JournalEntryCell: UITableViewCell {
   private func setupCell() {
     
   }
+  
+  func configure(with entry: JournalEntry) {
+    moodLabel.text = entry.mood
+    titleLabel.text = entry.title
+    noteLabel.text = entry.note
+    
+    if let currentDate = entry.currentDate {
+      dateLabel.text = formatDate(currentDate)
+    } else {
+      dateLabel.text = "N/A"
+    }
+    
+    if let currentTime = entry.currentTime {
+      timeLabel.text = formatTime(currentTime)
+    } else {
+      timeLabel.text = "N/A"
+    }
+    
+    if let emotionsArray = entry.emotion as? [String] {
+      emotionLabel.text = emotionsArray.joined(separator: ", ")
+    } else {
+      emotionLabel.text = "No emotions"
+    }
+  }
+  
+  private func formatDate(_ date: Date) -> String {
+    
+  }
+  
+  private func formatTime(_ time: Date) -> String {
+    
+  }
 }
