@@ -58,7 +58,7 @@ class CurrentMoodVC: UIViewController {
   //MARK: - Configuration methods
   
   private func setupLabels() {
-    emojiLabel.font = UIFont.systemFont(ofSize: 120)
+    emojiLabel.font = UIFont.systemFont(ofSize: 100)
     emojiLabel.adjustsFontSizeToFitWidth = false
     
     moodLabel.font = UIFont(name: "Roboto-Light", size: 15)

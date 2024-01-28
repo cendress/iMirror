@@ -38,7 +38,7 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "JournalEntryCell", for: indexPath) as? JournalEntryCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath) as? JournalEntryCell else {
       fatalError("Unable to dequeue JournalEntryCell")
     }
     
