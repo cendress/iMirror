@@ -25,6 +25,8 @@ class CurrentMoodVC: UIViewController {
   
   weak var delegate: CurrentMoodDelegate?
   
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -148,6 +150,8 @@ class CurrentMoodVC: UIViewController {
   
   @objc private func continueButtonTapped() {
     let selectedEmoji = emojiLabel.text ?? ""
+    
+    let newEntry = JournalEntry(context: context)
     delegate?.didSelectMood(emoji: selectedEmoji)
     
     let emotionVC = EmotionListVC()
