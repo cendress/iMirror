@@ -24,6 +24,8 @@ class CurrentMoodVC: UIViewController {
   
   weak var delegate: CurrentMoodDelegate?
   
+  var selectedMood: String?
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -146,8 +148,9 @@ class CurrentMoodVC: UIViewController {
   //MARK: - Continue button action method
   
   @objc private func continueButtonTapped() {
-    let selectedEmoji = emojiLabel.text ?? ""
+    selectedMood = emojiLabel.text ?? "🙂"
     
+    let selectedEmoji = emojiLabel.text ?? "🙂"
     delegate?.didSelectMood(emoji: selectedEmoji)
     
     let emotionVC = EmotionListVC()
