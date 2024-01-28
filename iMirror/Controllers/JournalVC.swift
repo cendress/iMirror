@@ -34,8 +34,8 @@ class JournalVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath)
-    //let entry = journalEntries[indexPath.row]
-    cell.textLabel?.text = selectedEmoji
+    let entry = journalEntries[indexPath.row]
+    cell.textLabel?.text = entry.mood
     return cell
   }
   

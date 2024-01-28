@@ -3,7 +3,7 @@
     <entity name="JournalEntry" representedClassName="JournalEntry" syncable="YES" codeGenerationType="class">
         <attribute name="currentDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="currentTime" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="emotion" attributeType="Transformable"/>
+        <attribute name="emotion" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName"/>
         <attribute name="meditationDuration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="mood" attributeType="String"/>
         <attribute name="note" optional="YES" attributeType="String"/>
