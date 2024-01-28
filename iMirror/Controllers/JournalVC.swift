@@ -38,9 +38,12 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "JournalCell", for: indexPath)
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "JournalEntryCell", for: indexPath) as? JournalEntryCell else {
+      fatalError("Unable to dequeue JournalEntryCell")
+    }
+    
     let entry = journalEntries[indexPath.row]
-    cell.textLabel?.text = entry.mood
+    cell.configure(with: entry)
     return cell
   }
   
