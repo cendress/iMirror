@@ -142,6 +142,7 @@ class CurrentMoodVC: UIViewController {
   
   @objc private func continueButtonTapped() {
     selectedMood = emojiLabel.text ?? "🙂"
+    
     let emotionVC = EmotionListVC()
     emotionVC.mood = selectedMood
     navigationController?.pushViewController(emotionVC, animated: true)

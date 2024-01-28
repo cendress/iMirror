@@ -43,6 +43,19 @@ class JournalVC: UITableViewController {
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      let entry = journalEntries[indexPath.row]
+      CoreDataManager.shared.viewContext.delete(entry)
+      CoreDataManager.shared.saveContext()
+      
+      journalEntries.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      updateBackgroundMessage()
+      tableView.reloadData()
+    }
+  }
+  
   //MARK: - Update UI methods
   
   private func updateUI() {
