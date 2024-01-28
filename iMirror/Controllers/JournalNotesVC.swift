@@ -85,6 +85,9 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       let notesText = notesTextView.text ?? ""
       let currentTime = Date()
       let currentDate = Date()
+      
+      // Save the journal entry
+      CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       self.dismiss(animated: true)
     } else {
       showAlert()
