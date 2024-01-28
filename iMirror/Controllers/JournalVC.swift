@@ -24,6 +24,7 @@ class JournalVC: UITableViewController {
     
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
+    navigationItem.rightBarButtonItem = editButtonItem
     
     updateUI()
     // Register cell
