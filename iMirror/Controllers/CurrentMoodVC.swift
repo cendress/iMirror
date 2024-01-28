@@ -154,9 +154,8 @@ class CurrentMoodVC: UIViewController {
   @objc private func continueButtonTapped() {
     let selectedEmoji = emojiLabel.text ?? ""
     
-    let newEntry = JournalEntry(context: context)
+    let newEntry = JournalEntry(context: managedObjectContext!)
     newEntry.mood = selectedEmoji
-    newEntry.emotion = ""
     
     
     delegate?.didSelectMood(emoji: selectedEmoji)
