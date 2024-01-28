@@ -25,6 +25,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   private let meditationButton = ReuseableUI.createButton(withTitle: "Begin Meditation".uppercased())
   
   var selectedEmotions: [String] = []
+  var mood: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
