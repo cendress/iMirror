@@ -44,6 +44,8 @@ class JournalVC: UITableViewController {
     return cell
   }
   
+  //MARK: - Table view edit methods
+  
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       let entry = journalEntries[indexPath.row]
@@ -55,6 +57,12 @@ class JournalVC: UITableViewController {
       updateBackgroundMessage()
       tableView.reloadData()
     }
+  }
+  
+  override func setEditing(_ editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    
+    tableView.setEditing(editing, animated: true)
   }
   
   //MARK: - Update UI methods
