@@ -39,5 +39,18 @@ class CoreDataManager {
     }
   }
   
+  func saveJournalEntry(mood: String, emotions: [String], title: String, note: String, currentDate: Date, currentTime: Date) {
+    let journalEntry = JournalEntry(context: viewContext)
+    journalEntry.mood = mood
+    // Must typecast emotion as NSObject if it is a 'transformable' data type
+    journalEntry.emotion = emotions as NSObject
+    journalEntry.title = title
+    journalEntry.note = note
+    journalEntry.currentDate = currentDate
+    journalEntry.currentTime = currentTime
+    
+    saveContext()
+  }
+  
   // Additional methods for CRUD operations will be added here
 }
