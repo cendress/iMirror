@@ -5,8 +5,10 @@
 //  Created by Christopher Endress on 1/3/24.
 //
 
+import CoreData
 import UIKit
 
+// Subclass of AnyObject to inform swift that the protocol must only be used in classes (reference types)
 protocol CurrentMoodDelegate: AnyObject {
   func didSelectMood(emoji: String)
 }
