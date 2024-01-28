@@ -16,6 +16,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   private var selectedEmotions: Set<Int> = []
   
+  var mood: String?
+  
   // Emotion array
   private let emotions = [
     Emotion(name: "Happiness", symbolName: "smiley"),
@@ -74,6 +76,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     let journalNotesVC = JournalNotesVC()
+    journalNotesVC.mood = self.mood
     journalNotesVC.selectedEmotions = selectedEmotions.map { emotions[$0].name }
     navigationController?.pushViewController(journalNotesVC, animated: true)
   }
