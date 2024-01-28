@@ -81,6 +81,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   @objc private func saveButtonTapped() {
     if isValidInput() {
       // Add saving logic
+      let titleText = titleTextView.text ?? ""
+      let notesText = notesTextView.text ?? ""
+      let currentTime = Date()
+      let currentDate = Date()
       self.dismiss(animated: true)
     } else {
       showAlert()
