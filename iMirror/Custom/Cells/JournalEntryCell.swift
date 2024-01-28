@@ -29,7 +29,51 @@ class JournalEntryCell: UITableViewCell {
   
   // Configuration
   private func setupCell() {
+    contentView.addSubview(moodLabel)
+    contentView.addSubview(emotionLabel)
+    contentView.addSubview(titleLabel)
+    contentView.addSubview(noteLabel)
+    contentView.addSubview(dateLabel)
+    contentView.addSubview(timeLabel)
     
+    moodLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 18)
+    emotionLabel.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
+    titleLabel.font = UIFont(name: "Roboto-Bold", size: 16) ?? UIFont.boldSystemFont(ofSize: 16)
+    noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
+    dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
+    timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
+    
+    moodLabel.translatesAutoresizingMaskIntoConstraints = false
+    emotionLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    noteLabel.translatesAutoresizingMaskIntoConstraints = false
+    dateLabel.translatesAutoresizingMaskIntoConstraints = false
+    timeLabel.translatesAutoresizingMaskIntoConstraints = false
+    
+    NSLayoutConstraint.activate([
+      moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      moodLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      
+      emotionLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 5),
+      emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      emotionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      
+      titleLabel.topAnchor.constraint(equalTo: emotionLabel.bottomAnchor, constant: 5),
+      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      
+      noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+      noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      
+      dateLabel.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 5),
+      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      
+      timeLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),
+      timeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 10),
+      timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+    ])
   }
   
   func configure(with entry: JournalEntry) {
@@ -57,10 +101,10 @@ class JournalEntryCell: UITableViewCell {
   }
   
   private func formatDate(_ date: Date) -> String {
-    
+    return ""
   }
   
   private func formatTime(_ time: Date) -> String {
-    
+    return ""
   }
 }
