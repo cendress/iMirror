@@ -14,6 +14,11 @@ class JournalVC: UITableViewController {
   private var journalEntries: [JournalEntry] = []
   var selectedEmoji: String?
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    updateUI()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -21,9 +26,9 @@ class JournalVC: UITableViewController {
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
     
-    updateBackgroundMessage()
-    
-    journalEntries = CoreDataManager.shared.fetchJournalEntries()
+    updateUI()
+    // Register cell
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "JournalCell")
   }
   
   //MARK: - Table view methods
@@ -39,7 +44,13 @@ class JournalVC: UITableViewController {
     return cell
   }
   
-  //MARK: - Other methods
+  //MARK: - Update UI methods
+  
+  private func updateUI() {
+    journalEntries = CoreDataManager.shared.fetchJournalEntries()
+    tableView.reloadData()
+    updateBackgroundMessage()
+  }
   
   private func updateBackgroundMessage() {
     if journalEntries.isEmpty {
