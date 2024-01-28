@@ -22,6 +22,8 @@ class JournalVC: UITableViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
     
     updateBackgroundMessage()
+    
+    journalEntries = CoreDataManager.shared.fetchJournalEntries()
   }
   
   //MARK: - Table view methods
