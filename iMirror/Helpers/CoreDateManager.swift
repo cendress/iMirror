@@ -52,5 +52,15 @@ class CoreDataManager {
     saveContext()
   }
   
-  // Additional methods for CRUD operations will be added here
+  func fetchJournalEntries() -> [JournalEntry] {
+    let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
+    
+    do {
+      let entries = try viewContext.fetch(fetchRequest)
+      return entries
+    } catch {
+      print("Error fetching journal entries: \(error)")
+      return []
+    }
+  }
 }
