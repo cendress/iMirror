@@ -95,15 +95,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       // Save the journal entry
       CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       
-      // Navigate to JournalVC in the TabBarController
-      if let tabBarController = self.tabBarController {
-        for (index, viewController) in tabBarController.viewControllers?.enumerated() ?? [].enumerated() {
-          if viewController is JournalVC {
-            tabBarController.selectedIndex = index
-            break
-          }
-        }
-      }
+      delegate?.journalNotesVCDidSave()
+      self.dismiss(animated: true)
     } else {
       showAlert()
     }
