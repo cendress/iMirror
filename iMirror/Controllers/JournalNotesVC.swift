@@ -245,6 +245,12 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     return true
   }
   
+  func textViewDidChange(_ textView: UITextView) {
+    if let activeTextView = activeTextView, let selectedRange = activeTextView.selectedTextRange {
+      activeTextView.scrollRangeToVisible(activeTextView.selectedRange)
+    }
+  }
+  
   //MARK: - Dismiss keyboard method
   
   private func addDoneButtonOnKeyboard() {
