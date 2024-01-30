@@ -13,7 +13,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
   private let orLabel = ReuseableUI.createLabel(withText: "Or".uppercased())
-  private let toolbarHeight: CGFloat = 50
   
   private var activeTextView: UITextView?
   private var titleTextView: UITextView!
