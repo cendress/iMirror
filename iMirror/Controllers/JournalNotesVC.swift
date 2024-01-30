@@ -70,7 +70,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   @objc private func keyboardWillHide(notification: NSNotification) {
-    view.frame.origin.y = 0
+    if let activeTextView = activeTextView {
+      activeTextView.contentInset = .zero
+      activeTextView.scrollIndicatorInsets = .zero
+    }
   }
   
   @objc private func dismissKeyboard() {
