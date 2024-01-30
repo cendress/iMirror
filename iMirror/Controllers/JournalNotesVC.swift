@@ -56,15 +56,16 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Keyboard @objc methods
   
   @objc private func keyboardWillShow(notification: NSNotification) {
-    if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-       let activeTextView = activeTextView {
-      
-      let keyboardTop = view.frame.height - keyboardFrame.height
-      let textViewBottom = activeTextView.convert(activeTextView.bounds, to: view).maxY
-      
-      if textViewBottom > keyboardTop {
-        view.frame.origin.y = -(textViewBottom - keyboardTop)
-      }
+    guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+          let activeTextView = activeTextView else { return }
+    
+    let keyboardHeight = keyboardFrame.height
+    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+    activeTextView.contentInset = contentInsets
+    activeTextView.scrollIndicatorInsets = contentInsets
+    
+    if let selectedRange = activeTextView.selectedTextRange {
+      activeTextView.scrollRangeToVisible(activeTextView.selectedRange)
     }
   }
   
