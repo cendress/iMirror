@@ -16,6 +16,7 @@ class JournalEntryCell: UITableViewCell {
   private let noteLabel = UILabel()
   private let dateLabel = UILabel()
   private let timeLabel = UILabel()
+  private let moodBackgroundView = UIView()
   
   // Initialization
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,6 +30,7 @@ class JournalEntryCell: UITableViewCell {
   
   // Configuration
   private func setupCell() {
+    contentView.addSubview(moodBackgroundView)
     contentView.addSubview(moodLabel)
     contentView.addSubview(emotionLabel)
     contentView.addSubview(titleLabel)
@@ -43,6 +45,7 @@ class JournalEntryCell: UITableViewCell {
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
     
+    moodBackgroundView.translatesAutoresizingMaskIntoConstraints = false
     moodLabel.translatesAutoresizingMaskIntoConstraints = false
     emotionLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -50,10 +53,17 @@ class JournalEntryCell: UITableViewCell {
     dateLabel.translatesAutoresizingMaskIntoConstraints = false
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
     
+    moodBackgroundView.backgroundColor = UIColor.systemGray5
+    moodBackgroundView.layer.cornerRadius = 15
+    
     NSLayoutConstraint.activate([
+      moodBackgroundView.topAnchor.constraint(equalTo: moodLabel.topAnchor, constant: -5),
+      moodBackgroundView.leadingAnchor.constraint(equalTo: moodLabel.leadingAnchor, constant: -10),
+      moodBackgroundView.trailingAnchor.constraint(equalTo: moodLabel.trailingAnchor, constant: 10),
+      moodBackgroundView.bottomAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 5),
+      
       moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      moodLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
       
       emotionLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 5),
       emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -80,24 +90,9 @@ class JournalEntryCell: UITableViewCell {
     moodLabel.text = entry.mood
     titleLabel.text = entry.title
     noteLabel.text = entry.note
-    
-    if let currentDate = entry.currentDate {
-      dateLabel.text = formatDate(currentDate)
-    } else {
-      dateLabel.text = "N/A"
-    }
-    
-    if let currentTime = entry.currentTime {
-      timeLabel.text = formatTime(currentTime)
-    } else {
-      timeLabel.text = "N/A"
-    }
-    
-    if let emotionsArray = entry.emotion as? [String] {
-      emotionLabel.text = emotionsArray.joined(separator: ", ")
-    } else {
-      emotionLabel.text = "No emotions"
-    }
+    dateLabel.text = formatDate(entry.currentDate ?? Date())
+    timeLabel.text = formatTime(entry.currentTime ?? Date())
+    emotionLabel.text = (entry.emotion as? [String])?.joined(separator: ", ") ?? "No emotions"
   }
   
   private func formatDate(_ date: Date) -> String {

@@ -71,7 +71,8 @@ class JournalVC: UITableViewController {
   //MARK: - Update UI methods
   
   private func updateUI() {
-    journalEntries = CoreDataManager.shared.fetchJournalEntries()
+    let fetchedEntries = CoreDataManager.shared.fetchJournalEntries()
+    journalEntries = fetchedEntries.reversed()
     tableView.reloadData()
     updateBackgroundMessage()
   }
