@@ -9,7 +9,6 @@ import UIKit
 
 class JournalEntryCell: UITableViewCell {
   
-  // Properties
   private let moodLabel = UILabel()
   private let emotionLabel = UILabel()
   private let titleLabel = UILabel()
@@ -17,8 +16,8 @@ class JournalEntryCell: UITableViewCell {
   private let dateLabel = UILabel()
   private let timeLabel = UILabel()
   private let moodBackgroundView = UIView()
+  private let emotionBackgroundView = UIView()
   
-  // Initialization
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupCell()
@@ -28,9 +27,9 @@ class JournalEntryCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented.")
   }
   
-  // Configuration
   private func setupCell() {
     contentView.addSubview(moodBackgroundView)
+    contentView.addSubview(emotionBackgroundView)
     contentView.addSubview(moodLabel)
     contentView.addSubview(emotionLabel)
     contentView.addSubview(titleLabel)
@@ -38,6 +37,11 @@ class JournalEntryCell: UITableViewCell {
     contentView.addSubview(dateLabel)
     contentView.addSubview(timeLabel)
     
+    configureAppearance()
+    setupConstraints()
+  }
+  
+  private func configureAppearance() {
     moodLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 18)
     emotionLabel.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 16) ?? UIFont.boldSystemFont(ofSize: 16)
@@ -45,7 +49,24 @@ class JournalEntryCell: UITableViewCell {
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
     
+    moodBackgroundView.backgroundColor = UIColor.systemGray5
+    moodBackgroundView.layer.cornerRadius = 20
+    
+    emotionBackgroundView.backgroundColor = UIColor.systemGray6
+    emotionBackgroundView.layer.cornerRadius = 10
+    
+    contentView.backgroundColor = UIColor.white
+    contentView.layer.cornerRadius = 20
+    contentView.layer.shadowColor = UIColor.black.cgColor
+    contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    contentView.layer.shadowRadius = 4
+    contentView.layer.shadowOpacity = 0.1
+    contentView.clipsToBounds = false
+  }
+  
+  private func setupConstraints() {
     moodBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+    emotionBackgroundView.translatesAutoresizingMaskIntoConstraints = false
     moodLabel.translatesAutoresizingMaskIntoConstraints = false
     emotionLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -53,36 +74,38 @@ class JournalEntryCell: UITableViewCell {
     dateLabel.translatesAutoresizingMaskIntoConstraints = false
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
     
-    moodBackgroundView.backgroundColor = UIColor.systemGray5
-    moodBackgroundView.layer.cornerRadius = 15
-    
     NSLayoutConstraint.activate([
-      moodBackgroundView.topAnchor.constraint(equalTo: moodLabel.topAnchor, constant: -5),
-      moodBackgroundView.leadingAnchor.constraint(equalTo: moodLabel.leadingAnchor, constant: -10),
-      moodBackgroundView.trailingAnchor.constraint(equalTo: moodLabel.trailingAnchor, constant: 10),
-      moodBackgroundView.bottomAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 5),
+      moodBackgroundView.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
+      moodBackgroundView.centerXAnchor.constraint(equalTo: moodLabel.centerXAnchor),
+      moodBackgroundView.widthAnchor.constraint(equalTo: moodLabel.widthAnchor, constant: 20),
+      moodBackgroundView.heightAnchor.constraint(equalTo: moodBackgroundView.widthAnchor),
       
-      moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      emotionBackgroundView.topAnchor.constraint(equalTo: emotionLabel.topAnchor, constant: -5),
+      emotionBackgroundView.leadingAnchor.constraint(equalTo: emotionLabel.leadingAnchor, constant: -10),
+      emotionBackgroundView.trailingAnchor.constraint(equalTo: emotionLabel.trailingAnchor, constant: 10),
+      emotionBackgroundView.bottomAnchor.constraint(equalTo: emotionLabel.bottomAnchor, constant: 5),
       
-      emotionLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 5),
-      emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      emotionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+      moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       
-      titleLabel.topAnchor.constraint(equalTo: emotionLabel.bottomAnchor, constant: 5),
-      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      titleLabel.topAnchor.constraint(equalTo: moodLabel.topAnchor),
+      titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
+      titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: timeLabel.leadingAnchor, constant: -10),
       
-      noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-      noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+      timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       
-      dateLabel.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 5),
-      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      noteLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 10),
+      noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       
-      timeLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),
-      timeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 10),
-      timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+      emotionLabel.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
+      emotionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      emotionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      
+      dateLabel.topAnchor.constraint(equalTo: emotionLabel.bottomAnchor, constant: 10),
+      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
     ])
   }
   
