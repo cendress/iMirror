@@ -15,6 +15,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     setupTabs()
     self.delegate = self
     self.selectedIndex = 0
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(handleJournalEntrySave), name: .didSaveJournalEntry, object: nil)
   }
   
   // MARK: - Tab bar configuration method
@@ -56,5 +58,15 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
       navController.modalPresentationStyle = .fullScreen
       self.present(navController, animated: true, completion: nil)
     }
+  }
+  
+  //MARK: - @objc method
+  
+  @objc private func handleJournalEntrySave() {
+    self.selectedIndex = 0
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }
