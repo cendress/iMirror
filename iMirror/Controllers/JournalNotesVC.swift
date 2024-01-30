@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol JournalNotesVCDelegate: AnyObject {
-  func journalNotesVCDidSave()
-}
-
 class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   //MARK: - Initial setup
@@ -30,7 +26,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   var selectedEmotions: [String] = []
   var mood: String?
-  weak var delegate: JournalNotesVCDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -95,7 +90,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       // Save the journal entry
       CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       
-      delegate?.journalNotesVCDidSave()
       self.dismiss(animated: true)
     } else {
       showAlert()
