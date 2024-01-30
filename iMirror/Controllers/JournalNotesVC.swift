@@ -109,7 +109,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     titleTextView = UITextView()
     titleTextView.text = titlePlaceholder
     titleTextView.font = UIFont(name: "Roboto-Regular", size: 18)
-    titleTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+    //titleTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+    titleTextView.backgroundColor = .systemBackground
     titleTextView.textColor = .label
     titleTextView.layer.borderWidth = 0.5
     titleTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -120,7 +121,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     notesTextView = UITextView()
     notesTextView.text = notesPlaceholder
     notesTextView.font = UIFont(name: "Roboto-Regular", size: 16)
-    notesTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+    //notesTextView.backgroundColor = UIColor(white: 0.97, alpha: 1)
+    notesTextView.backgroundColor = .systemBackground
     notesTextView.textColor = .label
     notesTextView.layer.borderWidth = 0.5
     notesTextView.layer.borderColor = UIColor.lightGray.cgColor
