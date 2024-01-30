@@ -90,6 +90,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       // Save the journal entry
       CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       
+      NotificationCenter.default.post(name: .didSaveJournalEntry, object: nil)
       self.dismiss(animated: true)
     } else {
       showAlert()
@@ -278,4 +279,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
+}
+
+extension Notification.Name {
+  static let didSaveJournalEntry = Notification.Name("didSaveJournalEntry")
 }
