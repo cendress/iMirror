@@ -13,6 +13,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   private let questionLabel = ReuseableUI.createLabel(withText: "Write about it.")
   private let orLabel = ReuseableUI.createLabel(withText: "Or".uppercased())
+  private let toolbarHeight: CGFloat = 50
   
   private var activeTextView: UITextView?
   private var titleTextView: UITextView!
@@ -56,24 +57,20 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Keyboard @objc methods
   
   @objc private func keyboardWillShow(notification: NSNotification) {
-    guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-          let activeTextView = activeTextView else { return }
-    
-    let keyboardHeight = keyboardFrame.height
-    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-    activeTextView.contentInset = contentInsets
-    activeTextView.scrollIndicatorInsets = contentInsets
-    
-    if let selectedRange = activeTextView.selectedTextRange {
-      activeTextView.scrollRangeToVisible(activeTextView.selectedRange)
+    if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+       let activeTextView = activeTextView {
+      
+      let keyboardTop = view.frame.height - keyboardFrame.height
+      let textViewBottom = activeTextView.convert(activeTextView.bounds, to: view).maxY
+      
+      if textViewBottom > keyboardTop {
+        view.frame.origin.y = -(textViewBottom - keyboardTop)
+      }
     }
   }
   
   @objc private func keyboardWillHide(notification: NSNotification) {
-    if let activeTextView = activeTextView {
-      activeTextView.contentInset = .zero
-      activeTextView.scrollIndicatorInsets = .zero
-    }
+    view.frame.origin.y = 0
   }
   
   @objc private func dismissKeyboard() {
@@ -243,12 +240,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       return false
     }
     return true
-  }
-  
-  func textViewDidChange(_ textView: UITextView) {
-    if let activeTextView = activeTextView, let selectedRange = activeTextView.selectedTextRange {
-      activeTextView.scrollRangeToVisible(activeTextView.selectedRange)
-    }
   }
   
   //MARK: - Dismiss keyboard method
