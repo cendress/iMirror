@@ -106,3 +106,11 @@ class JournalVC: UITableViewController {
     }
   }
 }
+
+extension JournalVC: JournalNotesVCDelegate {
+  func journalNotesVCDidSave() {
+    if let tabBarController = self.tabBarController {
+      tabBarController.selectedIndex = 0
+    }
+  }
+}
