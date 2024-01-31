@@ -10,14 +10,12 @@ import UIKit
 class JournalEntryCell: UITableViewCell {
   
   private let moodLabel = UILabel()
-  private var emotionLabels = [UILabel]()
   private let titleLabel = UILabel()
   private let noteLabel = UILabel()
   private let dateLabel = UILabel()
   private let timeLabel = UILabel()
   private let moodBackgroundView = UIView()
-  
-  private var lastEmotionLabel: UILabel?
+  private let emotionsStackView = UIStackView()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,6 +33,12 @@ class JournalEntryCell: UITableViewCell {
     contentView.addSubview(noteLabel)
     contentView.addSubview(dateLabel)
     contentView.addSubview(timeLabel)
+    
+    emotionsStackView.axis = .vertical
+    emotionsStackView.alignment = .leading
+    emotionsStackView.distribution = .equalSpacing
+    emotionsStackView.spacing = 5
+    contentView.addSubview(emotionsStackView)
     
     configureAppearance()
     setupConstraints()
@@ -66,6 +70,7 @@ class JournalEntryCell: UITableViewCell {
     noteLabel.translatesAutoresizingMaskIntoConstraints = false
     dateLabel.translatesAutoresizingMaskIntoConstraints = false
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
+    emotionsStackView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
       moodBackgroundView.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
@@ -87,7 +92,11 @@ class JournalEntryCell: UITableViewCell {
       noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       
-      dateLabel.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
+      emotionsStackView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
+      emotionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      emotionsStackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
+      
+      dateLabel.topAnchor.constraint(equalTo: emotionsStackView.bottomAnchor, constant: 10),
       dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
     ])
@@ -103,34 +112,17 @@ class JournalEntryCell: UITableViewCell {
   }
   
   private func createEmotionLabels(for emotions: [String]) {
-    emotionLabels.forEach { $0.removeFromSuperview() }
-    emotionLabels.removeAll()
+    emotionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     
-    var previousLabel: UILabel? = nil
     for emotion in emotions {
       let label = UILabel()
-      label.text = " \(emotion) "
+      label.text = emotion
       label.backgroundColor = UIColor.systemGray6
       label.layer.cornerRadius = 10
       label.clipsToBounds = true
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
-      contentView.addSubview(label)
-      label.translatesAutoresizingMaskIntoConstraints = false
-      
-      let topConstraint = label.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10)
-      let leadingConstraint = label.leadingAnchor.constraint(equalTo: previousLabel == nil ? contentView.leadingAnchor : previousLabel!.trailingAnchor, constant: 20)
-      
-      NSLayoutConstraint.activate([topConstraint, leadingConstraint])
-      
-      if previousLabel == nil {
-        let bottomConstraint = label.bottomAnchor.constraint(lessThanOrEqualTo: dateLabel.topAnchor, constant: -10)
-        bottomConstraint.priority = .defaultHigh
-        NSLayoutConstraint.activate([bottomConstraint])
-      }
-      
-      previousLabel = label
-      emotionLabels.append(label)
+      emotionsStackView.addArrangedSubview(label)
     }
   }
   
