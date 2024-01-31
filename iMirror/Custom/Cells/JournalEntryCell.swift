@@ -79,27 +79,27 @@ class JournalEntryCell: UITableViewCell {
     NSLayoutConstraint.activate([
       moodBackgroundView.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
       moodBackgroundView.centerXAnchor.constraint(equalTo: moodLabel.centerXAnchor),
-      moodBackgroundView.widthAnchor.constraint(equalTo: moodLabel.widthAnchor, constant: 20),
+      moodBackgroundView.widthAnchor.constraint(equalTo: moodLabel.widthAnchor, constant: ReuseableUI.smallPadding),
       moodBackgroundView.heightAnchor.constraint(equalTo: moodBackgroundView.widthAnchor),
       
-      moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-      moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      moodLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ReuseableUI.smallPadding),
+      moodLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ReuseableUI.smallPadding),
       
       titleLabel.topAnchor.constraint(equalTo: moodLabel.topAnchor),
       titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
       titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: timeLabel.leadingAnchor, constant: -10),
       
-      timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-      timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ReuseableUI.smallPadding),
+      timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ReuseableUI.smallPadding),
       
       noteLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 10),
-      noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-      noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ReuseableUI.smallPadding),
+      noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ReuseableUI.smallPadding),
       
       scrollView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
-      scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-      scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-      scrollView.heightAnchor.constraint(equalToConstant: 40), // Adjust based on your content
+      scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ReuseableUI.smallPadding),
+      scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      scrollView.heightAnchor.constraint(equalToConstant: ReuseableUI.padding),
       
       emotionsStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
       emotionsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -108,8 +108,8 @@ class JournalEntryCell: UITableViewCell {
       emotionsStackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
       
       dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
-      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-      dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+      dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ReuseableUI.smallPadding),
+      dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -ReuseableUI.smallPadding)
     ])
   }
   
