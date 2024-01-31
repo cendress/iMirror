@@ -17,6 +17,8 @@ class JournalEntryCell: UITableViewCell {
   private let timeLabel = UILabel()
   private let moodBackgroundView = UIView()
   
+  private var lastEmotionLabel: UILabel?
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupCell()
