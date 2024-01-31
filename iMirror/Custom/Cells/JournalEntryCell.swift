@@ -116,7 +116,7 @@ class JournalEntryCell: UITableViewCell {
       contentView.addSubview(label)
       label.translatesAutoresizingMaskIntoConstraints = false
       
-      let topConstraint = label.topAnchor.constraint(equalTo: previousLabel == nil ? noteLabel.bottomAnchor : previousLabel!.bottomAnchor, constant: 10)
+      let topConstraint = label.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10)
       let leadingConstraint = label.leadingAnchor.constraint(equalTo: previousLabel == nil ? contentView.leadingAnchor : previousLabel!.trailingAnchor, constant: 20)
       
       NSLayoutConstraint.activate([topConstraint, leadingConstraint])
