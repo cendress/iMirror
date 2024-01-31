@@ -33,8 +33,20 @@ class JournalVC: UITableViewController {
   
   //MARK: - Table view methods
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return journalEntries.count
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 20
+  }
+  
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      return UIView()
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +54,7 @@ class JournalVC: UITableViewController {
       fatalError("Unable to dequeue JournalEntryCell")
     }
     
-    let entry = journalEntries[indexPath.row]
+    let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
     return cell
   }
@@ -51,11 +63,11 @@ class JournalVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let entry = journalEntries[indexPath.row]
+      let entry = journalEntries[indexPath.section]
       CoreDataManager.shared.viewContext.delete(entry)
       CoreDataManager.shared.saveContext()
       
-      journalEntries.remove(at: indexPath.row)
+      journalEntries.remove(at: indexPath.section)
       tableView.deleteRows(at: [indexPath], with: .fade)
       updateBackgroundMessage()
       tableView.reloadData()
