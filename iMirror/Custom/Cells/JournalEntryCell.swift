@@ -15,6 +15,7 @@ class JournalEntryCell: UITableViewCell {
   private let dateLabel = UILabel()
   private let timeLabel = UILabel()
   private let moodBackgroundView = UIView()
+  private let scrollView = UIScrollView()
   private let emotionsStackView = UIStackView()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,12 +34,14 @@ class JournalEntryCell: UITableViewCell {
     contentView.addSubview(noteLabel)
     contentView.addSubview(dateLabel)
     contentView.addSubview(timeLabel)
+    contentView.addSubview(scrollView)
     
-    emotionsStackView.axis = .vertical
-    emotionsStackView.alignment = .leading
+    scrollView.addSubview(emotionsStackView)
+    
+    emotionsStackView.axis = .horizontal
+    emotionsStackView.alignment = .center
     emotionsStackView.distribution = .equalSpacing
-    emotionsStackView.spacing = 5
-    contentView.addSubview(emotionsStackView)
+    emotionsStackView.spacing = 8
     
     configureAppearance()
     setupConstraints()
@@ -70,6 +73,7 @@ class JournalEntryCell: UITableViewCell {
     noteLabel.translatesAutoresizingMaskIntoConstraints = false
     dateLabel.translatesAutoresizingMaskIntoConstraints = false
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
     emotionsStackView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
@@ -92,11 +96,18 @@ class JournalEntryCell: UITableViewCell {
       noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
       
-      emotionsStackView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
-      emotionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-      emotionsStackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
+      scrollView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
+      scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      scrollView.heightAnchor.constraint(equalToConstant: 40), // Adjust based on your content
       
-      dateLabel.topAnchor.constraint(equalTo: emotionsStackView.bottomAnchor, constant: 10),
+      emotionsStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      emotionsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+      emotionsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+      emotionsStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      emotionsStackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+      
+      dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
       dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
     ])
