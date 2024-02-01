@@ -141,7 +141,7 @@ class JournalEntryCell: UITableViewCell {
     emotionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     emotions.forEach { emotion in
       let label = UILabel()
-      label.text = emotion
+      label.text = emotion.lowercased()
       label.backgroundColor = UIColor.systemGray6
       label.layer.cornerRadius = 10
       label.clipsToBounds = true
