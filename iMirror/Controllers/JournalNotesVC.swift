@@ -61,7 +61,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       
       let keyboardTop = view.frame.height - keyboardFrame.height
       let textViewBottom = activeTextView.convert(activeTextView.bounds, to: view).maxY
-      let toolbarHeight: CGFloat = 28
+      let toolbarHeight: CGFloat = 1
       
       if textViewBottom + toolbarHeight > keyboardTop {
         view.frame.origin.y = -(textViewBottom - keyboardTop + toolbarHeight)
