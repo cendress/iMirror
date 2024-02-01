@@ -142,17 +142,23 @@ class JournalEntryCell: UITableViewCell {
     emotions.forEach { emotion in
       let label = PaddedLabel()
       label.text = emotion.lowercased()
-      label.textColor = UIColor.systemGray6
-      label.backgroundColor = UIColor.systemGray2
-      label.layer.cornerRadius = 10
+      label.textColor = UIColor.white
+      label.backgroundColor = UIColor(named: "AppColor")
+      label.layer.cornerRadius = 7
       label.clipsToBounds = true
       label.textAlignment = .center
-      label.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
+      label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
       
-      label.topInset = 4
-      label.bottomInset = 4
-      label.leftInset = 8
-      label.rightInset = 8
+      label.layer.shadowColor = UIColor.black.cgColor
+      label.layer.shadowOffset = CGSize(width: 0, height: 4)
+      label.layer.shadowRadius = 4
+      label.layer.shadowOpacity = 0.5
+      
+      label.topInset = 8
+      label.bottomInset = 8
+      label.leftInset = 12
+      label.rightInset = 12
+      
       emotionsStackView.addArrangedSubview(label)
     }
   }
