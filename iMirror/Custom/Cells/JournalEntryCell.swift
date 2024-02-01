@@ -144,15 +144,15 @@ class JournalEntryCell: UITableViewCell {
       label.text = emotion.lowercased()
       label.textColor = UIColor.white
       label.backgroundColor = UIColor(named: "AppColor")
-      label.layer.cornerRadius = 7
+      label.layer.cornerRadius = 9
       label.clipsToBounds = true
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
       
-      label.topInset = 8
-      label.bottomInset = 8
-      label.leftInset = 12
-      label.rightInset = 12
+      label.topInset = 6
+      label.bottomInset = 6
+      label.leftInset = 10
+      label.rightInset = 10
       
       emotionsStackView.addArrangedSubview(label)
     }
