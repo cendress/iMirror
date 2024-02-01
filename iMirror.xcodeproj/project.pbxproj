@@ -19,6 +19,7 @@
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
 		9D7C03592B2267640075E59D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C03582B2267640075E59D /* Assets.xcassets */; };
 		9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */; };
+		9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */; };
 		9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */; };
 		9DFEE63B2B447241001835E1 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62E2B447241001835E1 /* Roboto-Light.ttf */; };
 		9DFEE63C2B447241001835E1 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62F2B447241001835E1 /* Roboto-Regular.ttf */; };
@@ -50,6 +51,7 @@
 		9D7C03582B2267640075E59D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7C035B2B2267640075E59D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D7C035D2B2267640075E59D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DFEE62E2B447241001835E1 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9DFEE62F2B447241001835E1 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */,
 				9D0197F62B66C8D600E6FE30 /* CoreDateManager.swift */,
+				9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */,
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
+				9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */,
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,

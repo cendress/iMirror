@@ -142,7 +142,8 @@ class JournalEntryCell: UITableViewCell {
     emotions.forEach { emotion in
       let label = UILabel()
       label.text = emotion.lowercased()
-      label.backgroundColor = UIColor.systemGray6
+      label.textColor = UIColor.systemGray6
+      label.backgroundColor = UIColor.systemGray2
       label.layer.cornerRadius = 10
       label.clipsToBounds = true
       label.textAlignment = .center
