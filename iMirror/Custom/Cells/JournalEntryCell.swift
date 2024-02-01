@@ -138,18 +138,23 @@ class JournalEntryCell: UITableViewCell {
   }
   
   private func createEmotionLabels(for emotions: [String]) {
-    emotionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-    emotions.forEach { emotion in
-      let label = UILabel()
-      label.text = emotion.lowercased()
-      label.textColor = UIColor.systemGray6
-      label.backgroundColor = UIColor.systemGray2
-      label.layer.cornerRadius = 10
-      label.clipsToBounds = true
-      label.textAlignment = .center
-      label.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
-      emotionsStackView.addArrangedSubview(label)
-    }
+      emotionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+      emotions.forEach { emotion in
+        let label = PaddedLabel()
+        label.text = emotion.lowercased()
+        label.textColor = UIColor.systemGray6
+        label.backgroundColor = UIColor.systemGray2
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
+        // Set padding as needed
+        label.topInset = 8
+        label.bottomInset = 8
+        label.leftInset = 16
+        label.rightInset = 16
+        emotionsStackView.addArrangedSubview(label)
+      }
   }
   
   private func formatDate(_ date: Date) -> String {
