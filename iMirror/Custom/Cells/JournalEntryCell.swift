@@ -51,7 +51,7 @@ class JournalEntryCell: UITableViewCell {
   
   private func configureAppearance() {
     moodLabel.font = UIFont(name: "Roboto-Regular", size: 22) ?? UIFont.boldSystemFont(ofSize: 22)
-    titleLabel.font = UIFont(name: "Roboto-Bold", size: 16) ?? UIFont.boldSystemFont(ofSize: 16)
+    titleLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 20)
     noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
@@ -104,11 +104,10 @@ class JournalEntryCell: UITableViewCell {
       moodLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
       moodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       
-      titleLabel.topAnchor.constraint(equalTo: moodLabel.bottomAnchor, constant: 10),
-      titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-      titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+      titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+      titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
       
-      noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+      noteLabel.topAnchor.constraint(equalTo: moodBackgroundView.bottomAnchor, constant: 10),
       noteLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       noteLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
