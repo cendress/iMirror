@@ -149,11 +149,6 @@ class JournalEntryCell: UITableViewCell {
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
       
-      label.layer.shadowColor = UIColor.black.cgColor
-      label.layer.shadowOffset = CGSize(width: 0, height: 4)
-      label.layer.shadowRadius = 4
-      label.layer.shadowOpacity = 0.5
-      
       label.topInset = 8
       label.bottomInset = 8
       label.leftInset = 12
