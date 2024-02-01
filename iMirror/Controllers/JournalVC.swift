@@ -119,7 +119,7 @@ class JournalVC: UITableViewController {
       self.tableView.separatorStyle = .none
     } else {
       self.tableView.backgroundView = nil
-      self.tableView.separatorStyle = .singleLine
+      self.tableView.separatorStyle = .none
     }
   }
 }
