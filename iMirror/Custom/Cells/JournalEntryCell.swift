@@ -50,14 +50,20 @@ class JournalEntryCell: UITableViewCell {
   }
   
   private func configureAppearance() {
-    moodLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 18)
+    moodLabel.font = UIFont(name: "Roboto-Regular", size: 22) ?? UIFont.boldSystemFont(ofSize: 22)
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 16) ?? UIFont.boldSystemFont(ofSize: 16)
     noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
     
-    moodBackgroundView.backgroundColor = UIColor.systemGray5
-    moodBackgroundView.layer.cornerRadius = 20
+    moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
+    moodBackgroundView.layer.cornerRadius = 19
+    moodBackgroundView.layer.borderWidth = 1.0
+    moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    moodBackgroundView.layer.shadowColor = UIColor.black.cgColor
+    moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 4)
+    moodBackgroundView.layer.shadowRadius = 4
+    moodBackgroundView.layer.shadowOpacity = 0.25
     
     containerView.backgroundColor = UIColor.white
     containerView.layer.borderWidth = 1
@@ -93,7 +99,7 @@ class JournalEntryCell: UITableViewCell {
     NSLayoutConstraint.activate([
       moodBackgroundView.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
       moodBackgroundView.centerXAnchor.constraint(equalTo: moodLabel.centerXAnchor),
-      moodBackgroundView.widthAnchor.constraint(equalTo: moodLabel.widthAnchor, constant: 20),
+      moodBackgroundView.widthAnchor.constraint(equalTo: moodLabel.widthAnchor, constant: 15),
       moodBackgroundView.heightAnchor.constraint(equalTo: moodBackgroundView.widthAnchor),
       
       moodLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
