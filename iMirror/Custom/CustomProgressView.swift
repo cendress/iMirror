@@ -53,7 +53,7 @@ class CustomProgressView: UIView {
     sliderKnob.layer.shadowColor = UIColor.black.cgColor
     sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 5)
     sliderKnob.layer.shadowOpacity = 0
-    sliderKnob.layer.shadowRadius = 5
+    sliderKnob.layer.shadowRadius = 3
     addSubview(sliderKnob)
   }
   
