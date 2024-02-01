@@ -60,20 +60,19 @@ class JournalEntryCell: UITableViewCell {
     moodBackgroundView.layer.cornerRadius = 19
     moodBackgroundView.layer.borderWidth = 1.0
     moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-    moodBackgroundView.layer.shadowColor = UIColor.black.cgColor
+    moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
     moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 4)
-    moodBackgroundView.layer.shadowRadius = 4
+    moodBackgroundView.layer.shadowRadius = 6
     moodBackgroundView.layer.shadowOpacity = 0.25
     
-    containerView.backgroundColor = UIColor.white
+    containerView.backgroundColor = UIColor.systemBackground
     containerView.layer.borderWidth = 1
-    containerView.layer.borderColor = UIColor.black.cgColor
-    containerView.layer.cornerRadius = 20
-    containerView.layer.shadowColor = UIColor.black.cgColor
-    containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-    containerView.layer.shadowRadius = 4
-    containerView.layer.shadowOpacity = 0.1
-    containerView.clipsToBounds = true
+    containerView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    containerView.layer.cornerRadius = 15
+    containerView.layer.shadowColor = UIColor.systemGray.cgColor
+    containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+    containerView.layer.shadowRadius = 6
+    containerView.layer.shadowOpacity = 0.25
   }
   
   private func setupContainerViewConstraints() {

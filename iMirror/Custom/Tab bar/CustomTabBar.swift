@@ -38,7 +38,7 @@ class CustomTabBar: UITabBar {
     layer.lineWidth = 1.0
     layer.shadowOffset = CGSize(width: 0, height: 2)
     layer.shadowRadius = 10
-    layer.shadowColor = UIColor.black.cgColor
+    layer.shadowColor = UIColor.systemGray.cgColor
     layer.shadowOpacity = 0.5
   }
   
