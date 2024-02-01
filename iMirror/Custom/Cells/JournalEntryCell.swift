@@ -63,7 +63,7 @@ class JournalEntryCell: UITableViewCell {
     moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
     moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 4)
     moodBackgroundView.layer.shadowRadius = 6
-    moodBackgroundView.layer.shadowOpacity = 0.25
+    moodBackgroundView.layer.shadowOpacity = 0.5
     
     containerView.backgroundColor = UIColor.systemBackground
     containerView.layer.borderWidth = 1
