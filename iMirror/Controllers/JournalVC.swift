@@ -20,8 +20,6 @@ class JournalVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemBackground
-    
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.rightBarButtonItem = editButtonItem
@@ -56,6 +54,7 @@ class JournalVC: UITableViewController {
     
     let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
+    cell.backgroundColor = .clear
     return cell
   }
   
@@ -95,10 +94,18 @@ class JournalVC: UITableViewController {
   }
   
   private func updateBackgroundMessage() {
+    // Identify the message label to easily add or remove it
+    let messageLabelTag = 123
+    
+    // Remove any existing message label
+    tableView.backgroundView?.viewWithTag(messageLabelTag)?.removeFromSuperview()
+    
     if journalEntries.isEmpty {
       let messageLabel = UILabel()
+      messageLabel.tag = messageLabelTag
       messageLabel.numberOfLines = 0
       messageLabel.textAlignment = .center
+      messageLabel.frame = tableView.bounds
       
       let noEntriesText = "No Entries!\n"
       let actionText = "Tap the plus button to add a journal entry."
@@ -116,11 +123,25 @@ class JournalVC: UITableViewController {
       
       messageLabel.attributedText = attributedString
       
-      self.tableView.backgroundView = messageLabel
-      self.tableView.separatorStyle = .none
+      if tableView.backgroundView == nil {
+        let backgroundView = UIView(frame: tableView.bounds)
+        tableView.backgroundView = backgroundView
+      }
+      
+      tableView.backgroundView?.addSubview(messageLabel)
+      
+      messageLabel.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        messageLabel.centerXAnchor.constraint(equalTo: tableView.backgroundView!.centerXAnchor),
+        messageLabel.centerYAnchor.constraint(equalTo: tableView.backgroundView!.centerYAnchor),
+        messageLabel.leadingAnchor.constraint(equalTo: tableView.backgroundView!.leadingAnchor),
+        messageLabel.trailingAnchor.constraint(equalTo: tableView.backgroundView!.trailingAnchor)
+      ])
+      
+      tableView.separatorStyle = .none
     } else {
-      self.tableView.backgroundView = nil
-      self.tableView.separatorStyle = .none
+      // Removes lines in table view between cells
+      tableView.separatorStyle = .none
     }
   }
 }
