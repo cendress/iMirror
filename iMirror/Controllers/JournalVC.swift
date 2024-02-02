@@ -46,7 +46,7 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      return UIView()
+    return UIView()
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,21 +60,22 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: false)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
   //MARK: - Table view edit methods
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let entry = journalEntries[indexPath.section]
-      CoreDataManager.shared.viewContext.delete(entry)
+      let journalEntry = journalEntries[indexPath.section]
+      CoreDataManager.shared.viewContext.delete(journalEntry)
       CoreDataManager.shared.saveContext()
       
       journalEntries.remove(at: indexPath.section)
-      tableView.deleteRows(at: [indexPath], with: .fade)
+      
+      tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+      
       updateBackgroundMessage()
-      tableView.reloadData()
     }
   }
   
