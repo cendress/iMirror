@@ -54,7 +54,7 @@ class JournalEntryCell: UITableViewCell {
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 20)
     noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
-    timeLabel.font = UIFont(name: "Roboto-Light", size: 12) ?? UIFont.systemFont(ofSize: 12)
+    timeLabel.font = UIFont(name: "Roboto-Light", size: 14) ?? UIFont.systemFont(ofSize: 12)
     
     moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
     moodBackgroundView.layer.cornerRadius = 19
