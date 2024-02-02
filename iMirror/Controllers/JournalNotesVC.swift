@@ -239,6 +239,18 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       textView.resignFirstResponder()
       return false
     }
+    
+    // Limit the titleTextView to a certain character count
+    if textView == titleTextView {
+      let currentText = textView.text ?? ""
+      guard let stringRange = Range(range, in: currentText) else { return false }
+      let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+      
+      // Character limit
+      let characterLimit = 55
+      return updatedText.count <= characterLimit
+    }
+    
     return true
   }
   
