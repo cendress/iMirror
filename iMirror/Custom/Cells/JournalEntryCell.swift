@@ -106,23 +106,23 @@ class JournalEntryCell: UITableViewCell {
       
       titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
       titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
+      titleLabel.trailingAnchor.constraint(equalTo: noteLabel.leadingAnchor, constant: -20),
+      
+      timeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+      timeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
       noteLabel.topAnchor.constraint(equalTo: moodBackgroundView.bottomAnchor, constant: 10),
       noteLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       noteLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
-      dateLabel.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
-      dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-      dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-      
-      timeLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
-      timeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-      timeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-      
-      scrollView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 10),
+      scrollView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
       scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-      scrollView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+      
+      dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
+      dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+      dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+      dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
       
       emotionsStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
       emotionsStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
