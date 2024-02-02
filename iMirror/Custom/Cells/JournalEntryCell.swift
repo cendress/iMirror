@@ -54,7 +54,7 @@ class JournalEntryCell: UITableViewCell {
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 20)
     noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
-    timeLabel.font = UIFont(name: "Roboto-Thin", size: 12) ?? UIFont.systemFont(ofSize: 12)
+    timeLabel.font = UIFont(name: "Roboto-Light", size: 12) ?? UIFont.systemFont(ofSize: 12)
     
     moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
     moodBackgroundView.layer.cornerRadius = 19
@@ -104,14 +104,14 @@ class JournalEntryCell: UITableViewCell {
       moodLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
       moodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       
-      titleLabel.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
+      titleLabel.topAnchor.constraint(equalTo: moodBackgroundView.topAnchor, constant: 0),
       titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
       titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
-      timeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-      timeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+      timeLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
+      timeLabel.bottomAnchor.constraint(equalTo: moodBackgroundView.bottomAnchor, constant: 0),
       
-      noteLabel.topAnchor.constraint(equalTo: moodBackgroundView.bottomAnchor, constant: 10),
+      noteLabel.topAnchor.constraint(equalTo: moodBackgroundView.bottomAnchor, constant: 20),
       noteLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       noteLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
@@ -119,10 +119,10 @@ class JournalEntryCell: UITableViewCell {
       scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
-      dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
+      dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20),
       dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-      dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+      dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
       
       emotionsStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
       emotionsStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
