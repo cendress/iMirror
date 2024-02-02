@@ -104,9 +104,9 @@ class JournalEntryCell: UITableViewCell {
       moodLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
       moodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       
-      titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+      titleLabel.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
       titleLabel.leadingAnchor.constraint(equalTo: moodBackgroundView.trailingAnchor, constant: 10),
-      titleLabel.trailingAnchor.constraint(equalTo: noteLabel.leadingAnchor, constant: -20),
+      titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
       
       timeLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
       timeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
