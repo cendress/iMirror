@@ -39,9 +39,9 @@ struct ReuseableUI {
     button.layer.masksToBounds = false
     
     button.layer.shadowColor = UIColor.systemGray.cgColor
-    button.layer.shadowOffset = CGSize(width: 0, height: 3)
-    button.layer.shadowRadius = 6
-    button.layer.shadowOpacity = 0.25
+    button.layer.shadowOffset = CGSize(width: 0, height: 12)
+    button.layer.shadowRadius = 14
+    button.layer.shadowOpacity = 0.3
     
     return button
   }
