@@ -25,6 +25,9 @@ class JournalVC: UITableViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.rightBarButtonItem = editButtonItem
     
+//    tableView.estimatedRowHeight = 100
+    tableView.rowHeight = UITableView.automaticDimension
+    
     updateUI()
     // Register cell
     tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
@@ -67,10 +70,6 @@ class JournalVC: UITableViewController {
       expandedIndexPaths.insert(indexPath)
     }
     tableView.reloadRows(at: [indexPath], with: .automatic)
-  }
-  
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
   }
   
   //MARK: - Table view edit methods
