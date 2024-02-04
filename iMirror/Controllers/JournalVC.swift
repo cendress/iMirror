@@ -59,7 +59,9 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    let entry = journalEntries[indexPath.section]
+    entry.isExpanded.toggle()
+    tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
   }
   
   //MARK: - Table view edit methods

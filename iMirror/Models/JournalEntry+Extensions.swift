@@ -9,6 +9,11 @@ import Foundation
 
 extension JournalEntry {
   var isExpanded: Bool {
-    return false
+    get {
+      return false
+    }
+    set {
+      // Property needs a setter to toggle
+    }
   }
 }
