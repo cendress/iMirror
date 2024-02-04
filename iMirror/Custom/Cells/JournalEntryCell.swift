@@ -65,12 +65,20 @@ class JournalEntryCell: UITableViewCell {
     moodBackgroundView.layer.shadowRadius = 8
     moodBackgroundView.layer.shadowOpacity = 0.3
     
-    containerView.backgroundColor = UIColor.systemBackground
     containerView.layer.cornerRadius = 15
     containerView.layer.shadowColor = UIColor.systemGray.cgColor
     containerView.layer.shadowOffset = CGSize(width: 0, height: 6)
     containerView.layer.shadowRadius = 8
     containerView.layer.shadowOpacity = 0.3
+    
+    containerView.backgroundColor = UIColor { traitCollection -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.05, alpha: 1.0)
+      default:
+        return UIColor.systemBackground
+      }
+    }
     
     noteLabel.numberOfLines = 2
   }
@@ -173,4 +181,5 @@ class JournalEntryCell: UITableViewCell {
     timeFormatter.dateFormat = "h:mm a"
     return timeFormatter.string(from: time)
   }
+  
 }

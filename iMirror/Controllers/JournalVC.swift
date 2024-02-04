@@ -138,7 +138,7 @@ class JournalVC: UITableViewController {
     tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
       switch traitCollection.userInterfaceStyle {
       case .dark:
-        return UIColor(white: 0.05, alpha: 1.0)
+        return UIColor(white: 0.0, alpha: 1.0)
       default:
         return UIColor(white: 0.98, alpha: 1.0)
       }
