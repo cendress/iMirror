@@ -110,7 +110,7 @@ class JournalVC: UITableViewController {
     deleteAction.image = UIImage(named: "trash")
     
     let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-//    configuration.performsFirstActionWithFullSwipe = false
+    configuration.performsFirstActionWithFullSwipe = false
     return configuration
   }
   
