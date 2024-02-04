@@ -23,7 +23,6 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.rightBarButtonItem = editButtonItem
     
     //    tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableView.automaticDimension
