@@ -99,7 +99,7 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    deleteAction.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+    deleteAction.backgroundColor = .red
     deleteAction.image = UIImage(systemName: "trash")
     
     let configuration = UISwipeActionsConfiguration(actions: [deleteAction])

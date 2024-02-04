@@ -68,8 +68,9 @@ class JournalEntryCell: UITableViewCell {
     }
     
     moodBackgroundView.layer.cornerRadius = 19
-    moodBackgroundView.layer.borderWidth = 1.0
-    moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    moodBackgroundView.layer.borderWidth = 2.0
+//    moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    moodBackgroundView.layer.borderColor = UIColor.systemBackground.cgColor
     moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
     moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 6)
     moodBackgroundView.layer.shadowRadius = 8
@@ -166,22 +167,13 @@ class JournalEntryCell: UITableViewCell {
     emotions.forEach { emotion in
       let label = PaddedLabel()
       label.text = emotion.lowercased()
-      label.textColor = UIColor.white
-//      label.textColor = .label
-      label.backgroundColor = UIColor(named: "AppColor")
+      label.textColor = UIColor.systemGray
+//      label.backgroundColor = UIColor(named: "AppColor")
+      label.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
       label.layer.cornerRadius = 9
       label.clipsToBounds = true
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
-      
-//      label.backgroundColor = UIColor { (traitCollection) -> UIColor in
-//        switch traitCollection.userInterfaceStyle {
-//        case .dark:
-//          return UIColor(white: 0.0, alpha: 1.0)
-//        default:
-//          return UIColor(white: 0.95, alpha: 1.0)
-//        }
-//      }
       
       label.topInset = 6
       label.bottomInset = 6
