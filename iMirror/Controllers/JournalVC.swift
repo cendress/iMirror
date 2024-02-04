@@ -12,6 +12,7 @@ class JournalVC: UITableViewController {
   //MARK: - Initial setup
   
   private var journalEntries: [JournalEntry] = []
+  private var expandedIndexPaths: Set<IndexPath> = []
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -55,6 +56,7 @@ class JournalVC: UITableViewController {
     let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
     cell.backgroundColor = .clear
+    cell.noteLabel.numberOfLines = entry.isExpanded ? 0 : 2 
     return cell
   }
   

@@ -11,7 +11,7 @@ class JournalEntryCell: UITableViewCell {
   
   private let moodLabel = UILabel()
   private let titleLabel = UILabel()
-  private let noteLabel = UILabel()
+  let noteLabel = UILabel()
   private let dateLabel = UILabel()
   private let timeLabel = UILabel()
   private let moodBackgroundView = UIView()
