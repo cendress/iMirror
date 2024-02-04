@@ -56,14 +56,17 @@ class JournalVC: UITableViewController {
     let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
     cell.backgroundColor = .clear
-    cell.noteLabel.numberOfLines = entry.isExpanded ? 0 : 2 
+    cell.noteLabel.numberOfLines = entry.isExpanded ? 0 : 2
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let entry = journalEntries[indexPath.section]
-    entry.isExpanded.toggle()
-    tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+    if expandedIndexPaths.contains(indexPath) {
+      expandedIndexPaths.remove(indexPath)
+    } else {
+      expandedIndexPaths.insert(indexPath)
+    }
+    tableView.reloadRows(at: [indexPath], with: .automatic)
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
