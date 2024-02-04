@@ -243,9 +243,12 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     guard let stringRange = Range(range, in: currentText) else { return false }
     let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
     
-    let characterLimit = 55
+    let characterLimit = 35
     if updatedText.count > characterLimit {
       // Might want to add alert if the limit is reached
+      let ac = UIAlertController(title: "Title is too long", message: nil, preferredStyle: .alert)
+      ac.addAction(UIAlertAction(title: "OK", style: .default))
+      present(ac, animated: true)
       
       // Dismiss the keyboard if the user tries to exceed the character limit
       textView.resignFirstResponder()
