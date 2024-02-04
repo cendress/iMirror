@@ -64,6 +64,10 @@ class JournalVC: UITableViewController {
     tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
+  }
+  
   //MARK: - Table view edit methods
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
