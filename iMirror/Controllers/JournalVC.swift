@@ -25,7 +25,7 @@ class JournalVC: UITableViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.rightBarButtonItem = editButtonItem
     
-//    tableView.estimatedRowHeight = 100
+    //    tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableView.automaticDimension
     
     updateUI()
@@ -60,6 +60,16 @@ class JournalVC: UITableViewController {
     cell.configure(with: entry)
     // If cell is expanded, set number of lines of note label to 0
     cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
+    
+    cell.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.98, alpha: 1.0)
+      }
+    }
+    
     return cell
   }
   
@@ -74,7 +84,7 @@ class JournalVC: UITableViewController {
     tableView.endUpdates()
     
     tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-
+    
     tableView.reloadRows(at: [indexPath], with: .automatic)
   }
   
