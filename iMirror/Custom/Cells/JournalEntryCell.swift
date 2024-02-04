@@ -57,7 +57,16 @@ class JournalEntryCell: UITableViewCell {
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Light", size: 14) ?? UIFont.systemFont(ofSize: 12)
     
-    moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
+//    moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
+    moodBackgroundView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
     moodBackgroundView.layer.cornerRadius = 19
     moodBackgroundView.layer.borderWidth = 1.0
     moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
@@ -158,11 +167,21 @@ class JournalEntryCell: UITableViewCell {
       let label = PaddedLabel()
       label.text = emotion.lowercased()
       label.textColor = UIColor.white
+//      label.textColor = .label
       label.backgroundColor = UIColor(named: "AppColor")
       label.layer.cornerRadius = 9
       label.clipsToBounds = true
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
+      
+//      label.backgroundColor = UIColor { (traitCollection) -> UIColor in
+//        switch traitCollection.userInterfaceStyle {
+//        case .dark:
+//          return UIColor(white: 0.0, alpha: 1.0)
+//        default:
+//          return UIColor(white: 0.95, alpha: 1.0)
+//        }
+//      }
       
       label.topInset = 6
       label.bottomInset = 6

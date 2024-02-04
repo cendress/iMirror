@@ -74,16 +74,17 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.performBatchUpdates({
-      if expandedIndexPaths.contains(indexPath) {
-        expandedIndexPaths.remove(indexPath)
-      } else {
-        expandedIndexPaths.insert(indexPath)
-      }
-    }, completion: { finished in
-      
-      tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-    })
+    tableView.beginUpdates()
+    
+    if expandedIndexPaths.contains(indexPath) {
+      expandedIndexPaths.remove(indexPath)
+    } else {
+      expandedIndexPaths.insert(indexPath)
+    }
+    
+    tableView.reloadRows(at: [indexPath], with: .automatic)
+    
+    tableView.endUpdates()
   }
   
   //MARK: - Table view edit methods
@@ -98,8 +99,8 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    deleteAction.backgroundColor = .blue
-    deleteAction.image = UIImage(named: "trash")
+    deleteAction.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+    deleteAction.image = UIImage(systemName: "trash")
     
     let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
     return configuration
