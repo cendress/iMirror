@@ -22,6 +22,7 @@ class JournalEntryCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupCell()
+    self.selectionStyle = .none
   }
   
   required init(coder aDecoder: NSCoder) {
@@ -181,5 +182,4 @@ class JournalEntryCell: UITableViewCell {
     timeFormatter.dateFormat = "h:mm a"
     return timeFormatter.string(from: time)
   }
-  
 }
