@@ -53,7 +53,7 @@ class JournalEntryCell: UITableViewCell {
   private func configureAppearance() {
     moodLabel.font = UIFont(name: "Roboto-Regular", size: 22) ?? UIFont.boldSystemFont(ofSize: 22)
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 20)
-    noteLabel.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
+    noteLabel.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
     dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
     timeLabel.font = UIFont(name: "Roboto-Light", size: 14) ?? UIFont.systemFont(ofSize: 12)
     
@@ -75,7 +75,7 @@ class JournalEntryCell: UITableViewCell {
     containerView.backgroundColor = UIColor { traitCollection -> UIColor in
       switch traitCollection.userInterfaceStyle {
       case .dark:
-        return UIColor(white: 0.05, alpha: 1.0)
+        return UIColor(white: 0.1, alpha: 1.0)
       default:
         return UIColor.systemBackground
       }
