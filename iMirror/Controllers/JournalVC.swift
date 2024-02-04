@@ -69,6 +69,12 @@ class JournalVC: UITableViewController {
     } else {
       expandedIndexPaths.insert(indexPath)
     }
+    
+    tableView.beginUpdates()
+    tableView.endUpdates()
+    
+    tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+
     tableView.reloadRows(at: [indexPath], with: .automatic)
   }
   

@@ -239,20 +239,23 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       return false
     }
     
-    let currentText = textView.text ?? ""
-    guard let stringRange = Range(range, in: currentText) else { return false }
-    let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-    
-    let characterLimit = 35
-    if updatedText.count > characterLimit {
-      // Might want to add alert if the limit is reached
-      let ac = UIAlertController(title: "Title is too long", message: nil, preferredStyle: .alert)
-      ac.addAction(UIAlertAction(title: "OK", style: .default))
-      present(ac, animated: true)
+    // Apply the character limit
+    if textView == titleTextView {
+      let currentText = textView.text ?? ""
+      guard let stringRange = Range(range, in: currentText) else { return false }
+      let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
       
-      // Dismiss the keyboard if the user tries to exceed the character limit
-      textView.resignFirstResponder()
-      return false
+      let characterLimit = 35
+      if updatedText.count > characterLimit {
+        // Might want to show an alert
+        let ac = UIAlertController(title: "Title is too long", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(ac, animated: true)
+        
+        textView.resignFirstResponder()
+        return false
+      }
     }
     
     return true
