@@ -133,8 +133,6 @@ class JournalVC: UITableViewController {
         messageLabel.leadingAnchor.constraint(equalTo: tableView.backgroundView!.leadingAnchor),
         messageLabel.trailingAnchor.constraint(equalTo: tableView.backgroundView!.trailingAnchor)
       ])
-    } else {
-      
     }
     
     tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
