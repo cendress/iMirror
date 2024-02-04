@@ -91,23 +91,30 @@ class JournalVC: UITableViewController {
   //MARK: - Table view edit methods
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      let journalEntry = journalEntries[indexPath.section]
-      CoreDataManager.shared.viewContext.delete(journalEntry)
-      CoreDataManager.shared.saveContext()
-      
-      journalEntries.remove(at: indexPath.section)
-      
-      tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
-      
-      updateBackgroundMessage()
-    }
+    // Required method
   }
   
-  override func setEditing(_ editing: Bool, animated: Bool) {
-    super.setEditing(editing, animated: animated)
+  override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+      self?.deleteJournalEntry(at: indexPath)
+      completionHandler(true)
+    }
     
-    tableView.setEditing(editing, animated: true)
+    deleteAction.backgroundColor = .blue
+    deleteAction.image = UIImage(named: "trash")
+    
+    let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+    return configuration
+  }
+  
+  private func deleteJournalEntry(at indexPath: IndexPath) {
+    let journalEntry = journalEntries[indexPath.section]
+    CoreDataManager.shared.viewContext.delete(journalEntry)
+    CoreDataManager.shared.saveContext()
+    
+    journalEntries.remove(at: indexPath.section)
+    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+    updateBackgroundMessage()
   }
   
   //MARK: - Update UI methods
