@@ -138,6 +138,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     cell.emotionImageView.image = UIImage(systemName: emotion.symbolName)
     cell.emotionLabel.text = emotion.name
     cell.backgroundColor = .systemBackground
+    
+    cell.isToggled = selectedEmotions.contains(indexPath.row)
+    
     return cell
   }
   
