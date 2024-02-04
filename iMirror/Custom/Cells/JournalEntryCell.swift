@@ -71,6 +71,8 @@ class JournalEntryCell: UITableViewCell {
     containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
     containerView.layer.shadowRadius = 6
     containerView.layer.shadowOpacity = 0.25
+    
+    noteLabel.numberOfLines = 2
   }
   
   private func setupContainerViewConstraints() {
