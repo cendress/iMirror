@@ -74,18 +74,16 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if expandedIndexPaths.contains(indexPath) {
-      expandedIndexPaths.remove(indexPath)
-    } else {
-      expandedIndexPaths.insert(indexPath)
-    }
-    
-    tableView.beginUpdates()
-    tableView.endUpdates()
-    
-    tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-    
-    tableView.reloadRows(at: [indexPath], with: .automatic)
+    tableView.performBatchUpdates({
+      if expandedIndexPaths.contains(indexPath) {
+        expandedIndexPaths.remove(indexPath)
+      } else {
+        expandedIndexPaths.insert(indexPath)
+      }
+    }, completion: { finished in
+      
+      tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+    })
   }
   
   //MARK: - Table view edit methods
