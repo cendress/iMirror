@@ -169,11 +169,19 @@ class JournalEntryCell: UITableViewCell {
       label.text = emotion.lowercased()
       label.textColor = UIColor.systemGray
 //      label.backgroundColor = UIColor(named: "AppColor")
-      label.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-      label.layer.cornerRadius = 9
+      label.layer.cornerRadius = 10
       label.clipsToBounds = true
       label.textAlignment = .center
       label.font = UIFont(name: "Roboto-Regular", size: 14) ?? UIFont.systemFont(ofSize: 16)
+      
+      label.backgroundColor = UIColor { (traitCollection) -> UIColor in
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+          return UIColor.systemBackground
+        default:
+          return UIColor(white: 0.95, alpha: 1.0)
+        }
+      }
       
       label.topInset = 6
       label.bottomInset = 6
