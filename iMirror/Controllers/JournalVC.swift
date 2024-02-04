@@ -94,19 +94,16 @@ class JournalVC: UITableViewController {
   }
   
   private func updateBackgroundMessage() {
-    // Identify the message label to easily add or remove it
     let messageLabelTag = 123
-    
-    // Remove any existing message label
     tableView.backgroundView?.viewWithTag(messageLabelTag)?.removeFromSuperview()
     
+    let messageLabel = UILabel()
+    messageLabel.tag = messageLabelTag
+    messageLabel.numberOfLines = 0
+    messageLabel.textAlignment = .center
+    messageLabel.frame = tableView.bounds
+    
     if journalEntries.isEmpty {
-      let messageLabel = UILabel()
-      messageLabel.tag = messageLabelTag
-      messageLabel.numberOfLines = 0
-      messageLabel.textAlignment = .center
-      messageLabel.frame = tableView.bounds
-      
       let noEntriesText = "No Entries!\n"
       let actionText = "Tap the plus button to add a journal entry."
       
@@ -124,8 +121,7 @@ class JournalVC: UITableViewController {
       messageLabel.attributedText = attributedString
       
       if tableView.backgroundView == nil {
-        let backgroundView = UIView(frame: tableView.bounds)
-        tableView.backgroundView = backgroundView
+        tableView.backgroundView = UIView(frame: tableView.bounds)
       }
       
       tableView.backgroundView?.addSubview(messageLabel)
@@ -137,11 +133,19 @@ class JournalVC: UITableViewController {
         messageLabel.leadingAnchor.constraint(equalTo: tableView.backgroundView!.leadingAnchor),
         messageLabel.trailingAnchor.constraint(equalTo: tableView.backgroundView!.trailingAnchor)
       ])
-      
-      tableView.separatorStyle = .none
     } else {
-      // Removes lines in table view between cells
-      tableView.separatorStyle = .none
+      
     }
+    
+    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.1, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
+    tableView.separatorStyle = .none
   }
 }
