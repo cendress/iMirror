@@ -158,6 +158,11 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
   }
   
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard let cell = cell as? EmotionCollectionViewCell else { return }
+    cell.isToggled = selectedEmotions.contains(indexPath.row)
+  }
+  
   //MARK: - Alert controller
   
   private func showAlert() {
