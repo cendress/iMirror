@@ -82,6 +82,8 @@ class JournalEntryCell: UITableViewCell {
     }
     
     noteLabel.numberOfLines = 2
+    
+    moodLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
   }
   
   private func setupContainerViewConstraints() {
