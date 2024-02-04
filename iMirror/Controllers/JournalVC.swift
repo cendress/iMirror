@@ -55,8 +55,8 @@ class JournalVC: UITableViewController {
     
     let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
-    cell.backgroundColor = .clear
-    cell.noteLabel.numberOfLines = entry.isExpanded ? 0 : 2
+    // If cell is expanded, set number of lines of note label to 0
+    cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
     return cell
   }
   
