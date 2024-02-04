@@ -93,15 +93,24 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+    let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
       self?.deleteJournalEntry(at: indexPath)
       completionHandler(true)
     }
     
-    deleteAction.backgroundColor = .red
-    deleteAction.image = UIImage(systemName: "trash")
+    deleteAction.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
+    deleteAction.image = UIImage(named: "trash")
     
     let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+//    configuration.performsFirstActionWithFullSwipe = false
     return configuration
   }
   
