@@ -19,6 +19,7 @@
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
 		9D7C03592B2267640075E59D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C03582B2267640075E59D /* Assets.xcassets */; };
 		9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */; };
+		9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F070E2B716E7000145871 /* EditNoteVC.swift */; };
 		9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */; };
 		9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */; };
 		9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */; };
@@ -52,6 +53,7 @@
 		9D7C03582B2267640075E59D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D7C035B2B2267640075E59D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D7C035D2B2267640075E59D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D7F070E2B716E7000145871 /* EditNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteVC.swift; sourceTree = "<group>"; };
 		9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+Extensions.swift"; sourceTree = "<group>"; };
 		9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -131,6 +133,16 @@
 			path = iMirror;
 			sourceTree = "<group>";
 		};
+		9D7F070D2B716DD500145871 /* User Input */ = {
+			isa = PBXGroup;
+			children = (
+				9DFEE64B2B4603DC001835E1 /* CurrentMoodVC.swift */,
+				9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */,
+				9D0197F02B605BE700E6FE30 /* JournalNotesVC.swift */,
+			);
+			path = "User Input";
+			sourceTree = "<group>";
+		};
 		9DFCD48E2B51C74700E81B5C /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,10 +171,9 @@
 			children = (
 				9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */,
 				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
-				9DFEE64B2B4603DC001835E1 /* CurrentMoodVC.swift */,
-				9D0197EA2B5EFD9700E6FE30 /* EmotionListVC.swift */,
-				9D0197F02B605BE700E6FE30 /* JournalNotesVC.swift */,
+				9D7F070D2B716DD500145871 /* User Input */,
 				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
+				9D7F070E2B716E7000145871 /* EditNoteVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +293,7 @@
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
 				9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */,
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
+				9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,
 				9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */,
