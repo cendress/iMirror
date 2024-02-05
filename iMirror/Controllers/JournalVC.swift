@@ -88,6 +88,8 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+    // Delete action
     let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
       self?.deleteJournalEntry(at: indexPath)
       completionHandler(true)
@@ -104,12 +106,29 @@ class JournalVC: UITableViewController {
     
     deleteAction.image = UIImage(named: "trash")
     
-    let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+    // Edit action
+    let editAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
+      self?.editJournalEntry(at: indexPath)
+      completionHandler(true)
+    }
+    
+    editAction.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
+    editAction.image = UIImage(named: "edit")
+    
+    let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     configuration.performsFirstActionWithFullSwipe = false
     return configuration
   }
   
-  //MARK: - Update UI methods
+  //MARK: - Edit methods
   
   private func deleteJournalEntry(at indexPath: IndexPath) {
     let journalEntry = journalEntries[indexPath.section]
@@ -120,6 +139,12 @@ class JournalVC: UITableViewController {
     tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
     updateBackgroundMessage()
   }
+  
+  private func editJournalEntry(at indexPath: IndexPath) {
+      
+  }
+  
+  //MARK: - Update UI methods
   
   private func updateUI() {
     let fetchedEntries = CoreDataManager.shared.fetchJournalEntries()
