@@ -78,7 +78,7 @@ class JournalEntryCell: UITableViewCell {
     
     containerView.layer.cornerRadius = 15
     containerView.layer.shadowColor = UIColor.systemGray.cgColor
-    containerView.layer.shadowOffset = CGSize(width: 0, height: 6)
+    containerView.layer.shadowOffset = CGSize(width: 2, height: 6)
     containerView.layer.shadowRadius = 8
     containerView.layer.shadowOpacity = 0.3
     

@@ -9,7 +9,7 @@ import UIKit
 
 class JournalVC: UITableViewController {
   
-  //MARK: - Initial setup
+  // Inital setup
   
   private var journalEntries: [JournalEntry] = []
   private var expandedIndexPaths: Set<IndexPath> = []
@@ -23,12 +23,8 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
-    
-    //    tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableView.automaticDimension
-    
     updateUI()
-    // Register cell
     tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
   }
   
@@ -57,7 +53,6 @@ class JournalVC: UITableViewController {
     
     let entry = journalEntries[indexPath.section]
     cell.configure(with: entry)
-    // If cell is expanded, set number of lines of note label to 0
     cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
     
     cell.backgroundColor = UIColor { (traitCollection) -> UIColor in
@@ -86,10 +81,9 @@ class JournalVC: UITableViewController {
     tableView.endUpdates()
   }
   
-  //MARK: - Table view edit methods
+  //MARK: - Edit methods
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    // Required method
   }
   
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -114,6 +108,8 @@ class JournalVC: UITableViewController {
     return configuration
   }
   
+  //MARK: - Update UI methods
+  
   private func deleteJournalEntry(at indexPath: IndexPath) {
     let journalEntry = journalEntries[indexPath.section]
     CoreDataManager.shared.viewContext.delete(journalEntry)
@@ -123,8 +119,6 @@ class JournalVC: UITableViewController {
     tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
     updateBackgroundMessage()
   }
-  
-  //MARK: - Update UI methods
   
   private func updateUI() {
     let fetchedEntries = CoreDataManager.shared.fetchJournalEntries()
