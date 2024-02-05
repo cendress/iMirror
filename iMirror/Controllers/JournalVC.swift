@@ -42,7 +42,7 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return journalSections[section].entries.count
   }
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -55,7 +55,7 @@ class JournalVC: UITableViewController {
     headerView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
 
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
-    headerLabel.font = UIFont(name: "Roboto-Bold", size: 25)
+    headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
     headerLabel.textColor = UIColor.label
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 
