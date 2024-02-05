@@ -30,7 +30,10 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.barTintColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
+    
     tableView.rowHeight = UITableView.automaticDimension
+    
     updateUI()
     tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
   }
@@ -57,6 +60,7 @@ class JournalVC: UITableViewController {
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
     headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
     headerLabel.textColor = UIColor.label
+    
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 
     headerView.addSubview(headerLabel)
