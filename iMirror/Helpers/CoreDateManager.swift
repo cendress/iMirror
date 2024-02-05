@@ -55,6 +55,10 @@ class CoreDataManager {
   func fetchJournalEntries() -> [JournalEntry] {
     let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
     
+    // Add a sort descriptor for currentDate
+    let sortDescriptor = NSSortDescriptor(key: "currentDate", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    
     do {
       let entries = try viewContext.fetch(fetchRequest)
       return entries
