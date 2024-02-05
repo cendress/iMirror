@@ -8,6 +8,6 @@
 import Foundation
 
 struct JournalSection {
-    let date: Date
-    var entries: [JournalEntry]
+  let date: Date
+  var entries: [JournalEntry]
 }

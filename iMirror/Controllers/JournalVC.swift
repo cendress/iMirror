@@ -11,7 +11,7 @@ class JournalVC: UITableViewController {
   
   // Inital setup
   
-  private var journalEntries: [JournalEntry] = []
+  private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
   
   override func viewWillAppear(_ animated: Bool) {
