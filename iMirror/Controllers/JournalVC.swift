@@ -46,11 +46,26 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 0
+    return 30
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return UIView()
+    let headerView = UIView()
+    headerView.backgroundColor = UIColor.lightGray
+
+    let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 30))
+    headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    headerLabel.textColor = UIColor.white
+    headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+
+    headerView.addSubview(headerLabel)
+
+    return headerView
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+      let sectionDate = journalSections[section].date
+      return dateFormatter.string(from: sectionDate)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
