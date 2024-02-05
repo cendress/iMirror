@@ -46,7 +46,7 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 30
+    return 60
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -54,8 +54,8 @@ class JournalVC: UITableViewController {
     
     headerView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
 
-    let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 30))
-    headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
+    headerLabel.font = UIFont(name: "Roboto-Bold", size: 25)
     headerLabel.textColor = UIColor.label
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 

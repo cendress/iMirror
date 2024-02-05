@@ -245,7 +245,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       guard let stringRange = Range(range, in: currentText) else { return false }
       let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
       
-      let characterLimit = 35
+      let characterLimit = 30
       if updatedText.count > characterLimit {
         // Might want to show an alert
         let ac = UIAlertController(title: "Title is too long", message: nil, preferredStyle: .alert)
