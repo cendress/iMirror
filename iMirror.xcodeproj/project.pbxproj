@@ -171,9 +171,9 @@
 			children = (
 				9DFEE6472B45FCF9001835E1 /* CustomTabBarController.swift */,
 				9DFEE6492B4603B6001835E1 /* JournalVC.swift */,
+				9D7F070E2B716E7000145871 /* EditNoteVC.swift */,
 				9D7F070D2B716DD500145871 /* User Input */,
 				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
-				9D7F070E2B716E7000145871 /* EditNoteVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
