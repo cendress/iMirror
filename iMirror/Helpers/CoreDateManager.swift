@@ -56,7 +56,7 @@ class CoreDataManager {
     let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
     
     // Add a sort descriptor for currentDate
-    let sortDescriptor = NSSortDescriptor(key: "currentDate", ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: "currentDate", ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor]
     
     do {
