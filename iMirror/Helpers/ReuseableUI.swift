@@ -45,4 +45,13 @@ struct ReuseableUI {
     
     return button
   }
+  
+  static func backgroundColorForTraitCollection(_ traitCollection: UITraitCollection) -> UIColor {
+    switch traitCollection.userInterfaceStyle {
+    case .dark:
+      return UIColor(white: 0.0, alpha: 1.0)
+    default:
+      return UIColor(white: 0.95, alpha: 1.0)
+    }
+  }
 }
