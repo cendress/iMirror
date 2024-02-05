@@ -251,6 +251,6 @@ class JournalVC: UITableViewController {
     }
     
     journalSections = tempSections.map { JournalSection(date: $0.key, entries: $0.value) }
-    journalSections.sort { $0.date < $1.date }
+    journalSections.sort { $0.date > $1.date }
   }
 }
