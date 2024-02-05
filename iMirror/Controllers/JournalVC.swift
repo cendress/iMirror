@@ -14,6 +14,13 @@ class JournalVC: UITableViewController {
   private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
   
+  private lazy var dateFormatter: DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.dateStyle = .medium
+      formatter.timeStyle = .none
+      return formatter
+  }()
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     updateUI()
@@ -31,7 +38,7 @@ class JournalVC: UITableViewController {
   //MARK: - Table view methods
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return journalEntries.count
+    return journalSections.count
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +58,7 @@ class JournalVC: UITableViewController {
       fatalError("Unable to dequeue JournalEntryCell")
     }
     
-    let entry = journalEntries[indexPath.section]
+    let entry = journalSections[indexPath.section].entries[indexPath.row]
     cell.configure(with: entry)
     cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
     
@@ -131,27 +138,32 @@ class JournalVC: UITableViewController {
   //MARK: - Edit methods
   
   private func deleteJournalEntry(at indexPath: IndexPath) {
-    let journalEntry = journalEntries[indexPath.section]
-    CoreDataManager.shared.viewContext.delete(journalEntry)
+    let section = journalSections[indexPath.section]
+    let entryToDelete = section.entries[indexPath.row]
+    
+    CoreDataManager.shared.viewContext.delete(entryToDelete)
     CoreDataManager.shared.saveContext()
     
-    journalEntries.remove(at: indexPath.section)
-    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+    journalSections[indexPath.section].entries.remove(at: indexPath.row)
+    if journalSections[indexPath.section].entries.isEmpty {
+      journalSections.remove(at: indexPath.section)
+      tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+    } else {
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     updateBackgroundMessage()
   }
   
   private func editJournalEntry(at indexPath: IndexPath) {
-    let entry = journalEntries[indexPath.section]
+    let entryToEdit = journalSections[indexPath.section].entries[indexPath.row]
     let editVC = EditNoteVC()
-    editVC.noteTitleText = entry.title
-    editVC.noteText = entry.note
+    editVC.noteTitleText = entryToEdit.title
+    editVC.noteText = entryToEdit.note
     editVC.completion = { [weak self] newNoteText in
-
-      entry.note = newNoteText
-
+      entryToEdit.note = newNoteText
       CoreDataManager.shared.saveContext()
-
-      self?.tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+      self?.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     let navController = UINavigationController(rootViewController: editVC)
@@ -163,7 +175,7 @@ class JournalVC: UITableViewController {
   
   private func updateUI() {
     let fetchedEntries = CoreDataManager.shared.fetchJournalEntries()
-    journalEntries = fetchedEntries.reversed()
+    groupJournalEntries(fetchedEntries)
     tableView.reloadData()
     updateBackgroundMessage()
   }
@@ -178,7 +190,7 @@ class JournalVC: UITableViewController {
     messageLabel.textAlignment = .center
     messageLabel.frame = tableView.bounds
     
-    if journalEntries.isEmpty {
+    if journalSections.isEmpty {
       let noEntriesText = "No Entries!\n"
       let actionText = "Tap the plus button to add a journal entry."
       
@@ -220,5 +232,26 @@ class JournalVC: UITableViewController {
     }
     
     tableView.separatorStyle = .none
+  }
+  
+  //MARK: - Other methods
+  
+  private func groupJournalEntries(_ entries: [JournalEntry]) {
+    var tempSections: [Date: [JournalEntry]] = [:]
+    let calendar = Calendar.current
+    
+    for entry in entries {
+      let dateComponents = calendar.dateComponents([.year, .month, .day], from: entry.currentDate!)
+      if let date = calendar.date(from: dateComponents) {
+        if tempSections[date] == nil {
+          tempSections[date] = [entry]
+        } else {
+          tempSections[date]?.append(entry)
+        }
+      }
+    }
+    
+    journalSections = tempSections.map { JournalSection(date: $0.key, entries: $0.value) }
+    journalSections.sort { $0.date < $1.date }
   }
 }
