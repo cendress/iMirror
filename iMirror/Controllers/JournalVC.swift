@@ -52,18 +52,11 @@ class JournalVC: UITableViewController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
     
-    headerView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    headerView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
 
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 30))
     headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    headerLabel.textColor = UIColor.white
+    headerLabel.textColor = UIColor.label
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
 
     headerView.addSubview(headerLabel)
@@ -125,14 +118,7 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    deleteAction.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    deleteAction.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
     
     deleteAction.image = UIImage(named: "trash")
     
@@ -142,14 +128,7 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    editAction.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    editAction.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
     
     editAction.image = UIImage(named: "edit")
     
@@ -245,14 +224,7 @@ class JournalVC: UITableViewController {
       ])
     }
     
-    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    tableView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
     
     tableView.separatorStyle = .none
   }

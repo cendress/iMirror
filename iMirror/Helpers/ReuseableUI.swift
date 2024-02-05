@@ -54,4 +54,13 @@ struct ReuseableUI {
       return UIColor(white: 0.95, alpha: 1.0)
     }
   }
+  
+  static func colorForTraitCollection(_ traitCollection: UITraitCollection) -> UIColor {
+    switch traitCollection.userInterfaceStyle {
+    case .dark:
+      return UIColor(white: 0.1, alpha: 1.0)
+    default:
+      return UIColor.systemBackground
+    }
+  }
 }
