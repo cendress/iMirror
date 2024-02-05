@@ -141,7 +141,22 @@ class JournalVC: UITableViewController {
   }
   
   private func editJournalEntry(at indexPath: IndexPath) {
-      
+    let entry = journalEntries[indexPath.section]
+    let editVC = EditNoteVC()
+    editVC.noteTitleText = entry.title
+    editVC.noteText = entry.note
+    editVC.completion = { [weak self] newNoteText in
+
+      entry.note = newNoteText
+
+      CoreDataManager.shared.saveContext()
+
+      self?.tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+    }
+    
+    let navController = UINavigationController(rootViewController: editVC)
+    navController.modalPresentationStyle = .formSheet
+    self.present(navController, animated: true, completion: nil)
   }
   
   //MARK: - Update UI methods

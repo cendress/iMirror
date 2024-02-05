@@ -8,6 +8,7 @@
 import UIKit
 
 class EditNoteVC: UIViewController {
+  var noteTitleText: String?
   var noteText: String?
   var completion: ((String) -> Void)?
   
@@ -35,6 +36,7 @@ class EditNoteVC: UIViewController {
     textView.textColor = .label
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneEditing))
+    navigationItem.title = noteTitleText
   }
   
   @objc private func doneEditing() {
