@@ -25,10 +25,10 @@ class EditNoteVC: UIViewController {
     textView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
-      textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ReuseableUI.smallPadding),
+      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ReuseableUI.smallPadding),
+      textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: ReuseableUI.smallPadding),
+      textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -ReuseableUI.smallPadding),
     ])
     
     textView.text = noteText
