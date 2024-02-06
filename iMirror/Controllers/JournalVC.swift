@@ -47,10 +47,43 @@ class JournalVC: UITableViewController {
     let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the entries.", preferredStyle: .actionSheet)
     alert.addAction(UIAlertAction(title: "Date", style: .default) { _ in
       // Implement filter logic
+      self.presentDatePicker()
     })
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     
     present(alert, animated: true)
+  }
+  
+  private func presentDatePicker() {
+    let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+    
+    let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 50, width: 270, height: 200))
+    datePicker.datePickerMode = .date
+    if #available(iOS 13.4, *) {
+      datePicker.preferredDatePickerStyle = .wheels
+    }
+    
+    // Set default date
+    datePicker.date = Date()
+    
+    // Add date picker to the alert
+    alertController.view.addSubview(datePicker)
+    
+    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
+      self.filterJournalEntries(byDate: datePicker.date)
+    }))
+    
+    self.present(alertController, animated: true)
+  }
+  
+  private func filterJournalEntries(byDate selectedDate: Date) {
+    let calendar = Calendar.current
+    journalSections = journalSections.filter { section in
+      calendar.isDate(section.date, inSameDayAs: selectedDate)
+    }
+    tableView.reloadData()
   }
   
   //MARK: - Table view methods
