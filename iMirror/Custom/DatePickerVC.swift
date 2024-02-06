@@ -30,6 +30,7 @@ class DatePickerVC: UIViewController {
     
     NSLayoutConstraint.activate([
       datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      // Slightly below half of the screen
       datePicker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
       datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor)
