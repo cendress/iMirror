@@ -48,7 +48,6 @@ class JournalEntryCell: UITableViewCell {
     emotionsStackView.spacing = 8
     
     dividerView.backgroundColor = .lightGray
-    dateLabel.backgroundColor = .lightGray
     
     configureAppearance()
     setupContainerViewConstraints()
@@ -146,12 +145,12 @@ class JournalEntryCell: UITableViewCell {
       scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ReuseableUI.smallPadding),
       scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ReuseableUI.smallPadding),
       
-      dividerView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -8),
-      dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      dividerView.heightAnchor.constraint(equalToConstant: 1),
+      dividerView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: ReuseableUI.smallPadding),
+      dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
+      dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+      dividerView.heightAnchor.constraint(equalToConstant: 0.25),
       
-      dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: ReuseableUI.smallPadding),
+      dateLabel.topAnchor.constraint(equalTo: dividerView.topAnchor, constant: 8),
       dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ReuseableUI.smallPadding),
       dateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ReuseableUI.smallPadding),
       dateLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
