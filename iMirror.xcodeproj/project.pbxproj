@@ -90,6 +90,7 @@
 			children = (
 				9D0197E82B5EF52400E6FE30 /* ReuseableUI.swift */,
 				9D0197F62B66C8D600E6FE30 /* CoreDateManager.swift */,
+				9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */,
 				9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */,
 			);
 			path = Helpers;
@@ -195,7 +196,6 @@
 			children = (
 				9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */,
 				9D0197EE2B6054F600E6FE30 /* Emotion.swift */,
-				9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */,
 				9D7F07102B717A4400145871 /* JournalSection.swift */,
 			);
 			path = Models;
@@ -459,6 +459,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,6 +490,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

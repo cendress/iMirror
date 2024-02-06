@@ -31,6 +31,7 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.isTranslucent = false
     
     tableView.rowHeight = UITableView.automaticDimension
     
