@@ -41,14 +41,14 @@ class JournalVC: UITableViewController {
     updateUI()
   }
   
-  //MARK: - @objc methods
+  //MARK: - Filter entry date methods
   
   @objc func filterEntries() {
     let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the entries.", preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "Date", style: .default, handler: { _ in
-      // Implement your filter logic here
-    }))
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    alert.addAction(UIAlertAction(title: "Date", style: .default) { _ in
+      // Implement filter logic
+    })
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     
     present(alert, animated: true)
   }
