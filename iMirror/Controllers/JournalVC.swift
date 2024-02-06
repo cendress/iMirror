@@ -49,6 +49,9 @@ class JournalVC: UITableViewController {
       // Implement filter logic
       self.presentDatePicker()
     })
+    alert.addAction(UIAlertAction(title: "Show All Entries", style: .default) { _ in
+      self.updateUI()
+    })
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     
     present(alert, animated: true)
