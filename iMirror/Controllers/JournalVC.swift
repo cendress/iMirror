@@ -22,27 +22,6 @@ class JournalVC: UITableViewController {
     return formatter
   }()
   
-  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-    super.traitCollectionDidChange(previousTraitCollection)
-    if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-      updateNavigationBarColor()
-    }
-  }
-  
-  private func updateNavigationBarColor() {
-    let backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
-    
-    navigationController?.navigationBar.barTintColor = backgroundColor
-    navigationController?.navigationBar.isTranslucent = false
-  }
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     updateUI()
@@ -137,7 +116,7 @@ class JournalVC: UITableViewController {
     tableView.endUpdates()
   }
   
-  //MARK: - Edit methods
+  //MARK: - Swipe action methods
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     // Required method
@@ -267,6 +246,38 @@ class JournalVC: UITableViewController {
     }
     
     tableView.separatorStyle = .none
+  }
+  
+  //MARK: - Update navigation bar appearance methods
+  
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+      updateNavigationBarColor()
+    }
+  }
+  
+  private func updateNavigationBarColor() {
+    let backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = backgroundColor
+    appearance.shadowColor = nil
+    
+    navigationController?.navigationBar.standardAppearance = appearance
+    navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    navigationController?.navigationBar.compactAppearance = appearance
+    
+    navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+    navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
   }
   
   //MARK: - Other methods
