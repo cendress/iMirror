@@ -31,7 +31,6 @@ class JournalVC: UITableViewController {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationController?.navigationBar.barTintColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
     
     tableView.rowHeight = UITableView.automaticDimension
     
@@ -56,7 +55,14 @@ class JournalVC: UITableViewController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
     
-    headerView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
+    headerView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
     
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
     headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
@@ -229,7 +235,14 @@ class JournalVC: UITableViewController {
       ])
     }
     
-    tableView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
+    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
     
     tableView.separatorStyle = .none
   }
