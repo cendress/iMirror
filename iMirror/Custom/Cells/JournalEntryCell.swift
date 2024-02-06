@@ -77,9 +77,9 @@ class JournalEntryCell: UITableViewCell {
     moodBackgroundView.layer.shadowOpacity = 0.3
     
     containerView.layer.cornerRadius = 15
-    containerView.layer.shadowColor = UIColor.systemGray.cgColor
-    containerView.layer.shadowOffset = CGSize(width: 2, height: 6)
-    containerView.layer.shadowRadius = 8
+    containerView.layer.shadowColor = UIColor.black.cgColor
+    containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+    containerView.layer.shadowRadius = 4
     containerView.layer.shadowOpacity = 0.3
     
     containerView.backgroundColor = UIColor { (traitCollection) -> UIColor in
