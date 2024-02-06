@@ -9,11 +9,14 @@ import UIKit
 
 class DatePickerVC: UIViewController {
   var datePicker: UIDatePicker!
-  var completion: ((Date) -> Void)?
+  var completion: ((Date?) -> Void)?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .systemBackground
+    
     setupDatePicker()
+    setupButtons()
   }
   
   private func setupDatePicker() {
@@ -23,21 +26,50 @@ class DatePickerVC: UIViewController {
     datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
     
     view.addSubview(datePicker)
-    
     datePicker.translatesAutoresizingMaskIntoConstraints = false
+    
     NSLayoutConstraint.activate([
       datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      datePicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      datePicker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
       datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
+  }
+  
+  private func setupButtons() {
+    let doneButton = UIButton(type: .system)
+    doneButton.setTitle("Done", for: .normal)
+    doneButton.addTarget(self, action: #selector(doneAction), for: .touchUpInside)
     
-    // add Done and Cancel buttons or handle dismissal with a gesture
+    let cancelButton = UIButton(type: .system)
+    cancelButton.setTitle("Cancel", for: .normal)
+    cancelButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+    
+    view.addSubview(doneButton)
+    view.addSubview(cancelButton)
+    
+    doneButton.translatesAutoresizingMaskIntoConstraints = false
+    cancelButton.translatesAutoresizingMaskIntoConstraints = false
+    
+    NSLayoutConstraint.activate([
+      doneButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: ReuseableUI.smallPadding),
+      doneButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10),
+      cancelButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: ReuseableUI.smallPadding),
+      cancelButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10)
+    ])
   }
   
   @objc func dateChanged(_ sender: UIDatePicker) {
-    // Call completion handler if you want to auto-dismiss on date change
-    // or use a Done button to call this
-    completion?(sender.date)
+    // Might want to add a gesture to dismiss
+  }
+  
+  @objc func doneAction() {
+    completion?(datePicker.date)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @objc func cancelAction() {
+    completion?(nil)
+    dismiss(animated: true, completion: nil)
   }
 }

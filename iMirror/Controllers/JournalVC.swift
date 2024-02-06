@@ -61,12 +61,15 @@ class JournalVC: UITableViewController {
     let datePickerVC = DatePickerVC()
     datePickerVC.modalPresentationStyle = .formSheet
     datePickerVC.completion = { [weak self] selectedDate in
-      self?.filterJournalEntries(byDate: selectedDate)
-      self?.dismiss(animated: true, completion: nil)
+      if let date = selectedDate {
+        self?.filterJournalEntries(byDate: date)
+      }
     }
     
     if let sheet = datePickerVC.sheetPresentationController {
       sheet.detents = [.medium()]
+      sheet.preferredCornerRadius = 20
+      sheet.prefersGrabberVisible = true
     }
     
     present(datePickerVC, animated: true, completion: nil)
