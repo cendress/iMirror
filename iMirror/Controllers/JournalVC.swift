@@ -33,10 +33,24 @@ class JournalVC: UITableViewController {
     self.navigationItem.title = "Journal"
     navigationController?.navigationBar.prefersLargeTitles = true
     
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .plain, target: self, action: #selector(filterEntries))
+    
     tableView.rowHeight = UITableView.automaticDimension
+    tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
     
     updateUI()
-    tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
+  }
+  
+  //MARK: - @objc methods
+  
+  @objc func filterEntries() {
+    let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the entries.", preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Date", style: .default, handler: { _ in
+      // Implement your filter logic here
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    present(alert, animated: true)
   }
   
   //MARK: - Table view methods
