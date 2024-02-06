@@ -48,6 +48,7 @@ class JournalEntryCell: UITableViewCell {
     emotionsStackView.spacing = 8
     
     dividerView.backgroundColor = .lightGray
+    dateLabel.textColor = .darkGray
     
     configureAppearance()
     setupContainerViewConstraints()
@@ -58,7 +59,7 @@ class JournalEntryCell: UITableViewCell {
     moodLabel.font = UIFont(name: "Roboto-Regular", size: 22) ?? UIFont.boldSystemFont(ofSize: 22)
     titleLabel.font = UIFont(name: "Roboto-Bold", size: 18) ?? UIFont.boldSystemFont(ofSize: 20)
     noteLabel.font = UIFont(name: "Roboto-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16)
-    dateLabel.font = UIFont(name: "Roboto-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12)
+    dateLabel.font = UIFont(name: "Roboto-Regular", size: 13) ?? UIFont.systemFont(ofSize: 13)
     timeLabel.font = UIFont(name: "Roboto-Light", size: 14) ?? UIFont.systemFont(ofSize: 12)
     
 //    moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
