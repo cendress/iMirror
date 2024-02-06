@@ -48,6 +48,7 @@ class JournalEntryCell: UITableViewCell {
     emotionsStackView.spacing = 8
     
     dividerView.backgroundColor = .lightGray
+    dateLabel.backgroundColor = .lightGray
     
     configureAppearance()
     setupContainerViewConstraints()
