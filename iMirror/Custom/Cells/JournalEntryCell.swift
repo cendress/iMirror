@@ -39,12 +39,15 @@ class JournalEntryCell: UITableViewCell {
     containerView.addSubview(dateLabel)
     containerView.addSubview(timeLabel)
     containerView.addSubview(scrollView)
+    containerView.addSubview(dividerView)
     scrollView.addSubview(emotionsStackView)
     
     emotionsStackView.axis = .horizontal
     emotionsStackView.alignment = .center
     emotionsStackView.distribution = .equalSpacing
     emotionsStackView.spacing = 8
+    
+    dividerView.backgroundColor = .lightGray
     
     configureAppearance()
     setupContainerViewConstraints()
