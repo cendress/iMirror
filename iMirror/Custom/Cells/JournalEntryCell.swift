@@ -119,6 +119,7 @@ class JournalEntryCell: UITableViewCell {
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     emotionsStackView.translatesAutoresizingMaskIntoConstraints = false
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
       moodBackgroundView.centerYAnchor.constraint(equalTo: moodLabel.centerYAnchor),
@@ -143,6 +144,11 @@ class JournalEntryCell: UITableViewCell {
       scrollView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 10),
       scrollView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ReuseableUI.smallPadding),
       scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      
+      dividerView.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -8),
+      dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+      dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+      dividerView.heightAnchor.constraint(equalToConstant: 1),
       
       dateLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: ReuseableUI.smallPadding),
       dateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ReuseableUI.smallPadding),
