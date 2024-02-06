@@ -58,27 +58,18 @@ class JournalVC: UITableViewController {
   }
   
   private func presentDatePicker() {
-    let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
-    
-    let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 50, width: 270, height: 200))
-    datePicker.datePickerMode = .date
-    if #available(iOS 13.4, *) {
-      datePicker.preferredDatePickerStyle = .wheels
+    let datePickerVC = DatePickerVC()
+    datePickerVC.modalPresentationStyle = .formSheet
+    datePickerVC.completion = { [weak self] selectedDate in
+      self?.filterJournalEntries(byDate: selectedDate)
+      self?.dismiss(animated: true, completion: nil)
     }
     
-    // Set default date
-    datePicker.date = Date()
+    if let sheet = datePickerVC.sheetPresentationController {
+      sheet.detents = [.medium()]
+    }
     
-    // Add date picker to the alert
-    alertController.view.addSubview(datePicker)
-    
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    
-    alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
-      self.filterJournalEntries(byDate: datePicker.date)
-    }))
-    
-    self.present(alertController, animated: true)
+    present(datePickerVC, animated: true, completion: nil)
   }
   
   private func filterJournalEntries(byDate selectedDate: Date) {
