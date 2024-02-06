@@ -54,9 +54,10 @@ class DatePickerVC: UIViewController {
     
     NSLayoutConstraint.activate([
       doneButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: ReuseableUI.smallPadding),
-      doneButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10),
+      doneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReuseableUI.smallPadding),
+      
       cancelButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: ReuseableUI.smallPadding),
-      cancelButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10)
+      cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReuseableUI.smallPadding),
     ])
   }
   
