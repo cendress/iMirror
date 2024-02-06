@@ -14,11 +14,12 @@ class JournalVC: UITableViewController {
   private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
   
+  // Use lazy to initialize property only when its used
   private lazy var dateFormatter: DateFormatter = {
-      let formatter = DateFormatter()
-      formatter.dateStyle = .medium
-      formatter.timeStyle = .none
-      return formatter
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
+    return formatter
   }()
   
   override func viewWillAppear(_ animated: Bool) {
@@ -56,21 +57,21 @@ class JournalVC: UITableViewController {
     let headerView = UIView()
     
     headerView.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
-
+    
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
     headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
     headerLabel.textColor = UIColor.label
     
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-
+    
     headerView.addSubview(headerLabel)
-
+    
     return headerView
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      let sectionDate = journalSections[section].date
-      return dateFormatter.string(from: sectionDate)
+    let sectionDate = journalSections[section].date
+    return dateFormatter.string(from: sectionDate)
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -251,6 +252,15 @@ class JournalVC: UITableViewController {
     }
     
     journalSections = tempSections.map { JournalSection(date: $0.key, entries: $0.value) }
+    
+    // Sort entries by date in descending order
     journalSections.sort { $0.date > $1.date }
+    
+    // Sort entries within each section by currentTime in descending order
+    for i in 0..<journalSections.count {
+      journalSections[i].entries.sort {
+        $0.currentTime! > $1.currentTime!
+      }
+    }
   }
 }
