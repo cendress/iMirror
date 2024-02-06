@@ -18,6 +18,7 @@ class JournalEntryCell: UITableViewCell {
   private let scrollView = UIScrollView()
   private let emotionsStackView = UIStackView()
   private let containerView = UIView()
+  private let dividerView = UIView()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
