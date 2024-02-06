@@ -21,6 +21,7 @@
 		9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */; };
 		9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F070E2B716E7000145871 /* EditNoteVC.swift */; };
 		9D7F07112B717A4400145871 /* JournalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F07102B717A4400145871 /* JournalSection.swift */; };
+		9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F07122B72E27300145871 /* DatePickerVC.swift */; };
 		9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */; };
 		9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */; };
 		9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */; };
@@ -56,6 +57,7 @@
 		9D7C035D2B2267640075E59D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D7F070E2B716E7000145871 /* EditNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteVC.swift; sourceTree = "<group>"; };
 		9D7F07102B717A4400145871 /* JournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSection.swift; sourceTree = "<group>"; };
+		9D7F07122B72E27300145871 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+Extensions.swift"; sourceTree = "<group>"; };
 		9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				9DFCD48E2B51C74700E81B5C /* Tab bar */,
 				9D0197FA2B66EEB200E6FE30 /* Cells */,
 				9DFEE6A42B4C8FF4001835E1 /* CustomProgressView.swift */,
+				9D7F07122B72E27300145871 /* DatePickerVC.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */,
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
+				9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */,
 				9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */,
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
 				9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */,
