@@ -16,6 +16,8 @@ class MeditationVC: UIViewController {
     super.viewWillAppear(animated)
     setNavBarAppearance()
     
+    navigationController?.setNavigationBarHidden(true, animated: false)
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Exit", style: .plain, target: self, action: #selector(exitMeditation))
     navigationItem.rightBarButtonItem?.tintColor = .red
   }
@@ -52,6 +54,8 @@ class MeditationVC: UIViewController {
     view.layer.addSublayer(playerLayer)
     
     player?.play()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
   }
   
   @objc private func toggleNavigationBar() {
