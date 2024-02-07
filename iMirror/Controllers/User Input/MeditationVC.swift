@@ -45,6 +45,9 @@ class MeditationVC: UIViewController {
   //MARK: - @objc methods
   
   @objc private func exitMeditation() {
+    // Stop audio playing
+    audioPlayer?.stop()
+    
     self.dismiss(animated: true, completion: nil)
   }
   
