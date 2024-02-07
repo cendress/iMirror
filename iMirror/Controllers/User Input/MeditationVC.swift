@@ -22,8 +22,9 @@ class MeditationVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
-    
     setupAndPlayVideo()
+    
+    navigationItem.hidesBackButton = true
   }
   
   private func setupView() {
