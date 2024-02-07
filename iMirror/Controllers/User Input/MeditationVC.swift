@@ -125,5 +125,7 @@ class MeditationVC: UIViewController {
   
   deinit {
     NotificationCenter.default.removeObserver(self)
+    
+    audioPlayer?.stop()
   }
 }
