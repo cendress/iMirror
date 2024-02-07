@@ -52,10 +52,14 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func toggleNavigationBar() {
-    let isNavigationBarHidden = navigationController?.navigationBar.isHidden ?? true
+    guard let isNavigationBarHidden = navigationController?.navigationBar.isHidden else { return }
     
-    // Toggle state of navigation bar
-    navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
+    UIView.animate(withDuration: 0.3) {
+      self.navigationController?.navigationBar.alpha = isNavigationBarHidden ? 1.0 : 0.0
+    } completion: { _ in
+      self.navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: false)
+      self.navigationController?.navigationBar.alpha = 1.0
+    }
   }
   
   //MARK: - Video methods
