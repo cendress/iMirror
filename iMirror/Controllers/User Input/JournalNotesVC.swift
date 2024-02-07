@@ -90,6 +90,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       // Save the journal entry
       CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       
+      // Good practice to inform future UI updates
       NotificationCenter.default.post(name: .didSaveJournalEntry, object: nil)
       self.dismiss(animated: true)
     } else {
@@ -99,6 +100,16 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   @objc private func meditationButtonTapped() {
     if isValidInput() {
+      let titleText = titleTextView.text ?? ""
+      let notesText = notesTextView.text ?? ""
+      let currentTime = Date()
+      let currentDate = Date()
+      
+      CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
+      
+      NotificationCenter.default.post(name: .didSaveJournalEntry, object: nil)
+      self.dismiss(animated: true)
+      
       // Navigate to new view controller
     } else {
       showAlert()
