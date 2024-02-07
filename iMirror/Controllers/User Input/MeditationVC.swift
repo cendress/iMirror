@@ -14,6 +14,7 @@ class MeditationVC: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    setNavBarAppearance()
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Exit", style: .plain, target: self, action: #selector(exitMeditation))
     navigationItem.rightBarButtonItem?.tintColor = .red
@@ -58,9 +59,22 @@ class MeditationVC: UIViewController {
     
     // Toggle state of navigation bar
     navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
+    navigationController?.navigationBar.barTintColor = .green
   }
   
   @objc private func exitMeditation() {
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  private func setNavBarAppearance() {
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    
+    navigationController?.navigationBar.standardAppearance = appearance
+    navigationController?.navigationBar.compactAppearance = appearance
+    navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    
+    navigationController?.navigationBar.shadowImage = UIImage()
   }
 }
