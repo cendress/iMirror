@@ -24,6 +24,8 @@
 		9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F07122B72E27300145871 /* DatePickerVC.swift */; };
 		9D7F07152B74135000145871 /* MeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F07142B74135000145871 /* MeditationVC.swift */; };
 		9D7F07192B7424A700145871 /* space.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F07182B7424A700145871 /* space.mp4 */; };
+		9D7F071B2B74260B00145871 /* energy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F071A2B74260B00145871 /* energy.mp4 */; };
+		9D7F071D2B74261600145871 /* stars.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F071C2B74261600145871 /* stars.mp4 */; };
 		9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */; };
 		9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */; };
 		9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */; };
@@ -62,6 +64,8 @@
 		9D7F07122B72E27300145871 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		9D7F07142B74135000145871 /* MeditationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationVC.swift; sourceTree = "<group>"; };
 		9D7F07182B7424A700145871 /* space.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = space.mp4; path = "iMirror/Supporting Files/space.mp4"; sourceTree = SOURCE_ROOT; };
+		9D7F071A2B74260B00145871 /* energy.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = energy.mp4; sourceTree = SOURCE_ROOT; };
+		9D7F071C2B74261600145871 /* stars.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = stars.mp4; sourceTree = SOURCE_ROOT; };
 		9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+Extensions.swift"; sourceTree = "<group>"; };
 		9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		9DFEE69F2B4B2939001835E1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F071C2B74261600145871 /* stars.mp4 */,
+				9D7F071A2B74260B00145871 /* energy.mp4 */,
 				9D7F07182B7424A700145871 /* space.mp4 */,
 				9D7C03582B2267640075E59D /* Assets.xcassets */,
 				9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */,
@@ -279,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DFEE6442B447241001835E1 /* Roboto-Bold.ttf in Resources */,
+				9D7F071D2B74261600145871 /* stars.mp4 in Resources */,
 				9DFEE6422B447241001835E1 /* LICENSE.txt in Resources */,
 				9DFEE63C2B447241001835E1 /* Roboto-Regular.ttf in Resources */,
 				9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */,
@@ -287,6 +294,7 @@
 				9DFEE6452B447241001835E1 /* Roboto-Thin.ttf in Resources */,
 				9DFEE63B2B447241001835E1 /* Roboto-Light.ttf in Resources */,
 				9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */,
+				9D7F071B2B74260B00145871 /* energy.mp4 in Resources */,
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

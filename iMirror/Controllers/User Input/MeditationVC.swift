@@ -15,10 +15,6 @@ class MeditationVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    navigationController?.navigationBar.shadowImage = UIImage()
-    navigationController?.navigationBar.isTranslucent = true
-    
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Exit", style: .plain, target: self, action: #selector(exitMeditation))
     navigationItem.rightBarButtonItem?.tintColor = .red
   }
@@ -38,7 +34,7 @@ class MeditationVC: UIViewController {
   }
   
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "YourVideoFileName", ofType: "mp4") else {
+    guard let videoPath = Bundle.main.path(forResource: "space", ofType: "mp4") else {
       print("Video file not found")
       return
     }

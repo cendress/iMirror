@@ -111,7 +111,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       
       // Navigate to new view controller
       let meditationVC = MeditationVC()
-      self.present(meditationVC, animated: true)
+      navigationController?.pushViewController(meditationVC, animated: true)
     } else {
       showAlert()
     }
