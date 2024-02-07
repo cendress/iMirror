@@ -73,9 +73,6 @@ class JournalEntryCell: UITableViewCell {
     }
     
     moodBackgroundView.layer.cornerRadius = 19
-    moodBackgroundView.layer.borderWidth = 2.0
-//    moodBackgroundView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-    moodBackgroundView.layer.borderColor = UIColor.systemBackground.cgColor
     moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
     moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 6)
     moodBackgroundView.layer.shadowRadius = 8
