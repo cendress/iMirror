@@ -56,7 +56,6 @@ class MeditationVC: UIViewController {
     
     // Toggle state of navigation bar
     navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
-    navigationController?.navigationBar.barTintColor = .green
   }
   
   //MARK: - Video methods
