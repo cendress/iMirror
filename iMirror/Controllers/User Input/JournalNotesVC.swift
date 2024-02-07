@@ -108,9 +108,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       CoreDataManager.shared.saveJournalEntry(mood: mood ?? "", emotions: selectedEmotions, title: titleText, note: notesText, currentDate: currentDate, currentTime: currentTime)
       
       NotificationCenter.default.post(name: .didSaveJournalEntry, object: nil)
-      self.dismiss(animated: true)
       
       // Navigate to new view controller
+      let meditationVC = MeditationVC()
+      self.present(meditationVC, animated: true)
     } else {
       showAlert()
     }
