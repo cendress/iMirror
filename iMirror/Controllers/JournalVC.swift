@@ -44,7 +44,7 @@ class JournalVC: UITableViewController {
   //MARK: - Filter entry date methods
   
   @objc func filterEntries() {
-    let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the entries.", preferredStyle: .actionSheet)
+    let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the journal entries.", preferredStyle: .actionSheet)
     alert.addAction(UIAlertAction(title: "Select Date", style: .default) { _ in
       // Implement filter logic
       self.presentDatePicker()
