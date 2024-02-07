@@ -12,8 +12,9 @@ class MeditationVC: UIViewController {
   
   //MARK: - Initial setup
   
-  var player: AVPlayer?
-  var playerLayer: AVPlayerLayer?
+  private var player: AVPlayer?
+  private var playerLayer: AVPlayerLayer?
+  private var audioPlayer: AVAudioPlayer?
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
