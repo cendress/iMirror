@@ -30,6 +30,7 @@ class MeditationVC: UIViewController {
     super.viewDidLoad()
     setupView()
     setupAndPlayVideo()
+    playMeditationMusic()
     
     navigationItem.hidesBackButton = true
   }
@@ -63,7 +64,7 @@ class MeditationVC: UIViewController {
     }
   }
   
-  //MARK: - Video methods
+  //MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
     guard let videoPath = Bundle.main.path(forResource: "stars", ofType: "mp4") else {
@@ -84,6 +85,23 @@ class MeditationVC: UIViewController {
     player?.play()
     
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+  }
+  
+  private func playMeditationMusic() {
+    guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3") else {
+      print("Audio file not found")
+      return
+    }
+    let audioURL = URL(fileURLWithPath: audioPath)
+    
+    do {
+      audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+      audioPlayer?.prepareToPlay()
+      audioPlayer?.play()
+      audioPlayer?.numberOfLoops = -1
+    } catch {
+      print("Could not load music file")
+    }
   }
   
   //MARK: - UI methods
