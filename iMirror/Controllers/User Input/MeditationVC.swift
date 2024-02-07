@@ -9,6 +9,9 @@ import UIKit
 import AVFoundation
 
 class MeditationVC: UIViewController {
+  
+  //MARK: - Initial setup
+  
   var player: AVPlayer?
   var playerLayer: AVPlayerLayer?
   
@@ -37,8 +40,29 @@ class MeditationVC: UIViewController {
     view.addGestureRecognizer(tapGesture)
   }
   
+  //MARK: - @objc methods
+  
+  @objc private func exitMeditation() {
+    self.dismiss(animated: true, completion: nil)
+  }
+  
+  @objc func loopVideo() {
+    player?.seek(to: .zero)
+    player?.play()
+  }
+  
+  @objc private func toggleNavigationBar() {
+    let isNavigationBarHidden = navigationController?.navigationBar.isHidden ?? true
+    
+    // Toggle state of navigation bar
+    navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
+    navigationController?.navigationBar.barTintColor = .green
+  }
+  
+  //MARK: - Video methods
+  
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "space", ofType: "mp4") else {
+    guard let videoPath = Bundle.main.path(forResource: "stars", ofType: "mp4") else {
       print("Video file not found")
       return
     }
@@ -58,17 +82,7 @@ class MeditationVC: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
   }
   
-  @objc private func toggleNavigationBar() {
-    let isNavigationBarHidden = navigationController?.navigationBar.isHidden ?? true
-    
-    // Toggle state of navigation bar
-    navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
-    navigationController?.navigationBar.barTintColor = .green
-  }
-  
-  @objc private func exitMeditation() {
-    self.dismiss(animated: true, completion: nil)
-  }
+  //MARK: - UI methods
   
   private func setNavBarAppearance() {
     let appearance = UINavigationBarAppearance()
@@ -80,5 +94,11 @@ class MeditationVC: UIViewController {
     navigationController?.navigationBar.scrollEdgeAppearance = appearance
     
     navigationController?.navigationBar.shadowImage = UIImage()
+  }
+  
+  //MARK: - Other methods
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }
