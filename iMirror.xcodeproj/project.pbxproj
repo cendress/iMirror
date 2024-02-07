@@ -26,6 +26,7 @@
 		9D7F07192B7424A700145871 /* space.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F07182B7424A700145871 /* space.mp4 */; };
 		9D7F071B2B74260B00145871 /* energy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F071A2B74260B00145871 /* energy.mp4 */; };
 		9D7F071F2B74345000145871 /* stars.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F071E2B74345000145871 /* stars.mp4 */; };
+		9D7F07222B743F5E00145871 /* meditationMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D7F07212B743F5E00145871 /* meditationMusic.mp3 */; };
 		9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */; };
 		9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */; };
 		9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */; };
@@ -66,6 +67,7 @@
 		9D7F07182B7424A700145871 /* space.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = space.mp4; path = "iMirror/Supporting Files/New Group/space.mp4"; sourceTree = SOURCE_ROOT; };
 		9D7F071A2B74260B00145871 /* energy.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = energy.mp4; path = "iMirror/Supporting Files/New Group/energy.mp4"; sourceTree = SOURCE_ROOT; };
 		9D7F071E2B74345000145871 /* stars.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = stars.mp4; path = "iMirror/Supporting Files/New Group/stars.mp4"; sourceTree = SOURCE_ROOT; };
+		9D7F07212B743F5E00145871 /* meditationMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meditationMusic.mp3; sourceTree = SOURCE_ROOT; };
 		9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+Extensions.swift"; sourceTree = "<group>"; };
 		9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		9DFEE62D2B447241001835E1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		9DFEE69F2B4B2939001835E1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D7F07212B743F5E00145871 /* meditationMusic.mp3 */,
 				9D7F07202B7439D400145871 /* Videos */,
 				9D7C03582B2267640075E59D /* Assets.xcassets */,
 				9D7C035A2B2267640075E59D /* LaunchScreen.storyboard */,
@@ -301,6 +304,7 @@
 				9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */,
 				9DFEE6452B447241001835E1 /* Roboto-Thin.ttf in Resources */,
 				9DFEE63B2B447241001835E1 /* Roboto-Light.ttf in Resources */,
+				9D7F07222B743F5E00145871 /* meditationMusic.mp3 in Resources */,
 				9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */,
 				9D7F071B2B74260B00145871 /* energy.mp4 in Resources */,
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
