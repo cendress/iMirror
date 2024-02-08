@@ -45,10 +45,7 @@ class MeditationVC: UIViewController {
   //MARK: - @objc methods
   
   @objc private func exitMeditation() {
-    // Stop audio playing
-    audioPlayer?.stop()
-    
-    self.dismiss(animated: true, completion: nil)
+    showAlert()
   }
   
   @objc func loopVideo() {
@@ -59,7 +56,7 @@ class MeditationVC: UIViewController {
   @objc private func toggleNavigationBar() {
     guard let isNavigationBarHidden = navigationController?.navigationBar.isHidden else { return }
     
-    UIView.animate(withDuration: 0.3) {
+    UIView.animate(withDuration: 0.5) {
       self.navigationController?.navigationBar.alpha = isNavigationBarHidden ? 1.0 : 0.0
     } completion: { _ in
       self.navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: false)
@@ -70,7 +67,7 @@ class MeditationVC: UIViewController {
   //MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "stars", ofType: "mp4") else {
+    guard let videoPath = Bundle.main.path(forResource: "starVideo", ofType: "mp4") else {
       print("Video file not found")
       return
     }
@@ -119,6 +116,18 @@ class MeditationVC: UIViewController {
     navigationController?.navigationBar.scrollEdgeAppearance = appearance
     
     navigationController?.navigationBar.shadowImage = UIImage()
+  }
+  
+  private func showAlert() {
+    let ac = UIAlertController(title: "Are you sure you want to exit the meditation?", message: nil, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "Yes", style: .default) { action in
+      // Stop audio playing
+      self.audioPlayer?.stop()
+      self.dismiss(animated: true)
+    })
+    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    
+    present(ac, animated: true)
   }
   
   //MARK: - Other methods
