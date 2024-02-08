@@ -109,7 +109,8 @@ class MeditationVC: UIViewController {
   private func setNavBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    appearance.backgroundColor = UIColor(white: 0.1, alpha: 1.0).withAlphaComponent(0.5)
     
     navigationController?.navigationBar.standardAppearance = appearance
     navigationController?.navigationBar.compactAppearance = appearance
