@@ -67,7 +67,7 @@ class MeditationVC: UIViewController {
   //MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "starVideo", ofType: "mp4") else {
+    guard let videoPath = Bundle.main.path(forResource: "particles", ofType: "mp4") else {
       print("Video file not found")
       return
     }
