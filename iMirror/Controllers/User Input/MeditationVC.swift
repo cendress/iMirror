@@ -154,10 +154,12 @@ class MeditationVC: UIViewController {
   @objc private func toggleSound() {
     isSoundEnabled.toggle()
     if isSoundEnabled {
-      playMeditationMusic()
+      audioPlayer?.play()
     } else {
       audioPlayer?.pause()
     }
+    
+    updateSoundButtonImage()
   }
   
   // MARK: - Other methods
