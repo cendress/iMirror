@@ -76,7 +76,24 @@ class MeditationVC: UIViewController {
       self.navigationController?.navigationBar.alpha = isNavigationBarHidden ? 1.0 : 0.0
     } completion: { _ in
       self.navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: false)
-      self.navigationController?.navigationBar.alpha = 1.0
+      if !isNavigationBarHidden {
+        self.navigationController?.navigationBar.alpha = 1.0
+      }
+    }
+    
+    // Start timer for 5 seconds if navigation bar is shown
+    if isNavigationBarHidden {
+      hideNavBarTimer?.invalidate()
+      hideNavBarTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+        UIView.animate(withDuration: 0.5) {
+          self?.navigationController?.navigationBar.alpha = 0.0
+        } completion: { _ in
+          self?.navigationController?.setNavigationBarHidden(true, animated: false)
+          self?.navigationController?.navigationBar.alpha = 1.0
+        }
+      }
+    } else {
+      hideNavBarTimer?.invalidate()
     }
   }
   
