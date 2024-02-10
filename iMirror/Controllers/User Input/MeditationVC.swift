@@ -10,13 +10,20 @@ import AVFoundation
 
 class MeditationVC: UIViewController {
   
-  //MARK: - Initial setup
+  // MARK: - Initial setup
   
   private var player: AVPlayer?
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
   
-  private var isSoundEnabled: Bool = true
+  private var isSoundEnabled: Bool = true {
+    didSet {
+      updateSoundButtonImage()
+    }
+  }
+  
+  private var soundButton: UIBarButtonItem?
+  private var changeVideoButtonItem: UIBarButtonItem?
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -44,7 +51,7 @@ class MeditationVC: UIViewController {
     view.addGestureRecognizer(tapGesture)
   }
   
-  //MARK: - @objc methods
+  // MARK: - @objc methods
   
   @objc private func exitMeditation() {
     showAlert()
@@ -66,7 +73,7 @@ class MeditationVC: UIViewController {
     }
   }
   
-  //MARK: - Video & music methods
+  // MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
     guard let videoPath = Bundle.main.path(forResource: "rays", ofType: "mp4") else {
@@ -79,7 +86,6 @@ class MeditationVC: UIViewController {
     
     guard let playerLayer = playerLayer else { return }
     
-    // Video fills entire screen
     playerLayer.frame = self.view.bounds
     playerLayer.videoGravity = .resizeAspectFill
     view.layer.addSublayer(playerLayer)
@@ -90,13 +96,13 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func changeVideo() {
-    // Placeholder for the logic to change the video
+    // Logic to change the video
     print("Change video tapped")
   }
   
   private func playMeditationMusic() {
     guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3"), isSoundEnabled else {
-      print("Audio file not found")
+      print("Audio file not found or sound is disabled")
       return
     }
     let audioURL = URL(fileURLWithPath: audioPath)
@@ -111,7 +117,7 @@ class MeditationVC: UIViewController {
     }
   }
   
-  //MARK: - Navigation bar methods
+  // MARK: - Navigation bar methods
   
   private func setNavBarAppearance() {
     let appearance = UINavigationBarAppearance()
@@ -124,32 +130,41 @@ class MeditationVC: UIViewController {
     
     navigationController?.navigationBar.shadowImage = UIImage()
     
-    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
-    let changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
+    updateNavigationItems()
+  }
+  
+  private func updateNavigationItems() {
+    let soundButtonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
+    let soundButtonImage = UIImage(systemName: soundButtonImageName)
+    soundButton = UIBarButtonItem(image: soundButtonImage, style: .plain, target: self, action: #selector(toggleSound))
+    soundButton?.tintColor = .white
     
-    navigationItem.leftBarButtonItems = [navigationItem.leftBarButtonItem!, changeVideoButtonItem]
-    navigationItem.leftBarButtonItem?.tintColor = .white
+    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
+    changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
+    changeVideoButtonItem?.tintColor = .white
+    
+    navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem].compactMap { $0 }
+  }
+  
+  private func updateSoundButtonImage() {
+    let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
+    soundButton?.image = UIImage(systemName: buttonImageName)
   }
   
   @objc private func toggleSound() {
     isSoundEnabled.toggle()
     if isSoundEnabled {
-      audioPlayer?.play()
+      playMeditationMusic()
     } else {
       audioPlayer?.pause()
     }
-    
-    let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
-    let buttonImage = UIImage(systemName: buttonImageName)
-    navigationItem.leftBarButtonItems?.first?.image = buttonImage
   }
   
-  //MARK: - Other methods
+  // MARK: - Other methods
   
   private func showAlert() {
     let ac = UIAlertController(title: "Are you sure you want to exit the meditation?", message: nil, preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "Yes", style: .default) { action in
-      // Stop audio playing
       self.audioPlayer?.stop()
       self.dismiss(animated: true)
     })
@@ -158,10 +173,8 @@ class MeditationVC: UIViewController {
     present(ac, animated: true)
   }
   
-  
   deinit {
     NotificationCenter.default.removeObserver(self)
-    
     audioPlayer?.stop()
   }
 }
