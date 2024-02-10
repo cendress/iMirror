@@ -90,7 +90,7 @@ class MeditationVC: UIViewController {
   }
   
   private func playMeditationMusic() {
-    guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3") else {
+    guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3"), isSoundEnabled else {
       print("Audio file not found")
       return
     }
@@ -127,6 +127,7 @@ class MeditationVC: UIViewController {
     let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
     let buttonImage = UIImage(systemName: buttonImageName)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
+    navigationItem.leftBarButtonItem?.tintColor = .white
   }
   
   @objc private func toggleSound() {
