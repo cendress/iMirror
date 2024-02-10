@@ -29,6 +29,8 @@ class MeditationVC: UIViewController {
   private var videoFiles = ["waves", "purpleTunnel", "tunnel", "rays", "seaweed"]
   private var currentVideoIndex = 0
   
+  private var hideNavBarTimer: Timer?
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavBarAppearance()
