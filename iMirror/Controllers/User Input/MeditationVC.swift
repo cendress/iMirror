@@ -89,6 +89,11 @@ class MeditationVC: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
   }
   
+  @objc private func changeVideo() {
+    // Placeholder for the logic to change the video
+    print("Change video tapped")
+  }
+  
   private func playMeditationMusic() {
     guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3"), isSoundEnabled else {
       print("Audio file not found")
