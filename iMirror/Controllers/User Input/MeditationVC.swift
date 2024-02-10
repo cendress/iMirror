@@ -124,16 +124,11 @@ class MeditationVC: UIViewController {
     
     navigationController?.navigationBar.shadowImage = UIImage()
     
-    let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
-    let buttonImage = UIImage(systemName: buttonImageName)
-    let soundButton = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
-    soundButton.tintColor = .white
-    
     let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
     let changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
-    changeVideoButtonItem.tintColor = .white
     
-    navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem]
+    navigationItem.leftBarButtonItems = [navigationItem.leftBarButtonItem!, changeVideoButtonItem]
+    navigationItem.leftBarButtonItem?.tintColor = .white
   }
   
   @objc private func toggleSound() {
@@ -143,6 +138,10 @@ class MeditationVC: UIViewController {
     } else {
       audioPlayer?.pause()
     }
+    
+    let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
+    let buttonImage = UIImage(systemName: buttonImageName)
+    navigationItem.leftBarButtonItems?.first?.image = buttonImage
   }
   
   //MARK: - Other methods
