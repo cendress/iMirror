@@ -25,6 +25,9 @@ class MeditationVC: UIViewController {
   private var soundButton: UIBarButtonItem?
   private var changeVideoButtonItem: UIBarButtonItem?
   
+  private var videoFiles = ["waves", "purpleTunnel", "tunnel", "rays", "seaweed"]
+  private var currentVideoIndex = 0
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavBarAppearance()
