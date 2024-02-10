@@ -15,6 +15,7 @@ class MeditationVC: UIViewController {
   private var player: AVPlayer?
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
+  private var nextPlayerItem: AVPlayerItem?
   
   private var isSoundEnabled: Bool = true {
     didSet {
@@ -61,8 +62,9 @@ class MeditationVC: UIViewController {
   }
   
   @objc func loopVideo() {
-    player?.seek(to: .zero)
-    player?.play()
+    player?.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero, completionHandler: { [weak self] _ in
+      self?.player?.playImmediately(atRate: 1.0)
+    })
   }
   
   @objc private func toggleNavigationBar() {
@@ -74,6 +76,17 @@ class MeditationVC: UIViewController {
       self.navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: false)
       self.navigationController?.navigationBar.alpha = 1.0
     }
+  }
+  
+  @objc private func toggleSound() {
+    isSoundEnabled.toggle()
+    if isSoundEnabled {
+      audioPlayer?.play()
+    } else {
+      audioPlayer?.pause()
+    }
+    
+    updateSoundButtonImage()
   }
   
   // MARK: - Video & music methods
@@ -101,16 +114,21 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func changeVideo() {
+    currentVideoIndex += 1
+    if currentVideoIndex >= videoFiles.count {
+      currentVideoIndex = 0
+    }
+    
     CATransaction.begin()
-    CATransaction.setCompletionBlock {
-      self.currentVideoIndex += 1
-      if self.currentVideoIndex >= self.videoFiles.count {
-        self.currentVideoIndex = 0
-      }
+    
+    CATransaction.setCompletionBlock { [weak self] in
+      guard let self = self else { return }
+      
       self.setupAndPlayVideo()
       
       self.playerLayer?.opacity = 0
-      UIView.animate(withDuration: 1.0) {
+      
+      UIView.animate(withDuration: 0.5) {
         self.playerLayer?.opacity = 1
       }
     }
@@ -118,9 +136,12 @@ class MeditationVC: UIViewController {
     let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
     fadeOutAnimation.fromValue = 1
     fadeOutAnimation.toValue = 0
-    fadeOutAnimation.duration = 1.0
+    fadeOutAnimation.duration = 0.5
+    fadeOutAnimation.fillMode = .forwards
+    fadeOutAnimation.isRemovedOnCompletion = false
+    
     playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
-    playerLayer?.opacity = 0
+    
     CATransaction.commit()
   }
   
@@ -173,17 +194,6 @@ class MeditationVC: UIViewController {
   private func updateSoundButtonImage() {
     let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
     soundButton?.image = UIImage(systemName: buttonImageName)
-  }
-  
-  @objc private func toggleSound() {
-    isSoundEnabled.toggle()
-    if isSoundEnabled {
-      audioPlayer?.play()
-    } else {
-      audioPlayer?.pause()
-    }
-    
-    updateSoundButtonImage()
   }
   
   // MARK: - Other methods
