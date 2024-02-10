@@ -106,12 +106,12 @@ class MeditationVC: UIViewController {
     }
   }
   
-  //MARK: - UI methods
+  //MARK: - Navigation bar methods
   
   private func setNavBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-//    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    //    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     appearance.backgroundColor = UIColor(white: 0.1, alpha: 1.0).withAlphaComponent(0.5)
     
     navigationController?.navigationBar.standardAppearance = appearance
@@ -119,7 +119,27 @@ class MeditationVC: UIViewController {
     navigationController?.navigationBar.scrollEdgeAppearance = appearance
     
     navigationController?.navigationBar.shadowImage = UIImage()
+    
+    updateSoundToggleButton()
   }
+  
+  private func updateSoundToggleButton() {
+    let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
+    let buttonImage = UIImage(systemName: buttonImageName)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
+  }
+  
+  @objc private func toggleSound() {
+    isSoundEnabled.toggle()
+    if isSoundEnabled {
+      audioPlayer?.play()
+    } else {
+      audioPlayer?.pause()
+    }
+    updateSoundToggleButton()
+  }
+  
+  //MARK: - Other methods
   
   private func showAlert() {
     let ac = UIAlertController(title: "Are you sure you want to exit the meditation?", message: nil, preferredStyle: .alert)
@@ -133,7 +153,6 @@ class MeditationVC: UIViewController {
     present(ac, animated: true)
   }
   
-  //MARK: - Other methods
   
   deinit {
     NotificationCenter.default.removeObserver(self)
