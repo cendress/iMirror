@@ -16,6 +16,8 @@ class MeditationVC: UIViewController {
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
   
+  private var isSoundEnabled: Bool = true
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavBarAppearance()
@@ -67,7 +69,7 @@ class MeditationVC: UIViewController {
   //MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "particles", ofType: "mp4") else {
+    guard let videoPath = Bundle.main.path(forResource: "rays", ofType: "mp4") else {
       print("Video file not found")
       return
     }
