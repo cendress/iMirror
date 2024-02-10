@@ -116,7 +116,6 @@ class MeditationVC: UIViewController {
   private func setNavBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-    //    appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     appearance.backgroundColor = UIColor(white: 0.1, alpha: 1.0).withAlphaComponent(0.5)
     
     navigationController?.navigationBar.standardAppearance = appearance
@@ -125,14 +124,16 @@ class MeditationVC: UIViewController {
     
     navigationController?.navigationBar.shadowImage = UIImage()
     
-    updateSoundToggleButton()
-  }
-  
-  private func updateSoundToggleButton() {
     let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
     let buttonImage = UIImage(systemName: buttonImageName)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
+    let soundButton = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
     navigationItem.leftBarButtonItem?.tintColor = .white
+    
+    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
+    let changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
+    changeVideoButtonItem.tintColor = .white
+    
+    navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem]
   }
   
   @objc private func toggleSound() {
@@ -142,7 +143,6 @@ class MeditationVC: UIViewController {
     } else {
       audioPlayer?.pause()
     }
-    updateSoundToggleButton()
   }
   
   //MARK: - Other methods
