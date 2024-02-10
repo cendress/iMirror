@@ -79,17 +79,19 @@ class MeditationVC: UIViewController {
   // MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
-    guard let videoPath = Bundle.main.path(forResource: "rays", ofType: "mp4") else {
+    let videoName = videoFiles[currentVideoIndex]
+    guard let videoPath = Bundle.main.path(forResource: videoName, ofType: "mp4") else {
       print("Video file not found")
       return
     }
     let videoURL = URL(fileURLWithPath: videoPath)
     player = AVPlayer(url: videoURL)
+    playerLayer?.removeFromSuperlayer()
     playerLayer = AVPlayerLayer(player: player)
-    
     guard let playerLayer = playerLayer else { return }
     
-    playerLayer.frame = self.view.bounds
+    // Video fills entire screen
+    playerLayer.frame = view.bounds
     playerLayer.videoGravity = .resizeAspectFill
     view.layer.addSublayer(playerLayer)
     
