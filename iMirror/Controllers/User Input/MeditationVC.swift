@@ -127,7 +127,7 @@ class MeditationVC: UIViewController {
     let buttonImageName = isSoundEnabled ? "speaker.wave.3.fill" : "speaker.slash.fill"
     let buttonImage = UIImage(systemName: buttonImageName)
     let soundButton = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(toggleSound))
-    navigationItem.leftBarButtonItem?.tintColor = .white
+    soundButton.tintColor = .white
     
     let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
     let changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
