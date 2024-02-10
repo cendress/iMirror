@@ -101,8 +101,27 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func changeVideo() {
-    // Logic to change the video
-    print("Change video tapped")
+    CATransaction.begin()
+    CATransaction.setCompletionBlock {
+      self.currentVideoIndex += 1
+      if self.currentVideoIndex >= self.videoFiles.count {
+        self.currentVideoIndex = 0
+      }
+      self.setupAndPlayVideo()
+      
+      self.playerLayer?.opacity = 0
+      UIView.animate(withDuration: 1.0) {
+        self.playerLayer?.opacity = 1
+      }
+    }
+    
+    let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
+    fadeOutAnimation.fromValue = 1
+    fadeOutAnimation.toValue = 0
+    fadeOutAnimation.duration = 1.0
+    playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
+    playerLayer?.opacity = 0
+    CATransaction.commit()
   }
   
   private func playMeditationMusic() {
