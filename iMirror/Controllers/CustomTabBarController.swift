@@ -18,21 +18,23 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.selectedIndex = 0
     
     NotificationCenter.default.addObserver(self, selector: #selector(handleJournalEntrySave), name: .didSaveJournalEntry, object: nil)
+    
+    presentOnboarding()
   }
   
   //MARK: - Present onboarding method
   
-  private func presentOnboardingIfNeeded() {
+  private func presentOnboarding() {
     // Check if the onboarding has already been completed
-    let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
-    if !hasCompletedOnboarding {
+//    let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+//    if !hasCompletedOnboarding {
       // Present the onboarding view controller
       let configuration = UIOnboardingViewConfiguration.setUp()
       let onboardingViewController = UIOnboardingViewController(withConfiguration: configuration)
       onboardingViewController.delegate = self
       onboardingViewController.modalPresentationStyle = .fullScreen
       self.present(onboardingViewController, animated: true)
-    }
+//    }
   }
   
   // MARK: - Tab bar configuration method
