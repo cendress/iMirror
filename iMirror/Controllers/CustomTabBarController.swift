@@ -88,3 +88,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     NotificationCenter.default.removeObserver(self)
   }
 }
+
+extension CustomTabBarController: UIOnboardingViewControllerDelegate {
+  func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
+    onboardingViewController.dismiss(animated: true, completion: nil)
+  }
+}
