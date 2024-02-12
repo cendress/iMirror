@@ -48,6 +48,9 @@ class MeditationVC: UIViewController {
     playMeditationMusic()
     
     navigationItem.hidesBackButton = true
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
   }
   
   private func setupView() {
