@@ -18,6 +18,7 @@
 		9D08E5242B781F59009AD16B /* particles.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E5232B781F59009AD16B /* particles.mp4 */; };
 		9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */; };
 		9D3395B12B7A945C00D43023 /* galaxy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D3395AA2B7A945900D43023 /* galaxy.mp4 */; };
+		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -93,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +266,9 @@
 			dependencies = (
 			);
 			name = iMirror;
+			packageProductDependencies = (
+				9D3395BA2B7A9E0600D43023 /* UIOnboarding */,
+			);
 			productName = iMirror;
 			productReference = 9D7C03492B2267610075E59D /* iMirror.app */;
 			productType = "com.apple.product-type.application";
@@ -292,6 +297,9 @@
 				Base,
 			);
 			mainGroup = 9D7C03402B2267610075E59D;
+			packageReferences = (
+				9D3395B92B7A9E0600D43023 /* XCRemoteSwiftPackageReference "UIOnboarding" */,
+			);
 			productRefGroup = 9D7C034A2B2267610075E59D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -573,6 +581,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9D3395B92B7A9E0600D43023 /* XCRemoteSwiftPackageReference "UIOnboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lascic/UIOnboarding.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D3395BA2B7A9E0600D43023 /* UIOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D3395B92B7A9E0600D43023 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
+			productName = UIOnboarding;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */ = {
