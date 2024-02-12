@@ -26,7 +26,7 @@ class MeditationVC: UIViewController {
   private var soundButton: UIBarButtonItem?
   private var changeVideoButtonItem: UIBarButtonItem?
   
-  private var videoFiles = ["waves", "tunnel", "particles", "moon", "neonTunnel"]
+  private var videoFiles = ["galaxy", "waves", "neonTunnel", "particles"]
   private var currentVideoIndex = 0
   
   private var hideNavBarTimer: Timer?

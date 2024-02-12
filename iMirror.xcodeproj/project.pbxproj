@@ -15,10 +15,9 @@
 		9D0197F72B66C8D600E6FE30 /* CoreDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197F62B66C8D600E6FE30 /* CoreDateManager.swift */; };
 		9D0197F92B66EE8800E6FE30 /* JournalEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0197F82B66EE8800E6FE30 /* JournalEntryCell.swift */; };
 		9D08E50E2B780EA4009AD16B /* waves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E50D2B780EA4009AD16B /* waves.mp4 */; };
-		9D08E5222B781F4B009AD16B /* tunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E5212B781F4B009AD16B /* tunnel.mp4 */; };
 		9D08E5242B781F59009AD16B /* particles.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E5232B781F59009AD16B /* particles.mp4 */; };
-		9D08E5262B781F64009AD16B /* moon.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E5252B781F64009AD16B /* moon.mp4 */; };
 		9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */; };
+		9D3395B12B7A945C00D43023 /* galaxy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D3395AA2B7A945900D43023 /* galaxy.mp4 */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -56,10 +55,9 @@
 		9D0197F62B66C8D600E6FE30 /* CoreDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateManager.swift; sourceTree = "<group>"; };
 		9D0197F82B66EE8800E6FE30 /* JournalEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryCell.swift; sourceTree = "<group>"; };
 		9D08E50D2B780EA4009AD16B /* waves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waves.mp4; sourceTree = "<group>"; };
-		9D08E5212B781F4B009AD16B /* tunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tunnel.mp4; sourceTree = "<group>"; };
 		9D08E5232B781F59009AD16B /* particles.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = particles.mp4; sourceTree = "<group>"; };
-		9D08E5252B781F64009AD16B /* moon.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = moon.mp4; sourceTree = "<group>"; };
 		9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = neonTunnel.mp4; sourceTree = "<group>"; };
+		9D3395AA2B7A945900D43023 /* galaxy.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = galaxy.mp4; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,11 +164,10 @@
 		9D7F07202B7439D400145871 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
-				9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */,
-				9D08E5252B781F64009AD16B /* moon.mp4 */,
 				9D08E5232B781F59009AD16B /* particles.mp4 */,
-				9D08E5212B781F4B009AD16B /* tunnel.mp4 */,
+				9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */,
 				9D08E50D2B780EA4009AD16B /* waves.mp4 */,
+				9D3395AA2B7A945900D43023 /* galaxy.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -313,7 +310,6 @@
 				9DFEE6422B447241001835E1 /* LICENSE.txt in Resources */,
 				9D7F07312B76E1EE00145871 /* meditationMusic.mp3 in Resources */,
 				9DFEE63C2B447241001835E1 /* Roboto-Regular.ttf in Resources */,
-				9D08E5222B781F4B009AD16B /* tunnel.mp4 in Resources */,
 				9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */,
 				9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */,
 				9D08E50E2B780EA4009AD16B /* waves.mp4 in Resources */,
@@ -322,7 +318,7 @@
 				9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */,
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
 				9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */,
-				9D08E5262B781F64009AD16B /* moon.mp4 in Resources */,
+				9D3395B12B7A945C00D43023 /* galaxy.mp4 in Resources */,
 				9D08E5242B781F59009AD16B /* particles.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
