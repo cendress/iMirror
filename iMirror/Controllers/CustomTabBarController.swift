@@ -22,18 +22,16 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
   //MARK: - Present onboarding method
   
-  private func presentOnboarding() {
-    // Check if it's the first launch
-    let isFirstLaunch = UserDefaults.standard.bool(forKey: "HasLaunchedBefore")
-    if !isFirstLaunch {
-      UserDefaults.standard.set(true, forKey: "HasLaunchedBefore")
-      UserDefaults.standard.synchronize()
-      
+  private func presentOnboardingIfNeeded() {
+    // Check if the onboarding has already been completed
+    let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+    if !hasCompletedOnboarding {
       // Present the onboarding view controller
-      let onboardingController = UIOnboardingViewController(withConfiguration: .setUp())
-      onboardingController.delegate = self
-      onboardingController.modalPresentationStyle = .fullScreen
-      self.present(onboardingController, animated: true)
+      let configuration = UIOnboardingViewConfiguration.setUp()
+      let onboardingViewController = UIOnboardingViewController(withConfiguration: configuration)
+      onboardingViewController.delegate = self
+      onboardingViewController.modalPresentationStyle = .fullScreen
+      self.present(onboardingViewController, animated: true, completion: nil)
     }
   }
   
@@ -91,6 +89,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 
 extension CustomTabBarController: UIOnboardingViewControllerDelegate {
   func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
-    onboardingViewController.dismiss(animated: true, completion: nil)
+    onboardingViewController.dismiss(animated: true, completion: {
+      UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+    })
   }
 }

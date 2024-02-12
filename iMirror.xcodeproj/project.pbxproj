@@ -19,6 +19,8 @@
 		9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */; };
 		9D3395B12B7A945C00D43023 /* galaxy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D3395AA2B7A945900D43023 /* galaxy.mp4 */; };
 		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
+		9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */; };
+		9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -59,6 +61,8 @@
 		9D08E5232B781F59009AD16B /* particles.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = particles.mp4; sourceTree = "<group>"; };
 		9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = neonTunnel.mp4; sourceTree = "<group>"; };
 		9D3395AA2B7A945900D43023 /* galaxy.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = galaxy.mp4; sourceTree = "<group>"; };
+		9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
+		9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOnboardingViewConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				9D0197F62B66C8D600E6FE30 /* CoreDateManager.swift */,
 				9D8594812B70287200BF1B03 /* JournalEntry+Extensions.swift */,
 				9DC206652B6C2FE600BDADE3 /* PaddedLabel.swift */,
+				9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */,
+				9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
 				9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
+				9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */,
 				9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */,
 				9DFEE6542B461047001835E1 /* CustomTabBar.swift in Sources */,
 				9DFEE64E2B4603ED001835E1 /* SettingsVC.swift in Sources */,
@@ -357,6 +364,7 @@
 				9D0197ED2B604FC700E6FE30 /* EmotionCollectionViewCell.swift in Sources */,
 				9D7F07112B717A4400145871 /* JournalSection.swift in Sources */,
 				9D0197EB2B5EFD9700E6FE30 /* EmotionListVC.swift in Sources */,
+				9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */,
 				9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
 				9D0197EF2B6054F600E6FE30 /* Emotion.swift in Sources */,
