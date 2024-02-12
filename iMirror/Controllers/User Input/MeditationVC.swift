@@ -111,6 +111,20 @@ class MeditationVC: UIViewController {
     updateSoundButtonImage()
   }
   
+  //MARK: - Notification handler methods
+  
+  @objc private func appDidEnterBackground() {
+    player?.pause()
+    audioPlayer?.pause()
+  }
+  
+  @objc private func appWillEnterForeground() {
+    if isSoundEnabled {
+      audioPlayer?.play()
+    }
+    player?.play()
+  }
+  
   // MARK: - Video & music methods
   
   private func setupAndPlayVideo() {
