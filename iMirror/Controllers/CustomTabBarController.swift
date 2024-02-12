@@ -19,7 +19,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     NotificationCenter.default.addObserver(self, selector: #selector(handleJournalEntrySave), name: .didSaveJournalEntry, object: nil)
     
-    presentOnboarding()
+    DispatchQueue.main.async {
+      self.presentOnboarding()
+    }
   }
   
   //MARK: - Present onboarding method
