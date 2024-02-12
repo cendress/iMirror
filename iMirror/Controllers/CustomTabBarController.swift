@@ -31,7 +31,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
       let onboardingViewController = UIOnboardingViewController(withConfiguration: configuration)
       onboardingViewController.delegate = self
       onboardingViewController.modalPresentationStyle = .fullScreen
-      self.present(onboardingViewController, animated: true, completion: nil)
+      self.present(onboardingViewController, animated: true)
     }
   }
   
