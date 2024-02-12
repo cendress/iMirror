@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIOnboarding
 
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
