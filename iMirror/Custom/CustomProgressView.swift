@@ -78,17 +78,21 @@ class CustomProgressView: UIView {
     let width = bounds.width
     let newProgress = min(max(0, location.x / width), 1)
     
-    if abs(progress - newProgress) > 0.01 {
-      progress = newProgress
-      progressDidChange?(progress)
-      updateSliderPosition()
-    }
+    progress = newProgress
+    progressDidChange?(progress)
+    updateSliderPosition()
     
-    if gesture.state == .began || gesture.state == .ended {
-      // UIView.animate for a smoother animation
+    switch gesture.state {
+    case .began:
       UIView.animate(withDuration: 0.1) {
-        self.sliderKnob.layer.shadowOpacity = gesture.state == .began ? 1 : 0
+        self.sliderKnob.layer.shadowOpacity = 1
       }
+    case .ended, .cancelled:
+      UIView.animate(withDuration: 0.1) {
+        self.sliderKnob.layer.shadowOpacity = 0
+      }
+    default:
+      break // No action needed for other states.
     }
   }
   
