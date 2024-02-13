@@ -18,6 +18,7 @@
 		9D08E5242B781F59009AD16B /* particles.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E5232B781F59009AD16B /* particles.mp4 */; };
 		9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */; };
 		9D2E653D2B7ABCF000432ECF /* waterfall.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E653A2B7ABCEC00432ECF /* waterfall.mp4 */; };
+		9D2E65422B7C19D100432ECF /* jungle.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E65402B7C19D100432ECF /* jungle.mp4 */; };
 		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
 		9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */; };
 		9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */; };
@@ -61,6 +62,7 @@
 		9D08E5232B781F59009AD16B /* particles.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = particles.mp4; sourceTree = "<group>"; };
 		9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = neonTunnel.mp4; sourceTree = "<group>"; };
 		9D2E653A2B7ABCEC00432ECF /* waterfall.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waterfall.mp4; sourceTree = "<group>"; };
+		9D2E65402B7C19D100432ECF /* jungle.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = jungle.mp4; sourceTree = "<group>"; };
 		9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOnboardingViewConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 		9D7F07202B7439D400145871 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				9D2E65402B7C19D100432ECF /* jungle.mp4 */,
 				9D2E653A2B7ABCEC00432ECF /* waterfall.mp4 */,
 				9D08E5232B781F59009AD16B /* particles.mp4 */,
 				9D08E52B2B781F81009AD16B /* neonTunnel.mp4 */,
@@ -331,6 +334,7 @@
 				9DFEE63B2B447241001835E1 /* Roboto-Light.ttf in Resources */,
 				9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */,
 				9D2E653D2B7ABCF000432ECF /* waterfall.mp4 in Resources */,
+				9D2E65422B7C19D100432ECF /* jungle.mp4 in Resources */,
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
 				9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */,
 				9D08E5242B781F59009AD16B /* particles.mp4 in Resources */,
