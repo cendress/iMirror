@@ -35,6 +35,7 @@ class CustomProgressView: UIView {
   private func commonInit() {
     setupLayers()
     setupSliderKnob()
+    setupSurroundingView()
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
     sliderKnob.addGestureRecognizer(panGesture)
   }
