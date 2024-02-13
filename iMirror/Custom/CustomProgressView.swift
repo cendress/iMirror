@@ -39,6 +39,14 @@ class CustomProgressView: UIView {
     sliderKnob.addGestureRecognizer(panGesture)
   }
   
+  private func setupSurroundingView() {
+    addSubview(surroundingView)
+    surroundingView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
+    surroundingView.layer.cornerRadius = 20
+    surroundingView.alpha = 0
+    surroundingView.isUserInteractionEnabled = false
+  }
+  
   private func setupLayers() {
     trackLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     layer.addSublayer(trackLayer)
