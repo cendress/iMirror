@@ -66,6 +66,9 @@ class CustomProgressView: UIView {
     sliderKnob.layer.shadowRadius = 8
     sliderKnob.layer.shadowOpacity = 0.3
     addSubview(sliderKnob)
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKnobTap(_:)))
+    sliderKnob.addGestureRecognizer(tapGesture)
   }
   
   override func layoutSubviews() {
