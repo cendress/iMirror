@@ -185,16 +185,43 @@ class MeditationVC: UIViewController {
     playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
     
     CATransaction.commit()
+    
+    hasChangedVideo = true
   }
   
   @objc private func goBackToPreviousVideo() {
+    guard hasChangedVideo else { return }
+    
     if currentVideoIndex == 0 {
       currentVideoIndex = videoFiles.count - 1
     } else {
       currentVideoIndex -= 1
     }
     
-    setupAndPlayVideo()
+    hasChangedVideo = true
+    
+    CATransaction.begin()
+    
+    CATransaction.setCompletionBlock { [weak self] in
+      guard let self = self else { return }
+      self.setupAndPlayVideo()
+      
+      self.playerLayer?.opacity = 0
+      UIView.animate(withDuration: 0.5) {
+        self.playerLayer?.opacity = 1
+      }
+    }
+    
+    let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
+    fadeOutAnimation.fromValue = 1
+    fadeOutAnimation.toValue = 0
+    fadeOutAnimation.duration = 0.5
+    fadeOutAnimation.fillMode = .forwards
+    fadeOutAnimation.isRemovedOnCompletion = false
+    
+    playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
+    
+    CATransaction.commit()
   }
   
   private func playMeditationMusic() {
