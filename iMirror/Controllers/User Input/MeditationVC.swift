@@ -186,6 +186,16 @@ class MeditationVC: UIViewController {
     CATransaction.commit()
   }
   
+  @objc private func goBackToPreviousVideo() {
+    if currentVideoIndex == 0 {
+      currentVideoIndex = videoFiles.count - 1
+    } else {
+      currentVideoIndex -= 1
+    }
+    
+    setupAndPlayVideo()
+  }
+  
   private func playMeditationMusic() {
     guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3"), isSoundEnabled else {
       print("Audio file not found or sound is disabled")
@@ -225,8 +235,8 @@ class MeditationVC: UIViewController {
     soundButton = UIBarButtonItem(image: soundButtonImage, style: .plain, target: self, action: #selector(toggleSound))
     soundButton?.tintColor = .white
     
-    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
-    changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
+    let changeVideoButtonImage = UIImage(systemName: "gobackward")
+    changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(goBackToPreviousVideo))
     changeVideoButtonItem?.tintColor = .white
     
     navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem].compactMap { $0 }
