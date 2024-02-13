@@ -78,7 +78,7 @@ class MeditationVC: UIViewController {
       self?.player?.playImmediately(atRate: 1.0)
     })
   }
-  
+
   @objc private func toggleNavigationBar() {
     guard let isNavigationBarHidden = navigationController?.navigationBar.isHidden else { return }
     
@@ -183,6 +183,9 @@ class MeditationVC: UIViewController {
       self.playerLayer?.removeFromSuperlayer()
       self.player = self.nextPlayer
       self.playerLayer = self.nextPlayerLayer
+      
+      NotificationCenter.default.addObserver(self, selector: #selector(self.loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem)
+      
       self.nextPlayer = nil
       self.nextPlayerLayer = nil
       self.player?.play()
