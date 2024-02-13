@@ -58,6 +58,11 @@ class MeditationVC: UIViewController {
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleNavigationBar))
     view.addGestureRecognizer(tapGesture)
+    
+    // Add swipe gesture recognizer for left swipe
+    let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeVideo))
+    swipeLeftGesture.direction = .left
+    view.addGestureRecognizer(swipeLeftGesture)
   }
   
   // MARK: - @objc methods
