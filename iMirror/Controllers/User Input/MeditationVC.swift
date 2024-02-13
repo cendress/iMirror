@@ -16,8 +16,6 @@ class MeditationVC: UIViewController {
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
   private var nextPlayerItem: AVPlayerItem?
-  private var nextPlayer: AVPlayer?
-  private var nextPlayerLayer: AVPlayerLayer?
   
   private var isSoundEnabled: Bool = true {
     didSet {
@@ -28,7 +26,7 @@ class MeditationVC: UIViewController {
   private var soundButton: UIBarButtonItem?
   private var changeVideoButtonItem: UIBarButtonItem?
   
-  private var videoFiles = ["waves", "jungle", "neonTunnel", "waterfall", "particles"]
+  private var videoFiles = ["waves", "neonTunnel", "waterfall", "particles"]
   private var currentVideoIndex = 0
   
   private var hideNavBarTimer: Timer?
@@ -61,13 +59,10 @@ class MeditationVC: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleNavigationBar))
     view.addGestureRecognizer(tapGesture)
     
-    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    view.addGestureRecognizer(panGesture)
-    
     // Add swipe gesture recognizer for left swipe
-    //    let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeVideo))
-    //    swipeLeftGesture.direction = .left
-    //    view.addGestureRecognizer(swipeLeftGesture)
+    let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeVideo))
+    swipeLeftGesture.direction = .left
+    view.addGestureRecognizer(swipeLeftGesture)
   }
   
   // MARK: - @objc methods
@@ -159,72 +154,36 @@ class MeditationVC: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
   }
   
-  @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-    let translation = gesture.translation(in: view)
+  @objc private func changeVideo() {
+    currentVideoIndex += 1
+    if currentVideoIndex >= videoFiles.count {
+      currentVideoIndex = 0
+    }
     
-    switch gesture.state {
-    case .changed:
-      if let playerLayer = playerLayer {
-        let newPosition = CGPoint(x: translation.x + view.bounds.midX, y: playerLayer.position.y)
-        playerLayer.position = newPosition
+    CATransaction.begin()
+    
+    CATransaction.setCompletionBlock { [weak self] in
+      guard let self = self else { return }
+      
+      self.setupAndPlayVideo()
+      
+      self.playerLayer?.opacity = 0
+      
+      UIView.animate(withDuration: 0.5) {
+        self.playerLayer?.opacity = 1
       }
-      
-    case .ended:
-      let dragDistance = translation.x
-      if abs(dragDistance) > view.bounds.width / 2 {
-        changeVideoToNext()
-      } else {
-        UIView.animate(withDuration: 0.25) {
-          self.playerLayer?.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
-        }
-      }
-      
-    default:
-      break
     }
     
-    gesture.setTranslation(.zero, in: view)
-  }
-  
-  private func changeVideoToNext() {
-    let nextVideoIndex = (currentVideoIndex + 1) % videoFiles.count
-    prepareNextVideo(index: nextVideoIndex)
+    let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
+    fadeOutAnimation.fromValue = 1
+    fadeOutAnimation.toValue = 0
+    fadeOutAnimation.duration = 0.5
+    fadeOutAnimation.fillMode = .forwards
+    fadeOutAnimation.isRemovedOnCompletion = false
     
-    DispatchQueue.main.async {
-      self.playerLayer?.removeFromSuperlayer()
-      
-      self.player = self.nextPlayer
-      self.playerLayer = self.nextPlayerLayer
-      self.currentVideoIndex = nextVideoIndex
-      
-      self.playerLayer?.frame = self.view.bounds
-      self.playerLayer?.videoGravity = .resizeAspectFill
-      self.view.layer.insertSublayer(self.playerLayer!, at: 0)
-      
-      self.player?.play()
-      
-      NotificationCenter.default.addObserver(self, selector: #selector(self.loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem)
-      
-      self.nextPlayer = nil
-      self.nextPlayerLayer = nil
-    }
-  }
-  
-  private func prepareNextVideo(index: Int) {
-    let videoName = videoFiles[index]
-    guard let videoPath = Bundle.main.path(forResource: videoName, ofType: "mp4") else {
-      print("Next video file not found")
-      return
-    }
-    let videoURL = URL(fileURLWithPath: videoPath)
-    nextPlayer = AVPlayer(url: videoURL)
-    nextPlayerLayer = AVPlayerLayer(player: nextPlayer)
-    guard let nextPlayerLayer = nextPlayerLayer else { return }
+    playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
     
-    nextPlayerLayer.frame = view.bounds
-    nextPlayerLayer.videoGravity = .resizeAspectFill
-    nextPlayerLayer.opacity = 0
-    view.layer.addSublayer(nextPlayerLayer)
+    CATransaction.commit()
   }
   
   private func playMeditationMusic() {
@@ -266,7 +225,11 @@ class MeditationVC: UIViewController {
     soundButton = UIBarButtonItem(image: soundButtonImage, style: .plain, target: self, action: #selector(toggleSound))
     soundButton?.tintColor = .white
     
-    navigationItem.leftBarButtonItem = soundButton
+    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
+    changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
+    changeVideoButtonItem?.tintColor = .white
+    
+    navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem].compactMap { $0 }
   }
   
   private func updateSoundButtonImage() {
