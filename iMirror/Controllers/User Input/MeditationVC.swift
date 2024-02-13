@@ -61,10 +61,13 @@ class MeditationVC: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleNavigationBar))
     view.addGestureRecognizer(tapGesture)
     
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    view.addGestureRecognizer(panGesture)
+    
     // Add swipe gesture recognizer for left swipe
-//    let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeVideo))
-//    swipeLeftGesture.direction = .left
-//    view.addGestureRecognizer(swipeLeftGesture)
+    //    let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeVideo))
+    //    swipeLeftGesture.direction = .left
+    //    view.addGestureRecognizer(swipeLeftGesture)
   }
   
   // MARK: - @objc methods
@@ -78,7 +81,7 @@ class MeditationVC: UIViewController {
       self?.player?.playImmediately(atRate: 1.0)
     })
   }
-
+  
   @objc private func toggleNavigationBar() {
     guard let isNavigationBarHidden = navigationController?.navigationBar.isHidden else { return }
     
@@ -154,6 +157,33 @@ class MeditationVC: UIViewController {
     player?.play()
     
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+  }
+  
+  @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+    let translation = gesture.translation(in: view)
+    
+    switch gesture.state {
+    case .changed:
+      if let playerLayer = playerLayer {
+        let newPosition = CGPoint(x: translation.x + view.bounds.midX, y: playerLayer.position.y)
+        playerLayer.position = newPosition
+      }
+      
+    case .ended:
+      let dragDistance = translation.x
+      if abs(dragDistance) > view.bounds.width / 2 {
+        changeVideoToNext()
+      } else {
+        UIView.animate(withDuration: 0.25) {
+          self.playerLayer?.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        }
+      }
+      
+    default:
+      break
+    }
+    
+    gesture.setTranslation(.zero, in: view)
   }
   
   @objc private func changeVideo() {
