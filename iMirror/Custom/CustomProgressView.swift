@@ -61,10 +61,6 @@ class CustomProgressView: UIView {
     sliderKnob.layer.cornerRadius = 15
     sliderKnob.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
     sliderKnob.isUserInteractionEnabled = true
-    sliderKnob.layer.shadowColor = UIColor.systemGray.cgColor
-    sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 5)
-    sliderKnob.layer.shadowRadius = 8
-    sliderKnob.layer.shadowOpacity = 0.3
     addSubview(sliderKnob)
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKnobTap(_:)))
@@ -95,18 +91,16 @@ class CustomProgressView: UIView {
     progress = newProgress
     progressDidChange?(progress)
     updateSliderPosition()
-    
-    switch gesture.state {
-    case .began:
-      UIView.animate(withDuration: 0.1) {
-        self.sliderKnob.layer.shadowOpacity = 1
-      }
-    case .ended, .cancelled:
-      UIView.animate(withDuration: 0.1) {
-        self.sliderKnob.layer.shadowOpacity = 0
-      }
-    default:
-      break
+  }
+  
+  @objc private func handleKnobTap(_ gesture: UITapGestureRecognizer) {
+    surroundingView.frame = CGRect(x: sliderKnob.frame.origin.x - 10, y: sliderKnob.frame.origin.y - 10, width: sliderKnob.frame.width + 40, height: sliderKnob.frame.height + 40)
+    UIView.animate(withDuration: 0.25, animations: {
+      self.surroundingView.alpha = 1
+    }) { _ in
+      UIView.animate(withDuration: 0.25, delay: 1.0, options: [], animations: {
+        self.surroundingView.alpha = 0
+      }, completion: nil)
     }
   }
   
