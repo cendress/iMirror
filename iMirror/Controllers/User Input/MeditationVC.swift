@@ -245,11 +245,7 @@ class MeditationVC: UIViewController {
     soundButton = UIBarButtonItem(image: soundButtonImage, style: .plain, target: self, action: #selector(toggleSound))
     soundButton?.tintColor = .white
     
-    let changeVideoButtonImage = UIImage(systemName: "arrow.triangle.2.circlepath.camera")
-    changeVideoButtonItem = UIBarButtonItem(image: changeVideoButtonImage, style: .plain, target: self, action: #selector(changeVideo))
-    changeVideoButtonItem?.tintColor = .white
-    
-    navigationItem.leftBarButtonItems = [soundButton, changeVideoButtonItem].compactMap { $0 }
+    navigationItem.leftBarButtonItem = soundButton
   }
   
   private func updateSoundButtonImage() {
