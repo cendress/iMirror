@@ -7,14 +7,12 @@
 
 import UIKit
 
-class CustomProgressView: UIView, UIGestureRecognizerDelegate {
+class CustomProgressView: UIView {
   var progressDidChange: ((CGFloat) -> Void)?
   
   private var progressLayer = CALayer()
   private var trackLayer = CALayer()
-  
   private let sliderKnob = UIView()
-  private let surroundingView = UIView()
   
   var progress: CGFloat = 0 {
     didSet {
@@ -35,20 +33,8 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
   private func commonInit() {
     setupLayers()
     setupSliderKnob()
-    setupSurroundingView()
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    panGesture.delegate = self
     sliderKnob.addGestureRecognizer(panGesture)
-  }
-  
-  private func setupSurroundingView() {
-    addSubview(surroundingView)
-    surroundingView.backgroundColor = .clear
-    surroundingView.layer.borderWidth = 2
-    surroundingView.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.5).cgColor
-    surroundingView.layer.cornerRadius = 35
-    surroundingView.alpha = 0
-    surroundingView.isUserInteractionEnabled = false
   }
   
   private func setupLayers() {
@@ -64,12 +50,11 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     sliderKnob.layer.cornerRadius = 15
     sliderKnob.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
     sliderKnob.isUserInteractionEnabled = true
+    sliderKnob.layer.shadowColor = UIColor.systemGray.cgColor
+    sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 5)
+    sliderKnob.layer.shadowRadius = 8
+    sliderKnob.layer.shadowOpacity = 0.3
     addSubview(sliderKnob)
-    
-    let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleKnobTap(_:)))
-    longPressGesture.minimumPressDuration = 0
-    longPressGesture.delegate = self
-    sliderKnob.addGestureRecognizer(longPressGesture)
   }
   
   override func layoutSubviews() {
@@ -86,9 +71,6 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     let sliderPosition = self.bounds.width * self.progress
     self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
     self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
-    
-    self.surroundingView.center = self.sliderKnob.center
-    self.surroundingView.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
   }
   
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -99,31 +81,19 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     progress = newProgress
     progressDidChange?(progress)
     updateSliderPosition()
-  }
-  
-  @objc private func handleKnobTap(_ gesture: UILongPressGestureRecognizer) {
+    
     switch gesture.state {
     case .began:
-      showSurroundingView()
+      UIView.animate(withDuration: 0.1) {
+        self.sliderKnob.layer.shadowOpacity = 1
+      }
     case .ended, .cancelled:
-      hideSurroundingView()
+      UIView.animate(withDuration: 0.1) {
+        self.sliderKnob.layer.shadowOpacity = 0
+      }
     default:
       break
     }
-  }
-  
-  private func showSurroundingView() {
-    surroundingView.alpha = 1
-  }
-  
-  private func hideSurroundingView() {
-    UIView.animate(withDuration: 0.25, animations: {
-      self.surroundingView.alpha = 0
-    })
-  }
-  
-  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    return true
   }
   
   override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
