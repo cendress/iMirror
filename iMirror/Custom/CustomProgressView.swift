@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomProgressView: UIView {
+class CustomProgressView: UIView, UIGestureRecognizerDelegate {
   var progressDidChange: ((CGFloat) -> Void)?
   
   private var progressLayer = CALayer()
@@ -37,6 +37,7 @@ class CustomProgressView: UIView {
     setupSliderKnob()
     setupSurroundingView()
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    panGesture.delegate = self
     sliderKnob.addGestureRecognizer(panGesture)
   }
   
@@ -63,8 +64,10 @@ class CustomProgressView: UIView {
     sliderKnob.isUserInteractionEnabled = true
     addSubview(sliderKnob)
     
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKnobTap(_:)))
-    sliderKnob.addGestureRecognizer(tapGesture)
+    let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleKnobTap(_:)))
+    longPressGesture.minimumPressDuration = 0
+    longPressGesture.delegate = self
+    sliderKnob.addGestureRecognizer(longPressGesture)
   }
   
   override func layoutSubviews() {
@@ -93,15 +96,33 @@ class CustomProgressView: UIView {
     updateSliderPosition()
   }
   
-  @objc private func handleKnobTap(_ gesture: UITapGestureRecognizer) {
-    surroundingView.frame = CGRect(x: sliderKnob.frame.origin.x - 10, y: sliderKnob.frame.origin.y - 10, width: sliderKnob.frame.width + 40, height: sliderKnob.frame.height + 40)
-    UIView.animate(withDuration: 0.25, animations: {
-      self.surroundingView.alpha = 1
-    }) { _ in
-      UIView.animate(withDuration: 0.25, delay: 1.0, options: [], animations: {
-        self.surroundingView.alpha = 0
-      }, completion: nil)
+  @objc private func handleKnobTap(_ gesture: UILongPressGestureRecognizer) {
+    switch gesture.state {
+    case .began:
+      showSurroundingView()
+    case .ended, .cancelled:
+      hideSurroundingView()
+    default:
+      break
     }
+  }
+  
+  private func showSurroundingView() {
+    surroundingView.frame = CGRect(x: sliderKnob.frame.origin.x - 10, y: sliderKnob.frame.origin.y - 10, width: sliderKnob.frame.width + 40, height: sliderKnob.frame.height + 40)
+    UIView.animate(withDuration: 0.25) {
+      self.surroundingView.alpha = 1
+    }
+  }
+  
+  private func hideSurroundingView() {
+    UIView.animate(withDuration: 0.25, animations: {
+      self.surroundingView.alpha = 0
+    })
+  }
+  
+  // Allow both pan and long press gestures to be recognized simultaneously.
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
   override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -112,3 +133,4 @@ class CustomProgressView: UIView {
     return super.hitTest(point, with: event)
   }
 }
+
