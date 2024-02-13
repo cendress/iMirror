@@ -39,7 +39,7 @@ struct UIOnboardingHelper {
             description: "Culminate your session with insightful journaling, capturing your thoughts and growth."),
       .init(icon: UIImage(systemName: "headphones.circle")!,
             title: "Meditation",
-            description: "Experience tools that facilitate mindfulness, aiding in processing emotion in order to gain greater awareness."),
+            description: "Experience tools that facilitate mindfulness, aiding in processing emotions in order to gain greater awareness."),
       .init(icon: UIImage(systemName: "quote.bubble")!,
             title: "Daily Inspiration",
             description: "Receive motivational quotes daily to foster a positive mindset and consistent mindfulness practice.")
