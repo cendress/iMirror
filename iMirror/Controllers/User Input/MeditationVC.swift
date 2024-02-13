@@ -186,39 +186,27 @@ class MeditationVC: UIViewController {
     gesture.setTranslation(.zero, in: view)
   }
   
-  @objc private func changeVideo() {
+  private func changeVideoToNext() {
     let nextVideoIndex = (currentVideoIndex + 1) % videoFiles.count
     prepareNextVideo(index: nextVideoIndex)
     
-    let moveOutAnimation = CABasicAnimation(keyPath: "position.x")
-    moveOutAnimation.fromValue = playerLayer?.position.x
-    moveOutAnimation.toValue = -view.bounds.width
-    moveOutAnimation.duration = 0.5
-    moveOutAnimation.fillMode = .forwards
-    moveOutAnimation.isRemovedOnCompletion = false
-    playerLayer?.add(moveOutAnimation, forKey: nil)
-    
-    let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
-    fadeInAnimation.fromValue = 0
-    fadeInAnimation.toValue = 1
-    fadeInAnimation.duration = 0.5
-    fadeInAnimation.beginTime = CACurrentMediaTime()
-    fadeInAnimation.fillMode = .forwards
-    fadeInAnimation.isRemovedOnCompletion = false
-    nextPlayerLayer?.add(fadeInAnimation, forKey: nil)
-    
-    currentVideoIndex = nextVideoIndex
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + fadeInAnimation.duration) {
+    DispatchQueue.main.async {
       self.playerLayer?.removeFromSuperlayer()
+      
       self.player = self.nextPlayer
       self.playerLayer = self.nextPlayerLayer
+      self.currentVideoIndex = nextVideoIndex
+      
+      self.playerLayer?.frame = self.view.bounds
+      self.playerLayer?.videoGravity = .resizeAspectFill
+      self.view.layer.insertSublayer(self.playerLayer!, at: 0)
+      
+      self.player?.play()
       
       NotificationCenter.default.addObserver(self, selector: #selector(self.loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem)
       
       self.nextPlayer = nil
       self.nextPlayerLayer = nil
-      self.player?.play()
     }
   }
   
