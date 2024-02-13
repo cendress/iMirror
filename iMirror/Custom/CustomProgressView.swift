@@ -68,11 +68,9 @@ class CustomProgressView: UIView {
   }
   
   private func updateSliderPosition() {
-    UIView.animate(withDuration: 0.1) {
-      let sliderPosition = self.bounds.width * self.progress
-      self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
-      self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
-    }
+    let sliderPosition = self.bounds.width * self.progress
+    self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
+    self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
   }
   
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
