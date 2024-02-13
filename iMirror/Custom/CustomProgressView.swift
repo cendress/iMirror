@@ -12,7 +12,9 @@ class CustomProgressView: UIView {
   
   private var progressLayer = CALayer()
   private var trackLayer = CALayer()
+  
   private let sliderKnob = UIView()
+  private let surroundingView = UIView()
   
   var progress: CGFloat = 0 {
     didSet {
@@ -92,7 +94,7 @@ class CustomProgressView: UIView {
         self.sliderKnob.layer.shadowOpacity = 0
       }
     default:
-      break // No action needed for other states.
+      break
     }
   }
   
