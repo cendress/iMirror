@@ -49,7 +49,6 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     surroundingView.layer.cornerRadius = 35
     surroundingView.alpha = 0
     surroundingView.isUserInteractionEnabled = false
-    surroundingView.frame = CGRect(x: -20, y: -20, width: 70, height: 70)
   }
   
   private func setupLayers() {
@@ -87,7 +86,9 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     let sliderPosition = self.bounds.width * self.progress
     self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
     self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
+    
     self.surroundingView.center = self.sliderKnob.center
+    self.surroundingView.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
   }
   
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
