@@ -16,6 +16,7 @@ class MeditationVC: UIViewController {
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
   private var nextPlayerItem: AVPlayerItem?
+  private var hasChangedVideo: Bool = false
   
   private var isSoundEnabled: Bool = true {
     didSet {
