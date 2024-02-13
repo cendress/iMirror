@@ -43,10 +43,13 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
   
   private func setupSurroundingView() {
     addSubview(surroundingView)
-    surroundingView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
-    surroundingView.layer.cornerRadius = 20
+    surroundingView.backgroundColor = .clear
+    surroundingView.layer.borderWidth = 2
+    surroundingView.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.5).cgColor
+    surroundingView.layer.cornerRadius = 35
     surroundingView.alpha = 0
     surroundingView.isUserInteractionEnabled = false
+    surroundingView.frame = CGRect(x: -20, y: -20, width: 70, height: 70)
   }
   
   private func setupLayers() {
@@ -84,6 +87,7 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     let sliderPosition = self.bounds.width * self.progress
     self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
     self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
+    self.surroundingView.center = self.sliderKnob.center
   }
   
   @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
@@ -108,10 +112,7 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
   }
   
   private func showSurroundingView() {
-    surroundingView.frame = CGRect(x: sliderKnob.frame.origin.x - 10, y: sliderKnob.frame.origin.y - 10, width: sliderKnob.frame.width + 40, height: sliderKnob.frame.height + 40)
-    UIView.animate(withDuration: 0.25) {
-      self.surroundingView.alpha = 1
-    }
+    surroundingView.alpha = 1
   }
   
   private func hideSurroundingView() {
@@ -120,7 +121,6 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     })
   }
   
-  // Allow both pan and long press gestures to be recognized simultaneously.
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
   }
@@ -133,4 +133,3 @@ class CustomProgressView: UIView, UIGestureRecognizerDelegate {
     return super.hitTest(point, with: event)
   }
 }
-
