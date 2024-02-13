@@ -16,6 +16,8 @@ class MeditationVC: UIViewController {
   private var playerLayer: AVPlayerLayer?
   private var audioPlayer: AVAudioPlayer?
   private var nextPlayerItem: AVPlayerItem?
+  private var nextPlayer: AVPlayer?
+  private var nextPlayerLayer: AVPlayerLayer?
   
   private var isSoundEnabled: Bool = true {
     didSet {
@@ -155,35 +157,53 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func changeVideo() {
-    currentVideoIndex += 1
-    if currentVideoIndex >= videoFiles.count {
-      currentVideoIndex = 0
+    let nextVideoIndex = (currentVideoIndex + 1) % videoFiles.count
+    prepareNextVideo(index: nextVideoIndex)
+    
+    let moveOutAnimation = CABasicAnimation(keyPath: "position.x")
+    moveOutAnimation.fromValue = playerLayer?.position.x
+    moveOutAnimation.toValue = -view.bounds.width
+    moveOutAnimation.duration = 0.5
+    moveOutAnimation.fillMode = .forwards
+    moveOutAnimation.isRemovedOnCompletion = false
+    playerLayer?.add(moveOutAnimation, forKey: nil)
+    
+    let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+    fadeInAnimation.fromValue = 0
+    fadeInAnimation.toValue = 1
+    fadeInAnimation.duration = 0.5
+    fadeInAnimation.beginTime = CACurrentMediaTime()
+    fadeInAnimation.fillMode = .forwards
+    fadeInAnimation.isRemovedOnCompletion = false
+    nextPlayerLayer?.add(fadeInAnimation, forKey: nil)
+    
+    currentVideoIndex = nextVideoIndex
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + fadeInAnimation.duration) {
+      self.playerLayer?.removeFromSuperlayer()
+      self.player = self.nextPlayer
+      self.playerLayer = self.nextPlayerLayer
+      self.nextPlayer = nil
+      self.nextPlayerLayer = nil
+      self.player?.play()
     }
-    
-    CATransaction.begin()
-    
-    CATransaction.setCompletionBlock { [weak self] in
-      guard let self = self else { return }
-      
-      self.setupAndPlayVideo()
-      
-      self.playerLayer?.opacity = 0
-      
-      UIView.animate(withDuration: 0.5) {
-        self.playerLayer?.opacity = 1
-      }
+  }
+  
+  private func prepareNextVideo(index: Int) {
+    let videoName = videoFiles[index]
+    guard let videoPath = Bundle.main.path(forResource: videoName, ofType: "mp4") else {
+      print("Next video file not found")
+      return
     }
+    let videoURL = URL(fileURLWithPath: videoPath)
+    nextPlayer = AVPlayer(url: videoURL)
+    nextPlayerLayer = AVPlayerLayer(player: nextPlayer)
+    guard let nextPlayerLayer = nextPlayerLayer else { return }
     
-    let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
-    fadeOutAnimation.fromValue = 1
-    fadeOutAnimation.toValue = 0
-    fadeOutAnimation.duration = 0.5
-    fadeOutAnimation.fillMode = .forwards
-    fadeOutAnimation.isRemovedOnCompletion = false
-    
-    playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
-    
-    CATransaction.commit()
+    nextPlayerLayer.frame = view.bounds
+    nextPlayerLayer.videoGravity = .resizeAspectFill
+    nextPlayerLayer.opacity = 0
+    view.layer.addSublayer(nextPlayerLayer)
   }
   
   private func playMeditationMusic() {
