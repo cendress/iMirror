@@ -101,14 +101,18 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     
-    // Handle cell selection for actions like navigating to detail views or showing alerts
-    // Example:
-    if indexPath.section == 3 {
-      // Show alert to confirm "Delete My Data"
+    switch indexPath.section {
+    case 1: // Support and Privacy Policy section
+      if indexPath.row == 0 {
+        openSupportPage()
+      } else if indexPath.row == 1 {
+        openPrivacyPolicyPage()
+      }
+
+    default:
+      break
     }
   }
-  
-  // Additional delegate methods for customization
   
   //MARK: - Other methods
   
