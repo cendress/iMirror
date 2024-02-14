@@ -38,6 +38,8 @@ class JournalVC: UITableViewController {
     tableView.rowHeight = UITableView.automaticDimension
     tableView.register(JournalEntryCell.self, forCellReuseIdentifier: "JournalCell")
     
+    NotificationCenter.default.addObserver(self, selector: #selector(journalEntriesDeleted), name: NSNotification.Name("JournalEntriesDeleted"), object: nil)
+    
     updateUI()
   }
   
