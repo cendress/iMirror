@@ -16,14 +16,6 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
     
     self.navigationItem.title = "Settings"
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,11 +28,20 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     view.addSubview(tableView)
     
+    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
     tableView.dataSource = self
     tableView.delegate = self
     
     // Register cell class if custom
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   //MARK: - @objc methods
