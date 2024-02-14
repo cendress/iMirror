@@ -166,7 +166,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   //MARK: - Alert controller
   
   private func showAlert() {
-    let ac = UIAlertController(title: "Select an emotion", message: "Please select an emotion to continue.", preferredStyle: .alert)
+    let ac = UIAlertController(title: "Select an Emotion", message: "Please select an emotion to continue.", preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default))
     present(ac, animated: true)
   }

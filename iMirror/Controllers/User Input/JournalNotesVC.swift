@@ -260,7 +260,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
       let characterLimit = 30
       if updatedText.count > characterLimit {
         // Might want to show an alert
-        let ac = UIAlertController(title: "Title is too long", message: nil, preferredStyle: .alert)
+        let ac = UIAlertController(title: "Title Is Too Long", message: nil, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         
         present(ac, animated: true)
@@ -297,7 +297,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   private func showAlert() {
-    let ac = UIAlertController(title: "Enter text", message: "Please fill out both forms to continue.", preferredStyle: .alert)
+    let ac = UIAlertController(title: "Enter Text", message: "Please fill out both forms to continue.", preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default))
     present(ac, animated: true)
   }

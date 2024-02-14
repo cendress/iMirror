@@ -290,7 +290,7 @@ class MeditationVC: UIViewController {
   // MARK: - Other methods
   
   private func showAlert() {
-    let ac = UIAlertController(title: "Are you sure you want to exit the meditation?", message: nil, preferredStyle: .alert)
+    let ac = UIAlertController(title: "Exit the Meditation", message: "Are you sure you want to exit the meditation?", preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "Yes", style: .default) { action in
       self.audioPlayer?.stop()
       self.dismiss(animated: true)
