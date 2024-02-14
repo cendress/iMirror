@@ -16,7 +16,15 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemBackground
+    view.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
     self.navigationItem.title = "Settings"
     navigationController?.navigationBar.prefersLargeTitles = true
     
