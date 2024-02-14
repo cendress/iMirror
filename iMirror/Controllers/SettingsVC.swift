@@ -102,13 +102,18 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
     
     switch indexPath.section {
-    case 1: // Support and Privacy Policy section
+      // Support and Privacy Policy section
+    case 1:
       if indexPath.row == 0 {
         openSupportPage()
       } else if indexPath.row == 1 {
         openPrivacyPolicyPage()
       }
-
+      // Acknowledgments section
+    case 2:
+      let acknowledgmentsVC = AcknowledgmentsVC()
+      navigationController?.pushViewController(acknowledgmentsVC, animated: true)
+      
     default:
       break
     }
