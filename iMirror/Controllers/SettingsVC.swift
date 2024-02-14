@@ -113,6 +113,9 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     case 2:
       let acknowledgmentsVC = AcknowledgmentsVC()
       navigationController?.pushViewController(acknowledgmentsVC, animated: true)
+      // Delete data section
+    case 3:
+      showDeleteConfirmationAlert()
       
     default:
       break
