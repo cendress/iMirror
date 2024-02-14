@@ -116,13 +116,13 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   //MARK: - Navigate to URL methods
   
-  func openSupportPage() {
+  private func openSupportPage() {
     if let url = URL(string: "https://www.google.com") {
       UIApplication.shared.open(url)
     }
   }
   
-  func openPrivacyPolicyPage() {
+  private func openPrivacyPolicyPage() {
     if let url = URL(string: "https://www.google.com") {
       UIApplication.shared.open(url)
     }
