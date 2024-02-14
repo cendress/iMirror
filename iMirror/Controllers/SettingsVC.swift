@@ -177,6 +177,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     do {
       try managedContext.execute(deleteRequest)
       try managedContext.save()
+      
+      NotificationCenter.default.post(name: NSNotification.Name("JournalEntriesDeleted"), object: nil)
     } catch let error as NSError {
       print("Could not delete all journal entries. \(error), \(error.userInfo)")
     }
