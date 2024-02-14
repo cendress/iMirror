@@ -24,6 +24,7 @@
 		9D2E65482B7D3EE800432ECF /* neonTunnelMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E65472B7D3EE800432ECF /* neonTunnelMusic.mp3 */; };
 		9D2E654A2B7D3F0200432ECF /* waterfallMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E65492B7D3F0200432ECF /* waterfallMusic.mp3 */; };
 		9D2E654C2B7D3F1200432ECF /* particlesMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E654B2B7D3F1200432ECF /* particlesMusic.mp3 */; };
+		9D2E654E2B7D532900432ECF /* AcknowledgementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */; };
 		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
 		9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */; };
 		9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */; };
@@ -72,6 +73,7 @@
 		9D2E65472B7D3EE800432ECF /* neonTunnelMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neonTunnelMusic.mp3; sourceTree = "<group>"; };
 		9D2E65492B7D3F0200432ECF /* waterfallMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterfallMusic.mp3; sourceTree = "<group>"; };
 		9D2E654B2B7D3F1200432ECF /* particlesMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = particlesMusic.mp3; sourceTree = "<group>"; };
+		9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsVC.swift; sourceTree = "<group>"; };
 		9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOnboardingViewConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +236,7 @@
 				9D7F070E2B716E7000145871 /* EditNoteVC.swift */,
 				9D7F070D2B716DD500145871 /* User Input */,
 				9DFEE64D2B4603ED001835E1 /* SettingsVC.swift */,
+				9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
 				9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */,
 				9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */,
+				9D2E654E2B7D532900432ECF /* AcknowledgementsVC.swift in Sources */,
 				9DFEE6A52B4C8FF4001835E1 /* CustomProgressView.swift in Sources */,
 				9D7F070F2B716E7000145871 /* EditNoteVC.swift in Sources */,
 				9DFEE6482B45FCF9001835E1 /* CustomTabBarController.swift in Sources */,
