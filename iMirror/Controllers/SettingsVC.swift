@@ -32,7 +32,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.delegate = self
     
     // Register cell class if custom
-    //    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   //MARK: - @objc methods
@@ -89,6 +89,19 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       }
       
       cell.accessoryView = switchView
+      
+    case 1:
+      if indexPath.row == 0 {
+        cell.textLabel?.text = "Support"
+      } else if indexPath.row == 1 {
+        cell.textLabel?.text = "Privacy Policy"
+      }
+      
+    case 2:
+      cell.textLabel?.text = "Acknowledgments"
+      
+    case 3:
+      cell.textLabel?.text = "Delete My Data"
       
     default:
       break
