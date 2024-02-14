@@ -92,9 +92,9 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
       
       if indexPath.row == 0 {
-        cell.textLabel?.text = "Notifications"
+        cell.textLabel?.text = "Turn Off Notifications"
       } else if indexPath.row == 1 {
-        cell.textLabel?.text = "Dark/Light Mode"
+        cell.textLabel?.text = "Dark Mode"
       }
       
       cell.accessoryView = switchView
