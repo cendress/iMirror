@@ -140,7 +140,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   //MARK: - Alert methods
   
   // Show an alert to confirm turning off notifications
-  func showAlert(switch sender: UISwitch) {
+  private func showAlert(switch sender: UISwitch) {
     let alert = UIAlertController(title: "Turn Off Notifications", message: "Are you sure you want to turn off notifications?", preferredStyle: .alert)
     
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -148,13 +148,12 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     })
     
     alert.addAction(UIAlertAction(title: "Turn Off", style: .destructive) { _ in
-      // Proceed with turning off notifications
     })
     
     present(alert, animated: true)
   }
   
-  func showDeleteConfirmationAlert() {
+  private func showDeleteConfirmationAlert() {
     let alert = UIAlertController(title: "Delete All My Data", message: "Are you sure you want to delete all your data? This action cannot be undone.", preferredStyle: .alert)
     
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -168,7 +167,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   //MARK: - Delete method
   
-  func deleteAllJournalEntries() {
+  private func deleteAllJournalEntries() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "JournalEntry")
