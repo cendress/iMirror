@@ -359,4 +359,8 @@ class JournalVC: UITableViewController {
       }
     }
   }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
 }
