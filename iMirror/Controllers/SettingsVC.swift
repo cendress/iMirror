@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
+  //MARK: - Initial setup
+  
   private var tableView: UITableView!
   
   override func viewDidLoad() {
