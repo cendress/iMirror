@@ -154,6 +154,8 @@ class MeditationVC: UIViewController {
     player?.play()
     
     NotificationCenter.default.addObserver(self, selector: #selector(loopVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    
+    playMeditationMusic()
   }
   
   @objc private func changeVideo() {
@@ -188,6 +190,7 @@ class MeditationVC: UIViewController {
     CATransaction.commit()
     
     hasChangedVideo = true
+    playMeditationMusic()
   }
   
   @objc private func goBackToPreviousVideo() {
@@ -223,6 +226,7 @@ class MeditationVC: UIViewController {
     playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
     
     CATransaction.commit()
+    playMeditationMusic()
   }
   
   private func playMeditationMusic() {
