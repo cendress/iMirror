@@ -137,7 +137,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
   }
   
-  //MARK: - Other methods
+  //MARK: - Alert methods
   
   // Show an alert to confirm turning off notifications
   func showAlert(switch sender: UISwitch) {
@@ -166,6 +166,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     present(alert, animated: true)
   }
   
+  //MARK: - Delete method
+  
   func deleteAllJournalEntries() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
@@ -176,7 +178,6 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     do {
       try managedContext.execute(deleteRequest)
       try managedContext.save()
-      // Optionally, inform the user of success or refresh UI
     } catch let error as NSError {
       print("Could not delete all journal entries. \(error), \(error.userInfo)")
     }
