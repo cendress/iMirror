@@ -5,6 +5,7 @@
 //  Created by Christopher Endress on 1/3/24.
 //
 
+import CoreData
 import UIKit
 
 class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -153,4 +154,31 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     present(alert, animated: true)
   }
   
+  func showDeleteConfirmationAlert() {
+    let alert = UIAlertController(title: "Delete All My Data", message: "Are you sure you want to delete all your data? This action cannot be undone.", preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    
+    alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+      self?.deleteAllJournalEntries()
+    }))
+    
+    present(alert, animated: true)
+  }
+  
+  func deleteAllJournalEntries() {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "JournalEntry")
+    
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try managedContext.execute(deleteRequest)
+      try managedContext.save()
+      // Optionally, inform the user of success or refresh UI
+    } catch let error as NSError {
+      print("Could not delete all journal entries. \(error), \(error.userInfo)")
+    }
+  }
 }
