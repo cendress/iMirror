@@ -114,6 +114,20 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
   }
   
+  //MARK: - Navigate to URL methods
+  
+  func openSupportPage() {
+    if let url = URL(string: "https://www.google.com") {
+      UIApplication.shared.open(url)
+    }
+  }
+  
+  func openPrivacyPolicyPage() {
+    if let url = URL(string: "https://www.google.com") {
+      UIApplication.shared.open(url)
+    }
+  }
+  
   //MARK: - Other methods
   
   // Show an alert to confirm turning off notifications
