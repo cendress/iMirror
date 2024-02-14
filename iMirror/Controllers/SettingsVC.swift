@@ -31,7 +31,22 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.delegate = self
     
     // Register cell class if custom
-//    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "")
+    //    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "")
+  }
+  
+  //MARK: - @objc methods
+  
+  // Switch action handler
+  @objc func switchChanged(_ sender: UISwitch) {
+    if sender.tag == 0 {
+      if !sender.isOn {
+        showAlert(switch: sender)
+      } else {
+        // Enable notifications
+      }
+    } else if sender.tag == 1 {
+      // Light/dark mode switch
+    }
   }
   
   // MARK: - Table view data source methods
@@ -62,24 +77,18 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     switch indexPath.section {
     case 0:
+      let switchView = UISwitch(frame: .zero)
+      switchView.tag = indexPath.row
+      switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
+      
       if indexPath.row == 0 {
         cell.textLabel?.text = "Notifications"
-        // Add UISwitch for toggling, handle its action to show alert if needed
-      } else {
+      } else if indexPath.row == 1 {
         cell.textLabel?.text = "Dark/Light Mode"
-        // Add UISwitch for toggling
       }
-    case 1:
-      if indexPath.row == 0 {
-        cell.textLabel?.text = "Support"
-      } else {
-        cell.textLabel?.text = "Privacy Policy"
-      }
-    case 2:
-      cell.textLabel?.text = "Acknowledgments"
-    case 3:
-      cell.textLabel?.text = "Delete My Data"
-      // Customize the cell to indicate it's a destructive action, if you like
+      
+      cell.accessoryView = switchView
+      
     default:
       break
     }
@@ -100,5 +109,22 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   // Additional delegate methods for customization
+  
+  //MARK: - Other methods
+  
+  // Show an alert to confirm turning off notifications
+  func showAlert(switch sender: UISwitch) {
+    let alert = UIAlertController(title: "Turn Off Notifications", message: "Are you sure you want to turn off notifications?", preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+      sender.setOn(true, animated: true)
+    })
+    
+    alert.addAction(UIAlertAction(title: "Turn Off", style: .destructive) { _ in
+      // Proceed with turning off notifications
+    })
+    
+    present(alert, animated: true)
+  }
   
 }
