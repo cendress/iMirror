@@ -230,7 +230,7 @@ class MeditationVC: UIViewController {
   }
   
   private func playMeditationMusic() {
-    guard let audioPath = Bundle.main.path(forResource: "meditationMusic", ofType: "mp3"), isSoundEnabled else {
+    guard let audioPath = Bundle.main.path(forResource: audioFiles[currentVideoIndex], ofType: "mp3"), isSoundEnabled else {
       print("Audio file not found or sound is disabled")
       return
     }
