@@ -230,6 +230,10 @@ class MeditationVC: UIViewController {
   }
   
   private func playMeditationMusic() {
+    // Stop the previous audio player before initializing a new one
+    audioPlayer?.stop()
+    audioPlayer?.currentTime = 0
+    
     guard let audioPath = Bundle.main.path(forResource: audioFiles[currentVideoIndex], ofType: "mp3"), isSoundEnabled else {
       print("Audio file not found or sound is disabled")
       return
@@ -239,7 +243,10 @@ class MeditationVC: UIViewController {
     do {
       audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
       audioPlayer?.prepareToPlay()
-      audioPlayer?.play()
+      // Delay audio playback slightly to ensure smooth transition
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+        self?.audioPlayer?.play()
+      }
       audioPlayer?.numberOfLoops = -1
     } catch {
       print("Could not load music file")
