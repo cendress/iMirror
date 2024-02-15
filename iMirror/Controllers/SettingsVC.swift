@@ -91,7 +91,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
       
       if indexPath.row == 0 {
-        cell.textLabel?.text = "Turn Off Notifications"
+        cell.textLabel?.text = "Notifications"
         cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       } else if indexPath.row == 1 {
         cell.textLabel?.text = "Dark Mode"
