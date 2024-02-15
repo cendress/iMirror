@@ -42,6 +42,10 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Register cell class if custom
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    
+    let sidePadding: CGFloat = 16
+    tableView.contentInset = UIEdgeInsets(top: 0, left: sidePadding, bottom: 0, right: sidePadding)
+    tableView.scrollIndicatorInsets = tableView.contentInset
   }
   
   //MARK: - @objc methods
@@ -205,15 +209,15 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   private func confirmAndOpenURL(_ urlString: String) {
-      guard let url = URL(string: urlString) else { return }
-      
-      let alert = UIAlertController(title: nil, message: "This will open an external page. Continue?", preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-      alert.addAction(UIAlertAction(title: "Open", style: .default) { _ in
-          UIApplication.shared.open(url)
-      })
+    guard let url = URL(string: urlString) else { return }
     
-      present(alert, animated: true)
+    let alert = UIAlertController(title: nil, message: "This will open an external page. Continue?", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    alert.addAction(UIAlertAction(title: "Open", style: .default) { _ in
+      UIApplication.shared.open(url)
+    })
+    
+    present(alert, animated: true)
   }
   
   //MARK: - Delete method
