@@ -110,6 +110,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       
     case 3:
       cell.textLabel?.text = "Delete My Data"
+      cell.textLabel?.textColor = UIColor.red
       
     default:
       break
