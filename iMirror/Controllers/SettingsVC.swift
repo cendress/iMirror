@@ -84,6 +84,11 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
+    // Reset default cell states to manage when cells are reused in table view
+    cell.accessoryType = .none
+    cell.accessoryView = nil
+    cell.textLabel?.textColor = .label
+    
     // Default system image name
     var systemImageName = "gear"
     
