@@ -95,6 +95,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       } else if indexPath.row == 1 {
         cell.textLabel?.text = "Dark Mode"
+        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       }
       
       cell.accessoryView = switchView
@@ -105,13 +106,16 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       } else if indexPath.row == 1 {
         cell.textLabel?.text = "Privacy Policy"
+        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       }
       
     case 2:
       cell.textLabel?.text = "Acknowledgments"
+      cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       
     case 3:
       cell.textLabel?.text = "Delete My Data"
+      cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       cell.textLabel?.textColor = UIColor.red
       
     default:
