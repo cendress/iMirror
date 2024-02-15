@@ -84,43 +84,39 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
+    // Default system image name
+    var systemImageName = "gear"
+    
     switch indexPath.section {
     case 0:
+      systemImageName = indexPath.row == 0 ? "bell.fill" : "moon.fill"
+      cell.textLabel?.text = indexPath.row == 0 ? "Notifications" : "Dark Mode"
       let switchView = UISwitch(frame: .zero)
       switchView.tag = indexPath.row
       switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
-      
-      if indexPath.row == 0 {
-        cell.textLabel?.text = "Notifications"
-        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
-      } else if indexPath.row == 1 {
-        cell.textLabel?.text = "Dark Mode"
-        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
-      }
-      
       cell.accessoryView = switchView
       
     case 1:
-      if indexPath.row == 0 {
-        cell.textLabel?.text = "Support"
-        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
-      } else if indexPath.row == 1 {
-        cell.textLabel?.text = "Privacy Policy"
-        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
-      }
+      systemImageName = indexPath.row == 0 ? "questionmark.circle" : "lock.fill"
+      cell.textLabel?.text = indexPath.row == 0 ? "Support" : "Privacy Policy"
       
     case 2:
+      systemImageName = "book.fill"
       cell.textLabel?.text = "Acknowledgments"
-      cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       
     case 3:
+      systemImageName = "trash.fill"
       cell.textLabel?.text = "Delete My Data"
-      cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       cell.textLabel?.textColor = UIColor.red
       
-    default:
-      break
+    default: break
     }
+    
+    if let robotoFont = UIFont(name: "Roboto-Regular", size: 18) {
+      cell.textLabel?.font = robotoFont
+    }
+    
+    cell.imageView?.image = UIImage(systemName: systemImageName)
     
     return cell
   }
