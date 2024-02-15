@@ -10,10 +10,12 @@ import UIKit
 class CustomSettingsCell: UITableViewCell {
   
   let iconBackgroundView = UIView()
+  let shadowContainerView = UIView()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupIconBackgroundView()
+    setupShadowContainerView()
   }
   
   required init?(coder: NSCoder) {
@@ -41,6 +43,26 @@ class CustomSettingsCell: UITableViewCell {
     imageView.clipsToBounds = true
   }
   
+  private func setupShadowContainerView() {
+    shadowContainerView.backgroundColor = .white
+    shadowContainerView.layer.cornerRadius = 10
+    shadowContainerView.layer.shadowColor = UIColor.black.cgColor
+    shadowContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    shadowContainerView.layer.shadowRadius = 3
+    shadowContainerView.layer.shadowOpacity = 0.3
+    shadowContainerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    contentView.addSubview(shadowContainerView)
+    contentView.sendSubviewToBack(shadowContainerView)
+    
+    NSLayoutConstraint.activate([
+      shadowContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+      shadowContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+      shadowContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      shadowContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+    ])
+  }
+  
   override func layoutSubviews() {
     super.layoutSubviews()
     
@@ -49,7 +71,5 @@ class CustomSettingsCell: UITableViewCell {
     
     contentView.layer.cornerRadius = 10
     contentView.layer.masksToBounds = true
-    
-    // Might want to add shadow here
   }
 }
