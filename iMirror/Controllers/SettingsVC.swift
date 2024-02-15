@@ -62,7 +62,6 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   // MARK: - Table view data source methods
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    // Number of sections i.e "legal"
     return 4
   }
   
