@@ -40,8 +40,8 @@ struct SettingsView: View {
         }
         
         Section {
-          Link("Support", destination: URL(string: "https://google.com")!)
-          Link("Privacy Policy", destination: URL(string: "https://google.com")!)
+          customLink(title: "Support", url: "https://google.com")
+          customLink(title: "Privacy Policy", url: "https://google.com")
         }
         
         Section {
@@ -66,6 +66,21 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
+    }
+  }
+  
+  private func customLink(title: String, url: String) -> some View {
+    HStack {
+      Text(title)
+      Spacer()
+      Image(systemName: "arrow.up.right")
+        .foregroundColor(.blue)
+    }
+    .contentShape(Rectangle())
+    .onTapGesture {
+      if let url = URL(string: url) {
+        UIApplication.shared.open(url)
+      }
     }
   }
   
