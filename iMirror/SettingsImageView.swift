@@ -15,11 +15,11 @@ struct SettingsImageView: View {
     Image(systemName: imageName)
       .resizable()
       .scaledToFit()
-      .frame(width: 12, height: 12)
-      .padding(8)
+      .frame(width: 15, height: 15)
+      .padding(6)
       .background(backgroundColor)
       .foregroundColor(.white)
-      .cornerRadius(10)
+      .cornerRadius(7)
   }
 }
 

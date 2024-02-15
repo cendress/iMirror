@@ -21,7 +21,7 @@ struct SettingsView: View {
         Section {
           Toggle(isOn: $isNotificationsEnabled) {
             HStack {
-              SettingsImageView(imageName: "bell.fill", backgroundColor: .red)
+              SettingsImageView(imageName: "bell.fill", backgroundColor: .yellow)
               Text("Notifications")
             }
           }
@@ -39,19 +39,19 @@ struct SettingsView: View {
             Text("Are you sure you want to turn off notifications?")
           }
           HStack {
-            SettingsImageView(imageName: "moon.fill", backgroundColor: .purple)
+            SettingsImageView(imageName: "moon.fill", backgroundColor: .blue)
             Toggle("Dark Mode", isOn: $isDarkModeEnabled)
           }
         }
         
         Section {
           HStack {
-            SettingsImageView(imageName: "person.2", backgroundColor: .orange)
+            SettingsImageView(imageName: "person.2.fill", backgroundColor: .purple)
             customLink(title: "Support", url: "https://google.com")
           }
           
           HStack {
-            SettingsImageView(imageName: "lock.fill", backgroundColor: .indigo)
+            SettingsImageView(imageName: "lock.fill", backgroundColor: .green)
             customLink(title: "Privacy Policy", url: "https://google.com")
           }
         }
@@ -60,7 +60,7 @@ struct SettingsView: View {
           NavigationLink(destination: AcknowledgmentsView()) {
             
             HStack {
-              SettingsImageView(imageName: "book.fill", backgroundColor: .pink)
+              SettingsImageView(imageName: "book.fill", backgroundColor: .orange)
               Text("Acknowledgments")
             }
           }
