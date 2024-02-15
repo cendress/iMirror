@@ -92,6 +92,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       
       if indexPath.row == 0 {
         cell.textLabel?.text = "Turn Off Notifications"
+        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       } else if indexPath.row == 1 {
         cell.textLabel?.text = "Dark Mode"
       }
@@ -101,6 +102,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     case 1:
       if indexPath.row == 0 {
         cell.textLabel?.text = "Support"
+        cell.textLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
       } else if indexPath.row == 1 {
         cell.textLabel?.text = "Privacy Policy"
       }
