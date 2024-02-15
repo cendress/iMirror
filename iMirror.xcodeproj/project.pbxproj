@@ -28,6 +28,8 @@
 		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
 		9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */; };
 		9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */; };
+		9D3959A42B7ED28E00A8A475 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A32B7ED28E00A8A475 /* SettingsView.swift */; };
+		9D3959A62B7ED30300A8A475 /* AcknowledgmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -76,6 +78,8 @@
 		9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsVC.swift; sourceTree = "<group>"; };
 		9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOnboardingViewConfiguration+Extension.swift"; sourceTree = "<group>"; };
+		9D3959A32B7ED28E00A8A475 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsView.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9D3959A02B7ED19B00A8A475 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D3959A32B7ED28E00A8A475 /* SettingsView.swift */,
+				9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		9D7C03402B2267610075E59D = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +174,7 @@
 				9D7C034C2B2267610075E59D /* AppDelegate.swift */,
 				9D7C034E2B2267610075E59D /* SceneDelegate.swift */,
 				9DFEE69E2B4B28A0001835E1 /* Models */,
+				9D3959A02B7ED19B00A8A475 /* Views */,
 				9DFEE69C2B4B285A001835E1 /* Controllers */,
 				9DFEE69D2B4B286A001835E1 /* Custom */,
 				9D0197E72B5EF4ED00E6FE30 /* Helpers */,
@@ -388,9 +402,11 @@
 				9D0197ED2B604FC700E6FE30 /* EmotionCollectionViewCell.swift in Sources */,
 				9D7F07112B717A4400145871 /* JournalSection.swift in Sources */,
 				9D0197EB2B5EFD9700E6FE30 /* EmotionListVC.swift in Sources */,
+				9D3959A42B7ED28E00A8A475 /* SettingsView.swift in Sources */,
 				9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */,
 				9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
+				9D3959A62B7ED30300A8A475 /* AcknowledgmentsView.swift in Sources */,
 				9D0197EF2B6054F600E6FE30 /* Emotion.swift in Sources */,
 				9D0197F92B66EE8800E6FE30 /* JournalEntryCell.swift in Sources */,
 			);
