@@ -13,7 +13,6 @@ class AcknowledgmentsVC: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     self.title = "Acknowledgments"
-    navigationController?.navigationBar.prefersLargeTitles = true
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
   }
