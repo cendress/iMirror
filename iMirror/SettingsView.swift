@@ -20,7 +20,10 @@ struct SettingsView: View {
       List {
         Section {
           Toggle(isOn: $isNotificationsEnabled) {
-            Text("Notifications")
+            HStack {
+              SettingsImage(imageName: "bell.fill", backgroundColor: .red)
+              Text("Notifications")
+            }
           }
           .onChange(of: isNotificationsEnabled) { newValue in
             if !newValue {
