@@ -40,10 +40,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.dataSource = self
     tableView.delegate = self
     
-    tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-    
     // Register cell class if custom
-    tableView.register(CustomSettingsCell.self, forCellReuseIdentifier: "CustomSettingsCell")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   //MARK: - @objc methods
@@ -84,18 +82,20 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSettingsCell", for: indexPath) as! CustomSettingsCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
+    // Reset default cell states to manage when cells are reused in table view
     cell.accessoryType = .none
     cell.accessoryView = nil
-    cell.customTextLabel.textColor = .label
+    cell.textLabel?.textColor = .label
     
+    // Default system image name
     var systemImageName = "gear"
     
     switch indexPath.section {
     case 0:
       systemImageName = indexPath.row == 0 ? "bell.fill" : "moon.fill"
-      cell.customTextLabel.text = indexPath.row == 0 ? "Notifications" : "Dark Mode"
+      cell.textLabel?.text = indexPath.row == 0 ? "Notifications" : "Dark Mode"
       let switchView = UISwitch(frame: .zero)
       switchView.tag = indexPath.row
       switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
@@ -103,7 +103,9 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       
     case 1:
       systemImageName = indexPath.row == 0 ? "questionmark.circle" : "lock.fill"
-      cell.customTextLabel.text = indexPath.row == 0 ? "Support" : "Privacy Policy"
+      cell.textLabel?.text = indexPath.row == 0 ? "Support" : "Privacy Policy"
+      
+      // Custom accessory type
       let symbolName = "arrow.up.right"
       let icon = UIImage(systemName: symbolName)
       let imageView = UIImageView(image: icon)
@@ -112,22 +114,22 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       
     case 2:
       systemImageName = "book.fill"
-      cell.customTextLabel.text = "Acknowledgments"
+      cell.textLabel?.text = "Acknowledgments"
       cell.accessoryType = .disclosureIndicator
       
     case 3:
       systemImageName = "trash.fill"
-      cell.customTextLabel.text = "Delete My Data"
-      cell.customTextLabel.textColor = UIColor.red
+      cell.textLabel?.text = "Delete My Data"
+      cell.textLabel?.textColor = UIColor.red
       
     default: break
     }
     
     if let robotoFont = UIFont(name: "Roboto-Regular", size: 18) {
-      cell.customTextLabel.font = robotoFont
+      cell.textLabel?.font = robotoFont
     }
     
-    cell.customImageView.image = UIImage(systemName: systemImageName)
+    cell.imageView?.image = UIImage(systemName: systemImageName)
     
     return cell
   }
@@ -203,15 +205,15 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   private func confirmAndOpenURL(_ urlString: String) {
-    guard let url = URL(string: urlString) else { return }
+      guard let url = URL(string: urlString) else { return }
+      
+      let alert = UIAlertController(title: nil, message: "This will open an external page. Continue?", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+      alert.addAction(UIAlertAction(title: "Open", style: .default) { _ in
+          UIApplication.shared.open(url)
+      })
     
-    let alert = UIAlertController(title: nil, message: "This will open an external page. Continue?", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    alert.addAction(UIAlertAction(title: "Open", style: .default) { _ in
-      UIApplication.shared.open(url)
-    })
-    
-    present(alert, animated: true)
+      present(alert, animated: true)
   }
   
   //MARK: - Delete method
