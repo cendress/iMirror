@@ -25,6 +25,7 @@
 		9D2E654A2B7D3F0200432ECF /* waterfallMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E65492B7D3F0200432ECF /* waterfallMusic.mp3 */; };
 		9D2E654C2B7D3F1200432ECF /* particlesMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E654B2B7D3F1200432ECF /* particlesMusic.mp3 */; };
 		9D2E654E2B7D532900432ECF /* AcknowledgementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */; };
+		9D2E65522B7ECAA100432ECF /* CustomSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E65512B7ECAA100432ECF /* CustomSettingsCell.swift */; };
 		9D3395BB2B7A9E0600D43023 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3395BA2B7A9E0600D43023 /* UIOnboarding */; };
 		9D3395BD2B7AA9CC00D43023 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */; };
 		9D3395BF2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */; };
@@ -74,6 +75,7 @@
 		9D2E65492B7D3F0200432ECF /* waterfallMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterfallMusic.mp3; sourceTree = "<group>"; };
 		9D2E654B2B7D3F1200432ECF /* particlesMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = particlesMusic.mp3; sourceTree = "<group>"; };
 		9D2E654D2B7D532900432ECF /* AcknowledgementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsVC.swift; sourceTree = "<group>"; };
+		9D2E65512B7ECAA100432ECF /* CustomSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSettingsCell.swift; sourceTree = "<group>"; };
 		9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIOnboardingViewConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 			children = (
 				9D0197EC2B604FC700E6FE30 /* EmotionCollectionViewCell.swift */,
 				9D0197F82B66EE8800E6FE30 /* JournalEntryCell.swift */,
+				9D2E65512B7ECAA100432ECF /* CustomSettingsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				9D8594822B70287200BF1B03 /* JournalEntry+Extensions.swift in Sources */,
 				9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */,
 				9D0197EF2B6054F600E6FE30 /* Emotion.swift in Sources */,
+				9D2E65522B7ECAA100432ECF /* CustomSettingsCell.swift in Sources */,
 				9D0197F92B66EE8800E6FE30 /* JournalEntryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
