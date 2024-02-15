@@ -82,7 +82,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSettingsCell", for: indexPath) as! CustomSettingsCell
     
     // Reset default cell states to manage when cells are reused in table view
     cell.accessoryType = .none
