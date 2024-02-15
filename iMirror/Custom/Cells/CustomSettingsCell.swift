@@ -16,6 +16,17 @@ class CustomSettingsCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    self.backgroundColor = .clear
+    contentView.backgroundColor = UIColor { (traitCollection) -> UIColor in
+      switch traitCollection.userInterfaceStyle {
+      case .dark:
+        return UIColor(white: 0.0, alpha: 1.0)
+      default:
+        return UIColor(white: 0.95, alpha: 1.0)
+      }
+    }
+    
     setupContainerView()
     setupIconBackgroundView()
     setupCustomImageViewAndLabel()
@@ -26,14 +37,15 @@ class CustomSettingsCell: UITableViewCell {
   }
   
   private func setupContainerView() {
+    containerView.backgroundColor = .systemBackground
     containerView.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(containerView)
     
     NSLayoutConstraint.activate([
       containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
       containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
     ])
     
     containerView.layer.cornerRadius = 10
@@ -62,6 +74,7 @@ class CustomSettingsCell: UITableViewCell {
   private func setupCustomImageViewAndLabel() {
     customImageView.translatesAutoresizingMaskIntoConstraints = false
     customImageView.layer.cornerRadius = 8
+    customImageView.tintColor = .white
     customImageView.clipsToBounds = true
     containerView.addSubview(customImageView)
     
@@ -71,8 +84,8 @@ class CustomSettingsCell: UITableViewCell {
     NSLayoutConstraint.activate([
       customImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
       customImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-      customImageView.heightAnchor.constraint(equalToConstant: 40),
-      customImageView.widthAnchor.constraint(equalToConstant: 40),
+      customImageView.heightAnchor.constraint(equalToConstant: 30),
+      customImageView.widthAnchor.constraint(equalToConstant: 30),
       
       customTextLabel.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 16),
       customTextLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
