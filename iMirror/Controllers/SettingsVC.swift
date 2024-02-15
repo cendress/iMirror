@@ -105,9 +105,17 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       systemImageName = indexPath.row == 0 ? "questionmark.circle" : "lock.fill"
       cell.textLabel?.text = indexPath.row == 0 ? "Support" : "Privacy Policy"
       
+      // Custom accessory type
+      let symbolName = "arrow.up.right"
+      let icon = UIImage(systemName: symbolName)
+      let imageView = UIImageView(image: icon)
+      imageView.tintColor = .systemBlue
+      cell.accessoryView = imageView
+      
     case 2:
       systemImageName = "book.fill"
       cell.textLabel?.text = "Acknowledgments"
+      cell.accessoryType = .disclosureIndicator
       
     case 3:
       systemImageName = "trash.fill"
