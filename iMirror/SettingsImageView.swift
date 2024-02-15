@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsImage: View {
+struct SettingsImageView: View {
   var imageName: String
   var backgroundColor: Color
   
@@ -15,14 +15,14 @@ struct SettingsImage: View {
     Image(systemName: imageName)
       .resizable()
       .scaledToFit()
-      .frame(width: 24, height: 24)
+      .frame(width: 12, height: 12)
       .padding(8)
       .background(backgroundColor)
       .foregroundColor(.white)
-      .cornerRadius(5)
+      .cornerRadius(10)
   }
 }
 
 #Preview {
-  SettingsImage(imageName: "pencil", backgroundColor: .blue)
+  SettingsImageView(imageName: "pencil", backgroundColor: .blue)
 }
