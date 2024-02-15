@@ -40,4 +40,16 @@ class CustomSettingsCell: UITableViewCell {
     imageView.layer.cornerRadius = 8
     imageView.clipsToBounds = true
   }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
+    let cellSpacing: CGFloat = 16
+    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: cellSpacing, bottom: 0, right: cellSpacing))
+    
+    contentView.layer.cornerRadius = 10
+    contentView.layer.masksToBounds = true
+    
+    // Might want to add shadow here
+  }
 }
