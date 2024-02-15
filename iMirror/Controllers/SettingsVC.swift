@@ -41,7 +41,7 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.delegate = self
     
     // Register cell class if custom
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    tableView.register(CustomSettingsCell.self, forCellReuseIdentifier: "CustomSettingsCell")
   }
   
   //MARK: - @objc methods
