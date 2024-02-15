@@ -40,6 +40,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.dataSource = self
     tableView.delegate = self
     
+    tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    
     // Register cell class if custom
     tableView.register(CustomSettingsCell.self, forCellReuseIdentifier: "CustomSettingsCell")
   }
