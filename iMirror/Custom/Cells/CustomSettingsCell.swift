@@ -10,66 +10,77 @@ import UIKit
 class CustomSettingsCell: UITableViewCell {
   
   let iconBackgroundView = UIView()
-  let shadowContainerView = UIView()
+  let customImageView = UIImageView()
+  let customTextLabel = UILabel()
+  let containerView = UIView()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    setupContainerView()
     setupIconBackgroundView()
-    setupShadowContainerView()
+    setupCustomImageViewAndLabel()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  private func setupIconBackgroundView() {
-    guard let imageView = self.imageView else { return }
+  private func setupContainerView() {
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(containerView)
     
+    NSLayoutConstraint.activate([
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+    ])
+    
+    containerView.layer.cornerRadius = 10
+    containerView.clipsToBounds = true
+  }
+  
+  private func setupIconBackgroundView() {
     iconBackgroundView.backgroundColor = UIColor.systemGray5
     iconBackgroundView.layer.cornerRadius = 8
     iconBackgroundView.translatesAutoresizingMaskIntoConstraints = false
     
-    // Ensure the background view goes behind the image in the cell
-    self.contentView.insertSubview(iconBackgroundView, belowSubview: imageView)
+    containerView.addSubview(iconBackgroundView)
+    containerView.addSubview(customImageView)
     
     NSLayoutConstraint.activate([
-      iconBackgroundView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-      iconBackgroundView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-      iconBackgroundView.heightAnchor.constraint(equalTo: imageView.heightAnchor),
-      iconBackgroundView.widthAnchor.constraint(equalTo: imageView.widthAnchor)
+      iconBackgroundView.centerYAnchor.constraint(equalTo: customImageView.centerYAnchor),
+      iconBackgroundView.centerXAnchor.constraint(equalTo: customImageView.centerXAnchor),
+      iconBackgroundView.heightAnchor.constraint(equalTo: customImageView.heightAnchor),
+      iconBackgroundView.widthAnchor.constraint(equalTo: customImageView.widthAnchor)
     ])
     
-    imageView.layer.cornerRadius = 8
-    imageView.clipsToBounds = true
+    customImageView.layer.cornerRadius = 8
+    customImageView.clipsToBounds = true
   }
   
-  private func setupShadowContainerView() {
-    shadowContainerView.backgroundColor = .white
-    shadowContainerView.layer.cornerRadius = 10
-    shadowContainerView.layer.shadowColor = UIColor.black.cgColor
-    shadowContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-    shadowContainerView.layer.shadowRadius = 3
-    shadowContainerView.layer.shadowOpacity = 0.3
-    shadowContainerView.translatesAutoresizingMaskIntoConstraints = false
+  private func setupCustomImageViewAndLabel() {
+    customImageView.translatesAutoresizingMaskIntoConstraints = false
+    customImageView.layer.cornerRadius = 8
+    customImageView.clipsToBounds = true
+    containerView.addSubview(customImageView)
     
-    contentView.addSubview(shadowContainerView)
-    contentView.sendSubviewToBack(shadowContainerView)
+    customTextLabel.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(customTextLabel)
     
     NSLayoutConstraint.activate([
-      shadowContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-      shadowContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-      shadowContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      shadowContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+      customImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+      customImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+      customImageView.heightAnchor.constraint(equalToConstant: 40),
+      customImageView.widthAnchor.constraint(equalToConstant: 40),
+      
+      customTextLabel.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 16),
+      customTextLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+      customTextLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
     ])
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    
-    let cellSpacing: CGFloat = 16
-    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: cellSpacing, bottom: 0, right: cellSpacing))
-    
-    contentView.layer.cornerRadius = 10
-    contentView.layer.masksToBounds = true
   }
 }
