@@ -42,10 +42,6 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Register cell class if custom
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    
-    let sidePadding: CGFloat = 16
-    tableView.contentInset = UIEdgeInsets(top: 0, left: sidePadding, bottom: 0, right: sidePadding)
-    tableView.scrollIndicatorInsets = tableView.contentInset
   }
   
   //MARK: - @objc methods
