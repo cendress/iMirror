@@ -70,7 +70,8 @@ class MeditationVC: UIViewController {
   // MARK: - @objc methods
   
   @objc private func exitMeditation() {
-    showAlert()
+    audioPlayer?.stop()
+    dismiss(animated: true)
   }
   
   @objc func loopVideo() {
@@ -288,17 +289,6 @@ class MeditationVC: UIViewController {
   }
   
   // MARK: - Other methods
-  
-  private func showAlert() {
-    let ac = UIAlertController(title: "Exit the Meditation", message: "Are you sure you want to exit the meditation?", preferredStyle: .alert)
-    ac.addAction(UIAlertAction(title: "Yes", style: .default) { action in
-      self.audioPlayer?.stop()
-      self.dismiss(animated: true)
-    })
-    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    
-    present(ac, animated: true)
-  }
   
   deinit {
     NotificationCenter.default.removeObserver(self)
