@@ -15,9 +15,11 @@ struct ToggleSettingsView: View {
   
   var body: some View {
     Toggle(isOn: $isEnabled) {
-      SettingsImageView(imageName: imageName, backgroundColor: backgroundColor)
-      Text(title)
-        .font(.custom("Roboto-Regular", size: 18))
+      HStack {
+        SettingsImageView(imageName: imageName, backgroundColor: backgroundColor)
+        Text(title)
+          .font(.custom("Roboto-Regular", size: 18))
+      }
     }
   }
 }

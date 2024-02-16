@@ -5,6 +5,7 @@
 //  Created by Christopher Endress on 1/3/24.
 //
 
+import SwiftUI
 import UIKit
 import UIOnboarding
 
@@ -50,10 +51,16 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     let questionPromptsVC = CurrentMoodVC()
     questionPromptsVC.tabBarItem = PlusTabBarItem()
     
-    let settingsVC = SettingsVC()
-    settingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
+    // UIKit Code
+//    let settingsVC = SettingsVC()
+//    settingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
+//    let settingsNavController = UINavigationController(rootViewController: settingsVC)
     
-    let settingsNavController = UINavigationController(rootViewController: settingsVC)
+    // SwiftUI Code
+    let settingsView = SettingsView()
+    let hostingController = UIHostingController(rootView: settingsView)
+    hostingController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 2)
+    let settingsNavController = UINavigationController(rootViewController: hostingController)
     
     viewControllers = [journalNavController, questionPromptsVC, settingsNavController]
   }
