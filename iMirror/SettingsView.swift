@@ -7,6 +7,7 @@
 
 import CoreData
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
@@ -22,11 +23,22 @@ struct SettingsView: View {
       }
       .onAppear {
         viewModel.setContext(viewContext)
+        configureNavigationBarAppearance()
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
       .background(BackgroundView())
     }
+  }
+  
+  private func configureNavigationBarAppearance() {
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.largeTitleTextAttributes = [.font: UIFont(name: "Roboto-Bold", size: 37)!]
+    
+    UINavigationBar.appearance().standardAppearance = appearance
+    UINavigationBar.appearance().compactAppearance = appearance
+    UINavigationBar.appearance().scrollEdgeAppearance = appearance
   }
   
   private var notificationSection: some View {
