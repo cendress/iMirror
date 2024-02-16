@@ -31,6 +31,7 @@
 		9D3959A42B7ED28E00A8A475 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A32B7ED28E00A8A475 /* SettingsView.swift */; };
 		9D3959A62B7ED30300A8A475 /* AcknowledgmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */; };
 		9D3959A82B7ED75400A8A475 /* SettingsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */; };
+		9D3959AA2B7EDF8900A8A475 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -82,6 +83,7 @@
 		9D3959A32B7ED28E00A8A475 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsView.swift; sourceTree = "<group>"; };
 		9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsImageView.swift; sourceTree = "<group>"; };
+		9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				9D3959A32B7ED28E00A8A475 /* SettingsView.swift */,
 				9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */,
 				9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */,
+				9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */,
 			);
 			name = "Views (SwiftUI)";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3959AA2B7EDF8900A8A475 /* BackgroundView.swift in Sources */,
 				9D0197F12B605BE700E6FE30 /* JournalNotesVC.swift in Sources */,
 				9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */,
 				9D3959A82B7ED75400A8A475 /* SettingsImageView.swift in Sources */,
