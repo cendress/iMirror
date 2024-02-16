@@ -31,7 +31,7 @@ struct SettingsView: View {
   }
   
   private var notificationSection: some View {
-    Section(header: Text("Header").background(Color.clear)) {
+    Section(header: Text("Preferences").background(Color.clear)) {
       ToggleSettingsView(isEnabled: $viewModel.isNotificationsEnabled, imageName: "bell.fill", title: "Notifications", backgroundColor: .yellow)
         .onChange(of: viewModel.isNotificationsEnabled) { newValue in
           viewModel.toggleNotification(newValue)
