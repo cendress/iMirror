@@ -33,6 +33,9 @@
 		9D3959A82B7ED75400A8A475 /* SettingsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */; };
 		9D3959AA2B7EDF8900A8A475 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */; };
 		9D3959AE2B7EE2D800A8A475 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959AD2B7EE2D800A8A475 /* SettingsViewModel.swift */; };
+		9D3959B12B7EE3C000A8A475 /* ToggleSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B02B7EE3C000A8A475 /* ToggleSettingsView.swift */; };
+		9D3959B32B7EE40B00A8A475 /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B22B7EE40B00A8A475 /* CustomLinkView.swift */; };
+		9D3959B52B7EE48E00A8A475 /* SettingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -86,6 +89,9 @@
 		9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsImageView.swift; sourceTree = "<group>"; };
 		9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		9D3959AD2B7EE2D800A8A475 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		9D3959B02B7EE3C000A8A475 /* ToggleSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSettingsView.swift; sourceTree = "<group>"; };
+		9D3959B22B7EE40B00A8A475 /* CustomLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkView.swift; sourceTree = "<group>"; };
+		9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemView.swift; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,9 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				9D3959A32B7ED28E00A8A475 /* SettingsView.swift */,
-				9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */,
 				9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */,
-				9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */,
+				9D3959AF2B7EE39300A8A475 /* ReuseableViews */,
 			);
 			name = "Views (SwiftUI)";
 			sourceTree = "<group>";
@@ -166,6 +171,18 @@
 				9D3959AD2B7EE2D800A8A475 /* SettingsViewModel.swift */,
 			);
 			path = "ViewModels (SwiftUI)";
+			sourceTree = "<group>";
+		};
+		9D3959AF2B7EE39300A8A475 /* ReuseableViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */,
+				9D3959A92B7EDF8900A8A475 /* BackgroundView.swift */,
+				9D3959B02B7EE3C000A8A475 /* ToggleSettingsView.swift */,
+				9D3959B22B7EE40B00A8A475 /* CustomLinkView.swift */,
+				9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */,
+			);
+			name = ReuseableViews;
 			sourceTree = "<group>";
 		};
 		9D7C03402B2267610075E59D = {
@@ -399,12 +416,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D3959AA2B7EDF8900A8A475 /* BackgroundView.swift in Sources */,
+				9D3959B12B7EE3C000A8A475 /* ToggleSettingsView.swift in Sources */,
 				9D0197F12B605BE700E6FE30 /* JournalNotesVC.swift in Sources */,
 				9DFEE6A32B4B422E001835E1 /* PlusTabBarItem.swift in Sources */,
+				9D3959B52B7EE48E00A8A475 /* SettingsItemView.swift in Sources */,
 				9D3959A82B7ED75400A8A475 /* SettingsImageView.swift in Sources */,
 				9D0197F72B66C8D600E6FE30 /* CoreDateManager.swift in Sources */,
 				9DFEE64A2B4603B6001835E1 /* JournalVC.swift in Sources */,
 				9DFEE64C2B4603DC001835E1 /* CurrentMoodVC.swift in Sources */,
+				9D3959B32B7EE40B00A8A475 /* CustomLinkView.swift in Sources */,
 				9D7F07152B74135000145871 /* MeditationVC.swift in Sources */,
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
 				9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */,

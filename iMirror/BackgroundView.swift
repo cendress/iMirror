@@ -20,7 +20,3 @@ struct BackgroundView: View {
     .edgesIgnoringSafeArea(.all)
   }
 }
-
-#Preview {
-  BackgroundView()
-}
