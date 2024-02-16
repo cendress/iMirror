@@ -12,10 +12,6 @@ struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @StateObject private var viewModel: SettingsViewModel
   
-  init() {
-    _viewModel = StateObject(wrappedValue: SettingsViewModel(context: viewContext))
-  }
-  
   var body: some View {
     NavigationView {
       List {
@@ -23,6 +19,9 @@ struct SettingsView: View {
         supportSection
         acknowledgmentsSection
         deleteDataSection
+      }
+      .onAppear {
+        viewModel.setContext(viewContext)
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
@@ -81,6 +80,6 @@ struct SettingsView: View {
   }
 }
 
-#Preview {
-  SettingsView()
-}
+//#Preview {
+//  SettingsView(viewModel: <#SettingsViewModel#>)
+//}

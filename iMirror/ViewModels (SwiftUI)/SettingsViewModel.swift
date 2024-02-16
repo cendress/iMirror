@@ -13,11 +13,11 @@ class SettingsViewModel: ObservableObject {
   @Published var isDarkModeEnabled = false
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
-  private var viewContext: NSManagedObjectContext
-  
-  init(context: NSManagedObjectContext) {
-    self.viewContext = context
-  }
+  var viewContext: NSManagedObjectContext?
+
+   func setContext(_ context: NSManagedObjectContext) {
+     self.viewContext = context
+   }
   
   func toggleNotification(_ isEnabled: Bool) {
     if !isEnabled {
@@ -30,8 +30,8 @@ class SettingsViewModel: ObservableObject {
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
     do {
-      try viewContext.execute(deleteRequest)
-      try viewContext.save()
+      try viewContext?.execute(deleteRequest)
+      try viewContext?.save()
     } catch {
       print("Error deleting data: \(error)")
     }
