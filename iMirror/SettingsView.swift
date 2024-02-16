@@ -14,30 +14,30 @@ struct SettingsView: View {
   @StateObject private var viewModel = SettingsViewModel()
   
   init() {
-      configureNavigationBarAppearance()
+    configureNavigationBarAppearance()
   }
   
   var body: some View {
     NavigationView {
       ZStack {
-        
         Color(UIColor(named: "BackgroundColor") ?? .systemBackground)
           .ignoresSafeArea()
         
-      List {
-        notificationSection
-        supportSection
-        acknowledgmentsSection
-        deleteDataSection
-      }
-      .onAppear {
-        viewModel.setContext(viewContext)
+        List {
+          notificationSection
+          supportSection
+          acknowledgmentsSection
+          deleteDataSection
+        }
+        .listRowBackground(Color.clear)
+        .onAppear {
+          viewModel.setContext(viewContext)
+        }
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
     }
   }
-}
   
   private func configureNavigationBarAppearance() {
     let appearance = UINavigationBarAppearance()
@@ -51,7 +51,7 @@ struct SettingsView: View {
   }
   
   private var notificationSection: some View {
-    Section {
+    Section(header: Text("Header").background(Color.clear)) {
       ToggleSettingsView(isEnabled: $viewModel.isNotificationsEnabled, imageName: "bell.fill", title: "Notifications", backgroundColor: .yellow)
         .onChange(of: viewModel.isNotificationsEnabled) { newValue in
           viewModel.toggleNotification(newValue)
@@ -70,14 +70,14 @@ struct SettingsView: View {
   }
   
   private var supportSection: some View {
-    Section {
+    Section(header: Text("Legal").background(Color.clear)) {
       CustomLinkView(title: "Support", url: "https://google.com", imageName: "person.2.fill", backgroundColor: .purple)
       CustomLinkView(title: "Privacy Policy", url: "https://google.com", imageName: "lock.fill", backgroundColor: .green)
     }
   }
   
   private var acknowledgmentsSection: some View {
-    Section {
+    Section(header: Text("Acknowledgements").background(Color.clear)) {
       NavigationLink(destination: AcknowledgmentsView()) {
         SettingItemView(imageName: "book.fill", title: "Acknowledgments", backgroundColor: .orange)
       }
@@ -85,7 +85,7 @@ struct SettingsView: View {
   }
   
   private var deleteDataSection: some View {
-    Section {
+    Section(header: Text("Data Management").background(Color.clear)) {
       Button("Delete My Data", role: .destructive) {
         viewModel.showDeleteConfirmation = true
       }

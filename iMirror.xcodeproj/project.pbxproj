@@ -160,7 +160,7 @@
 			children = (
 				9D3959A32B7ED28E00A8A475 /* SettingsView.swift */,
 				9D3959A52B7ED30300A8A475 /* AcknowledgmentsView.swift */,
-				9D3959AF2B7EE39300A8A475 /* ReuseableViews */,
+				9D3959AF2B7EE39300A8A475 /* ReuseableViews (SwiftUI) */,
 			);
 			name = "Views (SwiftUI)";
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 			path = "ViewModels (SwiftUI)";
 			sourceTree = "<group>";
 		};
-		9D3959AF2B7EE39300A8A475 /* ReuseableViews */ = {
+		9D3959AF2B7EE39300A8A475 /* ReuseableViews (SwiftUI) */ = {
 			isa = PBXGroup;
 			children = (
 				9D3959A72B7ED75400A8A475 /* SettingsImageView.swift */,
@@ -182,7 +182,7 @@
 				9D3959B22B7EE40B00A8A475 /* CustomLinkView.swift */,
 				9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */,
 			);
-			name = ReuseableViews;
+			name = "ReuseableViews (SwiftUI)";
 			sourceTree = "<group>";
 		};
 		9D7C03402B2267610075E59D = {
