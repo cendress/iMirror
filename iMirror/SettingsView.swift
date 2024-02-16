@@ -23,6 +23,7 @@ struct SettingsView: View {
             HStack {
               SettingsImageView(imageName: "bell.fill", backgroundColor: .yellow)
               Text("Notifications")
+                .font(.custom("Roboto-Regular", size: 18))
             }
           }
           .onChange(of: isNotificationsEnabled) { newValue in
@@ -41,6 +42,7 @@ struct SettingsView: View {
           HStack {
             SettingsImageView(imageName: "moon.fill", backgroundColor: .blue)
             Toggle("Dark Mode", isOn: $isDarkModeEnabled)
+              .font(.custom("Roboto-Regular", size: 18))
           }
         }
         
@@ -62,6 +64,7 @@ struct SettingsView: View {
             HStack {
               SettingsImageView(imageName: "book.fill", backgroundColor: .orange)
               Text("Acknowledgments")
+                .font(.custom("Roboto-Regular", size: 18))
             }
           }
         }
@@ -72,6 +75,7 @@ struct SettingsView: View {
             Button("Delete My Data", role: .destructive) {
               showDeleteConfirmation = true
             }
+            .font(.custom("Roboto-Regular", size: 18))
           }
           .alert("Delete All My Data", isPresented: $showDeleteConfirmation) {
             Button("Cancel", role: .cancel) { }
@@ -91,7 +95,10 @@ struct SettingsView: View {
   private func customLink(title: String, url: String) -> some View {
     HStack {
       Text(title)
+        .font(.custom("Roboto-Regular", size: 18))
+      
       Spacer()
+      
       Image(systemName: "arrow.up.right")
         .foregroundColor(.blue)
     }
