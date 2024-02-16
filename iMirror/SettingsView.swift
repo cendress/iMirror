@@ -90,6 +90,9 @@ struct SettingsView: View {
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
     }
+    .background(
+      BackgroundView()
+    )
   }
   
   private func customLink(title: String, url: String) -> some View {
