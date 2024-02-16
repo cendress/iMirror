@@ -63,14 +63,7 @@ class JournalEntryCell: UITableViewCell {
     timeLabel.font = UIFont(name: "Roboto-Light", size: 14) ?? UIFont.systemFont(ofSize: 12)
     
 //    moodBackgroundView.backgroundColor = UIColor(named: "AppColor")
-    moodBackgroundView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    moodBackgroundView.backgroundColor = UIColor(named: "BackgroundColor")
     
     moodBackgroundView.layer.cornerRadius = 19
     moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor

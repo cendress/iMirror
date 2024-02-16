@@ -106,14 +106,7 @@ class JournalVC: UITableViewController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
     
-    headerView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    headerView.backgroundColor = UIColor(named: "BackgroundColor")
     
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
     headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
@@ -140,14 +133,7 @@ class JournalVC: UITableViewController {
     cell.configure(with: entry)
     cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
     
-    cell.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    cell.backgroundColor = UIColor(named: "BackgroundColor")
     
     return cell
   }
@@ -286,14 +272,7 @@ class JournalVC: UITableViewController {
       ])
     }
     
-    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    tableView.backgroundColor = UIColor(named: "BackgroundColor")
     
     tableView.separatorStyle = .none
   }
@@ -308,14 +287,7 @@ class JournalVC: UITableViewController {
   }
   
   private func updateNavigationBarColor() {
-    let backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    let backgroundColor = UIColor(named: "BackgroundColor")
     
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()

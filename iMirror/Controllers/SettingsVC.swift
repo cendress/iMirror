@@ -28,14 +28,8 @@ class SettingsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     view.addSubview(tableView)
     
-    tableView.backgroundColor = UIColor { (traitCollection) -> UIColor in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    }
+    tableView.backgroundColor = UIColor(named: "BackgroundColor")
+    
     
     tableView.dataSource = self
     tableView.delegate = self
