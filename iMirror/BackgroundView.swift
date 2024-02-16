@@ -9,14 +9,7 @@ import SwiftUI
 
 struct BackgroundView: View {
   var body: some View {
-    Color(UIColor { traitCollection in
-      switch traitCollection.userInterfaceStyle {
-      case .dark:
-        return UIColor(white: 0.0, alpha: 1.0)
-      default:
-        return UIColor(white: 0.95, alpha: 1.0)
-      }
-    })
+    Color(UIColor(named: "BackgroundColor") ?? .systemBackground)
     .edgesIgnoringSafeArea(.all)
   }
 }
