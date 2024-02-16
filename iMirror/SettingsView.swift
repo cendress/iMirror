@@ -26,7 +26,7 @@ struct SettingsView: View {
           viewModel.setContext(viewContext)
         }
       .navigationTitle("Settings")
-      .navigationBarTitleDisplayMode(.large)
+      .navigationBarTitleDisplayMode(.inline)
     }
   }
   
