@@ -12,17 +12,9 @@ import UIKit
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @StateObject private var viewModel = SettingsViewModel()
-  
-  init() {
-    configureNavigationBarAppearance()
-  }
-  
+
   var body: some View {
     NavigationView {
-      ZStack {
-        Color(UIColor(named: "BackgroundColor") ?? .systemBackground)
-          .ignoresSafeArea()
-        
         List {
           notificationSection
           supportSection
@@ -33,21 +25,9 @@ struct SettingsView: View {
         .onAppear {
           viewModel.setContext(viewContext)
         }
-      }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
     }
-  }
-  
-  private func configureNavigationBarAppearance() {
-    let appearance = UINavigationBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.largeTitleTextAttributes = [.font: UIFont(name: "Roboto-Bold", size: 37)!]
-    appearance.backgroundColor = UIColor(named: "BackgroundColor")
-    
-    UINavigationBar.appearance().standardAppearance = appearance
-    UINavigationBar.appearance().compactAppearance = appearance
-    UINavigationBar.appearance().scrollEdgeAppearance = appearance
   }
   
   private var notificationSection: some View {
