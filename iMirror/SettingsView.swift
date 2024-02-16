@@ -89,10 +89,11 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
+      .font(.custom("Roboto-Bold", size: 37))
+      .background(
+        BackgroundView()
+      )
     }
-    .background(
-      BackgroundView()
-    )
   }
   
   private func customLink(title: String, url: String) -> some View {
