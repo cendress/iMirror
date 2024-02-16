@@ -106,7 +106,7 @@ class JournalVC: UITableViewController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
     
-    headerView.backgroundColor = UIColor(named: "BackgroundColor")
+    headerView.backgroundColor = .systemBackground
     
     let headerLabel = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width, height: 60))
     headerLabel.font = UIFont(name: "Roboto-Bold", size: 20)
@@ -132,8 +132,6 @@ class JournalVC: UITableViewController {
     let entry = journalSections[indexPath.section].entries[indexPath.row]
     cell.configure(with: entry)
     cell.noteLabel.numberOfLines = expandedIndexPaths.contains(indexPath) ? 0 : 2
-    
-    cell.backgroundColor = UIColor(named: "BackgroundColor")
     
     return cell
   }
@@ -272,8 +270,6 @@ class JournalVC: UITableViewController {
       ])
     }
     
-    tableView.backgroundColor = UIColor(named: "BackgroundColor")
-    
     tableView.separatorStyle = .none
   }
   
@@ -287,11 +283,8 @@ class JournalVC: UITableViewController {
   }
   
   private func updateNavigationBarColor() {
-    let backgroundColor = UIColor(named: "BackgroundColor")
-    
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = backgroundColor
     appearance.shadowColor = nil
     
     navigationController?.navigationBar.standardAppearance = appearance
