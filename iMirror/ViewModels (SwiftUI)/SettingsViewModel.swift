@@ -14,10 +14,10 @@ class SettingsViewModel: ObservableObject {
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
   var viewContext: NSManagedObjectContext?
-
-   func setContext(_ context: NSManagedObjectContext) {
-     self.viewContext = context
-   }
+  
+  func setContext(_ context: NSManagedObjectContext) {
+    self.viewContext = context
+  }
   
   func toggleNotification(_ isEnabled: Bool) {
     if !isEnabled {

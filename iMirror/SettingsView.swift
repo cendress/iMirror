@@ -5,12 +5,12 @@
 //  Created by Christopher Endress on 2/15/24.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
-  @StateObject private var viewModel: SettingsViewModel
+  @StateObject private var viewModel = SettingsViewModel()
   
   var body: some View {
     NavigationView {
@@ -80,6 +80,6 @@ struct SettingsView: View {
   }
 }
 
-//#Preview {
-//  SettingsView(viewModel: <#SettingsViewModel#>)
-//}
+#Preview {
+  SettingsView()
+}
