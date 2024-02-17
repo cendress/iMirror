@@ -274,6 +274,19 @@ class JournalVC: UITableViewController {
     tableView.separatorStyle = .none
   }
   
+  private func requestNotificationPermission() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+      DispatchQueue.main.async {
+        if granted {
+          print("Notification permission granted.")
+          self.setupDailyInspirationalQuoteNotification()
+        } else {
+          print("Notification permission denied.")
+        }
+      }
+    }
+  }
+  
   //MARK: - Update navigation bar appearance methods
   
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
