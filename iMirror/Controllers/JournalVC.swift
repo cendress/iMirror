@@ -10,7 +10,7 @@ import UserNotifications
 
 class JournalVC: UITableViewController {
   
-  // Properties
+  //MARK: - Properties
   
   private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
