@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigationBarAppearace = UINavigationBar.appearance()
     navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 20)!]
     navigationBarAppearace.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 37)!]
+    
+    UNUserNotificationCenter.current().delegate = self
     
     return true
   }
