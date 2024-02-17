@@ -12,6 +12,7 @@ import UserNotifications
 
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
+  @Environment(\.scenePhase) var scenePhase
   @StateObject private var viewModel = SettingsViewModel()
   
   init() {
