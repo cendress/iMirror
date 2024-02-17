@@ -20,8 +20,23 @@ class SettingsViewModel: ObservableObject {
   }
   
   func toggleNotification(_ isEnabled: Bool) {
-    if !isEnabled {
-      showAlertForNotifications = true
+    if isEnabled {
+      // Request notification permissions
+      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
+        DispatchQueue.main.async {
+          if granted {
+            // Permission granted
+            self?.isNotificationsEnabled = true
+          } else {
+            // Permission denied
+            self?.isNotificationsEnabled = false
+          }
+        }
+      }
+    } else {
+      isNotificationsEnabled = false
+      UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+      UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
   }
   
