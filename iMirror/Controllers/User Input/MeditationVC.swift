@@ -47,7 +47,6 @@ class MeditationVC: UIViewController {
     super.viewDidLoad()
     setupView()
     setupAndPlayVideo()
-    playMeditationMusic()
     
     navigationItem.hidesBackButton = true
     
@@ -191,7 +190,6 @@ class MeditationVC: UIViewController {
     CATransaction.commit()
     
     hasChangedVideo = true
-    playMeditationMusic()
   }
   
   @objc private func goBackToPreviousVideo() {
@@ -227,7 +225,6 @@ class MeditationVC: UIViewController {
     playerLayer?.add(fadeOutAnimation, forKey: "fadeOut")
     
     CATransaction.commit()
-    playMeditationMusic()
   }
   
   private func playMeditationMusic() {
