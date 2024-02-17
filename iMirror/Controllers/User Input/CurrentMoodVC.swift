@@ -41,6 +41,7 @@ class CurrentMoodVC: UIViewController {
     setupViews()
     setupConstraints()
     changeTransparency()
+    setNavigationAppearance()
   }
   
   @objc func closeButtonTapped() {
@@ -53,6 +54,16 @@ class CurrentMoodVC: UIViewController {
     moodLabel.alpha = 0
     progressView.alpha = 0
     continueButton.alpha = 0
+  }
+  
+  private func setNavigationAppearance() {
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = UIColor.systemBackground
+    appearance.shadowColor = nil
+    
+    navigationController?.navigationBar.standardAppearance = appearance
+    navigationController?.navigationBar.scrollEdgeAppearance = appearance
   }
   
   //MARK: - Configuration methods

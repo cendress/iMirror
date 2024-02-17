@@ -92,12 +92,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
          let window = sceneDelegate.window,
          let customTabBarController = window.rootViewController as? CustomTabBarController {
         
-        if let journalNavController = customTabBarController.viewControllers?.first as? UINavigationController {
+        customTabBarController.selectedIndex = 0
+        
+        if let journalNavController = customTabBarController.viewControllers?[0] as? UINavigationController {
           
-          let journalVC = JournalVC()
-          
-          journalNavController.popToRootViewController(animated: false)
-          journalNavController.pushViewController(journalVC, animated: true)
+          journalNavController.popToRootViewController(animated: true)
         }
       }
     }
