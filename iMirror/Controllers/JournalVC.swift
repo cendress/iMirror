@@ -30,6 +30,11 @@ class JournalVC: UITableViewController {
     updateNavigationBarColor()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    requestNotificationPermission()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "Journal"
@@ -43,11 +48,6 @@ class JournalVC: UITableViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(journalEntriesDeleted), name: NSNotification.Name("JournalEntriesDeleted"), object: nil)
     
     updateUI()
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    requestNotificationPermission()
   }
   
   //MARK: - Filter entry date methods
@@ -280,6 +280,8 @@ class JournalVC: UITableViewController {
     tableView.separatorStyle = .none
   }
   
+  //MARK: - Notification methods
+  
   private func requestNotificationPermission() {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
       DispatchQueue.main.async {
@@ -288,6 +290,31 @@ class JournalVC: UITableViewController {
           self.setupDailyInspirationalQuoteNotification()
         } else {
           print("Notification permission denied.")
+        }
+      }
+    }
+  }
+  
+  private func setupDailyInspirationalQuoteNotification() {
+    let content = UNMutableNotificationContent()
+    content.title = "Daily Inspiration"
+    content.body = "Your daily dose of inspiration: 'The best way to predict the future is to invent it.' - Alan Kay"
+    content.sound = UNNotificationSound.default
+    
+    var dateComponents = DateComponents()
+    dateComponents.hour = 7
+    dateComponents.minute = 0
+    
+    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+    
+    let request = UNNotificationRequest(identifier: "dailyInspirationID", content: content, trigger: trigger)
+    
+    UNUserNotificationCenter.current().add(request) { (error) in
+      DispatchQueue.main.async {
+        if let error = error {
+          print("Error scheduling daily inspiration notification: \(error)")
+        } else {
+          print("Successfully scheduled daily inspiration notification.")
         }
       }
     }
