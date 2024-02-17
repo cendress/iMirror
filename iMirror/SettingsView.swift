@@ -32,6 +32,11 @@ struct SettingsView: View {
         viewModel.setContext(viewContext)
         viewModel.checkNotificationPermissionAndUpdateToggle()
       }
+      .onChange(of: scenePhase) { newScenePhase in
+        if newScenePhase == .active {
+          viewModel.checkNotificationPermissionAndUpdateToggle()
+        }
+      }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
     }
