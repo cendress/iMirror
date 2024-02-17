@@ -36,6 +36,19 @@ struct SettingsView: View {
     }
   }
   
+  private func checkNotificationPermission() {
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+      DispatchQueue.main.async {
+        switch settings.authorizationStatus {
+        case .authorized, .provisional:
+          self.isNotificationsEnabled = true
+        default:
+          self.isNotificationsEnabled = false
+        }
+      }
+    }
+  }
+  
   private func setupNavigationBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.shadowColor = nil
