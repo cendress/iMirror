@@ -12,22 +12,39 @@ import UIKit
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @StateObject private var viewModel = SettingsViewModel()
-
+  
+  init() {
+    setupNavigationBarAppearance()
+  }
+  
   var body: some View {
     NavigationView {
-        List {
-          notificationSection
-          supportSection
-          acknowledgmentsSection
-          deleteDataSection
-        }
-        .listRowBackground(Color.clear)
-        .onAppear {
-          viewModel.setContext(viewContext)
-        }
+      List {
+        notificationSection
+        supportSection
+        acknowledgmentsSection
+        deleteDataSection
+      }
+      .listRowBackground(Color.clear)
+      .onAppear {
+        viewModel.setContext(viewContext)
+      }
       .navigationTitle("Settings")
-      .navigationBarTitleDisplayMode(.inline)
+      .navigationBarTitleDisplayMode(.large)
     }
+  }
+  
+  private func setupNavigationBarAppearance() {
+    let appearance = UINavigationBarAppearance()
+    appearance.shadowColor = nil
+    
+    if let robotoBoldFont = UIFont(name: "Roboto-Bold", size: 37) {
+      appearance.largeTitleTextAttributes = [.font: robotoBoldFont]
+    }
+    
+    UINavigationBar.appearance().standardAppearance = appearance
+    UINavigationBar.appearance().compactAppearance = appearance
+    UINavigationBar.appearance().scrollEdgeAppearance = appearance
   }
   
   private var notificationSection: some View {
