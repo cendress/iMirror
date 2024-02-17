@@ -171,7 +171,7 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    deleteAction.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
+    deleteAction.backgroundColor = .systemBackground
     
     deleteAction.image = UIImage(named: "trash")
     
@@ -181,7 +181,7 @@ class JournalVC: UITableViewController {
       completionHandler(true)
     }
     
-    editAction.backgroundColor = ReuseableUI.backgroundColorForTraitCollection(traitCollection)
+    editAction.backgroundColor = .systemBackground
     
     editAction.image = UIImage(named: "edit")
     
