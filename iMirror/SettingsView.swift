@@ -37,6 +37,7 @@ struct SettingsView: View {
   private func setupNavigationBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.shadowColor = nil
+    appearance.backgroundColor = UIColor(named: "FormBackgroundColor")
     
     if let robotoBoldFont = UIFont(name: "Roboto-Bold", size: 37) {
       appearance.largeTitleTextAttributes = [.font: robotoBoldFont]
