@@ -297,9 +297,10 @@ class JournalVC: UITableViewController {
   
   // Method for testing
   private func setupDailyInspirationalQuoteNotification() {
+    let quote = QuoteProvider.shared.getRandomQuote()
     let content = UNMutableNotificationContent()
     content.title = "Daily Inspiration"
-    content.body = "'The best way to predict the future is to invent it.' - Alan Kay"
+    content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
     content.sound = UNNotificationSound.default
     
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
@@ -318,10 +319,11 @@ class JournalVC: UITableViewController {
   }
   
   //  private func setupDailyInspirationalQuoteNotification() {
-  //    let content = UNMutableNotificationContent()
-  //    content.title = "Daily Inspiration"
-  //    content.body = "'The best way to predict the future is to invent it.' - Alan Kay"
-  //    content.sound = UNNotificationSound.default
+  //  let quote = QuoteProvider.shared.getRandomQuote()
+  //  let content = UNMutableNotificationContent()
+  //  content.title = "Daily Inspiration"
+  //  content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
+  //  content.sound = UNNotificationSound.default
   //
   //    var dateComponents = DateComponents()
   //    dateComponents.hour = 7
