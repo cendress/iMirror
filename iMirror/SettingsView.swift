@@ -8,10 +8,12 @@
 import CoreData
 import SwiftUI
 import UIKit
+import UserNotifications
 
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @StateObject private var viewModel = SettingsViewModel()
+  @State var isNotificationsEnabled: Bool = false
   
   init() {
     setupNavigationBarAppearance()
