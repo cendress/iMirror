@@ -40,6 +40,19 @@ class SettingsViewModel: ObservableObject {
     }
   }
   
+  func checkNotificationPermissionAndUpdateToggle() {
+    UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+      DispatchQueue.main.async {
+        switch settings.authorizationStatus {
+        case .authorized, .provisional:
+          self?.isNotificationsEnabled = true
+        default:
+          self?.isNotificationsEnabled = false
+        }
+      }
+    }
+  }
+  
   func deleteAllJournalEntries() {
     let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "JournalEntry")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

@@ -13,7 +13,6 @@ import UserNotifications
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @StateObject private var viewModel = SettingsViewModel()
-  @State var isNotificationsEnabled: Bool = false
   
   init() {
     setupNavigationBarAppearance()
@@ -30,23 +29,10 @@ struct SettingsView: View {
       .listRowBackground(Color.clear)
       .onAppear {
         viewModel.setContext(viewContext)
-        checkNotificationPermission()
+        viewModel.checkNotificationPermissionAndUpdateToggle()
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
-    }
-  }
-  
-  private func checkNotificationPermission() {
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      DispatchQueue.main.async {
-        switch settings.authorizationStatus {
-        case .authorized, .provisional:
-          self.isNotificationsEnabled = true
-        default:
-          self.isNotificationsEnabled = false
-        }
-      }
     }
   }
   
