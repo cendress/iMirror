@@ -30,6 +30,7 @@ struct SettingsView: View {
       .listRowBackground(Color.clear)
       .onAppear {
         viewModel.setContext(viewContext)
+        checkNotificationPermission()
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
