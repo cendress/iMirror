@@ -10,7 +10,7 @@ import UserNotifications
 
 class JournalVC: UITableViewController {
   
-  // Inital setup
+  // Properties
   
   private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
@@ -23,6 +23,7 @@ class JournalVC: UITableViewController {
     return formatter
   }()
   
+  // View life cycle methods
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     updateUI()
@@ -42,6 +43,11 @@ class JournalVC: UITableViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(journalEntriesDeleted), name: NSNotification.Name("JournalEntriesDeleted"), object: nil)
     
     updateUI()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    requestNotificationPermission()
   }
   
   //MARK: - Filter entry date methods
