@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -81,6 +81,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       }
     }
   }
-
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    
+    DispatchQueue.main.async {
+      if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+         let sceneDelegate = windowScene.delegate as? SceneDelegate,
+         let window = sceneDelegate.window,
+         let customTabBarController = window.rootViewController as? CustomTabBarController {
+        
+        if let journalNavController = customTabBarController.viewControllers?.first as? UINavigationController {
+          
+          let journalVC = JournalVC()
+          
+          journalNavController.popToRootViewController(animated: false)
+          journalNavController.pushViewController(journalVC, animated: true)
+        }
+      }
+    }
+    completionHandler()
+  }
+}
