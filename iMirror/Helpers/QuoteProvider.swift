@@ -11,10 +11,15 @@ class QuoteProvider {
   static let shared = QuoteProvider()
   
   private(set) var quotes: [Quote] = []
-  private var usedQuotes: [Quote] = []
+  private var usedQuotes: [Quote] = [] {
+    didSet {
+      saveUsedQuotes()
+    }
+  }
   
   private init() {
     loadQuotes()
+    loadUsedQuotes()
   }
   
   private func loadQuotes() {
@@ -29,6 +34,19 @@ class QuoteProvider {
       quotes = try decoder.decode([Quote].self, from: data)
     } catch {
       print("Error decoding quotes: \(error)")
+    }
+  }
+  
+  private func saveUsedQuotes() {
+    if let data = try? JSONEncoder().encode(usedQuotes) {
+      UserDefaults.standard.set(data, forKey: "UsedQuotes")
+    }
+  }
+  
+  private func loadUsedQuotes() {
+    if let data = UserDefaults.standard.data(forKey: "UsedQuotes"),
+       let savedQuotes = try? JSONDecoder().decode([Quote].self, from: data) {
+      usedQuotes = savedQuotes
     }
   }
   
