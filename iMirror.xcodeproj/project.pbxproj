@@ -37,6 +37,7 @@
 		9D3959B52B7EE48E00A8A475 /* SettingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */; };
 		9D3959B72B814DD000A8A475 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B62B814DCF00A8A475 /* Quote.swift */; };
 		9D3959B92B814E3500A8A475 /* QuoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B82B814E3500A8A475 /* QuoteProvider.swift */; };
+		9D3959BD2B8248C600A8A475 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D3959BC2B8248C600A8A475 /* quotes.json */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -94,6 +95,7 @@
 		9D3959B42B7EE48E00A8A475 /* SettingsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemView.swift; sourceTree = "<group>"; };
 		9D3959B62B814DCF00A8A475 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		9D3959B82B814E3500A8A475 /* QuoteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteProvider.swift; sourceTree = "<group>"; };
+		9D3959BC2B8248C600A8A475 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				9DFEE69D2B4B286A001835E1 /* Custom */,
 				9D0197E72B5EF4ED00E6FE30 /* Helpers */,
 				9DFEE69F2B4B2939001835E1 /* Supporting Files */,
+				9D3959BC2B8248C600A8A475 /* quotes.json */,
 				9D7C035D2B2267640075E59D /* Info.plist */,
 			);
 			path = iMirror;
@@ -405,6 +408,7 @@
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
 				9D2E65442B7D3EBA00432ECF /* wavesMusic.mp3 in Resources */,
 				9D08E52C2B781F81009AD16B /* neonTunnel.mp4 in Resources */,
+				9D3959BD2B8248C600A8A475 /* quotes.json in Resources */,
 				9D08E5242B781F59009AD16B /* particles.mp4 in Resources */,
 				9D2E654A2B7D3F0200432ECF /* waterfallMusic.mp3 in Resources */,
 				9D2E65462B7D3ECE00432ECF /* jungleMusic.mp3 in Resources */,
