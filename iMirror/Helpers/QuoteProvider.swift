@@ -10,15 +10,38 @@ import Foundation
 class QuoteProvider {
   static let shared = QuoteProvider()
   
-  private init() {}
+  private(set) var quotes: [Quote] = []
+  private var usedQuotes: [Quote] = []
   
-  let quotes = [
-    Quote(text: "The only way to do great work is to love what you do.", author: "Steve Jobs"),
-    Quote(text: "Life is what happens when you're busy making other plans.", author: "John Lennon"),
-    Quote(text: "The purpose of our lives is to be happy.", author: "Dalai Lama"),
-  ]
+  private init() {
+    loadQuotes()
+  }
+  
+  private func loadQuotes() {
+    guard let url = Bundle.main.url(forResource: "quotes", withExtension: "json"),
+          let data = try? Data(contentsOf: url) else {
+      print("Error loading quotes from JSON")
+      return
+    }
+    
+    do {
+      let decoder = JSONDecoder()
+      quotes = try decoder.decode([Quote].self, from: data)
+    } catch {
+      print("Error decoding quotes: \(error)")
+    }
+  }
   
   func getRandomQuote() -> Quote {
-    quotes.randomElement() ?? Quote(text: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama")
+    if quotes.isEmpty {
+      quotes = usedQuotes
+      usedQuotes.removeAll()
+    }
+    guard let quote = quotes.randomElement() else {
+      return Quote(text: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama")
+    }
+    usedQuotes.append(quote)
+    quotes.removeAll { $0.text == quote.text }
+    return quote
   }
 }
