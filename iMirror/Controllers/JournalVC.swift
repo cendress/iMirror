@@ -14,6 +14,7 @@ class JournalVC: UITableViewController {
   
   private var journalSections: [JournalSection] = []
   private var expandedIndexPaths: Set<IndexPath> = []
+  private let dailyInspirationNotificationId = "dailyInspirationNotificationId"
   
   // Use lazy to initialize property only when its used
   private lazy var dateFormatter: DateFormatter = {
