@@ -10,7 +10,6 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
   @Published var isNotificationsEnabled = true
-  @Published var isDarkModeEnabled = false
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
   var viewContext: NSManagedObjectContext?
@@ -18,6 +17,8 @@ class SettingsViewModel: ObservableObject {
   func setContext(_ context: NSManagedObjectContext) {
     self.viewContext = context
   }
+  
+  //MARK: - Notification methods
   
   func toggleNotification(_ isEnabled: Bool) {
     if isEnabled {
@@ -52,6 +53,25 @@ class SettingsViewModel: ObservableObject {
       }
     }
   }
+  
+  //MARK: - Dark mode method
+  
+  func toggleDarkMode(_ isEnabled: Bool) {
+    DispatchQueue.main.async {
+      if isEnabled {
+        // Enable dark mode
+        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+      } else {
+        // Disable dark mode (use system setting)
+        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
+      }
+      // Persist the user's preference
+      UserDefaults.standard.set(isEnabled, forKey: "isDarkModeEnabled")
+      self.isDarkModeEnabled = isEnabled
+    }
+  }
+
+  //MARK: - Delete method
   
   func deleteAllJournalEntries() {
     let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "JournalEntry")
