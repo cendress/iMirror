@@ -9,6 +9,13 @@ import CoreData
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
+  // Use AppStorage (UserDefaults) to persist dark mode setting
+  @AppStorage("isDarkModeEnabled") var isDarkModeEnabled: Bool = false {
+    willSet {
+      objectWillChange.send()
+    }
+  }
+  
   @Published var isNotificationsEnabled = true
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
@@ -53,7 +60,7 @@ class SettingsViewModel: ObservableObject {
       }
     }
   }
-
+  
   //MARK: - Delete method
   
   func deleteAllJournalEntries() {
