@@ -75,7 +75,10 @@ struct SettingsView: View {
           Text("Are you sure you want to turn off notifications?")
         }
       
-      ToggleSettingsView(isEnabled: $viewModel.isDarkModeEnabled, imageName: "moon.fill", title: "Dark Mode", backgroundColor: .blue)
+      ToggleSettingsView(isEnabled: $isDarkModeEnabled, imageName: "moon.fill", title: "Dark Mode", backgroundColor: .blue)
+        .onChange(of: isDarkModeEnabled) { newValue in
+  
+        }
     }
   }
   
