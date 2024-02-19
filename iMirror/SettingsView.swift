@@ -42,6 +42,7 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
+      .preferredColorScheme(isDarkModeEnabled ? .dark : .light)
     }
   }
   
