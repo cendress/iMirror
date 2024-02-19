@@ -68,6 +68,11 @@ class MeditationVC: UIViewController {
   
   // MARK: - @objc methods
   
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
+  }
+  
   @objc private func exitMeditation() {
     audioPlayer?.stop()
     dismiss(animated: true)

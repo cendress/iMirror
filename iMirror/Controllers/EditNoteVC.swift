@@ -19,6 +19,13 @@ class EditNoteVC: UIViewController {
     view.backgroundColor = .systemBackground
     adjustNavBarAppearance()
     setupTextView()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+  }
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
   }
   
   private func adjustNavBarAppearance() {
@@ -52,5 +59,9 @@ class EditNoteVC: UIViewController {
   @objc private func doneEditing() {
     completion?(textView.text)
     dismiss(animated: true, completion: nil)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }

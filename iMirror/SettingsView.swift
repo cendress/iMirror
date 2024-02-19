@@ -14,9 +14,7 @@ struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @Environment(\.scenePhase) var scenePhase
   @StateObject private var viewModel = SettingsViewModel()
-  
-  // Binding to the dark mode setting in AppStorage
-  @AppStorage("isDarkModeEnabled") private var isDarkModeEnabled: Bool = false
+  @ObservedObject var appearanceManager = AppearanceManager()
   
   init() {
     setupNavigationBarAppearance()
@@ -42,7 +40,6 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
-      .preferredColorScheme(isDarkModeEnabled ? .dark : .light)
     }
   }
   
@@ -75,9 +72,9 @@ struct SettingsView: View {
           Text("Are you sure you want to turn off notifications?")
         }
       
-      ToggleSettingsView(isEnabled: $isDarkModeEnabled, imageName: "moon.fill", title: "Dark Mode", backgroundColor: .blue)
-        .onChange(of: isDarkModeEnabled) { newValue in
-  
+      ToggleSettingsView(isEnabled: $appearanceManager.isDarkModeEnabled, imageName: "moon.fill", title: "Dark Mode", backgroundColor: .blue)
+        .onChange(of: appearanceManager.isDarkModeEnabled) { newValue in
+          viewModel.toggleDarkMode(newValue)
         }
     }
   }
@@ -116,4 +113,16 @@ struct SettingsView: View {
 
 #Preview {
   SettingsView()
+}
+
+//MARK: - AppearanceManager Class
+
+class AppearanceManager: ObservableObject {
+  @Published var isDarkModeEnabled: Bool = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+  
+  init() {
+    NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateAppAppearance"), object: nil, queue: .main) { [weak self] _ in
+      self?.isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    }
+  }
 }

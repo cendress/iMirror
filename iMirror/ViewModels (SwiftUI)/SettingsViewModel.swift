@@ -9,14 +9,8 @@ import CoreData
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-  // Use AppStorage (UserDefaults) to persist dark mode setting
-  @AppStorage("isDarkModeEnabled") var isDarkModeEnabled: Bool = false {
-    willSet {
-      objectWillChange.send()
-    }
-  }
-  
   @Published var isNotificationsEnabled = true
+  @Published var isDarkModeEnabled = false
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
   var viewContext: NSManagedObjectContext?
@@ -61,10 +55,11 @@ class SettingsViewModel: ObservableObject {
     }
   }
   
-  //MARK: - Dark mode delete
+  //MARK: - Dark mode method
   
   func toggleDarkMode(_ isEnabled: Bool) {
-    isDarkModeEnabled = isEnabled
+    UserDefaults.standard.set(isEnabled, forKey: "isDarkModeEnabled")
+    NotificationCenter.default.post(name: NSNotification.Name("UpdateAppAppearance"), object: nil)
   }
   
   //MARK: - Delete method

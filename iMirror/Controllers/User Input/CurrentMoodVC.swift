@@ -42,6 +42,13 @@ class CurrentMoodVC: UIViewController {
     setupConstraints()
     changeTransparency()
     setNavigationAppearance()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+  }
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
   }
   
   @objc func closeButtonTapped() {
@@ -157,5 +164,9 @@ class CurrentMoodVC: UIViewController {
     let emotionVC = EmotionListVC()
     emotionVC.mood = selectedMood
     navigationController?.pushViewController(emotionVC, animated: true)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }

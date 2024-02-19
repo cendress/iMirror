@@ -36,6 +36,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
     
     setupTextViews()
     setupViews()
@@ -44,6 +45,11 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   //MARK: - @objc methods
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
+  }
   
   @objc private func closeButtonTapped() {
     self.dismiss(animated: true)

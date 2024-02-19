@@ -15,6 +15,13 @@ class AcknowledgmentsVC: UIViewController {
     self.title = "Acknowledgments"
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left.circle.fill"), style: .plain, target: self, action: #selector(backButtonTapped))
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+  }
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
   }
   
   @objc private func backButtonTapped() {
@@ -33,5 +40,9 @@ class AcknowledgmentsVC: UIViewController {
       label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
     ])
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }

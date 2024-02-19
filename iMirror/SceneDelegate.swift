@@ -23,6 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
     
     window.tintColor = UIColor(named: "AppColor")
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+    
+  }
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+    
+    windowScene.windows.forEach { window in
+      window.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
+    }
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {

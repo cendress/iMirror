@@ -57,9 +57,16 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     setupCollectionView()
     setupViews()
     setupConstraints()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
   }
   
   //MARK: - @objc methods
+  
+  @objc func updateAppAppearance() {
+    let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+    self.view.window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
+  }
   
   @objc private func closeButtonTapped() {
     self.dismiss(animated: true)
@@ -169,5 +176,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     let ac = UIAlertController(title: "Select an Emotion", message: "Please select an emotion to continue.", preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default))
     present(ac, animated: true)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
 }
