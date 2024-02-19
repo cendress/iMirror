@@ -61,6 +61,12 @@ class SettingsViewModel: ObservableObject {
     }
   }
   
+  //MARK: - Dark mode delete
+  
+  func toggleDarkMode(_ isEnabled: Bool) {
+    isDarkModeEnabled = isEnabled
+  }
+  
   //MARK: - Delete method
   
   func deleteAllJournalEntries() {
