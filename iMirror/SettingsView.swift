@@ -13,6 +13,8 @@ import UserNotifications
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @Environment(\.scenePhase) var scenePhase
+  @Environment(\.colorScheme) var systemColorScheme
+  
   @StateObject private var viewModel = SettingsViewModel()
   @ObservedObject var appearanceManager = AppearanceManager()
   
@@ -32,6 +34,7 @@ struct SettingsView: View {
       .onAppear {
         viewModel.setContext(viewContext)
         viewModel.checkNotificationPermissionAndUpdateToggle()
+        adjustAppearanceToSystemIfNeeded()
       }
       .onChange(of: scenePhase) { newScenePhase in
         if newScenePhase == .active {
@@ -40,6 +43,14 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
+    }
+  }
+  
+  private func adjustAppearanceToSystemIfNeeded() {
+    if UserDefaults.standard.object(forKey: "isDarkModeEnabled") == nil {
+      let isSystemDarkMode = systemColorScheme == .dark
+      UserDefaults.standard.set(isSystemDarkMode, forKey: "isDarkModeEnabled")
+      appearanceManager.isDarkModeEnabled = isSystemDarkMode
     }
   }
   
