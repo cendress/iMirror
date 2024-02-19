@@ -15,6 +15,9 @@ struct SettingsView: View {
   @Environment(\.scenePhase) var scenePhase
   @StateObject private var viewModel = SettingsViewModel()
   
+  // Binding to the dark mode setting in AppStorage
+  @AppStorage("isDarkModeEnabled") private var isDarkModeEnabled: Bool = false
+  
   init() {
     setupNavigationBarAppearance()
   }
