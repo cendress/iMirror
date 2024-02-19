@@ -325,14 +325,18 @@ class JournalVC: UITableViewController {
     content.title = "Daily Inspiration"
     content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
     content.sound = UNNotificationSound.default
-
+    
     var dateComponents = DateComponents()
     dateComponents.hour = 7
     dateComponents.minute = 0
     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
+    
+    // Remove any existing notifications with that identifier
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dailyInspirationNotificationId])
+    
+    // Schedule a new notification
+    let request = UNNotificationRequest(identifier: dailyInspirationNotificationId, content: content, trigger: trigger)
+    
     UNUserNotificationCenter.current().add(request) { error in
       DispatchQueue.main.async {
         if let error = error {
