@@ -17,7 +17,17 @@ class EditNoteVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
+    adjustNavBarAppearance()
     setupTextView()
+  }
+  
+  private func adjustNavBarAppearance() {
+    let appearance = UINavigationBarAppearance()
+    appearance.backgroundColor = .systemBackground
+    appearance.shadowColor = nil
+    
+    navigationController?.navigationBar.standardAppearance = appearance
+    navigationController?.navigationBar.scrollEdgeAppearance = appearance
   }
   
   private func setupTextView() {

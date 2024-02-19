@@ -296,52 +296,52 @@ class JournalVC: UITableViewController {
   }
   
   // Method for testing
-  private func setupDailyInspirationalQuoteNotification() {
-    let quote = QuoteProvider.shared.getRandomQuote()
-    let content = UNMutableNotificationContent()
-    content.title = "Daily Inspiration"
-    content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
-    content.sound = UNNotificationSound.default
-    
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-    
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-    
-    UNUserNotificationCenter.current().add(request) { error in
-      DispatchQueue.main.async {
-        if let error = error {
-          print("Error scheduling daily inspiration notification: \(error)")
-        } else {
-          print("Successfully scheduled daily inspiration notification every minute.")
-        }
-      }
-    }
-  }
-  
 //  private func setupDailyInspirationalQuoteNotification() {
 //    let quote = QuoteProvider.shared.getRandomQuote()
 //    let content = UNMutableNotificationContent()
 //    content.title = "Daily Inspiration"
 //    content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
 //    content.sound = UNNotificationSound.default
-//
-//    var dateComponents = DateComponents()
-//    dateComponents.hour = 7
-//    dateComponents.minute = 0
-//    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//
+//    
+//    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+//    
 //    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//
+//    
 //    UNUserNotificationCenter.current().add(request) { error in
 //      DispatchQueue.main.async {
 //        if let error = error {
 //          print("Error scheduling daily inspiration notification: \(error)")
 //        } else {
-//          print("Successfully scheduled daily inspiration notification.")
+//          print("Successfully scheduled daily inspiration notification every minute.")
 //        }
 //      }
 //    }
 //  }
+  
+  private func setupDailyInspirationalQuoteNotification() {
+    let quote = QuoteProvider.shared.getRandomQuote()
+    let content = UNMutableNotificationContent()
+    content.title = "Daily Inspiration"
+    content.body = "\"\(quote.text)\" - \(quote.author ?? "Unknown")"
+    content.sound = UNNotificationSound.default
+
+    var dateComponents = DateComponents()
+    dateComponents.hour = 7
+    dateComponents.minute = 0
+    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+    UNUserNotificationCenter.current().add(request) { error in
+      DispatchQueue.main.async {
+        if let error = error {
+          print("Error scheduling daily inspiration notification: \(error)")
+        } else {
+          print("Successfully scheduled daily inspiration notification.")
+        }
+      }
+    }
+  }
   
   //MARK: - Update navigation bar appearance methods
   
