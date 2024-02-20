@@ -13,7 +13,6 @@ import UserNotifications
 struct SettingsView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @Environment(\.scenePhase) var scenePhase
-  @Environment(\.colorScheme) var systemColorScheme
   
   @StateObject private var viewModel = SettingsViewModel()
   @ObservedObject var appearanceManager = AppearanceManager()
@@ -34,7 +33,6 @@ struct SettingsView: View {
       .onAppear {
         viewModel.setContext(viewContext)
         viewModel.checkNotificationPermissionAndUpdateToggle()
-        adjustAppearanceToSystemIfNeeded()
       }
       .onChange(of: scenePhase) { newScenePhase in
         if newScenePhase == .active {
@@ -43,14 +41,6 @@ struct SettingsView: View {
       }
       .navigationTitle("Settings")
       .navigationBarTitleDisplayMode(.large)
-    }
-  }
-  
-  private func adjustAppearanceToSystemIfNeeded() {
-    if UserDefaults.standard.object(forKey: "isDarkModeEnabled") == nil {
-      let isSystemDarkMode = systemColorScheme == .dark
-      UserDefaults.standard.set(isSystemDarkMode, forKey: "isDarkModeEnabled")
-      appearanceManager.isDarkModeEnabled = isSystemDarkMode
     }
   }
   
@@ -129,11 +119,10 @@ struct SettingsView: View {
 //MARK: - AppearanceManager Class
 
 class AppearanceManager: ObservableObject {
-  @Published var isDarkModeEnabled: Bool = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
-  
-  init() {
-    NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateAppAppearance"), object: nil, queue: .main) { [weak self] _ in
-      self?.isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+  @Published var isDarkModeEnabled: Bool = UserDefaults.standard.bool(forKey: "isDarkModeEnabled") {
+    didSet {
+      UserDefaults.standard.set(isDarkModeEnabled, forKey: "isDarkModeEnabled")
+      NotificationCenter.default.post(name: NSNotification.Name("UpdateAppAppearance"), object: nil)
     }
   }
 }

@@ -11,6 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   var window: UIWindow?
   
+  override init() {
+    super.init()
+    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+  }
+  
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -24,16 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     window.tintColor = UIColor(named: "AppColor")
     
-    NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+    applyThemePreference()
   }
   
   @objc func updateAppAppearance() {
+    applyThemePreference()
+  }
+  
+  func applyThemePreference() {
     let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
-    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-    
-    windowScene.windows.forEach { window in
-      window.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
-    }
+    window?.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,6 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func sceneDidBecomeActive(_ scene: UIScene) {
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    applyThemePreference()
   }
   
   func sceneWillResignActive(_ scene: UIScene) {
