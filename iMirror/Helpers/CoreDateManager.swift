@@ -67,4 +67,20 @@ class CoreDataManager {
       return []
     }
   }
+  
+  func deleteAllJournalEntries(completion: @escaping (Error?) -> Void) {
+    let context = self.viewContext
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = JournalEntry.fetchRequest()
+    
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try context.execute(deleteRequest)
+      try context.save()
+      completion(nil)
+    } catch {
+      print("Error deleting journal entries: \(error)")
+      completion(error)
+    }
+  }
 }

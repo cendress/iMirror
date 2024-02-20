@@ -65,14 +65,18 @@ class SettingsViewModel: ObservableObject {
   //MARK: - Delete method
   
   func deleteAllJournalEntries() {
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "JournalEntry")
-    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-    
-    do {
-      try viewContext?.execute(deleteRequest)
-      try viewContext?.save()
-    } catch {
-      print("Error deleting data: \(error)")
+    CoreDataManager.shared.deleteAllJournalEntries { error in
+      DispatchQueue.main.async {
+        if error == nil {
+          NotificationCenter.default.post(name: .didDeleteAllJournalEntries, object: nil)
+        } else {
+          print("Error deleting all journal entries: \(String(describing: error))")
+        }
+      }
     }
   }
+}
+
+extension Notification.Name {
+  static let didDeleteAllJournalEntries = Notification.Name("didDeleteAllJournalEntries")
 }

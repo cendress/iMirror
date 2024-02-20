@@ -48,7 +48,12 @@ class JournalVC: UITableViewController {
     
     NotificationCenter.default.addObserver(self, selector: #selector(journalEntriesDeleted), name: NSNotification.Name("JournalEntriesDeleted"), object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleDataDeleted), name: .didDeleteAllJournalEntries, object: nil)
     
+    updateUI()
+  }
+  
+  @objc func handleDataDeleted() {
     updateUI()
   }
   
