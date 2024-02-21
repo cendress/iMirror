@@ -82,7 +82,7 @@ struct SettingsView: View {
   
   private var supportSection: some View {
     Section(header: Text("Legal").background(Color.clear)) {
-      CustomLinkView(title: "Support", url: "https://google.com", imageName: "person.2.fill", backgroundColor: .purple)
+      CustomLinkView(title: "Support", url: "https://sites.google.com/view/imirrorapp/home", imageName: "person.2.fill", backgroundColor: .purple)
       CustomLinkView(title: "Privacy Policy", url: "https://google.com", imageName: "lock.fill", backgroundColor: .green)
     }
   }
