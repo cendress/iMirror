@@ -11,19 +11,18 @@ struct AcknowledgmentsView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   var body: some View {
-    NavigationView {
-      Text("Acknowledgments content here")
-        .toolbar {
-          ToolbarItem(placement: .navigationBarLeading) {
-            Button(action: {
-              self.presentationMode.wrappedValue.dismiss()
-            }) {
-              Image(systemName: "chevron.left.circle.fill")
-                .foregroundColor(Color(UIColor(named: "AppColor") ?? UIColor.systemBlue))
-            }
+    Text("Acknowledgments content here")
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+          }) {
+            Image(systemName: "chevron.left.circle.fill")
+              .foregroundColor(Color(UIColor(named: "AppColor") ?? UIColor.systemBlue))
           }
         }
-    }
+      }
+      .navigationBarBackButtonHidden(true)
   }
 }
 
