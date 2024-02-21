@@ -19,7 +19,7 @@ struct AcknowledgmentsView: View {
               self.presentationMode.wrappedValue.dismiss()
             }) {
               Image(systemName: "chevron.left.circle.fill")
-                .foregroundStyle(UIColor(named: "AppColor"))
+                .foregroundColor(Color(UIColor(named: "AppColor") ?? UIColor.systemBlue))
             }
           }
         }
