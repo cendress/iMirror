@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct AcknowledgmentsView: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
   var body: some View {
-    Text("Acknowledgments content here")
+    NavigationView {
+      Text("Acknowledgments content here")
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button(action: {
+              self.presentationMode.wrappedValue.dismiss()
+            }) {
+              Image(systemName: "chevron.left.circle.fill")
+                .foregroundStyle(UIColor(named: "AppColor"))
+            }
+          }
+        }
+    }
   }
 }
 
