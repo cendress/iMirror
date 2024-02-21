@@ -16,6 +16,11 @@ struct AcknowledgmentsView: View {
         .edgesIgnoringSafeArea(.all)
       
       VStack(alignment: .center, spacing: 20) {
+        Text("Acknowledgments")
+          .font(.custom("Roboto-Bold", size: 22))
+          .padding(.bottom, 10)
+          .frame(maxWidth: .infinity, alignment: .center)
+        
         Text("Credit to the iOS developer community, whose creativity and hardwork continue to inspire my every day.")
           .multilineTextAlignment(.center)
           .frame(maxWidth: .infinity, alignment: .center)
@@ -29,7 +34,7 @@ struct AcknowledgmentsView: View {
           .frame(maxWidth: .infinity, alignment: .center)
         
         HStack {
-          Text("Connect with me:")
+          Text("🔗 Connect with me:")
           Link("@chrisendress_io", destination: URL(string: "https://twitter.com/chrisendress_io")!)
         }
         
