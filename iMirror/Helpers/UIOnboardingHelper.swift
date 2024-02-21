@@ -51,7 +51,7 @@ struct UIOnboardingHelper {
     return .init(icon: UIImage(systemName: "info.circle")!,
                  text: "iMirror is committed to supporting your journey towards emotional well-being, respecting your privacy every step of the way.",
                  linkTitle: "Discover more about iMirror",
-                 link: "https://www.example.com/about",
+                 link: "https://sites.google.com/view/imirrorapp/home",
                  tint: UIColor(named: "AppColor"))
   }
   
