@@ -104,6 +104,7 @@ struct SettingsView: View {
         Button("Cancel", role: .cancel) { }
         Button("Delete", role: .destructive) {
           viewModel.deleteAllJournalEntries()
+          
         }
       } message: {
         Text("Are you sure you want to delete all your data? This action cannot be undone.")

@@ -21,7 +21,7 @@ struct AcknowledgmentsView: View {
           .padding(.bottom, 10)
           .frame(maxWidth: .infinity, alignment: .center)
         
-        Text("Credit to the iOS developer community, whose creativity and hardwork continue to inspire my every day.")
+        Text("Credit to the iOS developer community, whose creativity and hard work continue to inspire me every day.")
           .multilineTextAlignment(.center)
           .frame(maxWidth: .infinity, alignment: .center)
         
@@ -29,7 +29,7 @@ struct AcknowledgmentsView: View {
           .multilineTextAlignment(.center)
           .frame(maxWidth: .infinity, alignment: .center)
         
-        Text("I also wish to extend my appreciation to Pixabay for providing financially accessible, high-quality videos and audio used in this app.")
+        Text("I also wish to extend my appreciation to Pixabay, for providing financially accessible, high-quality videos and audio used in this app.")
           .multilineTextAlignment(.center)
           .frame(maxWidth: .infinity, alignment: .center)
         
