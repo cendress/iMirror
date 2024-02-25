@@ -28,6 +28,16 @@
 		9D3959B72B814DD000A8A475 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B62B814DCF00A8A475 /* Quote.swift */; };
 		9D3959B92B814E3500A8A475 /* QuoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B82B814E3500A8A475 /* QuoteProvider.swift */; };
 		9D3959BD2B8248C600A8A475 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D3959BC2B8248C600A8A475 /* quotes.json */; };
+		9D61BE212B8BCEF400BA356E /* waterfall.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1C2B8BCEF300BA356E /* waterfall.mp4 */; };
+		9D61BE222B8BCEF400BA356E /* waves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1D2B8BCEF300BA356E /* waves.mp4 */; };
+		9D61BE232B8BCEF400BA356E /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1E2B8BCEF300BA356E /* neonTunnel.mp4 */; };
+		9D61BE242B8BCEF400BA356E /* nature_-_107976 (Original).mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1F2B8BCEF300BA356E /* nature_-_107976 (Original).mp4 */; };
+		9D61BE252B8BCEF400BA356E /* particles.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE202B8BCEF300BA356E /* particles.mp4 */; };
+		9D61BE2B2B8BCF0700BA356E /* wavesMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE262B8BCF0700BA356E /* wavesMusic.mp3 */; };
+		9D61BE2C2B8BCF0700BA356E /* jungleMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE272B8BCF0700BA356E /* jungleMusic.mp3 */; };
+		9D61BE2D2B8BCF0700BA356E /* neonTunnelMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE282B8BCF0700BA356E /* neonTunnelMusic.mp3 */; };
+		9D61BE2E2B8BCF0700BA356E /* particlesMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE292B8BCF0700BA356E /* particlesMusic.mp3 */; };
+		9D61BE2F2B8BCF0700BA356E /* waterfallMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE2A2B8BCF0700BA356E /* waterfallMusic.mp3 */; };
 		9D7C034D2B2267610075E59D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034C2B2267610075E59D /* AppDelegate.swift */; };
 		9D7C034F2B2267610075E59D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C034E2B2267610075E59D /* SceneDelegate.swift */; };
 		9D7C03572B2267610075E59D /* iMirror.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C03552B2267610075E59D /* iMirror.xcdatamodeld */; };
@@ -76,6 +86,16 @@
 		9D3959B62B814DCF00A8A475 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		9D3959B82B814E3500A8A475 /* QuoteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteProvider.swift; sourceTree = "<group>"; };
 		9D3959BC2B8248C600A8A475 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
+		9D61BE1C2B8BCEF300BA356E /* waterfall.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waterfall.mp4; sourceTree = "<group>"; };
+		9D61BE1D2B8BCEF300BA356E /* waves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waves.mp4; sourceTree = "<group>"; };
+		9D61BE1E2B8BCEF300BA356E /* neonTunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = neonTunnel.mp4; sourceTree = "<group>"; };
+		9D61BE1F2B8BCEF300BA356E /* nature_-_107976 (Original).mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "nature_-_107976 (Original).mp4"; sourceTree = "<group>"; };
+		9D61BE202B8BCEF300BA356E /* particles.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = particles.mp4; sourceTree = "<group>"; };
+		9D61BE262B8BCF0700BA356E /* wavesMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wavesMusic.mp3; sourceTree = "<group>"; };
+		9D61BE272B8BCF0700BA356E /* jungleMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jungleMusic.mp3; sourceTree = "<group>"; };
+		9D61BE282B8BCF0700BA356E /* neonTunnelMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neonTunnelMusic.mp3; sourceTree = "<group>"; };
+		9D61BE292B8BCF0700BA356E /* particlesMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = particlesMusic.mp3; sourceTree = "<group>"; };
+		9D61BE2A2B8BCF0700BA356E /* waterfallMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterfallMusic.mp3; sourceTree = "<group>"; };
 		9D7C03492B2267610075E59D /* iMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7C034C2B2267610075E59D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D7C034E2B2267610075E59D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +237,11 @@
 		9D7F07202B7439D400145871 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				9D61BE1F2B8BCEF300BA356E /* nature_-_107976 (Original).mp4 */,
+				9D61BE1E2B8BCEF300BA356E /* neonTunnel.mp4 */,
+				9D61BE202B8BCEF300BA356E /* particles.mp4 */,
+				9D61BE1C2B8BCEF300BA356E /* waterfall.mp4 */,
+				9D61BE1D2B8BCEF300BA356E /* waves.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -224,6 +249,11 @@
 		9D7F07252B7440B200145871 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				9D61BE272B8BCF0700BA356E /* jungleMusic.mp3 */,
+				9D61BE282B8BCF0700BA356E /* neonTunnelMusic.mp3 */,
+				9D61BE292B8BCF0700BA356E /* particlesMusic.mp3 */,
+				9D61BE2A2B8BCF0700BA356E /* waterfallMusic.mp3 */,
+				9D61BE262B8BCF0700BA356E /* wavesMusic.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -364,13 +394,23 @@
 			files = (
 				9DFEE6442B447241001835E1 /* Roboto-Bold.ttf in Resources */,
 				9DFEE6422B447241001835E1 /* LICENSE.txt in Resources */,
+				9D61BE222B8BCEF400BA356E /* waves.mp4 in Resources */,
+				9D61BE2B2B8BCF0700BA356E /* wavesMusic.mp3 in Resources */,
+				9D61BE212B8BCEF400BA356E /* waterfall.mp4 in Resources */,
 				9DFEE63C2B447241001835E1 /* Roboto-Regular.ttf in Resources */,
 				9DFEE63A2B447241001835E1 /* Roboto-Medium.ttf in Resources */,
+				9D61BE2F2B8BCF0700BA356E /* waterfallMusic.mp3 in Resources */,
+				9D61BE2C2B8BCF0700BA356E /* jungleMusic.mp3 in Resources */,
+				9D61BE2E2B8BCF0700BA356E /* particlesMusic.mp3 in Resources */,
 				9D7C035C2B2267640075E59D /* LaunchScreen.storyboard in Resources */,
+				9D61BE252B8BCEF400BA356E /* particles.mp4 in Resources */,
 				9DFEE6452B447241001835E1 /* Roboto-Thin.ttf in Resources */,
+				9D61BE232B8BCEF400BA356E /* neonTunnel.mp4 in Resources */,
 				9DFEE63B2B447241001835E1 /* Roboto-Light.ttf in Resources */,
 				9DFEE6462B447241001835E1 /* Roboto-Black.ttf in Resources */,
+				9D61BE242B8BCEF400BA356E /* nature_-_107976 (Original).mp4 in Resources */,
 				9D7C03592B2267640075E59D /* Assets.xcassets in Resources */,
+				9D61BE2D2B8BCF0700BA356E /* neonTunnelMusic.mp3 in Resources */,
 				9D3959BD2B8248C600A8A475 /* quotes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
