@@ -8,9 +8,20 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon# Hide large music and video files
+Icon
+
+# Images
+topGradient.jpeg
+blackGradient.jpeg
+gradientBackground.jpeg
+gradientLinearBackground.jpeg
+lotus_pic.png
+lotusAppIcon.png
+imirror_userflow_diagram.pdf# Hide large music and video files
 Videos/
 Music/
+*.mp4
+*.mp3
 
 # Thumbnails
 ._*
