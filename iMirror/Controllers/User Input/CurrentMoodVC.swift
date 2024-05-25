@@ -46,6 +46,8 @@ class CurrentMoodVC: UIViewController {
     setNavigationAppearance()
     
     NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+    
+    buttonFeedbackGenerator.prepare()
   }
   
   @objc func updateAppAppearance() {
@@ -161,6 +163,7 @@ class CurrentMoodVC: UIViewController {
   //MARK: - Continue button action method
   
   @objc private func continueButtonTapped() {
+    buttonFeedbackGenerator.impactOccurred()
     selectedMood = emojiLabel.text ?? "🙂"
     
     let emotionVC = EmotionListVC()
