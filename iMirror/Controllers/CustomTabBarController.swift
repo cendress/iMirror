@@ -11,6 +11,8 @@ import UIOnboarding
 
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
+  let feedbackGenerator = UISelectionFeedbackGenerator()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setValue(CustomTabBar(), forKey: "tabBar")
@@ -23,6 +25,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     DispatchQueue.main.async {
       self.presentOnboarding()
     }
+    
+    feedbackGenerator.prepare()
   }
   
   //MARK: - Present onboarding method
@@ -72,6 +76,10 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
       presentCurrentMoodVC()
       return false
     }
+    
+    feedbackGenerator.selectionChanged()
+    feedbackGenerator.prepare()
+    
     return true
   }
   
