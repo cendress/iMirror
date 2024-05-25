@@ -27,6 +27,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   var selectedEmotions: [String] = []
   var mood: String?
   
+  private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
@@ -42,6 +44,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     setupViews()
     setupConstraints()
     addDoneButtonOnKeyboard()
+    
+    buttonFeedbackGenerator.prepare()
   }
   
   //MARK: - @objc methods
@@ -86,6 +90,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   //MARK: - Button @objc methods
   
   @objc private func saveButtonTapped() {
+    buttonFeedbackGenerator.impactOccurred()
+    
     if isValidInput() {
       // Add saving logic
       let titleText = titleTextView.text ?? ""
@@ -105,6 +111,8 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   }
   
   @objc private func meditationButtonTapped() {
+    buttonFeedbackGenerator.impactOccurred()
+    
     if isValidInput() {
       let titleText = titleTextView.text ?? ""
       let notesText = notesTextView.text ?? ""
