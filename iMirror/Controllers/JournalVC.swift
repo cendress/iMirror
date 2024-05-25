@@ -38,6 +38,10 @@ class JournalVC: UITableViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     requestNotificationPermission()
+    
+    // Prepare the feedback generators
+    cellFeedbackGenerator.prepare()
+    buttonFeedbackGenerator.prepare()
   }
   
   override func viewDidLoad() {
@@ -160,6 +164,8 @@ class JournalVC: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    cellFeedbackGenerator.impactOccurred()
+    
     tableView.beginUpdates()
     
     if expandedIndexPaths.contains(indexPath) {
@@ -183,6 +189,7 @@ class JournalVC: UITableViewController {
     
     // Delete action
     let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
+      self?.buttonFeedbackGenerator.selectionChanged()
       self?.deleteJournalEntry(at: indexPath)
       completionHandler(true)
     }
@@ -193,6 +200,7 @@ class JournalVC: UITableViewController {
     
     // Edit action
     let editAction = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
+      self?.buttonFeedbackGenerator.selectionChanged()
       self?.editJournalEntry(at: indexPath)
       completionHandler(true)
     }
