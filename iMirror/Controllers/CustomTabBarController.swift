@@ -11,7 +11,7 @@ import UIOnboarding
 
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
-  let feedbackGenerator = UISelectionFeedbackGenerator()
+  private let feedbackGenerator = UISelectionFeedbackGenerator()
   
   override func viewDidLoad() {
     super.viewDidLoad()

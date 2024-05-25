@@ -16,6 +16,10 @@ class JournalVC: UITableViewController {
   private var expandedIndexPaths: Set<IndexPath> = []
   private let dailyInspirationNotificationId = "dailyInspirationNotificationId"
   
+  // Haptic feedback generators
+  private let cellFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+  private let buttonFeedbackGenerator = UISelectionFeedbackGenerator()
+  
   // Use lazy to initialize property only when its used
   private lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
