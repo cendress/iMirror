@@ -190,8 +190,17 @@ class JournalVC: UITableViewController {
     // Delete action
     let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
       self?.buttonFeedbackGenerator.selectionChanged()
-      self?.deleteJournalEntry(at: indexPath)
-      completionHandler(true)
+      
+      // Present alert controller to confirm deletion
+      let ac = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry?", preferredStyle: .alert)
+      ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        completionHandler(false)
+      }))
+      ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+        self?.deleteJournalEntry(at: indexPath)
+        completionHandler(true)
+      }))
+      self?.present(ac, animated: true, completion: nil)
     }
     
     deleteAction.backgroundColor = .systemBackground
