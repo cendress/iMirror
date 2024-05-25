@@ -62,7 +62,11 @@ struct SettingsView: View {
     Section(header: Text("Preferences").background(Color.clear)) {
       ToggleSettingsView(isEnabled: $viewModel.isNotificationsEnabled, imageName: "bell.fill", title: "Notifications", backgroundColor: .yellow)
         .onChange(of: viewModel.isNotificationsEnabled) { newValue in
-          viewModel.toggleNotification(newValue)
+          if !newValue {
+            viewModel.showAlertForNotifications = true
+          } else {
+            viewModel.toggleNotification(newValue)
+          }
         }
         .alert("Turn Off Notifications", isPresented: $viewModel.showAlertForNotifications) {
           Button("Cancel", role: .cancel) {
