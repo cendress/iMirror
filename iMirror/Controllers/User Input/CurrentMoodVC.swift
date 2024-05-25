@@ -17,6 +17,8 @@ class CurrentMoodVC: UIViewController {
   private let progressView = CurrentMoodVC.createProgressView(withProgress: 0.5)
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   
+  private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+  
   var selectedMood: String?
   
   override func viewWillAppear(_ animated: Bool) {
