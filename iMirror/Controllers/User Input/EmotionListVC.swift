@@ -16,6 +16,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
   private var selectedEmotions: Set<Int> = []
   
+  private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+  
   var mood: String?
   
   // Emotion array
@@ -59,6 +61,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     setupConstraints()
     
     NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
+    
+    buttonFeedbackGenerator.prepare()
   }
   
   //MARK: - @objc methods
@@ -77,6 +81,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   @objc private func continueButtonTapped() {
+    buttonFeedbackGenerator.impactOccurred()
+    
     if selectedEmotions.isEmpty {
       showAlert()
       return
