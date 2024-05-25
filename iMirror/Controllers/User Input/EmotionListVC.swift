@@ -17,6 +17,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   private var selectedEmotions: Set<Int> = []
   
   private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+  private let cellFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
   
   var mood: String?
   
@@ -63,6 +64,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
     
     buttonFeedbackGenerator.prepare()
+    cellFeedbackGenerator.prepare()
   }
   
   //MARK: - @objc methods
@@ -158,6 +160,8 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    cellFeedbackGenerator.impactOccurred()
+    
     if selectedEmotions.contains(indexPath.row) {
       // This item was selected but then deselected by the user
       selectedEmotions.remove(indexPath.row)
