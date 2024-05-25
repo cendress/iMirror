@@ -32,7 +32,7 @@ struct SettingsView: View {
       .listRowBackground(Color.clear)
       .onAppear {
         viewModel.setContext(viewContext)
-        viewModel.checkNotificationPermissionAndUpdateToggle()
+        viewModel.loadNotificationState()
       }
       .onChange(of: scenePhase) { newScenePhase in
         if newScenePhase == .active {
@@ -72,7 +72,9 @@ struct SettingsView: View {
           Button("Cancel", role: .cancel) {
             viewModel.isNotificationsEnabled = true
           }
-          Button("Turn Off", role: .destructive) {}
+          Button("Turn Off", role: .destructive) {
+            viewModel.toggleNotification(false)
+          }
         } message: {
           Text("Are you sure you want to turn off notifications?")
         }

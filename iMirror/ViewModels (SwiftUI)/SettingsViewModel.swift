@@ -7,16 +7,25 @@
 
 import CoreData
 import SwiftUI
+import UserNotifications
 
 class SettingsViewModel: ObservableObject {
-  @Published var isNotificationsEnabled = true
-  @Published var isDarkModeEnabled = false
+  @Published var isNotificationsEnabled: Bool = UserDefaults.standard.bool(forKey: "isNotificationsEnabled") {
+    didSet {
+      UserDefaults.standard.set(isNotificationsEnabled, forKey: "isNotificationsEnabled")
+    }
+  }
+  
   @Published var showAlertForNotifications = false
   @Published var showDeleteConfirmation = false
   var viewContext: NSManagedObjectContext?
   
   func setContext(_ context: NSManagedObjectContext) {
     self.viewContext = context
+  }
+  
+  func loadNotificationState() {
+    isNotificationsEnabled = UserDefaults.standard.bool(forKey: "isNotificationsEnabled")
   }
   
   //MARK: - Notification methods
@@ -36,7 +45,9 @@ class SettingsViewModel: ObservableObject {
         }
       }
     } else {
+      // Directly remove all notifications and update state
       isNotificationsEnabled = false
+      UserDefaults.standard.set(false, forKey: "isNotificationsEnabled")
       UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
       UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
@@ -80,3 +91,4 @@ class SettingsViewModel: ObservableObject {
 extension Notification.Name {
   static let didDeleteAllJournalEntries = Notification.Name("didDeleteAllJournalEntries")
 }
+
