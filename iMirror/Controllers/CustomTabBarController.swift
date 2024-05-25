@@ -72,13 +72,13 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   // MARK: - Tab bar controller delegate method
   
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    feedbackGenerator.selectionChanged()
+    feedbackGenerator.prepare()
+    
     if viewController.tabBarItem is PlusTabBarItem {
       presentCurrentMoodVC()
       return false
     }
-    
-    feedbackGenerator.selectionChanged()
-    feedbackGenerator.prepare()
     
     return true
   }
