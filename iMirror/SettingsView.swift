@@ -60,24 +60,24 @@ struct SettingsView: View {
   
   private var notificationSection: some View {
     Section(header: Text("Preferences").background(Color.clear)) {
-      ToggleSettingsView(isEnabled: $viewModel.isNotificationsEnabled, imageName: "bell.fill", title: "Notifications", backgroundColor: .yellow)
-        .onChange(of: viewModel.isNotificationsEnabled) { newValue in
-          if !newValue {
-            viewModel.showAlertForNotifications = true
-          } else {
-            viewModel.toggleNotification(newValue)
-          }
-        }
-        .alert("Turn Off Notifications", isPresented: $viewModel.showAlertForNotifications) {
-          Button("Cancel", role: .cancel) {
-            viewModel.isNotificationsEnabled = true
-          }
-          Button("Turn Off", role: .destructive) {
-            viewModel.toggleNotification(false)
-          }
-        } message: {
-          Text("Are you sure you want to turn off notifications?")
-        }
+//      ToggleSettingsView(isEnabled: $viewModel.isNotificationsEnabled, imageName: "bell.fill", title: "Notifications", backgroundColor: .yellow)
+//        .onChange(of: viewModel.isNotificationsEnabled) { newValue in
+//          if !newValue {
+//            viewModel.showAlertForNotifications = true
+//          } else {
+//            viewModel.toggleNotification(newValue)
+//          }
+//        }
+//        .alert("Turn Off Notifications", isPresented: $viewModel.showAlertForNotifications) {
+//          Button("Cancel", role: .cancel) {
+//            viewModel.isNotificationsEnabled = true
+//          }
+//          Button("Turn Off", role: .destructive) {
+//            viewModel.toggleNotification(false)
+//          }
+//        } message: {
+//          Text("Are you sure you want to turn off notifications?")
+//        }
       
       ToggleSettingsView(isEnabled: $appearanceManager.isDarkModeEnabled, imageName: "moon.fill", title: "Dark Mode", backgroundColor: .blue)
         .onChange(of: appearanceManager.isDarkModeEnabled) { newValue in
