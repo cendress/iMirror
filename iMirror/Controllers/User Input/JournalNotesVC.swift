@@ -172,10 +172,10 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
   
   private func styleTextView(_ textView: UITextView) {
     textView.layer.cornerRadius = 10.0
-    textView.layer.shadowColor = UIColor.systemGray.cgColor
+    textView.layer.shadowColor = UIColor.black.cgColor
     textView.layer.shadowOffset = CGSize(width: 0, height: 1)
-    textView.layer.shadowOpacity = 0.25
-    textView.layer.shadowRadius = 3.0
+    textView.layer.shadowOpacity = 0.5
+    textView.layer.shadowRadius = 2
     textView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
   }
   
