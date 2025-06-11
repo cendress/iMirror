@@ -30,7 +30,7 @@ class PlusTabBarItem: UITabBarItem {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     
     let context = UIGraphicsGetCurrentContext()!
-    context.setShadow(offset: CGSize(width: 0, height: 3), blur: 6, color: UIColor.black.cgColor)
+    context.setShadow(offset: CGSize(width: 0, height: 2), blur: 3, color: UIColor.black.cgColor)
     
     let circlePath = UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: size.width - 20, height: size.height - 20))
     UIColor(named: "AppColor")!.setFill()

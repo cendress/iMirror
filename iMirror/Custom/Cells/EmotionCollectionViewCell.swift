@@ -45,9 +45,9 @@ class EmotionCollectionViewCell: UICollectionViewCell {
   }
   
   private func configureShadowView() {
-    shadowView.layer.shadowColor = UIColor.systemGray.cgColor
-    shadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
-    shadowView.layer.shadowRadius = 6
+    shadowView.layer.shadowColor = UIColor.black.cgColor
+    shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    shadowView.layer.shadowRadius = 4
     shadowView.layer.shadowOpacity = 0.3
     shadowView.backgroundColor = .clear
     shadowView.translatesAutoresizingMaskIntoConstraints = false
