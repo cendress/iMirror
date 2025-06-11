@@ -175,7 +175,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     textView.layer.shadowColor = UIColor.black.cgColor
     textView.layer.shadowOffset = CGSize(width: 0, height: 1)
     textView.layer.shadowOpacity = 0.5
-    textView.layer.shadowRadius = 2
+    textView.layer.shadowRadius = 1
     textView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
   }
   

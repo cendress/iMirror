@@ -66,16 +66,16 @@ class JournalEntryCell: UITableViewCell {
     moodBackgroundView.backgroundColor = UIColor(named: "BackgroundColor")
     
     moodBackgroundView.layer.cornerRadius = 19
-    moodBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
-    moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 6)
-    moodBackgroundView.layer.shadowRadius = 8
-    moodBackgroundView.layer.shadowOpacity = 0.3
+    moodBackgroundView.layer.shadowColor = UIColor.black.cgColor
+    moodBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 1)
+    moodBackgroundView.layer.shadowRadius = 3
+    moodBackgroundView.layer.shadowOpacity = 0.5
     
     containerView.layer.cornerRadius = 15
     containerView.layer.shadowColor = UIColor.black.cgColor
-    containerView.layer.shadowOffset = CGSize(width: 0, height: 3)
-    containerView.layer.shadowRadius = 8
-    containerView.layer.shadowOpacity = 0.2
+    containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+    containerView.layer.shadowRadius = 6
+    containerView.layer.shadowOpacity = 0.3
     
     containerView.backgroundColor = UIColor { (traitCollection) -> UIColor in
       switch traitCollection.userInterfaceStyle {
