@@ -137,8 +137,8 @@ class JournalEntryCell: UITableViewCell {
       scrollView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ReuseableUI.smallPadding),
       
       dividerView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: ReuseableUI.smallPadding),
-      dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
-      dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+      dividerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+      dividerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
       dividerView.heightAnchor.constraint(equalToConstant: 0.25),
       
       dateLabel.topAnchor.constraint(equalTo: dividerView.topAnchor, constant: 8),
