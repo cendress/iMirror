@@ -65,6 +65,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         buttonFeedbackGenerator.prepare()
         cellFeedbackGenerator.prepare()
+        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     //MARK: - @objc methods
@@ -134,6 +137,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         layout.itemSize = CGSize(width: 100, height: 100)
         
         layout.sectionInset = UIEdgeInsets(top: 6, left: 6, bottom: 8, right: 6)
+        
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
