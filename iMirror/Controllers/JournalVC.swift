@@ -19,6 +19,7 @@ class JournalVC: UITableViewController {
     // Haptic feedback generators
     private let cellFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     private let buttonFeedbackGenerator = UISelectionFeedbackGenerator()
+    private let successFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     // Use lazy to initialize property only when its used
     private lazy var dateFormatter: DateFormatter = {
@@ -42,6 +43,7 @@ class JournalVC: UITableViewController {
         // Prepare the feedback generators
         cellFeedbackGenerator.prepare()
         buttonFeedbackGenerator.prepare()
+        successFeedbackGenerator.prepare()
     }
     
     override func viewDidLoad() {
@@ -82,13 +84,17 @@ class JournalVC: UITableViewController {
     @objc func filterEntries() {
         let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the journal entries.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Select Date", style: .default) { _ in
+            self.successFeedbackGenerator.impactOccurred()
             // Implement filter logic
             self.presentDatePicker()
         })
         alert.addAction(UIAlertAction(title: "Show All Entries", style: .default) { _ in
+            self.successFeedbackGenerator.impactOccurred()
             self.updateUI()
         })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.successFeedbackGenerator.impactOccurred()
+        })
         
         present(alert, animated: true)
     }
@@ -197,9 +203,11 @@ class JournalVC: UITableViewController {
             // Present alert controller to confirm deletion
             let ac = UIAlertController(title: "Delete Entry", message: "Are you sure you want to delete this entry?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                self?.successFeedbackGenerator.impactOccurred()
                 completionHandler(false)
             }))
             ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                self?.successFeedbackGenerator.impactOccurred()
                 self?.deleteJournalEntry(at: indexPath)
                 completionHandler(true)
             }))
