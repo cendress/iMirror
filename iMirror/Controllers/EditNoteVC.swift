@@ -14,8 +14,6 @@ class EditNoteVC: UIViewController {
     
     private let textView = UITextView()
     
-    private let successFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -23,10 +21,6 @@ class EditNoteVC: UIViewController {
         setupTextView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        successFeedbackGenerator.prepare()
     }
     
     @objc func updateAppAppearance() {
@@ -63,7 +57,7 @@ class EditNoteVC: UIViewController {
     }
     
     @objc private func doneEditing() {
-        successFeedbackGenerator.impactOccurred()
+        Haptic.impact(.medium)
         completion?(textView.text)
         dismiss(animated: true, completion: nil)
     }
