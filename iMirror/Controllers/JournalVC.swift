@@ -82,6 +82,8 @@ class JournalVC: UITableViewController {
     }
     
     @objc func filterEntries() {
+        successFeedbackGenerator.impactOccurred()
+        
         let alert = UIAlertController(title: "Filter", message: "Select how you want to filter the journal entries.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Select Date", style: .default) { _ in
             self.successFeedbackGenerator.impactOccurred()

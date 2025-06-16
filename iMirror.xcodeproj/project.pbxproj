@@ -28,6 +28,7 @@
 		9D3959B72B814DD000A8A475 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B62B814DCF00A8A475 /* Quote.swift */; };
 		9D3959B92B814E3500A8A475 /* QuoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3959B82B814E3500A8A475 /* QuoteProvider.swift */; };
 		9D3959BD2B8248C600A8A475 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D3959BC2B8248C600A8A475 /* quotes.json */; };
+		9D4E74D32E00E413005AB4C2 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E74D22E00E413005AB4C2 /* Haptic.swift */; };
 		9D61BE212B8BCEF400BA356E /* waterfall.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1C2B8BCEF300BA356E /* waterfall.mp4 */; };
 		9D61BE222B8BCEF400BA356E /* waves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1D2B8BCEF300BA356E /* waves.mp4 */; };
 		9D61BE232B8BCEF400BA356E /* neonTunnel.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9D61BE1E2B8BCEF300BA356E /* neonTunnel.mp4 */; };
@@ -86,6 +87,7 @@
 		9D3959B62B814DCF00A8A475 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		9D3959B82B814E3500A8A475 /* QuoteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteProvider.swift; sourceTree = "<group>"; };
 		9D3959BC2B8248C600A8A475 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
+		9D4E74D22E00E413005AB4C2 /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		9D61BE1C2B8BCEF300BA356E /* waterfall.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waterfall.mp4; sourceTree = "<group>"; };
 		9D61BE1D2B8BCEF300BA356E /* waves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = waves.mp4; sourceTree = "<group>"; };
 		9D61BE1E2B8BCEF300BA356E /* neonTunnel.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = neonTunnel.mp4; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				9D3395BC2B7AA9CC00D43023 /* UIOnboardingHelper.swift */,
 				9D3395BE2B7AABB200D43023 /* UIOnboardingViewConfiguration+Extension.swift */,
 				9D3959B82B814E3500A8A475 /* QuoteProvider.swift */,
+				9D4E74D22E00E413005AB4C2 /* Haptic.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				9D3959B92B814E3500A8A475 /* QuoteProvider.swift in Sources */,
 				9D7F07152B74135000145871 /* MeditationVC.swift in Sources */,
 				9D0197E92B5EF52400E6FE30 /* ReuseableUI.swift in Sources */,
+				9D4E74D32E00E413005AB4C2 /* Haptic.swift in Sources */,
 				9D7F07132B72E27300145871 /* DatePickerVC.swift in Sources */,
 				9DC206662B6C2FE600BDADE3 /* PaddedLabel.swift in Sources */,
 				9D2E654E2B7D532900432ECF /* AcknowledgementsVC.swift in Sources */,
