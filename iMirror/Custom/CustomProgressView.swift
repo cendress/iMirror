@@ -7,101 +7,99 @@
 
 import UIKit
 
-class CustomProgressView: UIView {
+final class CustomProgressView: UIView {
     var progressDidChange: ((CGFloat) -> Void)?
-    
-    private var progressLayer = CALayer()
-    private var trackLayer = CALayer()
-    private let sliderKnob = UIView()
-    
-    var progress: CGFloat = 0 {
-        didSet {
-            updateSliderPosition()
-        }
+
+    var progress: CGFloat {
+        get { _value }
+        set { setProgress(newValue, animated: true) }
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+
+    private var _value: CGFloat = 0
+    private let track = CAGradientLayer()
+    private let fill = CAGradientLayer()
+    private let knob = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+
+    override init(frame: CGRect) { super.init(frame: frame); configure() }
+    required init?(coder: NSCoder) { super.init(coder: coder); configure() }
+
+    private func configure() {
+        isAccessibilityElement = true
+        accessibilityTraits    = .updatesFrequently
+
+        setupLayers(); setupKnob(); addGesture()
     }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        setupLayers()
-        setupSliderKnob()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        sliderKnob.addGestureRecognizer(panGesture)
-    }
-    
-    private func setupLayers() {
-        trackLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-        layer.addSublayer(trackLayer)
-        
-        progressLayer.backgroundColor = UIColor(named: "AppColor")?.cgColor
-        layer.addSublayer(progressLayer)
-    }
-    
-    private func setupSliderKnob() {
-        sliderKnob.backgroundColor = UIColor(named: "AppColor")
-        sliderKnob.layer.cornerRadius = 15
-        sliderKnob.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        sliderKnob.isUserInteractionEnabled = true
-        sliderKnob.layer.shadowColor = UIColor.black.cgColor
-        sliderKnob.layer.shadowOffset = CGSize(width: 0, height: 2)
-        sliderKnob.layer.shadowRadius = 5
-        sliderKnob.layer.shadowOpacity = 0.3
-        addSubview(sliderKnob)
-    }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        let cornerRadius = bounds.size.height / 2
-        trackLayer.cornerRadius = cornerRadius
-        progressLayer.cornerRadius = cornerRadius
-        
-        trackLayer.frame = bounds
-        updateSliderPosition()
+        let h = bounds.height, w = bounds.width
+
+        track.frame = bounds; track.cornerRadius = h / 2
+        fill.frame  = CGRect(x: 0, y: 0, width: w * _value, height: h)
+        fill.cornerRadius = h / 2
+
+        knob.layer.cornerRadius = knob.bounds.width / 2
+        knob.center = CGPoint(x: w * _value, y: h / 2)
     }
-    
-    private func updateSliderPosition() {
-        let sliderPosition = self.bounds.width * self.progress
-        self.progressLayer.frame = CGRect(x: 0, y: 0, width: sliderPosition, height: self.bounds.height)
-        self.sliderKnob.center = CGPoint(x: sliderPosition, y: self.bounds.height / 2)
+
+    func setProgress(_ value: CGFloat, animated: Bool) {
+        let clamped = min(max(0, value), 1)
+        guard clamped != _value else { return }
+        _value = clamped
+
+        CATransaction.begin(); CATransaction.setDisableActions(!animated)
+        fill.frame.size.width = bounds.width * clamped
+        CATransaction.commit()
+
+        UIView.animate(withDuration: animated ? 0.1 : 0) { self.knob.center.x = self.bounds.width * clamped }
     }
-    
-    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        let location = gesture.location(in: self)
-        let width = bounds.width
-        let newProgress = min(max(0, location.x / width), 1)
-        
-        progress = newProgress
-        progressDidChange?(progress)
-        updateSliderPosition()
-        
-        switch gesture.state {
+
+    private func setupLayers() {
+        track.colors = [UIColor.secondarySystemFill.cgColor, UIColor.secondarySystemFill.withAlphaComponent(0.2).cgColor]
+        track.startPoint = .zero; track.endPoint = CGPoint(x: 0, y: 1)
+        layer.addSublayer(track)
+
+        let brand = UIColor(named: "AppColor")!
+        fill.colors = [brand.cgColor, brand.withAlphaComponent(0.6).cgColor]
+        fill.startPoint = CGPoint(x: 0, y: 0.5); fill.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.addSublayer(fill)
+    }
+
+    private func setupKnob() {
+        knob.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+        knob.clipsToBounds = true
+        knob.contentView.backgroundColor = UIColor(named: "AppColor")!
+        knob.layer.shadowColor = UIColor.black.cgColor
+        knob.layer.shadowOpacity = 0.25
+        knob.layer.shadowOffset = CGSize(width: 0, height: 2)
+        knob.layer.shadowRadius = 4
+        addSubview(knob)
+    }
+
+    private func addGesture() {
+        knob.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:))))
+    }
+
+    @objc private func handlePan(_ g: UIPanGestureRecognizer) {
+        let pct = min(max(0, g.location(in: self).x / bounds.width), 1)
+
+        switch g.state {
         case .began:
-            UIView.animate(withDuration: 0.1) {
-                self.sliderKnob.layer.shadowOpacity = 1
-            }
-        case .ended, .cancelled:
+            animateKnob(scale: 1.15, shadow: 0.5)
+        case .changed:
+            _value = pct; progressDidChange?(pct); setNeedsLayout()
+        case .ended, .cancelled, .failed:
             Haptic.impact(.light)
-            UIView.animate(withDuration: 0.1) {
-                self.sliderKnob.layer.shadowOpacity = 0
-            }
-        default:
-            break
+            animateKnob(scale: 1, shadow: 0.25)
+        default: break
         }
     }
-    
+
+    private func animateKnob(scale: CGFloat, shadow: Float) {
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 3, animations: { self.knob.transform = .init(scaleX: scale, y: scale); self.knob.layer.shadowOpacity = shadow })
+    }
+
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let knobFrame = sliderKnob.frame.insetBy(dx: -10, dy: -10)
-        if knobFrame.contains(point) {
-            return sliderKnob
-        }
-        return super.hitTest(point, with: event)
+        knob.frame.insetBy(dx: -20, dy: -20).contains(point) ? knob : super.hitTest(point, with: event)
     }
 }
