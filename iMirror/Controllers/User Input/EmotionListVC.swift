@@ -16,9 +16,6 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     private let continueButton = ReuseableUI.createButton(withTitle: "Continue".uppercased())
     private var selectedEmotions: Set<Int> = []
     
-    private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-    private let cellFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-    
     var mood: String?
     
     // Emotion array
@@ -63,9 +60,6 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateAppAppearance), name: NSNotification.Name("UpdateAppAppearance"), object: nil)
         
-        buttonFeedbackGenerator.prepare()
-        cellFeedbackGenerator.prepare()
-        
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
     }
@@ -78,15 +72,17 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     @objc private func closeButtonTapped() {
+        Haptic.impact(.light)
         self.dismiss(animated: true)
     }
     
     @objc private func backButtonTapped() {
+        Haptic.impact(.light)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func continueButtonTapped() {
-        buttonFeedbackGenerator.impactOccurred()
+        Haptic.impact(.medium)
         
         if selectedEmotions.isEmpty {
             showAlert()
@@ -166,7 +162,7 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cellFeedbackGenerator.impactOccurred()
+        Haptic.impact(.light)
         
         if selectedEmotions.contains(indexPath.row) {
             // This item was selected but then deselected by the user
@@ -190,7 +186,9 @@ class EmotionListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     private func showAlert() {
         let ac = UIAlertController(title: "Select an Emotion", message: "Please select an emotion to continue.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            Haptic.impact(.light)
+        })
         present(ac, animated: true)
     }
     
