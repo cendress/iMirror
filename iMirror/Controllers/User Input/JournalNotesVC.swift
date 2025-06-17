@@ -27,8 +27,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     var selectedEmotions: [String] = []
     var mood: String?
     
-    private let buttonFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -44,8 +42,6 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
         setupViews()
         setupConstraints()
         addDoneButtonOnKeyboard()
-        
-        buttonFeedbackGenerator.prepare()
     }
     
     //MARK: - @objc methods
@@ -56,10 +52,12 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     }
     
     @objc private func closeButtonTapped() {
+        Haptic.impact(.light)
         self.dismiss(animated: true)
     }
     
     @objc private func backButtonTapped() {
+        Haptic.impact(.light)
         navigationController?.popViewController(animated: true)
     }
     
@@ -84,13 +82,14 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     }
     
     @objc private func dismissKeyboard() {
+        Haptic.impact(.light)
         view.endEditing(true)
     }
     
     //MARK: - Button @objc methods
     
     @objc private func saveButtonTapped() {
-        buttonFeedbackGenerator.impactOccurred()
+        Haptic.impact(.medium)
         
         if isValidInput() {
             // Add saving logic
@@ -111,7 +110,7 @@ class JournalNotesVC: UIViewController, UITextViewDelegate {
     }
     
     @objc private func meditationButtonTapped() {
-        buttonFeedbackGenerator.impactOccurred()
+        Haptic.impact(.medium)
         
         if isValidInput() {
             let titleText = titleTextView.text ?? ""
