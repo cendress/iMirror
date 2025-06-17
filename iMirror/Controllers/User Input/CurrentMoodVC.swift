@@ -154,8 +154,20 @@ class CurrentMoodVC: UIViewController {
             mood = ("Just Fine", "🙂")
         }
         
-        moodLabel.text = mood.text.uppercased()
-        emojiLabel.text = mood.emoji
+        
+        animate(label: moodLabel,  to: mood.text.uppercased())
+        animate(label: emojiLabel, to: mood.emoji)
+    }
+    
+    private func animate(label: UILabel, to newText: String) {
+        guard label.text != newText else { return }
+
+        let duration = 0.25
+
+        // Text-swap + cross-fade
+        UIView.transition(with: label, duration: duration, options: .transitionCrossDissolve) {
+            label.text = newText
+        }
     }
     
     //MARK: - Continue button action method
