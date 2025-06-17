@@ -10,7 +10,7 @@ import UIKit
 
 struct ReuseableUI {
     
-    static let bottomButtonPadding: CGFloat = 10
+    static let bottomButtonPadding: CGFloat = 0
     static let smallPadding: CGFloat = 20
     static let padding: CGFloat = 40
     static let largePadding: CGFloat = 60
