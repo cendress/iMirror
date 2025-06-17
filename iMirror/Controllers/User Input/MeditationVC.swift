@@ -74,6 +74,7 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func exitMeditation() {
+      Haptic.impact(.heavy)
     audioPlayer?.stop()
     dismiss(animated: true)
   }
@@ -113,6 +114,7 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func toggleSound() {
+      Haptic.impact(.light)
     isSoundEnabled.toggle()
     if isSoundEnabled {
       audioPlayer?.play()
@@ -164,6 +166,7 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func changeVideo() {
+      Haptic.impact(.light)
     currentVideoIndex += 1
     if currentVideoIndex >= videoFiles.count {
       currentVideoIndex = 0
@@ -198,6 +201,7 @@ class MeditationVC: UIViewController {
   }
   
   @objc private func goBackToPreviousVideo() {
+      Haptic.impact(.light)
     guard hasChangedVideo else { return }
     
     if currentVideoIndex == 0 {
