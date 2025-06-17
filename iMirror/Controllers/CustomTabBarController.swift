@@ -11,8 +11,6 @@ import UIOnboarding
 
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   
-  private let feedbackGenerator = UISelectionFeedbackGenerator()
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setValue(CustomTabBar(), forKey: "tabBar")
@@ -26,7 +24,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
       self.presentOnboarding()
     }
     
-    feedbackGenerator.prepare()
   }
   
   //MARK: - Present onboarding method
@@ -72,8 +69,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
   // MARK: - Tab bar controller delegate method
   
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    feedbackGenerator.selectionChanged()
-    feedbackGenerator.prepare()
+      Haptic.impact(.medium)
     
     if viewController.tabBarItem is PlusTabBarItem {
       presentCurrentMoodVC()
