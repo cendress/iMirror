@@ -149,7 +149,9 @@ class JournalVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionDate = journalSections[section].date
-        return dateFormatter.string(from: sectionDate)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLLL, yyyy"
+        return formatter.string(from: sectionDate)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -408,30 +410,24 @@ class JournalVC: UITableViewController {
     //MARK: - Other methods
     
     private func groupJournalEntries(_ entries: [JournalEntry]) {
-        var tempSections: [Date: [JournalEntry]] = [:]
+        var buckets: [Date: [JournalEntry]] = [:]
         let calendar = Calendar.current
-        
+
         for entry in entries {
-            let dateComponents = calendar.dateComponents([.year, .month, .day], from: entry.currentDate!)
-            if let date = calendar.date(from: dateComponents) {
-                if tempSections[date] == nil {
-                    tempSections[date] = [entry]
-                } else {
-                    tempSections[date]?.append(entry)
-                }
-            }
+            // Use only year & month: first day of that month becomes the key
+            let comps = calendar.dateComponents([.year, .month], from: entry.currentDate!)
+            guard let monthKey = calendar.date(from: comps) else { continue }
+
+            buckets[monthKey, default: []].append(entry)
         }
-        
-        journalSections = tempSections.map { JournalSection(date: $0.key, entries: $0.value) }
-        
-        // Sort entries by date in descending order
-        journalSections.sort { $0.date > $1.date }
-        
-        // Sort entries within each section by currentTime in descending order
-        for i in 0..<journalSections.count {
-            journalSections[i].entries.sort {
-                $0.currentTime! > $1.currentTime!
-            }
+
+        // Collapse dictionary into an array of sections
+        journalSections = buckets
+            .map { JournalSection(date: $0.key, entries: $0.value) }
+            .sorted { $0.date > $1.date }
+
+        for i in journalSections.indices {
+            journalSections[i].entries.sort { $0.currentTime! > $1.currentTime! }
         }
     }
     
