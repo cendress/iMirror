@@ -47,6 +47,7 @@ struct AcknowledgmentsView: View {
     .toolbar {
       ToolbarItem(placement: .navigationBarLeading) {
         Button(action: {
+            Haptic.impact(.light)
           self.presentationMode.wrappedValue.dismiss()
         }) {
           Image(systemName: "chevron.left")
