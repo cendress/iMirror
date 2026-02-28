@@ -38,7 +38,7 @@ Contributions to **iMirror** are welcome! Feel free to open an issue or submit a
 
 ## 📧 Contact
 
-For inquiries or support, please contact me at [gmail.com](mailto:centsageapp@gmail.com).
+For inquiries or support, please contact me at [gmail.com](mailto:chrisendress9@gmail.com).
 
 [https://github.com/cendress/iMirror](https://github.com/cendress/iMirror)
 
